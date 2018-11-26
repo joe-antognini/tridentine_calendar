@@ -1,0 +1,552 @@
+[
+    {
+        "name": "St. Andrew",
+        "date": "November 30",
+        "class": 2,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Andrew_the_Apostle"
+        ]
+    },
+    {
+        "name": "St. Barbara",
+        "date": "December 4",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://fisheaters.com/customsadvent2a.html",
+            "https://en.wikipedia.org/wiki/Saint_Barbara"
+        ]
+    },
+    {
+        "name": "St. Nicholas",
+        "date": "December 6",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://fisheaters.com/customsadvent3.html",
+            "https://en.wikipedia.org/wiki/Saint_Nicholas"
+        ]
+    },
+    {
+        "name": "St. Ambrose",
+        "date": "December 7",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Ambrose",
+            "http://www.newadvent.org/cathen/01383c.htm"
+        ]
+    },
+    {
+        "name": "Feast of the Immaculate Conception",
+        "date": "December 8",
+        "class": 1,
+        "obligation": true,
+        "urls": [
+            "https://fisheaters.com/customsadvent5.html",
+            "http://www.newadvent.org/cathen/07674d.htm",
+            "https://en.wikipedia.org/wiki/Feast_of_the_Immaculate_Conception"
+        ]
+    },
+    {
+        "name": "Feast of Our Lady of Guadalupe",
+        "date": "December 12",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://fisheaters.com/customsadvent6.html",
+            "https://en.wikipedia.org/wiki/Our_Lady_of_Guadalupe",
+            "http://www.newadvent.org/cathen/07043a.htm"
+        ]
+    },
+    {
+        "name": "St. Lucy",
+        "date", "December 13",
+        "class": 4,
+        "obligation": false,
+        "urls": [
+            "https://fisheaters.com/customsadvent6a.html",
+            "https://en.wikipedia.org/wiki/Saint_Lucy",
+            "http://www.newadvent.org/cathen/09414a.htm"
+        ]
+    },
+    {
+        "name": "Las Posadas",
+        "date": "December 16",
+        "class": 4,
+        "obligation": false,
+        "urls": [
+            "https://fisheaters.com/customsadvent8.html",
+            "https://en.wikipedia.org/wiki/Las_Posadas"
+        ]
+    },
+    {
+        "name": "Golden Nights",
+        "date": "December 17",
+        "class": 4,
+        "obligation": false,
+        "urls": [
+            "https://fisheaters.com/customsadvent10.html",
+            "https://en.wikipedia.org/wiki/O_Antiphons",
+            "http://www.newadvent.org/cathen/11173b.htm"
+        ]
+    },
+    {
+        "name": "St. Thomas",
+        "date": "December 21",
+        "class": 2,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Thomas_the_Apostle",
+            "http://www.newadvent.org/cathen/14658b.htm"
+        ]
+    },
+    {
+        "name": "Christmas Eve",
+        "date": "December 24",
+        "class": 1,
+        "obligation": false,
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customschristmas1.html",
+                "description": "Christmas Overview"
+            },
+            {
+                "url": "https://fisheaters.com/customschristmas2.html",
+                "description": "Christmas Eve and Christmas Day"
+            },
+            "https://en.wikipedia.org/wiki/Christmas_Eve",
+            {
+                "url": "http://www.newadvent.org/cathen/05647a.htm",
+                "description": "Vigil of a Feast"
+            }
+        ]
+    },
+    {
+        "name": "Christmas",
+        "date": "December 25",
+        "class": 1,
+        "obligation": true,
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customschristmas1.html",
+                "description": "Christmastide Overview"
+            },
+            {
+                "url": "https://fisheaters.com/customschristmas2.html",
+                "description": "Christmas Eve and Christmas Day"
+            },
+            "https://en.wikipedia.org/wiki/Christmas",
+            "http://www.newadvent.org/cathen/03724b.htm"
+        ]
+    },
+    {
+        "name": "St. Stephen",
+        "date": "December 26",
+        "class": 2,
+        "obligation": false,
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customschristmas1.html",
+                "description": "Christmastide Overview"
+            },
+            "https://fisheaters.com/customschristmas3.html",
+            "https://en.wikipedia.org/wiki/Saint_Stephen",
+            "http://www.newadvent.org/cathen/14286b.htm"
+        ]
+    },
+    {
+        "name": "St. John",
+        "date": "December 27",
+        "class": 2,
+        "obligation": false,
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customschristmas1.html",
+                "description": "Christmastide Overview"
+            },
+            "https://fisheaters.com/customschristmas4.html",
+            "https://en.wikipedia.org/wiki/John_the_Evangelist",
+            "http://www.newadvent.org/cathen/08492a.htm"
+        ]
+    },
+    {
+        "name": "Childermas",
+        "date": "December 28",
+        "class": 2,
+        "obligation": false,
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customschristmas1.html",
+                "description": "Christmastide Overview"
+            },
+            "https://fisheaters.com/customschristmas5.html",
+            "https://en.wikipedia.org/wiki/Massacre_of_the_Innocents",
+            "http://www.newadvent.org/cathen/07419a.htm"
+        ]
+    },
+    {
+        "name": "St. Thomas Becket",
+        "date": "December 29",
+        "class": 1,
+        "obligation": false,
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customschristmas1.html",
+                "description": "Christmastide Overview"
+            },
+            "https://fisheaters.com/customschristmasx.html",
+            "https://en.wikipedia.org/wiki/Thomas_Becket",
+            "http://www.newadvent.org/cathen/14676a.htm"
+        ]
+    },
+    {
+        "name": "St. Sylvester I",
+        "date": "December 31",
+        "class": 2,
+        "obligation": false,
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customschristmas1.html",
+                "description": "Christmastide Overview"
+            },
+            "https://fisheaters.com/customschristmas6.html",
+            "https://en.wikipedia.org/wiki/Pope_Sylvester_I",
+            "http://www.newadvent.org/cathen/14370a.htm"
+        ]
+    },
+    {
+        "name": "Feast of the Circumcision",
+        "date": "January 1",
+        "class": 1,
+        "obligation": true,
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customschristmas1.html",
+                "description": "Christmastide Overview"
+            },
+            "https://fisheaters.com/customschristmas7.html",
+            "https://en.wikipedia.org/wiki/Feast_of_the_Circumcision_of_Christ",
+            "http://www.newadvent.org/cathen/03779a.htm"
+        ]
+    },
+    {
+        "name": "Twelfth Night",
+        "date": "January 5",
+        "class": 1,
+        "obligation": false,
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customschristmas1.html",
+                "description": "Christmastide Overview"
+            },
+            "https://fisheaters.com/epiphanyeve.html",
+            "https://en.wikipedia.org/wiki/Twelfth_Night_(holiday)"
+        ]
+    },
+    {
+        "name": "Three Kings Days",
+        "date": "January 6",
+        "class": 1,
+        "obligation": false,
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customschristmas1.html",
+                "description": "Christmastide Overview"
+            },
+            "https://fisheaters.com/customschristmas8.html",
+            "https://en.wikipedia.org/wiki/Epiphany_(holiday)",
+            "http://www.newadvent.org/cathen/05504c.htm"
+        ]
+    },
+    {
+        "name": "Baptism of Christ",
+        "date": "January 13",
+        "class": 2,
+        "obligation": false,
+        "urls": [
+            "https://fisheaters.com/baptism3.html",
+            "https://en.wikipedia.org/wiki/Baptism_of_Jesus"
+        ]
+    },
+    {
+        "name": "St. Paul the Hermit",
+        "date": "January 15",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Paul_of_Thebes",
+            "http://www.newadvent.org/cathen/11590b.htm"
+        ]
+    },
+    {
+        "name": "St. Anthony the Great",
+        "date": "January 17",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Anthony_the_Great",
+            "http://www.newadvent.org/cathen/01553d.htm"
+        ]
+    },
+    {
+        "name": "St. Peter's Chair",
+        "date": "January 18",
+        "class": 2,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Chair_of_Saint_Peter",
+            "http://www.newadvent.org/cathen/03551e.htm"
+        ]
+    },
+    {
+        "name": "St. Agnes",
+        "date": "January 21",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://fisheaters.com/customstimeafterepiphany2.html",
+            "https://en.wikipedia.org/wiki/Agnes_of_Rome",
+            "http://www.newadvent.org/cathen/01214a.htm"
+        ]
+    },
+    {
+        "name": "Conversion of St. Paul",
+        "date": "January 25",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Conversion_of_Paul_the_Apostle"
+        ]
+    },
+    {
+        "name": "St. John Chrysostom",
+        "date": "January 27",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/John_Chrysostom",
+            "http://www.newadvent.org/cathen/08452b.htm"
+        ]
+    },
+    {
+        "name": "St. Francis de Sales",
+        "date": "January 29",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Francis_de_Sales",
+            "http://www.newadvent.org/cathen/06220a.htm"
+        ]
+    },
+    {
+        "name": "St. Ignatius, formerly St. Brigid",
+        "date": "February 1",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customstimeafterepiphany2a.html",
+                "description": "St. Brigid"
+            },
+            {
+                "url": "https://en.wikipedia.org/wiki/Ignatius_of_Antioch",
+                "description": "St. Ignatius of Antioch"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/07644a.htm",
+                "description": "St. Ignatius of Antioch"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/02784b.htm",
+                "description": "Saint Brigid of Ireland"
+            },
+            {
+                "url": "https://en.wikipedia.org/wiki/Brigid_of_Kildare",
+                "description": "Brigid of Kildare"
+            }
+        ]
+    },
+    {
+        "name": "Candlemas",
+        "date": "February 2",
+        "class": 2,
+        "obligation": false,
+        "urls": [
+            "https://fisheaters.com/customstimeafterepiphany3.html",
+            "https://en.wikipedia.org/wiki/Candlemas",
+            "http://www.newadvent.org/cathen/03245b.htm"
+        ]
+    },
+    {
+        "name": "St. Blaise",
+        "date": "February 3",
+        "class": 4,
+        "obligation": false,
+        "urls": [
+            "https://fisheaters.com/customstimeafterepiphany4.html",
+            "https://en.wikipedia.org/wiki/Saint_Blaise",
+            "http://www.newadvent.org/cathen/02592a.htm"
+        ]
+    },
+    {
+        "name": "St. Agatha",
+        "date": "February 5",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Agatha_of_Sicily",
+            "http://www.newadvent.org/cathen/01203c.htm"
+        ]
+    },
+    {
+        "name": "St. Titus",
+        "date": "February 6",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Saint_Titus",
+            "http://www.newadvent.org/cathen/14727b.htm"
+        ]
+    },
+    {
+        "name": "St. Cyril of Alexandria",
+        "date": "February 9",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Cyril_of_Alexandria",
+            "http://www.newadvent.org/cathen/04592b.htm"
+        ]
+    },
+    {
+        "name": "St. Scholastica",
+        "date": "February 10",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Scholastica"
+        ]
+    },
+    {
+        "name": "The Apparition at Lourdes",
+        "date": "February 11",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Lourdes_apparitions",
+            "http://www.newadvent.org/cathen/09389b.htm"
+        ]
+    },
+    {
+        "name": "St. Valentine",
+        "date": "February 14",
+        "class": 4,
+        "obligation": false,
+        "urls": [
+            "https://fisheaters.com/customstimeafterepiphany5.html",
+            "https://en.wikipedia.org/wiki/Valentine%27s_Day",
+            "http://www.newadvent.org/cathen/15254a.htm"
+        ]
+    },
+    {
+        "name": "St. Thomas Aquinas",
+        "date": "March 7",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Thomas_Aquinas",
+            "http://www.newadvent.org/cathen/14663b.htm"
+        ]
+    },
+    {
+        "name": "The Forty Martyrs",
+        "date": "March 10",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Forty_Martyrs_of_Sebaste",
+            "http://www.newadvent.org/cathen/06153a.htm"
+        ]
+    },
+    {
+        "name": "St. Gregory the Great",
+        "date": "March 12",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Pope_Gregory_I",
+            "http://www.newadvent.org/cathen/06780a.htm"
+        ]
+    },
+    {
+        "name": "St. Patrick",
+        "date": "March 17",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://fisheaters.com/customslent4.html",
+            "https://en.wikipedia.org/wiki/Saint_Patrick%27s_Day",
+            "http://www.newadvent.org/cathen/11554a.htm"
+        ]
+    },
+    {
+        "name": "St. Cyril of Jerusalem",
+        "date": "March 18",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Cyril_of_Jerusalem",
+            "http://www.newadvent.org/cathen/04595b.htm"
+        ]
+    },
+    {
+        "name": "St. Joseph",
+        "date": "March 19",
+        "class": 1,
+        "obligation": false,
+        "urls": [
+            "https://fisheaters.com/customslent5.html",
+            "https://en.wikipedia.org/wiki/Saint_Joseph",
+            "http://www.newadvent.org/cathen/08504a.htm"
+        ]
+    },
+    {
+        "name": "St. Benedict",
+        "date": "March 21",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Benedict_of_Nursia",
+            "http://www.newadvent.org/cathen/02467b.htm"
+        ]
+    },
+    {
+        "name": "St. Gabriel",
+        "date": "March 24",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Gabriel",
+            "http://www.newadvent.org/cathen/06330a.htm"
+        ]
+    },
+    {
+        "name": "Lady Day",
+        "date": "March 25",
+        "class": 1,
+        "obligation": false,
+        "urls": [
+            "https://fisheaters.com/customslent6.html",
+            {
+                "url": "https://en.wikipedia.org/wiki/Feast_of_the_Annunciation",
+                "description": "Feast of the Annunciation"
+            },
+            "https://en.wikipedia.org/wiki/Lady_Day",
+            {
+                "url": "http://www.newadvent.org/cathen/01542a.htm",
+                "description": "Feast of the Annunciation"
+            }
+        ]
+    },

@@ -1,0 +1,305 @@
+[
+    {
+        "name": "Advent",
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customsadvent1.html",
+                "description": "Advent Overview"
+            },
+            {
+                "url": "https://fisheaters.com/customsadvent2.html",
+                "description": "Advent Wreath & Candles"
+            },
+            {
+                "url": "https://fisheaters.com/adventcribs.html",
+                "description": "Nativity Scenes"
+            },
+            {
+                "url": "https://fisheaters.com/customsadvent12.html",
+                "description": "Advent Calendars"
+            },
+            {
+                "url": "https://fisheaters.com/customsadvent9.html",
+                "description": "Jesse Trees"
+            },
+            {
+                "url": "https://en.wikipedia.org/wiki/Advent",
+                "description": "Advent"
+            }
+        ]
+    },
+    {
+        "name": "Embertide",
+        "urls": [
+            {
+                "url": "https://fisheaters.com/emberdays.html",
+                "description": "Embertide Overview"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/05399b.htm",
+                "description": "Ember Days"
+            },
+            {
+                "url": "https://en.wikipedia.org/wiki/Ember_days",
+                "description": "Ember Days"
+            }
+        ]
+    },
+    {
+        "name": "Advent Embertide",
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customsadvent11.html",
+                "description": "Advent Embertide"
+            }
+        ]
+    },
+    {
+        "name": "Gaudete Sunday",
+        "urls": [
+            "https://en.wikipedia.org/wiki/Gaudete_Sunday",
+            "http://www.newadvent.org/cathen/06394b.htm"
+        ]
+    },
+    {
+        "name": "Feast of the Holy Name",
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customschristmas1.html",
+                "description": "Christmastide Overview"
+            },
+            "https://fisheaters.com/customschristmas7a.html",
+            "https://en.wikipedia.org/wiki/Feast_of_the_Holy_Name_of_Jesus",
+            "http://www.newadvent.org/cathen/07420a.htm",
+            {
+                "url": "http://www.newadvent.org/cathen/07421a.htm",
+                "description": "The Holy Name of Jesus"
+            }
+        ]
+    },
+    {
+        "name": "Feast of the Holy Family",
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customstimeafterepiphany1.html",
+                "description": "Time after Epiphany"
+            },
+            "https://fisheaters.com/customstimeafterepiphany1a.html",
+            "https://en.wikipedia.org/wiki/Holy_Family",
+            "
+        ]
+    },
+    {
+        "name": "Plough Monday",
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customstimeafterepiphany1.html",
+                "description": "Time after Epiphany"
+            },
+            "https://en.wikipedia.org/wiki/Plough_Monday"
+        ]
+    },
+    {
+        "name": "Time after Epiphany",
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customstimeafterepiphany1.html",
+                "description": "Time after Epiphany"
+            }
+        ]
+    },
+    {
+        "name": "Septuagesima",
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customsseptuagesima1.html",
+                "description": "Septuagesima Overview"
+            },
+            {
+                "url": "https://fisheaters.com/customsseptuagesima1.html",
+                "description": "Septuagesima"
+            },
+            "https://en.wikipedia.org/wiki/Septuagesima",
+            "http://www.newadvent.org/cathen/13721b.htm"
+        ]
+    },
+    {
+        "name": "Sexagesima",
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customsseptuagesima1.html",
+                "description": "Septuagesima Overview"
+            },
+            "https://en.wikipedia.org/wiki/Sexagesima",
+            "http://www.newadvent.org/cathen/13747a.htm"
+        ]
+    },
+    {
+        "name": "Quinquagesima",
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customsseptuagesima1.html",
+                "description": "Septuagesima Overview"
+            },
+            "https://en.wikipedia.org/wiki/Quinquagesima",
+            "http://www.newadvent.org/cathen/12614a.htm"
+        ]
+    },
+    {
+        "name": "Shrove Monday",
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customsseptuagesima1.html",
+                "description": "Septuagesima Overview"
+            },
+            {
+                "url': "https://fisheaters.com/customsseptuagesima2.html",
+                "description": "Shrovetide"
+            },
+            {
+                "url': "http://www.newadvent.org/cathen/13763a.htm",
+                "description": "Shrovetide"
+            }
+        ]
+    },
+    {
+        "name": "Mardi Gras",
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customsseptuagesima1.html",
+                "description": "Septuagesima Overview"
+            },
+            {
+                "url': "https://fisheaters.com/customsseptuagesima2.html",
+                "description": "Shrovetide"
+            },
+            {
+                "url': "http://www.newadvent.org/cathen/13763a.htm",
+                "description": "Shrovetide"
+            }
+        ]
+    },
+    {
+        "name": "St. Matthias",
+        "urls": [
+            "https://en.wikipedia.org/wiki/Saint_Matthias",
+            "http://www.newadvent.org/cathen/10066a.htm"
+        ]
+    },
+    {
+        "name": "Lent",
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customslent1.html",
+                "description": "Lent Overview"
+            },
+            {
+                "url": "https://en.wikipedia.org/wiki/Lent",
+                "description": "Lent"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/09152a.htm",
+                "description": "Lent"
+            }
+        ]
+    },
+    {
+        "name": "Ash Wednesday",
+        "urls": [
+            "https://fisheaters.com/customslent2.html",
+            "https://en.wikipedia.org/wiki/Ash_Wednesday",
+            "http://www.newadvent.org/cathen/01775b.htm"
+        ]
+    },
+    {
+        "name": "Lenten Embertide",
+        "urls": [
+            "https://fisheaters.com/customslent3.html"
+        ]
+    },
+    {
+        "name": "Laetare Sunday",
+        "urls": [
+            "https://fisheaters.com/customslent7.html",
+            "https://en.wikipedia.org/wiki/Laetare_Sunday",
+            "http://www.newadvent.org/cathen/08737c.htm"
+        ]
+    },
+    {
+        "name": "Passiontide",
+        "urls": [
+            "https://fisheaters.com/customslent8.html",
+            "https://en.wikipedia.org/wiki/Passiontide",
+            "http://www.newadvent.org/cathen/11535b.htm"
+        ]
+    },
+    {
+        "name": "Passion Sunday",
+        "urls": [
+            "https://en.wikipedia.org/wiki/Passion_Sunday",
+            "http://www.newadvent.org/cathen/11535a.htm"
+        ]
+    },
+    {
+        "name": "Holy Week",
+        "urls": [
+            "https://en.wikipedia.org/wiki/Holy_Week",
+            "http://www.newadvent.org/cathen/07435a.htm"
+        ]
+    },
+    {
+        "name": "Palm Sunday",
+        "urls": [
+            "https://fisheaters.com/customslent11.html",
+            "https://en.wikipedia.org/wiki/Palm_Sunday",
+            "http://www.newadvent.org/cathen/11432b.htm"
+        ]
+    },
+    {
+        "name": "Spy Wednesday",
+        "urls": [
+            "https://fisheaters.com/customslent12.html",
+            "https://en.wikipedia.org/wiki/Holy_Wednesday"
+        ]
+    },
+    {
+        "name": "Maundy Thursday",
+        "urls": [
+            "https://fisheaters.com/customslent13.html",
+            "https://en.wikipedia.org/wiki/Maundy_Thursday",
+            "http://www.newadvent.org/cathen/10068a.htm"
+        ]
+    },
+    {
+        "name": "Good Friday",
+        "urls": [
+            "https://fisheaters.com/customslent14.html",
+            "https://en.wikipedia.org/wiki/Good_Friday",
+            "http://www.newadvent.org/cathen/06643a.htm"
+        ]
+    },
+    {
+        "name": "Holy Saturday",
+        "urls": [
+            "https://fisheaters.com/customslent15.html",
+            "https://en.wikipedia.org/wiki/Holy_Saturday",
+            "http://www.newadvent.org/cathen/07424a.htm"
+        ]
+    },
+    {
+        "name": "Easter",
+        "urls": [
+            "https://fisheaters.com/customseastertide2.html",
+            "https://en.wikipedia.org/wiki/Easter",
+            "http://www.newadvent.org/cathen/05224d.htm"
+        ]
+    },
+    {
+        "name": "Eastertide",
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customseastertide1.html",
+                "description": "Eastertide Overview"
+            }
+        ]
+    },

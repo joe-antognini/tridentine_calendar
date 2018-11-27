@@ -300,6 +300,47 @@
             {
                 "url": "https://fisheaters.com/customseastertide1.html",
                 "description": "Eastertide Overview"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/11516a.htm",
+                "description": "Paschal Tide"
             }
+        ]
+    },
+    {
+        "name": "Quasimodo Sunday",
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customseastertide4.html",
+                "description": "Low Sunday"
+            },
+            {
+                "url": "https://en.wikipedia.org/wiki/Divine_Mercy_Sunday",
+                "description": "Divine Mercy Sunday"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/09400a.htm",
+                "description": "Low Sunday"
+            }
+        ]
+    },
+    {
+        "name": "Jubilate Sunday",
+        "urls": [
+            "https://en.wikipedia.org/wiki/Jubilate_Sunday",
+            "http://www.newadvent.org/cathen/08531b.htm"
+        ]
+    },
+    {
+        "name": "Misericordia Sunday",
+        "urls": [
+            "https://en.wikipedia.org/wiki/Misericordia_Sunday"
+        ]
+    },
+    {
+        "name": "Cantate Sunday",
+        "urls": [
+            "https://en.wikipedia.org/wiki/Cantate_Sunday",
+            "http://www.newadvent.org/cathen/03299a.htm"
         ]
     },

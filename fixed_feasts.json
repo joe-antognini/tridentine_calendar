@@ -550,3 +550,184 @@
             }
         ]
     },
+    {
+        "name": "St. John Damascene",
+        "date": "March 27",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/John_of_Damascus",
+            "http://www.newadvent.org/cathen/08459b.htm"
+        ]
+    },
+    {
+        "name": "St. Isidore",
+        "date": "April 4",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Isidore_of_Seville",
+            "http://www.newadvent.org/cathen/08186a.htm"
+        ]
+    },
+    {
+        "name": "Leo the Great",
+        "date": "April 11",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            {
+                "url": "https://en.wikipedia.org/wiki/Pope_Leo_I",
+                "description": "Pope Leo I"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/09154b.htm",
+                "description": "Pope St. Leo I"
+            }
+        ]
+    },
+    {
+        "name": "St. Justin",
+        "date": "April 14",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            {
+                "url": "https://en.wikipedia.org/wiki/Justin_Martyr",
+                "description": "Justin Martyr"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/08580c.htm",
+                "description": "St. Justin Martyr"
+            }
+        ]
+    },
+    {
+        "name": "St. Anselm",
+        "date": "April 21",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            {
+                "url": "https://en.wikipedia.org/wiki/Anselm_of_Canterbury",
+                "description": "Anselm of Canterbury"
+            },
+            "http://www.newadvent.org/cathen/01546a.htm"
+        ]
+    },
+    {
+        "name": "St. Mark",
+        "date": "April 25",
+        "class": 2,
+        "obligation": false,
+        "urls": [
+            {
+                "url": "https://en.wikipedia.org/wiki/Mark_the_Evangelist",
+                "description": "Mark the Evangelist"
+            },
+            "http://www.newadvent.org/cathen/09672c.htm"
+        ]
+    },
+    {
+        "name": "St. Catherine of Siena, formerly Walpurgisnacht",
+        "date": "April 30",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            {
+                "url": "https://en.wikipedia.org/wiki/Catherine_of_Siena",
+                "description": "Catherine of Siena"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/03447a.htm",
+                "description": "St. Catherine of Siena"
+            },
+            {
+                "url": "https://fisheaters.com/walpurgisnacht.html",
+                "description": "Walpurgisnacht"
+            },
+            {
+                "url": "https://en.wikipedia.org/wiki/Walpurgis_Night",
+                "description": "Walpurgis Night"
+            }
+        ]
+    },
+    {
+        "name": "St. Joseph the Worker, formerly St. Walpurga",
+        "date": "May 1",
+        "class": 1,
+        "obligation": false,
+        "urls": [
+            {
+                "url": "https://en.wikipedia.org/wiki/Saint_Walpurga",
+                "description": "Saint Walpurga"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/15526b.htm",
+                "description": "Saint Walburga"
+            }
+        ]
+    },
+    {
+        "name": "St. Athanasius",
+        "date": "May 2",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            {
+                "url": "https://en.wikipedia.org/wiki/Athanasius_of_Alexandria",
+                "description": "Athanasius of Alexandria"
+            },
+            "http://www.newadvent.org/cathen/02035a.htm"
+        ]
+    },
+    {
+        "name": "St. Monica",
+        "date": "May 4",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Saint_Monica",
+            "http://www.newadvent.org/cathen/10482a.htm"
+        ]
+    },
+    {
+        "name": "St. Pius V",
+        "date": "May 5",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            {
+                "url": "https://en.wikipedia.org/wiki/Pope_Pius_V",
+                "description": "Pope Pius V"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/12130a.htm",
+                "description": "Pope St. Pius V"
+            }
+        ]
+    },
+    {
+        "name": "SS. Philip and James",
+        "date": "May 11",
+        "class": 2,
+        "obligation": false,
+        "urls": [
+            {
+                "url": "https://en.wikipedia.org/wiki/Philip_the_Apostle",
+                "description": "Philip the Apostle"
+            },
+            {
+                "url": "https://en.wikipedia.org/wiki/James,_son_of_Alphaeus",
+                "description": "James, son of Alphaeus"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/11799a.htm",
+                "description": "St. Philip the Apostle"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/08280a.htm",
+                "description": "St. James the Less"
+            }
+        ]
+    },

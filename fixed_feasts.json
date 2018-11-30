@@ -731,3 +731,16 @@
             }
         ]
     },
+    {
+        "name": "The Queenship of Mary",
+        "date": "May 31",
+        "class": 2,
+        "obligation": false,
+        "urls": [
+            "url": "https://fisheaters.com/queenshipofmary.html",
+            {
+                "url": "https://en.wikipedia.org/wiki/Coronation_of_the_Virgin",
+                "description": "Coronation of the Virgin"
+            }
+        ]
+    },

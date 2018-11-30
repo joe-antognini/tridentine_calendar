@@ -102,10 +102,7 @@
     {
         "name": "Time after Epiphany",
         "urls": [
-            {
-                "url": "https://fisheaters.com/customstimeafterepiphany1.html",
-                "description": "Time after Epiphany"
-            }
+            "https://fisheaters.com/customstimeafterepiphany1.html"
         ]
     },
     {
@@ -271,6 +268,12 @@
         ]
     },
     {
+        "name": "Paschal Triduum",
+        "urls": [
+            "https://en.wikipedia.org/wiki/Paschal_Triduum"
+        ]
+    },
+    {
         "name": "Good Friday",
         "urls": [
             "https://fisheaters.com/customslent14.html",
@@ -350,5 +353,94 @@
             "https://fisheaters.com/customseastertide3.html",
             "https://en.wikipedia.org/wiki/Rogation_days",
             "http://www.newadvent.org/cathen/13110b.htm"
+        ]
+    },
+    {
+        "name": "Minor Rogation",
+        "urls": [
+            "https://fisheaters.com/customseastertide3.html",
+            "https://en.wikipedia.org/wiki/Rogation_days",
+            "http://www.newadvent.org/cathen/13110b.htm"
+        ]
+    },
+    {
+        "name": "Ascension",
+        "urls": [
+            "https://fisheaters.com/customseastertide6.html",
+            {
+                "url": "https://en.wikipedia.org/wiki/Feast_of_the_Ascension",
+                "description": "Feast of the Ascension"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/01767b.htm",
+                "description": "Feast of the Ascension"
+            }
+        ]
+    },
+    {
+        "name": "Pentecost",
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customseastertide7.html",
+                "description": "Vigil of the Pentecost and Whitsunday"
+            },
+            {
+                "url": "https://en.wikipedia.org/wiki/Pentecost",
+                "description": "Pentecost"
+            },
+            {
+                "url": "https://en.wikipedia.org/wiki/Whitsun",
+                "description": "Whitsun"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/15614b.htm",
+                "description": "Pentecost (Whitsunday)"
+            }
+        ]
+    },
+    {
+        "name": "Whit Embertide",
+        "urls": [
+            "https://fisheaters.com/customseastertide8.html"
+        ]
+    },
+    {
+        "name": "Time after Pentecost",
+        "urls": [
+            "https://fisheaters.com/customstimeafterpentecost1.html"
+        ]
+    },
+    {
+        "name": "Trinity Sunday",
+        "urls": [
+            "https://fisheaters.com/customseastertide9.html",
+            "https://en.wikipedia.org/wiki/Trinity_Sunday",
+            "http://www.newadvent.org/cathen/15058a.htm"
+        ]
+    },
+    {
+        "name": "Corpus Christi",
+        "urls": [
+            "https://fisheaters.com/customstimeafterpentecost2.html",
+            "https://en.wikipedia.org/wiki/Corpus_Christi_(feast)",
+            {
+                "url": "http://www.newadvent.org/cathen/04390b.htm",
+                "description": "Feast of Corpus Christi"
+            }
+        ]
+    },
+    {
+        "name": "Feast of the Sacred Heart",
+        "urls": [
+            "https://fisheaters.com/customstimeafterpentecost4.html",
+            "https://en.wikipedia.org/wiki/Feast_of_the_Sacred_Heart",
+            {
+                "url": "https://en.wikipedia.org/wiki/Sacred_Heart",
+                "description": "Sacred Heart"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/07163a.htm",
+                "description": "Devotion to the Sacred Heart of Jesus"
+            }
         ]
     },

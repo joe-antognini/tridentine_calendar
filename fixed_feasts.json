@@ -9,13 +9,39 @@
         ]
     },
     {
-        "name": "St. Barbara",
+        "name": "St. Bibiana",
+        "date": "December 2",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Saint_Bibiana",
+            "http://www.newadvent.org/cathen/02542b.htm"
+        ]
+    },
+    {
+        "name": "St. Francis Xavier",
+        "date": "December 3",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            {
+                "url": "https://en.wikipedia.org/wiki/Francis_Xavier",
+                "description": "Francis Xavier"
+            },
+            "http://www.newadvent.org/cathen/06233b.htm"
+        ]
+    },
+    {
+        "name": "St. Peter Chrysologus",
         "date": "December 4",
         "class": 3,
         "obligation": false,
         "urls": [
-            "https://fisheaters.com/customsadvent2a.html",
-            "https://en.wikipedia.org/wiki/Saint_Barbara"
+            {
+                "url": "https://en.wikipedia.org/wiki/Peter_Chrysologus",
+                "description": "Peter Chrysologus"
+            },
+            "http://www.newadvent.org/cathen/11762c.htm"
         ]
     },
     {
@@ -50,6 +76,22 @@
         ]
     },
     {
+        "name": "St. Damasus",
+        "date": "December 11",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            {
+                "url": "https://en.wikipedia.org/wiki/Pope_Damasus_I",
+                "description": "Pope Damasus I"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/04613a.htm",
+                "description": Pope St. Damasus I"
+            }
+        ]
+    },
+    {
         "name": "Feast of Our Lady of Guadalupe",
         "date": "December 12",
         "class": 3,
@@ -72,13 +114,16 @@
         ]
     },
     {
-        "name": "Las Posadas",
+        "name": "St. Eusebius",
         "date": "December 16",
-        "class": 4,
+        "class": 3,
         "obligation": false,
         "urls": [
-            "https://fisheaters.com/customsadvent8.html",
-            "https://en.wikipedia.org/wiki/Las_Posadas"
+            {
+                "url": "https://en.wikipedia.org/wiki/Eusebius_of_Vercelli",
+                "description": "Eusebius of Vercelli"
+            },
+            "http://www.newadvent.org/cathen/05614b.htm"
         ]
     },
     {
@@ -271,6 +316,22 @@
         ]
     },
     {
+        "name": "St. Hilary",
+        "date": "January 14",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            {
+                "url": "https://en.wikipedia.org/wiki/Hilary_of_Poitiers",
+                "description": "Hilary of Poitiers"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/07349b.htm",
+                "description": "St. Hilary of Poitiers"
+            }
+        ]
+    },
+    {
         "name": "St. Paul the Hermit",
         "date": "January 15",
         "class": 3,
@@ -278,6 +339,22 @@
         "urls": [
             "https://en.wikipedia.org/wiki/Paul_of_Thebes",
             "http://www.newadvent.org/cathen/11590b.htm"
+        ]
+    },
+    {
+        "name": "St. Marcellus I",
+        "date": "January 16",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            {
+                "url": "https://en.wikipedia.org/wiki/Pope_Marcellus_I",
+                "description": "Pope Marcellus I"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/09640b.htm",
+                "description": "Pope St. Marcellus I"
+            }
         ]
     },
     {
@@ -301,6 +378,30 @@
         ]
     },
     {
+        "name": "Pope St. Fabian and St. Sebastian",
+        "date": "January 20",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            {
+                "url": "https://en.wikipedia.org/wiki/Pope_Fabian",
+                "description": "Pope Fabian"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/05742d.htm",
+                "description": "Pope St. Fabian"
+            },
+            {
+                "url": "https://en.wikipedia.org/wiki/Saint_Sebastian",
+                "description": "St. Sebastian"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/13668a.htm",
+                "description": "St. Sebastian"
+            }
+        ]
+    },
+    {
         "name": "St. Agnes",
         "date": "January 21",
         "class": 3,
@@ -318,6 +419,46 @@
         "obligation": false,
         "urls": [
             "https://en.wikipedia.org/wiki/Conversion_of_Paul_the_Apostle"
+        ]
+    },
+    {
+        "name": "SS. Vincent and Anastasius",
+        "date": "January 22",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            {
+                "url": "https://en.wikipedia.org/wiki/Vincent_of_Saragossa",
+                "description": "Vincent of Saragossa"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/15434b.htm",
+                "description": "Saint Vincent"
+            },
+            {
+                "url": "https://en.wikipedia.org/wiki/Anastasius_of_Persia",
+                "description": "Anastasius of Persius"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/01455c.htm",
+                "description": "St. Anastasius"
+            }
+        ]
+    },
+    {
+        "name": "St. Raymond of Peñafort",
+        "date": "January 23",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            {
+                "url": "https://en.wikipedia.org/wiki/Raymond_of_Penyafort",
+                "description": "Raymond of Penyafort"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/12671c.htm",
+                "description": "St. Raymond of Peñafort"
+            }
         ]
     },
     {

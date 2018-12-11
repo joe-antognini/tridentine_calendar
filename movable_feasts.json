@@ -167,20 +167,32 @@
                 "description": "Septuagesima Overview"
             },
             {
-                "url': "https://fisheaters.com/customsseptuagesima2.html",
+                "url": "https://fisheaters.com/customsseptuagesima2.html",
                 "description": "Shrovetide"
             },
             {
-                "url': "http://www.newadvent.org/cathen/13763a.htm",
+                "url": "http://www.newadvent.org/cathen/13763a.htm",
                 "description": "Shrovetide"
             }
         ]
     },
     {
         "name": "St. Matthias",
+        "attributes": ["Apostle"],
         "urls": [
             "https://en.wikipedia.org/wiki/Saint_Matthias",
             "http://www.newadvent.org/cathen/10066a.htm"
+        ]
+    },
+    {
+        "name": "St. Gabriel of Our Lady of Sorrows",
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Gabriel_of_Our_Lady_of_Sorrows",
+            {
+                "url": "http://www.newadvent.org/cathen/06330c.htm",
+                "description": "Bl. Gabriel Possenti"
+            }
         ]
     },
     {

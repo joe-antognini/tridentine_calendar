@@ -87,7 +87,7 @@
             },
             {
                 "url": "http://www.newadvent.org/cathen/04613a.htm",
-                "description": Pope St. Damasus I"
+                "description": "Pope St. Damasus I"
             }
         ]
     },
@@ -342,7 +342,7 @@
         ]
     },
     {
-        "name": "St. Marcellus I",
+        "name": "Pope St. Marcellus I",
         "date": "January 16",
         "class": 3,
         "obligation": false,
@@ -450,6 +450,7 @@
         "date": "January 23",
         "class": 3,
         "obligation": false,
+        "attributes": ["Confessor"],
         "urls": [
             {
                 "url": "https://en.wikipedia.org/wiki/Raymond_of_Penyafort",
@@ -462,13 +463,58 @@
         ]
     },
     {
+        "name": "St. Timothy",
+        "date": "January 24",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Saint_Timothy"
+        ]
+    },
+    {
+        "name": "The Conversion of St. Paul",
+        "date": "January 25",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            {
+                "url": "https://en.wikipedia.org/wiki/Conversion_of_Paul_the_Apostle",
+                "description": "Conversion of Paul the Apostle"
+            }
+        ]
+    },
+    {
+        "name": "St. Polycarp",
+        "date": "January 26",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Polycarp",
+            "http://www.newadvent.org/cathen/12219b.htm"
+        ]
+    },
+    {
         "name": "St. John Chrysostom",
         "date": "January 27",
         "class": 3,
         "obligation": false,
+        "attributes": ["Bishop", "Confessor", "Doctor of the Church"],
         "urls": [
             "https://en.wikipedia.org/wiki/John_Chrysostom",
             "http://www.newadvent.org/cathen/08452b.htm"
+        ]
+    },
+    {
+        "name": "St. Peter Nolasco",
+        "date": "January 28",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Peter_Nolasco",
+            "http://www.newadvent.org/cathen/11770b.htm"
         ]
     },
     {
@@ -476,21 +522,41 @@
         "date": "January 29",
         "class": 3,
         "obligation": false,
+        "attributes": ["Bishop", "Confessor", "Doctor of the Church"],
         "urls": [
             "https://en.wikipedia.org/wiki/Francis_de_Sales",
             "http://www.newadvent.org/cathen/06220a.htm"
         ]
     },
     {
-        "name": "St. Ignatius, formerly St. Brigid",
+        "name": "St. Martina",
+        "date": "January 30",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Virgin", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Martina_of_Rome",
+            "http://www.newadvent.org/cathen/09730a.htm"
+        ]
+    },
+    {
+        "name": "St. John Bosco",
+        "date": "January 31",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/John_Bosco",
+            "http://www.newadvent.org/cathen/02689d.htm"
+        ]
+    },
+    {
+        "name": "St. Ignatius",
         "date": "February 1",
         "class": 3,
         "obligation": false,
+        "attributes": ["Bishop", "Martyr"],
         "urls": [
-            {
-                "url": "https://fisheaters.com/customstimeafterepiphany2a.html",
-                "description": "St. Brigid"
-            },
             {
                 "url": "https://en.wikipedia.org/wiki/Ignatius_of_Antioch",
                 "description": "St. Ignatius of Antioch"
@@ -498,14 +564,6 @@
             {
                 "url": "http://www.newadvent.org/cathen/07644a.htm",
                 "description": "St. Ignatius of Antioch"
-            },
-            {
-                "url": "http://www.newadvent.org/cathen/02784b.htm",
-                "description": "Saint Brigid of Ireland"
-            },
-            {
-                "url": "https://en.wikipedia.org/wiki/Brigid_of_Kildare",
-                "description": "Brigid of Kildare"
             }
         ]
     },
@@ -532,10 +590,23 @@
         ]
     },
     {
+        "name": "St. Andrew Cosini",
+        "date": "February 4",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Bishop", "Confessor"],
+        "urls": [
+            "https://fisheaters.com/customstimeafterepiphany4.html",
+            "https://en.wikipedia.org/wiki/Saint_Blaise",
+            "http://www.newadvent.org/cathen/02592a.htm"
+        ]
+    },
+    {
         "name": "St. Agatha",
         "date": "February 5",
         "class": 3,
         "obligation": false,
+        "attributes": ["Virgin", "Martyr"],
         "urls": [
             "https://en.wikipedia.org/wiki/Agatha_of_Sicily",
             "http://www.newadvent.org/cathen/01203c.htm"
@@ -546,9 +617,31 @@
         "date": "February 6",
         "class": 3,
         "obligation": false,
+        "attributes": ["Confessor", "Bishop"],
         "urls": [
             "https://en.wikipedia.org/wiki/Saint_Titus",
             "http://www.newadvent.org/cathen/14727b.htm"
+        ]
+    },
+    {
+        "name": "St. Romuald",
+        "date": "February 7",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Abbot"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Romuald",
+            "http://www.newadvent.org/cathen/13179b.htm"
+        ]
+    },
+    {
+        "name": "St. John of Matha",
+        "date": "February 8",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/John_of_Matha"
         ]
     },
     {
@@ -556,6 +649,7 @@
         "date": "February 9",
         "class": 3,
         "obligation": false,
+        "attributes": ["Bishop", "Confessor", "Doctor of the Church"],
         "urls": [
             "https://en.wikipedia.org/wiki/Cyril_of_Alexandria",
             "http://www.newadvent.org/cathen/04592b.htm"
@@ -566,6 +660,7 @@
         "date": "February 10",
         "class": 3,
         "obligation": false,
+        "attributes": ["Virgin"],
         "urls": [
             "https://en.wikipedia.org/wiki/Scholastica"
         ]
@@ -581,14 +676,69 @@
         ]
     },
     {
+        "name": "The Seven Holy Founders of the Servite Order",
+        "date": "February 12",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Servite_Order",
+            "https://en.wikipedia.org/wiki/Amadio_degli_Amidei",
+            "https://en.wikipedia.org/wiki/Hugh_dei_Lippi_Uggucioni",
+            "https://en.wikipedia.org/wiki/Alexis_Falconieri",
+            {
+                "url": "http://www.newadvent.org/cathen/13736a.htm",
+                "description": "Order of Servites"
+            }
+        ]
+    },
+    {
         "name": "St. Valentine",
         "date": "February 14",
         "class": 4,
         "obligation": false,
+        "attributes": ["Priest", "Martyr"],
         "urls": [
             "https://fisheaters.com/customstimeafterepiphany5.html",
             "https://en.wikipedia.org/wiki/Valentine%27s_Day",
+            "https://en.wikipedia.org/wiki/Saint_Valentine",
             "http://www.newadvent.org/cathen/15254a.htm"
+        ]
+    },
+    {
+        "name": "St. Peter Damian",
+        "date": "February 23",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Confessor", "Doctor of the Church"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Peter_Damian",
+            "http://www.newadvent.org/cathen/11764a.htm"
+        ]
+    },
+    {
+        "name": "St. Casimir",
+        "date": "March 4",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Saint_Casimir",
+            "http://www.newadvent.org/cathen/03402a.htm"
+        ]
+    },
+    {
+        "name": "SS. Perpetua and Felicitas",
+        "date": "March 6",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Passion_of_Saint_Perpetua,_Saint_Felicitas,_and_their_Companions",
+            {
+                "url": "http://www.newadvent.org/cathen/06029a.htm",
+                "description": "Sts. Felicitas and Perpetua"
+            }
         ]
     },
     {
@@ -596,9 +746,32 @@
         "date": "March 7",
         "class": 3,
         "obligation": false,
+        "attributes": ["Confessor", "Doctor of the Church"],
         "urls": [
             "https://en.wikipedia.org/wiki/Thomas_Aquinas",
             "http://www.newadvent.org/cathen/14663b.htm"
+        ]
+    },
+    {
+        "name": "St. John of God",
+        "date": "March 8",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/John_of_God",
+            "http://www.newadvent.org/cathen/08472c.htm"
+        ]
+    },
+    {
+        "name": "St. Frances of Rome",
+        "date": "March 9",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Widow"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Frances_of_Rome",
+            "http://www.newadvent.org/cathen/06205c.htm"
         ]
     },
     {
@@ -616,6 +789,7 @@
         "date": "March 12",
         "class": 3,
         "obligation": false,
+        "attributes": ["Pope", "Confessor", "Doctor of the Church"],
         "urls": [
             "https://en.wikipedia.org/wiki/Pope_Gregory_I",
             "http://www.newadvent.org/cathen/06780a.htm"
@@ -626,8 +800,10 @@
         "date": "March 17",
         "class": 3,
         "obligation": false,
+        "attributes": ["Bishop", "Confessor"],
         "urls": [
             "https://fisheaters.com/customslent4.html",
+            "https://en.wikipedia.org/wiki/Saint_Patrick",
             "https://en.wikipedia.org/wiki/Saint_Patrick%27s_Day",
             "http://www.newadvent.org/cathen/11554a.htm"
         ]
@@ -637,6 +813,7 @@
         "date": "March 18",
         "class": 3,
         "obligation": false,
+        "attributes": ["Bishop", "Confessor", "Doctor of the Church"],
         "urls": [
             "https://en.wikipedia.org/wiki/Cyril_of_Jerusalem",
             "http://www.newadvent.org/cathen/04595b.htm"
@@ -647,6 +824,7 @@
         "date": "March 19",
         "class": 1,
         "obligation": false,
+        "attributes": ["Spouse of the Blessed Virgin Mary", "Confessor"],
         "urls": [
             "https://fisheaters.com/customslent5.html",
             "https://en.wikipedia.org/wiki/Saint_Joseph",
@@ -658,6 +836,7 @@
         "date": "March 21",
         "class": 3,
         "obligation": false,
+        "attributes": ["Abbot"],
         "urls": [
             "https://en.wikipedia.org/wiki/Benedict_of_Nursia",
             "http://www.newadvent.org/cathen/02467b.htm"
@@ -668,6 +847,7 @@
         "date": "March 24",
         "class": 3,
         "obligation": false,
+        "attributes": ["Archangel"],
         "urls": [
             "https://en.wikipedia.org/wiki/Gabriel",
             "http://www.newadvent.org/cathen/06330a.htm"
@@ -696,9 +876,32 @@
         "date": "March 27",
         "class": 3,
         "obligation": false,
+        "attributes": ["Confessor", "Doctor of the Church"],
         "urls": [
             "https://en.wikipedia.org/wiki/John_of_Damascus",
             "http://www.newadvent.org/cathen/08459b.htm"
+        ]
+    },
+    {
+        "name": "St. John Capistran",
+        "date": "March 27",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/John_of_Capistrano",
+            "http://www.newadvent.org/cathen/08452a.htm"
+        ]
+    },
+    {
+        "name": "St. Francis of Paula",
+        "date": "April 2",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Francis_of_Paola",
+            "http://www.newadvent.org/cathen/06231a.htm"
         ]
     },
     {
@@ -706,9 +909,21 @@
         "date": "April 4",
         "class": 3,
         "obligation": false,
+        "attributes": ["Bishop", "Confessor", "Doctor of the Church"],
         "urls": [
             "https://en.wikipedia.org/wiki/Isidore_of_Seville",
             "http://www.newadvent.org/cathen/08186a.htm"
+        ]
+    },
+    {
+        "name": "St. Vincent Ferrer",
+        "date": "April 5",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Vincent_Ferrer",
+            "http://www.newadvent.org/cathen/15437a.htm"
         ]
     },
     {
@@ -716,15 +931,21 @@
         "date": "April 11",
         "class": 3,
         "obligation": false,
+        "attributes": ["Pope", "Confessor", "Doctor of the Church"],
         "urls": [
-            {
-                "url": "https://en.wikipedia.org/wiki/Pope_Leo_I",
-                "description": "Pope Leo I"
-            },
-            {
-                "url": "http://www.newadvent.org/cathen/09154b.htm",
-                "description": "Pope St. Leo I"
-            }
+            "https://en.wikipedia.org/wiki/Pope_Leo_I",
+            "http://www.newadvent.org/cathen/09154b.htm"
+        ]
+    },
+    {
+        "name": "St. Hermenegild",
+        "date": "April 13",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Hermenegild",
+            "http://www.newadvent.org/cathen/07276a.htm"
         ]
     },
     {
@@ -732,15 +953,10 @@
         "date": "April 14",
         "class": 3,
         "obligation": false,
+        "attributes": ["Martyr"],
         "urls": [
-            {
-                "url": "https://en.wikipedia.org/wiki/Justin_Martyr",
-                "description": "Justin Martyr"
-            },
-            {
-                "url": "http://www.newadvent.org/cathen/08580c.htm",
-                "description": "St. Justin Martyr"
-            }
+            "https://en.wikipedia.org/wiki/Justin_Martyr",
+            "http://www.newadvent.org/cathen/08580c.htm"
         ]
     },
     {
@@ -748,12 +964,44 @@
         "date": "April 21",
         "class": 3,
         "obligation": false,
+        "attributes": ["Bishop", "Confessor", "Doctor of the Church"],
         "urls": [
-            {
-                "url": "https://en.wikipedia.org/wiki/Anselm_of_Canterbury",
-                "description": "Anselm of Canterbury"
-            },
+            "https://en.wikipedia.org/wiki/Anselm_of_Canterbury",
             "http://www.newadvent.org/cathen/01546a.htm"
+        ]
+    },
+    {
+        "name": "SS. Soter and Caius",
+        "date": "April 22",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Pope", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Pope_Soter",
+            "https://en.wikipedia.org/wiki/Pope_Caius",
+            "http://www.newadvent.org/cathen/03144c.htm"
+        ]
+    },
+    {
+        "name": "St. George",
+        "date": "April 23",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Saint_George",
+            "http://www.newadvent.org/cathen/06453a.htm"
+        ]
+    },
+    {
+        "name": "St. Fidelis of Sigmaringen",
+        "date": "April 24",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Fidelis_of_Sigmaringen",
+            "http://www.newadvent.org/cathen/06069a.htm"
         ]
     },
     {
@@ -762,15 +1010,59 @@
         "class": 2,
         "obligation": false,
         "urls": [
-            {
-                "url": "https://en.wikipedia.org/wiki/Mark_the_Evangelist",
-                "description": "Mark the Evangelist"
-            },
+            "https://en.wikipedia.org/wiki/Mark_the_Evangelist",
             "http://www.newadvent.org/cathen/09672c.htm"
         ]
     },
     {
-        "name": "St. Catherine of Siena, formerly Walpurgisnacht",
+        "name": "SS. Cletus and Marcellinus",
+        "date": "April 26",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Pope", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Pope_Anacletus",
+            "https://en.wikipedia.org/wiki/Pope_Marcellinus",
+            "http://www.newadvent.org/cathen/04054a.htm",
+            "http://www.newadvent.org/cathen/01446a.htm",
+            "http://www.newadvent.org/cathen/09637d.htm"
+        ]
+    },
+    {
+        "name": "St. Peter Canisuius",
+        "date": "April 27",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor", "Doctor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Peter_Canisius",
+            "http://www.newadvent.org/cathen/11756c.htm"
+        ]
+    },
+    {
+        "name": "St. Paul of the Cross",
+        "date": "April 28",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Paul_of_the_Cross",
+            "http://www.newadvent.org/cathen/11590a.htm"
+        ]
+    },
+    {
+        "name": "St. Peter of Verona",
+        "date": "April 29",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Peter_of_Verona",
+            "http://www.newadvent.org/cathen/11773d.htm"
+        ]
+    },
+    {
+        "name": "St. Catherine of Siena",
         "date": "April 30",
         "class": 3,
         "obligation": false,
@@ -782,32 +1074,14 @@
             {
                 "url": "http://www.newadvent.org/cathen/03447a.htm",
                 "description": "St. Catherine of Siena"
-            },
-            {
-                "url": "https://fisheaters.com/walpurgisnacht.html",
-                "description": "Walpurgisnacht"
-            },
-            {
-                "url": "https://en.wikipedia.org/wiki/Walpurgis_Night",
-                "description": "Walpurgis Night"
             }
         ]
     },
     {
-        "name": "St. Joseph the Worker, formerly St. Walpurga",
+        "name": "St. Joseph the Worker, formerly ",
         "date": "May 1",
         "class": 1,
-        "obligation": false,
-        "urls": [
-            {
-                "url": "https://en.wikipedia.org/wiki/Saint_Walpurga",
-                "description": "Saint Walpurga"
-            },
-            {
-                "url": "http://www.newadvent.org/cathen/15526b.htm",
-                "description": "Saint Walburga"
-            }
-        ]
+        "obligation": false
     },
     {
         "name": "St. Athanasius",
@@ -885,3 +1159,4 @@
             }
         ]
     },
+]

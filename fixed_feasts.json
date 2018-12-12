@@ -1088,6 +1088,7 @@
         "date": "May 2",
         "class": 3,
         "obligation": false,
+        "attributes": ["Bishop", "Confessor", "Doctor of the Church"],
         "urls": [
             {
                 "url": "https://en.wikipedia.org/wiki/Athanasius_of_Alexandria",
@@ -1101,6 +1102,7 @@
         "date": "May 4",
         "class": 3,
         "obligation": false,
+        "attributes": ["Widow"],
         "urls": [
             "https://en.wikipedia.org/wiki/Saint_Monica",
             "http://www.newadvent.org/cathen/10482a.htm"
@@ -1111,6 +1113,7 @@
         "date": "May 5",
         "class": 3,
         "obligation": false,
+        "attributes": ["Pope", "Confessor"],
         "urls": [
             {
                 "url": "https://en.wikipedia.org/wiki/Pope_Pius_V",
@@ -1123,10 +1126,50 @@
         ]
     },
     {
+        "name": "St. Stanislaus",
+        "date": "May 7",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Stanislaus_of_Szczepan%C3%B3w",
+            {
+                "url": "http://www.newadvent.org/cathen/14246a.htm",
+                "description": "Saint Stanislaus of Cracow"
+            }
+        ]
+    },
+    {
+        "name": "St. Gregory Nazianzen",
+        "date": "May 9",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Confessor", "Doctor of the Church"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Gregory_of_Nazianzus",
+            {
+                "url": "http://www.newadvent.org/cathen/07010b.htm",
+                "description": "St. Gregory of Nazianzus"
+            }
+        ]
+    },
+    {
+        "name": "St. Antoninus",
+        "date": "May 10",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Antoninus_of_Florence",
+            "http://www.newadvent.org/cathen/01585b.htm"
+        ]
+    },
+    {
         "name": "SS. Philip and James",
         "date": "May 11",
         "class": 2,
         "obligation": false,
+        "attributes": ["Apostle"],
         "urls": [
             {
                 "url": "https://en.wikipedia.org/wiki/Philip_the_Apostle",
@@ -1147,6 +1190,172 @@
         ]
     },
     {
+        "name": "SS. Nereus, Achilleus, Domitilla, and Pancras",
+        "date": "May 12",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Saints_Nereus_and_Achilleus",
+            "https://en.wikipedia.org/wiki/Flavia_Domitilla_(saint)",
+            "https://en.wikipedia.org/wiki/Pancras_of_Rome",
+            {
+                "url": "http://www.newadvent.org/cathen/10751a.htm",
+                "description": "Sts. Nereus and Achilleus, Domitilla and Pancratius"
+            }
+        ]
+    },
+    {
+        "name": "St. Robert Bellarmine",
+        "date": "May 13",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Confessor", "Doctor of the Church"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Robert_Bellarmine",
+            "http://www.newadvent.org/cathen/02411d.htm"
+        ]
+    },
+    {
+        "name": "St. John Baptist de la Salle",
+        "date": "May 15",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Jean-Baptiste_de_La_Salle",
+            "http://www.newadvent.org/cathen/08444a.htm"
+        ]
+    },
+    {
+        "name": "St. Ubald",
+        "date": "May 16",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Ubald",
+            {
+                "url": "http://www.newadvent.org/cathen/15114b.htm",
+                "description": "St. Ubaldus"
+            }
+        ]
+    },
+    {
+        "name": "St. Pascal Baylon",
+        "date": "May 17",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Paschal_Baylon",
+            "http://www.newadvent.org/cathen/11512a.htm"
+        ]
+    },
+    {
+        "name": "St. Venantius",
+        "date": "May 18",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Venantius_of_Camerino",
+            {
+                "url": "http://www.newadvent.org/cathen/15619a.htm",
+                "description": "Sts. Wigand"
+            }
+        ]
+    },
+    {
+        "name": "St. Peter Celestine",
+        "date": "May 19",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Pope", "Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Pope_Celestine_V",
+            {
+                "url": "http://www.newadvent.org/cathen/03479b.htm",
+                "description": "Pope St. Celestine V"
+            }
+        ]
+    },
+    {
+        "name": "St. Bernardine of Siena",
+        "date": "May 20",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Bernardino_of_Siena",
+            "http://www.newadvent.org/cathen/02505b.htm"
+        ]
+    },
+    {
+        "name": "St. Gregory VII",
+        "date": "May 25",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Pope", "Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Pope_Gregory_VII",
+            "http://www.newadvent.org/cathen/06791c.htm"
+        ]
+    },
+    {
+        "name": "St. Philip Neri",
+        "date": "May 26",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Philip_Neri",
+            {
+                "url": "http://www.newadvent.org/cathen/12018b.htm",
+                "description": "St. Philip Romolo Neri"
+            }
+        ]
+    },
+    {
+        "name": "St. Bede the Venerable",
+        "date": "May 27",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor", "Doctor of the Church"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Bede",
+            {
+                "url": "http://www.newadvent.org/cathen/02384a.htm",
+                "description": "The Venerable Bede"
+            }
+        ]
+    },
+    {
+        "name": "St. Augustine of Canterbury",
+        "date": "May 28",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Augustine_of_Canterbury",
+            "http://www.newadvent.org/cathen/02081a.htm"
+        ]
+    },
+    {
+        "name": "St. Mary Magdalen of Pazzi",
+        "date": "May 29",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Virgin"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Mary_Magdalene_de%27_Pazzi",
+            {
+                "url": "http://www.newadvent.org/cathen/09762a.htm",
+                "description": "St. Mary Magdalen de' Pazzi"
+            }
+        ]
+    },
+    {
         "name": "The Queenship of Mary",
         "date": "May 31",
         "class": 2,
@@ -1157,6 +1366,97 @@
                 "url": "https://en.wikipedia.org/wiki/Coronation_of_the_Virgin",
                 "description": "Coronation of the Virgin"
             }
+        ]
+    },
+    {
+        "name": "St. Angela Merici",
+        "date": "June 1",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Virgin"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Angela_Merici",
+            "http://www.newadvent.org/cathen/01481a.htm"
+        ]
+    },
+    {
+        "name": "St. Francis Caracciolo",
+        "date": "June 4",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Francis_Caracciolo",
+            "http://www.newadvent.org/cathen/06218a.htm"
+        ]
+    },
+    {
+        "name": "St. Boniface",
+        "date": "June 5",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Saint_Boniface",
+            "http://www.newadvent.org/cathen/02656a.htm"
+        ]
+    },
+    {
+        "name": "St. Norbert",
+        "date": "June 6",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Norbert_of_Xanten",
+            "http://www.newadvent.org/cathen/11100b.htm"
+        ]
+    },
+    {
+        "name": "St. Margaret",
+        "date": "June 10",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Widow", "Queen of Scotland"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Saint_Margaret_of_Scotland",
+            "http://www.newadvent.org/cathen/09655c.htm"
+        ]
+    },
+    {
+        "name": "St. Barnabas",
+        "date": "June 11",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Apostle"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Barnabas",
+            "http://www.newadvent.org/cathen/02300a.htm"
+        ]
+    },
+    {
+        "name": "St. John of St. Facundo",
+        "date": "June 12",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/John_of_Sahag%C3%BAn",
+            {
+                "url": "http://www.newadvent.org/cathen/08478a.htm",
+                "description": "John of Sahagun"
+            }
+        ]
+    },
+    {
+        "name": "St. Anthony of Padua",
+        "date": "June 13",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor", "Doctor of the Church"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Anthony_of_Padua",
+            "http://www.newadvent.org/cathen/01556a.htm"
         ]
     },
 ]

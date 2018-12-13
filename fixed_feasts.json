@@ -1459,4 +1459,759 @@
             "http://www.newadvent.org/cathen/01556a.htm"
         ]
     },
+    {
+        "name": "St. Basil the Great",
+        "date": "June 14",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Confessor", "Doctor of the Church"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Basil_of_Caesarea",
+            "http://www.newadvent.org/cathen/02330b.htm"
+        ]
+    },
+    {
+        "name": "St. Gregory Barbarigo",
+        "date": "June 17",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Gregorio_Barbarigo"
+        ]
+    },
+    {
+        "name": "St. Ephrem",
+        "date": "June 18",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Deacon", "Confessor", "Doctor of the Church"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Ephrem_the_Syrian",
+            {
+                "url": "http://www.newadvent.org/cathen/05498a.htm",
+                "description": "St. Ephraem"
+            }
+        ]
+    },
+    {
+        "name": "St. Juliana Falconieri",
+        "date": "June 19",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Virgin"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Juliana_Falconieri",
+            "http://www.newadvent.org/cathen/08556a.htm"
+        ]
+    },
+    {
+        "name": "St. Paulinus",
+        "date": "June 22",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Paulinus_of_Nola",
+            {
+                "url": "http://www.newadvent.org/cathen/11585b.htm",
+                "description": "St. Paulinus, Bishop of Nola"
+            }
+        ]
+    },
+    {
+        "name": "St. John's Eve",
+        "date": "June 23",
+        "class": 2,
+        "obligation": false,
+        "attributes": [],
+        "urls": [
+            "https://fisheaters.com/customstimeafterpentecost3.html",
+            "https://en.wikipedia.org/wiki/Saint_John%27s_Eve",
+            "https://en.wikipedia.org/wiki/Saint_John_the_Baptist",
+            {
+                "url": "http://www.newadvent.org/cathen/08486b.htm",
+                "description": "St. John the Baptist"
+            }
+        ]
+    },
+    {
+        "name": "St. John's Day",
+        "date": "June 24",
+        "class": 1,
+        "obligation": false,
+        "attributes": [],
+        "urls": [
+            "https://fisheaters.com/customstimeafterpentecost3.html",
+            "https://en.wikipedia.org/wiki/Nativity_of_Saint_John_the_Baptist",
+            "https://en.wikipedia.org/wiki/Saint_John_the_Baptist",
+            {
+                "url": "http://www.newadvent.org/cathen/08486b.htm",
+                "description": "St. John the Baptist"
+            }
+        ]
+    },
+    {
+        "name": "St. William",
+        "date": "June 25",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Abbot"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/William_of_Montevergine",
+            {
+                "url": "http://www.newadvent.org/cathen/15639b.htm",
+                "description": "William of Vercelli"
+            }
+        ]
+    },
+    {
+        "name": "SS. John and Paul",
+        "date": "June 26",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/John_and_Paul",
+            {
+                "url": "http://www.newadvent.org/cathen/08443a.htm",
+                "description": "Sts. John and Paul"
+            }
+        ]
+    },
+    {
+        "name": "SS. Peter and Paul",
+        "date": "June 29",
+        "class": 1,
+        "obligation": false,
+        "attributes": ["Apostle"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Feast_of_Saints_Peter_and_Paul",
+            "https://en.wikipedia.org/wiki/Saint_Peter",
+            "https://en.wikipedia.org/wiki/Paul_the_Apostle",
+            {
+                "url": "http://www.newadvent.org/cathen/11744a.htm",
+                "description": "St. Peter, Prince of the Apostles"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/11567b.htm",
+                "description": "St. Paul"
+            }
+        ]
+    },
+    {
+        "name": "Feast of the Most Precious Blood",
+        "date": "July 1",
+        "class": 1,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Feast_of_the_Most_Precious_Blood",
+            "https://en.wikipedia.org/wiki/Blood_of_Christ",
+            {
+                "url": "http://www.newadvent.org/cathen/12373a.htm",
+                "description": "Feast of the Most Precious Blood"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/12372c.htm",
+                "description": "Precious Blood"
+            }
+        ]
+    },
+    {
+        "name": "The Visitation",
+        "date": "July 2",
+        "class": 2,
+        "obligation": false,
+        "urls": [
+            "https://fisheaters.com/visitation.html",
+            "https://en.wikipedia.org/wiki/Visitation_(Christianity)",
+            {
+                "url": "http://www.newadvent.org/cathen/15480a.htm",
+                "description": "Visitation of the Blessed Virgin Mary"
+            }
+        ]
+    },
+    {
+        "name": "St. Irenaeus",
+        "date": "July 3",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Irenaeus",
+            {
+                "url": "http://www.newadvent.org/cathen/08130b.htm",
+                "description": "St. Irenaeus"
+            }
+        ]
+    },
+    {
+        "name": "St. Anthony Mary Zaccaria",
+        "date": "July 5",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Anthony_Maria_Zaccaria",
+            {
+                "url": "http://www.newadvent.org/cathen/01588a.htm",
+                "description": "St. Antonio Maria Zaccaria"
+            }
+        ]
+    },
+    {
+        "name": "SS. Cyril and Methodius",
+        "date": "July 7",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Saints_Cyril_and_Methodius",
+            {
+                "url": "http://www.newadvent.org/cathen/04592a.htm",
+                "description": "Sts. Cyril and Methodius"
+            }
+        ]
+    },
+    {
+        "name": "St. Elizabeth",
+        "date": "July 8",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Queen", "Widow"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Elizabeth_of_Aragon",
+            {
+                "url": "http://www.newadvent.org/cathen/05391a.htm",
+                "description": "St. Elizabeth of Portugal"
+            }
+        ]
+    },
+    {
+        "name": "The Seven Holy Brothers and SS. Rufina and Secunda",
+        "date": "July 10",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Virgin", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Felicitas_of_Rome",
+            "https://en.wikipedia.org/wiki/Rufina_and_Secunda",
+            {
+                "url": "http://www.newadvent.org/cathen/13221a.htm",
+                "description": "Sts. Rufina"
+            }
+        ]
+    },
+    {
+        "name": "St. John Gualbert",
+        "date": "July 12",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Abbot"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/John_Gualbert",
+            {
+                "url": "http://www.newadvent.org/cathen/15262a.htm",
+                "description": "Vallumbrosan Order"
+            }
+        ]
+    },
+    {
+        "name": "St. Bonaventure",
+        "date": "July 14",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Confessor", "Doctor of the Church"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Bonaventure",
+            "http://www.newadvent.org/cathen/02648c.htm"
+        ]
+    },
+    {
+        "name": "St. Henry",
+        "date": "July 15",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Emperor", "Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Henry_II,_Holy_Roman_Emperor",
+            {
+                "url": "http://www.newadvent.org/cathen/07227a.htm",
+                "description": "St. Henry II"
+            }
+        ]
+    },
+    {
+        "name": "St. Camillus de Lellis",
+        "date": "July 18",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Camillus_de_Lellis",
+            "http://www.newadvent.org/cathen/03217b.htm"
+        ]
+    },
+    {
+        "name": "St. Vincent de Paul",
+        "date": "July 19",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Vincent_de_Paul",
+            "http://www.newadvent.org/cathen/15434c.htm"
+        ]
+    },
+    {
+        "name": "St. Jerome Emilian",
+        "date": "July 20",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Gerolamo_Emiliani",
+            {
+                "url": "http://www.newadvent.org/cathen/08343a.htm",
+                "description": "St. Jerome Emiliani"
+            }
+        ]
+    },
+    {
+        "name": "St. Lawrence of Brindisi",
+        "date": "July 21",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor", "Doctor of the Church"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Lawrence_of_Brindisi",
+            {
+                "url": "http://www.newadvent.org/cathen/09359a.htm",
+                "description": "St. Lorenzo da Brindisi"
+            }
+        ]
+    },
+    {
+        "name": "St. Mary Magdalen",
+        "date": "July 22",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Penitent"],
+        "urls": [
+            "https://fisheaters.com/customstimeafterpentecost3x.html",
+            "https://en.wikipedia.org/wiki/Mary_Magdalene",
+            "http://www.newadvent.org/cathen/09761a.htm"
+        ]
+    },
+    {
+        "name": "St. Apollinaris",
+        "date": "July 23",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Apollinaris_of_Ravenna",
+            "http://www.newadvent.org/cathen/01616a.htm"
+        ]
+    },
+    {
+        "name": "St. James the Greater",
+        "date": "July 25",
+        "class": 2,
+        "obligation": false,
+        "attributes": ["Apostle"],
+        "urls": [
+            "https://fisheaters.com/customstimeafterpentecost4x.html",
+            "https://en.wikipedia.org/wiki/James,_son_of_Zebedee",
+            "http://www.newadvent.org/cathen/08279b.htm"
+        ]
+    },
+    {
+        "name": "St. Anne",
+        "date": "July 26",
+        "class": 2,
+        "obligation": false,
+        "attributes": ["Mother of the Blessed Virgin Mary"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Saint_Anne",
+            "http://www.newadvent.org/cathen/01538a.htm"
+        ]
+    },
+    {
+        "name": "SS. Nazarius & Celsus, St. Victor I, St. Innocent I",
+        "date": "July 28",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Martyr", "Pope", "Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Nazarius_and_Celsus",
+            "https://en.wikipedia.org/wiki/Pope_Victor_I",
+            "https://en.wikipedia.org/wiki/Pope_Innocent_I",
+            {
+                "url": "http://www.newadvent.org/cathen/10728a.htm",
+                "description": "Sts. Nazarius & Celsus"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/15408a.htm",
+                "description": "Pope St. Victor I"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/08011a.htm",
+                "description": "Pope Innocent I"
+            }
+        ]
+    },
+    {
+        "name": "St. Martha",
+        "date": "July 29",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Virgin"],
+        "urls": [
+            "https://fisheaters.com/customstimeafterpentecost5a.html",
+            "https://en.wikipedia.org/wiki/Martha",
+            "http://www.newadvent.org/cathen/09721b.htm"
+        ]
+    },
+    {
+        "name": "St. Ignatius of Loyola",
+        "date": "July 31",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Ignatius_of_Loyola",
+            {
+                "url": "http://www.newadvent.org/cathen/07639c.htm",
+                "description": "St. Ignatius Loyola"
+            }
+        ]
+    },
+    {
+        "name": "St. Alphonsus Liguori",
+        "date": "August 2",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Confessor", "Doctor of the Church"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Alphonsus_Liguori",
+            "http://www.newadvent.org/cathen/01334a.htm"
+        ]
+    },
+    {
+        "name": "St. Dominic",
+        "date": "August 4",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Saint_Dominic",
+            "http://www.newadvent.org/cathen/05106a.htm"
+        ]
+    },
+    {
+        "name": "Dedication of the Church of St. Mary of the Snow",
+        "date": "August 5",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Dedication_of_the_Basilica_of_St_Mary_Major",
+            {
+                "url": "http://www.newadvent.org/cathen/11361c.htm",
+                "description": "Our Lady of the Snow"
+            }
+        ]
+    },
+    {
+        "name": "Feast of the Transfiguration",
+        "date": "August 6",
+        "class": 2,
+        "obligation": false,
+        "urls": [
+            "https://fisheaters.com/customstimeafterpentecost5.html",
+            "https://en.wikipedia.org/wiki/Feast_of_the_Transfiguration",
+            "https://en.wikipedia.org/wiki/Transfiguration_of_Jesus",
+            {
+                "url": "http://www.newadvent.org/cathen/15019b.htm",
+                "description": "Feast of the Transfiguration of Christ"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/15019a.htm",
+                "description": "Transfiguration"
+            }
+        ]
+    },
+    {
+        "name": "St. Cajetan",
+        "date": "August 7",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Saint_Cajetan",
+            "http://www.newadvent.org/cathen/03145a.htm"
+        ]
+    },
+    {
+        "name": "St. John Mary Vianney",
+        "date": "August 8",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/John_Vianney",
+            {
+                "url": "http://www.newadvent.org/cathen/08326c.htm",
+                "description": "St. Jean-Baptiste-Marie Vianney"
+            }
+        ]
+    },
+    {
+        "name": "St. Lawrence",
+        "date": "August 10",
+        "class": 2,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://fisheaters.com/stlawrence.html",
+            "https://en.wikipedia.org/wiki/Saint_Lawrence",
+            "http://www.newadvent.org/cathen/09089a.htm"
+        ]
+    },
+    {
+        "name": "St. Clare",
+        "date": "August 12",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Virgin"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Clare_of_Assisi",
+            {
+                "url": "http://www.newadvent.org/cathen/04004a.htm",
+                "description": "St. Clare of Assisi"
+            }
+        ]
+    },
+    {
+        "name": "Marymass",
+        "date": "August 15",
+        "class": 1,
+        "obligation": true,
+        "urls": [
+            "https://fisheaters.com/customstimeafterpentecost6.html",
+            "https://en.wikipedia.org/wiki/Assumption_of_Mary",
+            {
+                "url": "http://www.newadvent.org/cathen/02006b.htm",
+                "description": "The Feast of the Assumption"
+            }
+        ]
+    },
+    {
+        "name": "St. Joachim",
+        "date": "August 16",
+        "class": 2,
+        "obligation": false,
+        "attributes": ["Confessor", "Father of the Blessed Virgin Mary"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Joachim",
+            "http://www.newadvent.org/cathen/08406b.htm"
+        ]
+    },
+    {
+        "name": "St. Hyacinth",
+        "date": "August 17",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Hyacinth_of_Poland",
+            "http://www.newadvent.org/cathen/07591b.htm"
+        ]
+    },
+    {
+        "name": "St. John Eudes",
+        "date": "August 19",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/John_Eudes",
+            {
+                "url": "http://www.newadvent.org/cathen/05596a.htm",
+                "description": "Blessed John Eudes"
+            }
+        ]
+    },
+    {
+        "name": "St. Bernard",
+        "date": "August 20",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Abbot", "Doctor of the Church"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Bernard_of_Clairvaux",
+            {
+                "url": "http://www.newadvent.org/cathen/02498d.htm",
+                "description": "St. Bernard of Clairvaux"
+            }
+        ]
+    },
+    {
+        "name": "St. Jane Frances Fremiot de Chantal",
+        "date": "August 21",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Widow"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Jane_Frances_de_Chantal",
+            {
+                "url": "http://www.newadvent.org/cathen/08282c.htm",
+                "description": "St. Jane Frances de Chantal"
+            }
+        ]
+    },
+    {
+        "name": "Feast of the Immaculate Heart",
+        "date": "August 22",
+        "class": 2,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Immaculate_Heart_of_Mary",
+            {
+                "url": "http://www.newadvent.org/cathen/10600a.htm",
+                "description": "Feast of the Most Pure Heart of Mary"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/07168a.htm",
+                "description": "Devotion to the Immaculate Heart of Mary"
+            }
+        ]
+    },
+    {
+        "name": "St. Philip Benizi",
+        "date": "August 23",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Philip_Benizi_de_Damiani"
+        ]
+    },
+    {
+        "name": "St. Bartholomew",
+        "date": "August 24",
+        "class": 2,
+        "obligation": false,
+        "attributes": ["Apostle"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Bartholomew_the_Apostle",
+            "http://www.newadvent.org/cathen/02313c.htm"
+        ]
+    },
+    {
+        "name": "St. Louis",
+        "date": "August 25",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customstimeafterpentecostsaintlouis.html",
+                "description": "King Saint Louis IX"
+            },
+            "https://en.wikipedia.org/wiki/Saint_Louis_IX",
+            {
+                "url": "http://www.newadvent.org/cathen/09368a.htm",
+                "description": "St. Louis IX"
+            }
+        ]
+    },
+    {
+        "name": "St. Joseph Calasnctius",
+        "date": "August 27",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Joseph_Calasanz",
+            "http://www.newadvent.org/cathen/08518d.htm"
+        ]
+    },
+    {
+        "name": "St. Augustine",
+        "date": "August 28",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Confessor", "Doctor of the Church"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Augustine_of_Hippo",
+            {
+                "url": "http://www.newadvent.org/cathen/02084a.htm",
+                "description": "St. Augustine of Hippo"
+            }
+        ]
+    },
+    {
+        "name": "The Beheading of John the Baptist",
+        "date": "August 29",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Beheading_of_John_the_Baptist",
+            {
+                "url": "http://www.newadvent.org/cathen/08486b.htm",
+                "description": "St. John the Baptist"
+            }
+        ]
+    },
+    {
+        "name": "St. Rose of Lima",
+        "date": "August 30",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Virgin"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Rose_of_Lima",
+            "http://www.newadvent.org/cathen/13192c.htm"
+        ]
+    },
+    {
+        "name": "St. Raymond Nonnatus",
+        "date": "August 31",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Raymond_Nonnatus",
+            "http://www.newadvent.org/cathen/12671b.htm"
+        ]
+    },
+    {
+        "name": "St. Stephen I",
+        "date": "September 2",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Stephen_I_of_Hungary",
+            {
+                "url": "http://www.newadvent.org/cathen/14287a.htm",
+                "description": "St. Stephen"
+            }
+        ]
+    },
+    {
+        "name": "St. Pius X",
+        "date": "September 3",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Pope", "Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Pope_Pius_X",
+            {
+                "url": "http://www.newadvent.org/cathen/12137a.htm",
+                "description": "Pope Pius X"
+            }
+        ]
+    },
 ]

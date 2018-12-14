@@ -2214,4 +2214,260 @@
             }
         ]
     },
+    {
+        "name": "St. Lawrence Justinian",
+        "date": "September 5",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Lawrence_Giustiniani",
+            "http://www.newadvent.org/cathen/09091a.htm"
+        ]
+    },
+    {
+        "name": "The Nativity of Mary",
+        "date": "September 8",
+        "class": 2,
+        "obligation": false,
+        "urls": [
+            "https://fisheaters.com/customstimeafterpentecost6a.html",
+            "https://en.wikipedia.org/wiki/Nativity_of_Mary",
+            {
+                "url": "http://www.newadvent.org/cathen/10712b.htm",
+                "description": "Feast of the Nativity of the Blessed Virgin Mary"
+            }
+        ]
+    },
+    {
+        "name": "St. Nicholas of Tolentino",
+        "date": "September 10",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Nicholas_of_Tolentino",
+            "http://www.newadvent.org/cathen/11065a.htm"
+        ]
+    },
+    {
+        "name": "The Most Holy Name of Mary",
+        "date": "September 12",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/The_Most_Holy_Name_of_the_Blessed_Virgin_Mary",
+            {
+                "url": "http://www.newadvent.org/cathen/10673b.htm",
+                "description": "Feast of the Holy Name of Mary"
+            }
+        ]
+    },
+    {
+        "name": "Roodmas",
+        "date": "September 14",
+        "class": 2,
+        "obligation": false,
+        "urls": [
+            "https://fisheaters.com/customstimeafterpentecost7.html",
+            "https://en.wikipedia.org/wiki/Roodmas",
+            "https://en.wikipedia.org/wiki/Feast_of_the_Cross",
+            {
+                "url": "http://www.newadvent.org/cathen/04529a.htm",
+                "description": "The True Cross"
+            }
+        ]
+    },
+    {
+        "name": "The Seven Sorrows",
+        "date": "September 15",
+        "class": 2,
+        "obligation": false,
+        "urls": [
+            "https://fisheaters.com/customslent10.html",
+            "https://en.wikipedia.org/wiki/Our_Lady_of_Sorrows",
+            {
+                "url": "http://www.newadvent.org/cathen/14151b.htm",
+                "description": "Feasts of the Seven Sorrows of the Blessed Virgin Mary"
+            }
+        ]
+    },
+    {
+        "name": "St. Cornelius & St. Cyprian",
+        "date": "September 16",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Pope", "Martyr", "Bishop"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Pope_Cornelius",
+            "https://en.wikipedia.org/wiki/Cyprian",
+            "http://www.newadvent.org/cathen/04375c.htm",
+            "http://www.newadvent.org/cathen/04583b.htm"
+        ]
+    },
+    {
+        "name": "St. Joseph of Cupertino",
+        "date": "September 18",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Joseph_of_Cupertino",
+            "http://www.newadvent.org/cathen/08520b.htm"
+        ]
+    },
+    {
+        "name": "St. Januarius",
+        "date": "September 19",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://fisheaters.com/customstimeafterpentecost9.html",
+            "https://en.wikipedia.org/wiki/Januarius",
+            "http://www.newadvent.org/cathen/08295a.htm"
+        ]
+    },
+    {
+        "name": "St. Matthew",
+        "date": "September 21",
+        "class": 2,
+        "obligation": false,
+        "attributes": ["Apostle", "Evangelist"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Matthew_the_Apostle",
+            "http://www.newadvent.org/cathen/10056b.htm"
+        ]
+    },
+    {
+        "name": "St. Thomas of Villanova",
+        "date": "September 22",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Thomas_of_Villanova",
+            "http://www.newadvent.org/cathen/14696a.htm"
+        ]
+    },
+    {
+        "name": "St. Linus",
+        "date": "September 23",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Pope", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Pope_Linus",
+            {
+                "url": "http://www.newadvent.org/cathen/09272b.htm",
+                "description": "Pope St. Linus"
+            }
+        ]
+    },
+    {
+        "name": "SS. Cosmas & Damian",
+        "date": "September 27",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Saints_Cosmas_and_Damian",
+            {
+                "url": "http://www.newadvent.org/cathen/04403e.htm",
+                "description": "Sts. Cosmas and Damian"
+            }
+        ]
+    },
+    {
+        "name": "St. Wenceslaus",
+        "date": "September 28",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Wenceslaus_I,_Duke_of_Bohemia",
+            "http://www.newadvent.org/cathen/15587b.htm"
+        ]
+    },
+    {
+        "name": "Michaelmas",
+        "date": "September 29",
+        "class": 1,
+        "obligation": false,
+        "urls": [
+            "https://fisheaters.com/customstimeafterpentecost10.html",
+            "https://en.wikipedia.org/wiki/Michaelmas",
+            "https://en.wikipedia.org/wiki/Michael_(archangel)",
+            {
+                "url": "http://www.newadvent.org/cathen/10275b.htm",
+                "description": "St. Michael the Archangel"
+            }
+        ]
+    },
+    {
+        "name": "St. Jerome",
+        "date": "September 30",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor", "Doctor of the Church"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Jerome",
+            "http://www.newadvent.org/cathen/08341a.htm"
+        ]
+    },
+    {
+        "name": "The Holy Guardian Angels",
+        "date": "October 2",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Memorial_of_the_Holy_Guardian_Angels",
+            "https://en.wikipedia.org/wiki/Guardian_angel",
+            {
+                "url": "http://www.newadvent.org/cathen/07050a.htm",
+                "description": "Feast of the Guardian Angels"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/07049c.htm",
+                "description": "Guardian angel"
+            }
+        ]
+    },
+    {
+        "name": "St. Theresa of Lisieux",
+        "date": "October 3",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Virgin"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Th%C3%A9r%C3%A8se_of_Lisieux",
+            {
+                "url": "http://www.newadvent.org/cathen/17721a.htm",
+                "description": "St. Thérèse of Lisieux"
+            }
+        ]
+    },
+    {
+        "name": "St. Francis of Assisi",
+        "date": "October 4",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://fisheaters.com/feastofstfrancisofassisi.html",
+            "https://en.wikipedia.org/wiki/Francis_of_Assisi",
+            "http://www.newadvent.org/cathen/06221a.htm"
+        ]
+    },
+    {
+        "name": "St. Bruno",
+        "date": "October 6",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Bruno_of_Cologne",
+            "http://www.newadvent.org/cathen/03014b.htm"
+        ]
+    },
 ]

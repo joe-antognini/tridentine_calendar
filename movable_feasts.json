@@ -250,6 +250,18 @@
         ]
     },
     {
+        "name": "The Seven Sorrows",
+        "urls": [
+            "https://fisheaters.com/customslent10.html",
+            "https://en.wikipedia.org/wiki/Friday_of_Sorrows",
+            "https://en.wikipedia.org/wiki/Our_Lady_of_Sorrows",
+            {
+                "url": "http://www.newadvent.org/cathen/14151b.htm",
+                "description": "Feasts of the Seven Sorrows of the Blessed Virgin Mary"
+            }
+        ]
+    },
+    {
         "name": "Holy Week",
         "urls": [
             "https://en.wikipedia.org/wiki/Holy_Week",
@@ -454,5 +466,11 @@
                 "url": "http://www.newadvent.org/cathen/07163a.htm",
                 "description": "Devotion to the Sacred Heart of Jesus"
             }
+        ]
+    },
+    {
+        "name": "Michaelmas Embertide",
+        "urls": [
+            "https://fisheaters.com/customstimeafterpentecost8.html"
         ]
     },

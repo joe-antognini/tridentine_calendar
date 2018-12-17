@@ -76,7 +76,7 @@
         ]
     },
     {
-        "name": "St. Damasus",
+        "name": "Pope Damasus I",
         "date": "December 11",
         "class": 3,
         "obligation": false,
@@ -247,7 +247,7 @@
         ]
     },
     {
-        "name": "St. Sylvester I",
+        "name": "Pope Sylvester I",
         "date": "December 31",
         "class": 2,
         "obligation": false,
@@ -257,6 +257,7 @@
                 "description": "Christmastide Overview"
             },
             "https://fisheaters.com/customschristmas6.html",
+            "https://en.wikipedia.org/wiki/Saint_Sylvester%27s_Day",
             "https://en.wikipedia.org/wiki/Pope_Sylvester_I",
             "http://www.newadvent.org/cathen/14370a.htm"
         ]
@@ -342,7 +343,7 @@
         ]
     },
     {
-        "name": "Pope St. Marcellus I",
+        "name": "Pope Marcellus I",
         "date": "January 16",
         "class": 3,
         "obligation": false,
@@ -378,7 +379,7 @@
         ]
     },
     {
-        "name": "Pope St. Fabian and St. Sebastian",
+        "name": "Pope Fabian and St. Sebastian",
         "date": "January 20",
         "class": 3,
         "obligation": false,
@@ -785,7 +786,7 @@
         ]
     },
     {
-        "name": "St. Gregory the Great",
+        "name": "Gregory the Great",
         "date": "March 12",
         "class": 3,
         "obligation": false,
@@ -1109,7 +1110,7 @@
         ]
     },
     {
-        "name": "St. Pius V",
+        "name": "Pope Pius V",
         "date": "May 5",
         "class": 3,
         "obligation": false,
@@ -1267,7 +1268,7 @@
         ]
     },
     {
-        "name": "St. Peter Celestine",
+        "name": "Pope Celestine V",
         "date": "May 19",
         "class": 3,
         "obligation": false,
@@ -1292,7 +1293,7 @@
         ]
     },
     {
-        "name": "St. Gregory VII",
+        "name": "Pope Gregory VII",
         "date": "May 25",
         "class": 3,
         "obligation": false,
@@ -1910,10 +1911,11 @@
         ]
     },
     {
-        "name": "Dedication of the Church of St. Mary of the Snow",
+        "name": "Church of St. Mary of the Snow",
         "date": "August 5",
         "class": 3,
         "obligation": false,
+        "attributes": ["Dedication"],
         "urls": [
             "https://en.wikipedia.org/wiki/Dedication_of_the_Basilica_of_St_Mary_Major",
             {
@@ -2201,7 +2203,7 @@
         ]
     },
     {
-        "name": "St. Pius X",
+        "name": "Pope Pius X",
         "date": "September 3",
         "class": 3,
         "obligation": false,
@@ -2293,7 +2295,7 @@
         ]
     },
     {
-        "name": "St. Cornelius & St. Cyprian",
+        "name": "Pope Cornelius & St. Cyprian",
         "date": "September 16",
         "class": 3,
         "obligation": false,
@@ -2351,7 +2353,7 @@
         ]
     },
     {
-        "name": "St. Linus",
+        "name": "Pope Linus",
         "date": "September 23",
         "class": 3,
         "obligation": false,
@@ -2470,4 +2472,482 @@
             "http://www.newadvent.org/cathen/03014b.htm"
         ]
     },
+    {
+        "name": "Feast of the Holy Rosary",
+        "date": "October 7",
+        "class": 2,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Our_Lady_of_the_Rosary",
+            "https://en.wikipedia.org/wiki/Rosary",
+            "http://www.newadvent.org/cathen/13189a.htm",
+            {
+                "url": "http://www.newadvent.org/cathen/13184b.htm",
+                "description": "The Rosary"
+            }
+        ]
+    },
+    {
+        "name": "St. Bridget",
+        "date": "October 8",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Widow"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Bridget_of_Sweden",
+            {
+                "url": "http://www.newadvent.org/cathen/02782a.htm",
+                "description": "St. Bridget of Sweden"
+            }
+        ]
+    },
+    {
+        "name": "St. John Leonardi",
+        "date": "October 9",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/St._Giovanni_Leonardi",
+            {
+                "url": "http://www.newadvent.org/cathen/15262a.htm",
+                "description": "Vallumbrosan Order"
+            }
+        ]
+    },
+    {
+        "name": "St. Francis Borgi",
+        "date": "October 10",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Francis_Borgia,_4th_Duke_of_Gand%C3%ADa",
+            "http://www.newadvent.org/cathen/06213a.htm"
+        ]
+    },
+    {
+        "name": "The Motherhood of Mary",
+        "date": "October 11",
+        "class": 2,
+        "obligation": false
+    },
+    {
+        "name": "St. Edward",
+        "date": "October 13",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Edward_the_Confessor",
+            "http://www.newadvent.org/cathen/05322a.htm"
+        ]
+    },
+    {
+        "name": "Pope Callistus I",
+        "date": "October 14",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Pope", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Pope_Callixtus_I",
+            "http://www.newadvent.org/cathen/03183d.htm"
+        ]
+    },
+    {
+        "name": "St. Teresa of Avila",
+        "date": "October 15",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Virgin"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Teresa_of_%C3%81vila",
+            "http://www.newadvent.org/cathen/14515b.htm"
+        ]
+    },
+    {
+        "name": "St. Hedwig",
+        "date": "October 16",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Widow"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Hedwig_of_Silesia",
+            "http://www.newadvent.org/cathen/07189a.htm"
+        ]
+    },
+    {
+        "name": "St. Margaret Mary Alacoque",
+        "date": "October 17",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Virgin"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Margaret_Mary_Alacoque",
+            "http://www.newadvent.org/cathen/09653a.htm"
+        ]
+    },
+    {
+        "name": "St. Luke",
+        "date": "October 18",
+        "class": 2,
+        "obligation": false,
+        "attributes": ["Evangelist"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Luke_the_Evangelist",
+            {
+                "url": "http://www.newadvent.org/cathen/09420a.htm",
+                "description": "Gospel of Saint Luke"
+            }
+        ]
+    },
+    {
+        "name": "St. Peter of Alcántara",
+        "date": "October 19",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Peter_of_Alcantara",
+            "http://www.newadvent.org/cathen/11770c.htm"
+        ]
+    },
+    {
+        "name": "St. John Cantius",
+        "date": "October 20",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/John_Cantius",
+            "http://www.newadvent.org/cathen/08451b.htm"
+        ]
+    },
+    {
+        "name": "St. Anthony Mary Claret",
+        "date": "October 23",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Anthony_Mary_Claret",
+            {
+                "url": "http://www.newadvent.org/cathen/16026a.htm",
+                "description": "Antonio María Claret y Clará"
+            }
+        ]
+    },
+    {
+        "name": "St. Raphael",
+        "date": "October 24",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Archangel"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Raphael_(archangel)",
+            "http://www.newadvent.org/cathen/12640b.htm"
+        ]
+    },
+    {
+        "name": "SS. Simon & Jude",
+        "date": "October 28",
+        "class": 2,
+        "obligation": false,
+        "attributes": ["Apostle"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Simon_the_Zealot",
+            "https://en.wikipedia.org/wiki/Jude_the_Apostle",
+            {
+                "url": "http://www.newadvent.org/cathen/13796b.htm",
+                "description": "St. Simon the Apostle"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/08542b.htm",
+                "description": "Epistle of St. Jude"
+            }
+        ]
+    },
+    {
+        "name": "Hallowmas",
+        "date": "November 1",
+        "class": 1,
+        "obligation": true,
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customstimeafterpentecost12.html",
+                "description": "All Saints' Day"
+            },
+            "https://en.wikipedia.org/wiki/All_Saints%27_Day",
+            "https://en.wikipedia.org/wiki/Allhallowtide",
+            {
+                "url": "http://www.newadvent.org/cathen/01315a.htm",
+                "description": "All Saints' Day"
+            }
+        ]
+    },
+    {
+        "name": "All Souls' Day",
+        "date": "November 2",
+        "class": 1,
+        "obligation": false,
+        "urls": [
+            "https://fisheaters.com/customstimeafterpentecost12ac.html",
+            "https://en.wikipedia.org/wiki/All_Souls%27_Day",
+            "https://en.wikipedia.org/wiki/Day_of_the_Dead",
+            "https://en.wikipedia.org/wiki/Allhallowtide",
+            "http://www.newadvent.org/cathen/01315b.htm"
+        ]
+    },
+    {
+        "name": "St. Charles Borromeo",
+        "date": "November 4",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Charles_Borromeo",
+            "http://www.newadvent.org/cathen/03619a.htm"
+        ]
+    },
+    {
+        "name": "Basilica of St. John Lateran",
+        "date": "November 9",
+        "class": 2,
+        "obligation": false,
+        "attributes": ["Dedication"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Archbasilica_of_St._John_Lateran",
+            "http://www.newadvent.org/cathen/09014b.htm"
+        ]
+    },
+    {
+        "name": "St. Andrew Avellino",
+        "date": "November 10",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Andrew_Avellino",
+            "http://www.newadvent.org/cathen/01472b.htm"
+        ]
+    },
+    {
+        "name": "Martinmas",
+        "date": "November 11",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Confessor"],
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customstimeafterpentecost15.html",
+                "description": "Feast of St. Martin"
+            },
+            "https://en.wikipedia.org/wiki/St._Martin%27s_Day",
+            "https://en.wikipedia.org/wiki/Saint_Martin_of_Tours",
+            {
+                "url": "http://www.newadvent.org/cathen/09732b.htm",
+                "description": "Saint Martin of Tours"
+            }
+        ]
+    },
+    {
+        "name": "Pope Martin I",
+        "date": "November 12",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Pope", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Pope_Martin_I",
+            {
+                "url": "http://www.newadvent.org/cathen/09723c.htm",
+                "description": "Pope St. Martin I"
+            }
+        ]
+    },
+    {
+        "name": "St. Didacus",
+        "date": "November 13",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Didacus_of_Alcal%C3%A1",
+            "http://www.newadvent.org/cathen/04781a.htm"
+        ]
+    },
+    {
+        "name": "St. Josaphat",
+        "date": "November 14",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Josaphat_Kuntsevych",
+            {
+                "url": "http://www.newadvent.org/cathen/08503b.htm",
+                "description": "St. Josaphat Kuncevyc"
+            }
+        ]
+    },
+    {
+        "name": "St. Albert the Great",
+        "date": "November 15",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Confessor", "Doctor of the Church"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Albertus_Magnus",
+            {
+                "url": "http://www.newadvent.org/cathen/01264a.htm",
+                "description": "St. Albertus Magnus"
+            }
+        ]
+    },
+    {
+        "name": "St. Gertrude",
+        "date": "November 16",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Virgin"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Gertrude_the_Great",
+            {
+                "url": "http://www.newadvent.org/cathen/06534a.htm",
+                "description": "St. Gertrude the Great"
+            }
+        ]
+    },
+    {
+        "name": "St. Gregory Thaumaturgus",
+        "date": "November 17",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Bishop", "Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Gregory_Thaumaturgus",
+            {
+                "url": "http://www.newadvent.org/cathen/07015a.htm",
+                "description": "St. Gregory of Neocaesareo"
+            }
+        ]
+    },
+    {
+        "name": "Basilicas of SS. Peter & Paul",
+        "date": "November 18",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Dedication"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/St._Peter%27s_Basilica",
+            "https://en.wikipedia.org/wiki/Basilica_of_Saint_Paul_Outside_the_Walls",
+            {
+                "url": "http://www.newadvent.org/cathen/13369b.htm",
+                "description": "Basilica of St. Peter"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/13369a.htm",
+                "description": "St. Paul-without-the-Walls"
+            }
+        ]
+    },
+    {
+        "name": "St. Elizabeth of Hungary",
+        "date": "November 19",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Widow"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Elizabeth_of_Hungary",
+            "http://www.newadvent.org/cathen/05389a.htm"
+        ]
+    },
+    {
+        "name": "St. Felix of Valois",
+        "date": "November 20",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Felix_of_Valois",
+            "http://www.newadvent.org/cathen/06033c.htm"
+        ]
+    },
+    {
+        "name": "The Presentation of Mary",
+        "date": "November 21",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Presentation_of_Mary",
+            {
+                "url": "http://www.newadvent.org/cathen/12400a.htm",
+                "description": "Feast of the Presentation of the Blessed Virgin Mary"
+            }
+        ]
+    },
+    {
+        "name": "St. Cecilia",
+        "date": "November 22",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Virgin", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Saint_Cecilia",
+            "http://www.newadvent.org/cathen/03471b.htm"
+        ]
+    },
+    {
+        "name": "Pope Clement I",
+        "date": "November 23",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Pope", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Pope_Clement_I",
+            {
+                "url": "http://www.newadvent.org/cathen/04012c.htm",
+                "description": "Pope St. Clement I"
+            }
+        ]
+    },
+    {
+        "name": "St. John of the Cross",
+        "date": "November 24",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Confessor", "Doctor of the Church"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/John_of_the_Cross",
+            "http://www.newadvent.org/cathen/08480a.htm"
+        ]
+    },
+    {
+        "name": "St. Catherine of Alexandria",
+        "date": "November 25",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Virgin", "Martyr"],
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customstimeafterpentecost14.html",
+                "description": "St. Catherine's Day"
+            },
+            "https://en.wikipedia.org/wiki/Catherine_of_Alexandria",
+            "http://www.newadvent.org/cathen/03445a.htm"
+        ]
+    },
+    {
+        "name": "St. Sylvester",
+        "date": "November 26",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Abbot"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Sylvester_Gozzolini",
+            {
+                "url": "http://www.newadvent.org/cathen/14372b.htm",
+                "description": "St. Sylvester Gozzolini"
+            }
+        ]
+    }
 ]

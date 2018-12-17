@@ -474,3 +474,25 @@
             "https://fisheaters.com/customstimeafterpentecost8.html"
         ]
     },
+    {
+        "name": "Christ the King",
+        "urls": [
+            {
+                "url": "https://fisheaters.com/customstimeafterpentecost11.html",
+                "description": "Feast of Christ the King"
+            },
+            "https://en.wikipedia.org/wiki/Christ_the_King",
+            "https://en.wikipedia.org/wiki/Feast_of_Christ_the_King",
+            {
+                "url": "http://www.newadvent.org/library/docs_pi11qp.htm",
+                "description": "Quas Primus"
+            }
+        ]
+    },
+    {
+        "name": "Last Sunday after Pentecost",
+        "urls": [
+            "https://fisheaters.com/customstimeafterpentecost13.html"
+        ]
+    }
+]

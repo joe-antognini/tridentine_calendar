@@ -8,11 +8,31 @@
         ]
     },
     {
+        "name": "Feast of Our Lady of Guadalupe",
+        "date": "December 12",
+        "class": 3,
+        "obligation": false,
+        "urls": [
+            "https://fisheaters.com/customsadvent6.html",
+            "https://en.wikipedia.org/wiki/Our_Lady_of_Guadalupe",
+            "http://www.newadvent.org/cathen/07043a.htm"
+        ]
+    },
+    {
         "name": "Las Posadas",
         "date": "December 16",
         "urls": [
             "https://fisheaters.com/customsadvent8.html",
             "https://en.wikipedia.org/wiki/Las_Posadas"
+        ]
+    },
+    {
+        "name": "Golden Nights",
+        "date": "December 17",
+        "urls": [
+            "https://fisheaters.com/customsadvent10.html",
+            "https://en.wikipedia.org/wiki/O_Antiphons",
+            "http://www.newadvent.org/cathen/11173b.htm"
         ]
     },
     {

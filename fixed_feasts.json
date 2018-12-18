@@ -1,11 +1,24 @@
 [
     {
+        "name": "St. Saturninus",
+        "date": "November 29",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Bishop", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Saturnin",
+            "http://www.newadvent.org/cathen/13486b.htm"
+        ]
+    },
+    {
         "name": "St. Andrew",
         "date": "November 30",
         "class": 2,
         "obligation": false,
+        "attributes": ["Apostle"],
         "urls": [
-            "https://en.wikipedia.org/wiki/Andrew_the_Apostle"
+            "https://en.wikipedia.org/wiki/Andrew_the_Apostle",
+            "http://www.newadvent.org/cathen/01471a.htm"
         ]
     },
     {
@@ -13,6 +26,7 @@
         "date": "December 2",
         "class": 3,
         "obligation": false,
+        "attributes": ["Virgin", "Martyr"],
         "urls": [
             "https://en.wikipedia.org/wiki/Saint_Bibiana",
             "http://www.newadvent.org/cathen/02542b.htm"
@@ -23,6 +37,7 @@
         "date": "December 3",
         "class": 3,
         "obligation": false,
+        "attributes": ["Confessor"],
         "urls": [
             {
                 "url": "https://en.wikipedia.org/wiki/Francis_Xavier",
@@ -36,6 +51,7 @@
         "date": "December 4",
         "class": 3,
         "obligation": false,
+        "attributes": ["Bishop", "Confessor", "Doctor of the Church"],
         "urls": [
             {
                 "url": "https://en.wikipedia.org/wiki/Peter_Chrysologus",
@@ -45,10 +61,22 @@
         ]
     },
     {
+        "name": "St. Sabbas",
+        "date": "December 5",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Abbot"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Sabbas_the_Sanctified",
+            "http://www.newadvent.org/cathen/13286b.htm"
+        ]
+    },
+    {
         "name": "St. Nicholas",
         "date": "December 6",
         "class": 3,
         "obligation": false,
+        "attributes": ["Bishop", "Confessor"],
         "urls": [
             "https://fisheaters.com/customsadvent3.html",
             "https://en.wikipedia.org/wiki/Saint_Nicholas"
@@ -59,6 +87,7 @@
         "date": "December 7",
         "class": 3,
         "obligation": false,
+        "attributes": ["Bishop", "Confessor", "Doctor of the Church"],
         "urls": [
             "https://en.wikipedia.org/wiki/Ambrose",
             "http://www.newadvent.org/cathen/01383c.htm"
@@ -76,10 +105,25 @@
         ]
     },
     {
+        "name": "Pope Melchiades",
+        "date": "December 10",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Pope", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Pope_Miltiades",
+            {
+                "url": "http://www.newadvent.org/cathen/10318a.htm",
+                "description": "Pope St. Melchiades"
+            }
+        ]
+    },
+    {
         "name": "Pope Damasus I",
         "date": "December 11",
         "class": 3,
         "obligation": false,
+        "attributes": ["Pope", "Confessor"],
         "urls": [
             {
                 "url": "https://en.wikipedia.org/wiki/Pope_Damasus_I",
@@ -92,21 +136,11 @@
         ]
     },
     {
-        "name": "Feast of Our Lady of Guadalupe",
-        "date": "December 12",
-        "class": 3,
-        "obligation": false,
-        "urls": [
-            "https://fisheaters.com/customsadvent6.html",
-            "https://en.wikipedia.org/wiki/Our_Lady_of_Guadalupe",
-            "http://www.newadvent.org/cathen/07043a.htm"
-        ]
-    },
-    {
         "name": "St. Lucy",
         "date", "December 13",
-        "class": 4,
+        "class": 3,
         "obligation": false,
+        "attributes": ["Virgin", "Martyr"],
         "urls": [
             "https://fisheaters.com/customsadvent6a.html",
             "https://en.wikipedia.org/wiki/Saint_Lucy",
@@ -118,6 +152,7 @@
         "date": "December 16",
         "class": 3,
         "obligation": false,
+        "attributes": ["Bishop", "Martyr"],
         "urls": [
             {
                 "url": "https://en.wikipedia.org/wiki/Eusebius_of_Vercelli",
@@ -127,21 +162,11 @@
         ]
     },
     {
-        "name": "Golden Nights",
-        "date": "December 17",
-        "class": 4,
-        "obligation": false,
-        "urls": [
-            "https://fisheaters.com/customsadvent10.html",
-            "https://en.wikipedia.org/wiki/O_Antiphons",
-            "http://www.newadvent.org/cathen/11173b.htm"
-        ]
-    },
-    {
         "name": "St. Thomas",
         "date": "December 21",
         "class": 2,
         "obligation": false,
+        "attributes": ["Apostle"],
         "urls": [
             "https://en.wikipedia.org/wiki/Thomas_the_Apostle",
             "http://www.newadvent.org/cathen/14658b.htm"
@@ -191,6 +216,7 @@
         "date": "December 26",
         "class": 2,
         "obligation": false,
+        "attributes": ["Martyr"],
         "urls": [
             {
                 "url": "https://fisheaters.com/customschristmas1.html",
@@ -206,6 +232,7 @@
         "date": "December 27",
         "class": 2,
         "obligation": false,
+        "attributes": ["Apostle", "Evangelist"],
         "urls": [
             {
                 "url": "https://fisheaters.com/customschristmas1.html",
@@ -221,6 +248,7 @@
         "date": "December 28",
         "class": 2,
         "obligation": false,
+        "attributes": ["Martyr"],
         "urls": [
             {
                 "url": "https://fisheaters.com/customschristmas1.html",
@@ -236,6 +264,7 @@
         "date": "December 29",
         "class": 1,
         "obligation": false,
+        "attributes": ["Bishop", "Martyr"],
         "urls": [
             {
                 "url": "https://fisheaters.com/customschristmas1.html",
@@ -251,6 +280,7 @@
         "date": "December 31",
         "class": 2,
         "obligation": false,
+        "attributes": ["Pope", "Confessor"],
         "urls": [
             {
                 "url": "https://fisheaters.com/customschristmas1.html",
@@ -317,10 +347,22 @@
         ]
     },
     {
+        "name": "Pope Hyginus",
+        "date": "January 11",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Pope", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Pope_Hyginus",
+            "http://www.newadvent.org/cathen/07593a.htm"
+        ]
+    },
+    {
         "name": "St. Hilary",
         "date": "January 14",
         "class": 3,
         "obligation": false,
+        "attributes": ["Bishop", "Confessor", "Doctor of the Church"],
         "urls": [
             {
                 "url": "https://en.wikipedia.org/wiki/Hilary_of_Poitiers",
@@ -337,6 +379,7 @@
         "date": "January 15",
         "class": 3,
         "obligation": false,
+        "attributes": ["Confessor"],
         "urls": [
             "https://en.wikipedia.org/wiki/Paul_of_Thebes",
             "http://www.newadvent.org/cathen/11590b.htm"
@@ -347,6 +390,7 @@
         "date": "January 16",
         "class": 3,
         "obligation": false,
+        "attributes": ["Pope", "Martyr"],
         "urls": [
             {
                 "url": "https://en.wikipedia.org/wiki/Pope_Marcellus_I",
@@ -363,9 +407,21 @@
         "date": "January 17",
         "class": 3,
         "obligation": false,
+        "attributes": ["Abbot"],
         "urls": [
             "https://en.wikipedia.org/wiki/Anthony_the_Great",
             "http://www.newadvent.org/cathen/01553d.htm"
+        ]
+    },
+    {
+        "name": "St. Prisca",
+        "date": "January 18",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Virgin", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Saint_Prisca",
+            "http://www.newadvent.org/cathen/12428c.htm"
         ]
     },
     {
@@ -379,10 +435,22 @@
         ]
     },
     {
-        "name": "Pope Fabian and St. Sebastian",
+        "name": "SS. Marius, Martha, Audifax, & Abachum",
+        "date": "January 19",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Marius,_Martha,_Audifax,_and_Abachum",
+            "http://www.newadvent.org/cathen/09671b.htm"
+        ]
+    },
+    {
+        "name": "Pope Fabian & St. Sebastian",
         "date": "January 20",
         "class": 3,
         "obligation": false,
+        "attributes": ["Pope", "Martyr"],
         "urls": [
             {
                 "url": "https://en.wikipedia.org/wiki/Pope_Fabian",
@@ -407,6 +475,7 @@
         "date": "January 21",
         "class": 3,
         "obligation": false,
+        "attributes": ["Virgin", "Martyr"],
         "urls": [
             "https://fisheaters.com/customstimeafterepiphany2.html",
             "https://en.wikipedia.org/wiki/Agnes_of_Rome",
@@ -423,10 +492,11 @@
         ]
     },
     {
-        "name": "SS. Vincent and Anastasius",
+        "name": "SS. Vincent & Anastasius",
         "date": "January 22",
         "class": 3,
         "obligation": false,
+        "attributes": ["Martyr"],
         "urls": [
             {
                 "url": "https://en.wikipedia.org/wiki/Vincent_of_Saragossa",
@@ -584,6 +654,7 @@
         "date": "February 3",
         "class": 4,
         "obligation": false,
+        "attributes": ["Bishop", "Martyr"],
         "urls": [
             "https://fisheaters.com/customstimeafterepiphany4.html",
             "https://en.wikipedia.org/wiki/Saint_Blaise",
@@ -704,6 +775,30 @@
             "https://en.wikipedia.org/wiki/Valentine%27s_Day",
             "https://en.wikipedia.org/wiki/Saint_Valentine",
             "http://www.newadvent.org/cathen/15254a.htm"
+        ]
+    },
+    {
+        "name": "SS. Faustinus & Jovita",
+        "date": "February 15",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Faustinus_and_Jovita",
+            {
+                "url": "http://www.newadvent.org/cathen/06019a.htm",
+                "description": "Sts. Faustinus and Jovita"
+            }
+        ]
+    },
+    {
+        "name": "St. Simeon",
+        "date": "February 18",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Bishop", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Simeon_of_Jerusalem"
         ]
     },
     {
@@ -961,6 +1056,20 @@
         ]
     },
     {
+        "name": "Pope Anicetus",
+        "date": "April 17",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Pope", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Pope_Anicetus",
+            {
+                "url": "http://www.newadvent.org/cathen/01514a.htm",
+                "description": "Pope St. Anicetus"
+            }
+        ]
+    },
+    {
         "name": "St. Anselm",
         "date": "April 21",
         "class": 3,
@@ -972,7 +1081,7 @@
         ]
     },
     {
-        "name": "SS. Soter and Caius",
+        "name": "SS. Soter & Caius",
         "date": "April 22",
         "class": 3,
         "obligation": false,
@@ -1099,6 +1208,12 @@
         ]
     },
     {
+        "name": "SS. Alexander & Companions",
+        "date": "May 3",
+        "class": 4,
+        "obligation": false
+    },
+    {
         "name": "St. Monica",
         "date": "May 4",
         "class": 3,
@@ -1166,7 +1281,7 @@
         ]
     },
     {
-        "name": "SS. Philip and James",
+        "name": "SS. Philip & James",
         "date": "May 11",
         "class": 2,
         "obligation": false,
@@ -1191,7 +1306,7 @@
         ]
     },
     {
-        "name": "SS. Nereus, Achilleus, Domitilla, and Pancras",
+        "name": "SS. Nereus, Achilleus, Domitilla, & Pancras",
         "date": "May 12",
         "class": 3,
         "obligation": false,
@@ -1215,6 +1330,16 @@
         "urls": [
             "https://en.wikipedia.org/wiki/Robert_Bellarmine",
             "http://www.newadvent.org/cathen/02411d.htm"
+        ]
+    },
+    {
+        "name": "St. Boniface of Tarsus",
+        "date": "May 14",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Boniface_of_Tarsus"
         ]
     },
     {
@@ -1357,6 +1482,17 @@
         ]
     },
     {
+        "name": "Pope Felix I",
+        "date": "May 30",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Pope", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Pope_Felix_I",
+            "http://www.newadvent.org/cathen/06029b.htm"
+        ]
+    },
+    {
         "name": "The Queenship of Mary",
         "date": "May 31",
         "class": 2,
@@ -1378,6 +1514,16 @@
         "urls": [
             "https://en.wikipedia.org/wiki/Angela_Merici",
             "http://www.newadvent.org/cathen/01481a.htm"
+        ]
+    },
+    {
+        "name": "SS. Marcellinus, Peter, & St. Erasmus",
+        "date": "June 2",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Martyr", "Bishop"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Marcellinus_and_Peter"
         ]
     },
     {
@@ -1411,6 +1557,17 @@
         "urls": [
             "https://en.wikipedia.org/wiki/Norbert_of_Xanten",
             "http://www.newadvent.org/cathen/11100b.htm"
+        ]
+    },
+    {
+        "name": "SS. Primus & Felician",
+        "date": "June 9",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Primus_and_Felician",
+            "http://www.newadvent.org/cathen/12427a.htm"
         ]
     },
     {
@@ -1450,6 +1607,24 @@
         ]
     },
     {
+        "name": "SS. Basilides, Cyrinus, Nabor, & Nazarius",
+        "date": "June 12",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Basilides,_Cyrinus,_Nabor_and_Nazarius",
+            {
+                "url": "http://www.newadvent.org/cathen/10728b.htm",
+                "description": "St. Nazarius and Companions"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/02329a.htm",
+                "description": "St. Basilides"
+            }
+        ]
+    },
+    {
         "name": "St. Anthony of Padua",
         "date": "June 13",
         "class": 3,
@@ -1469,6 +1644,20 @@
         "urls": [
             "https://en.wikipedia.org/wiki/Basil_of_Caesarea",
             "http://www.newadvent.org/cathen/02330b.htm"
+        ]
+    },
+    {
+        "name": "SS. Vitus, Modestus, & Crescentia",
+        "date": "June 15",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Vitus",
+            {
+                "url": "http://www.newadvent.org/cathen/15490b.htm",
+                "description": "Sts. Vitus, Modestus, and Crescentia"
+            }
         ]
     },
     {
@@ -1496,6 +1685,17 @@
         ]
     },
     {
+        "name": "SS. Mark & Marcellian",
+        "date": "June 18",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Mark_and_Marcellian",
+            "http://www.newadvent.org/cathen/09682a.htm"
+        ]
+    },
+    {
         "name": "St. Juliana Falconieri",
         "date": "June 19",
         "class": 3,
@@ -1504,6 +1704,34 @@
         "urls": [
             "https://en.wikipedia.org/wiki/Juliana_Falconieri",
             "http://www.newadvent.org/cathen/08556a.htm"
+        ]
+    },
+    {
+        "name": "SS. Gervase & Protase",
+        "date": "June 19",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Gervasius_and_Protasius",
+            {
+                "url": "http://www.newadvent.org/cathen/06537a.htm",
+                "description": "Sts. Gervasius and Protasius"
+            }
+        ]
+    },
+    {
+        "name": "Pope Silverius",
+        "date": "June 20",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Pope", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Pope_Silverius",
+            {
+                "url": "http://www.newadvent.org/cathen/08480a.htm",
+                "description": "Pope St. Silverius"
+            }
         ]
     },
     {
@@ -1567,7 +1795,7 @@
         ]
     },
     {
-        "name": "SS. John and Paul",
+        "name": "SS. John & Paul",
         "date": "June 26",
         "class": 3,
         "obligation": false,
@@ -1598,6 +1826,17 @@
                 "url": "http://www.newadvent.org/cathen/11567b.htm",
                 "description": "St. Paul"
             }
+        ]
+    },
+    {
+        "name": "St. Paul",
+        "date": "June 30",
+        "class": 3,
+        "obligation": false,
+        "attributes": ["Apostle"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Paul_the_Apostle",
+            "http://www.newadvent.org/cathen/11567b.htm"
         ]
     },
     {
@@ -1704,6 +1943,20 @@
         ]
     },
     {
+        "name": "Pope Pius I",
+        "date": "July 11",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Pope", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Pope_Pius_I",
+            {
+                "url": "http://www.newadvent.org/cathen/12126b.htm",
+                "description": "Pope St. Pius I"
+            }
+        ]
+    },
+    {
         "name": "St. John Gualbert",
         "date": "July 12",
         "class": 3,
@@ -1740,6 +1993,34 @@
                 "url": "http://www.newadvent.org/cathen/07227a.htm",
                 "description": "St. Henry II"
             }
+        ]
+    },
+    {
+        "name": "Our Lady of Mt. Carmel",
+        "date": "July 16",
+        "class": 4,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Our_Lady_of_Mount_Carmel",
+            {
+                "url": "http://www.newadvent.org/cathen/10604b.htm",
+                "description": "Feast of Our Lady of Mount Carmel"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/03352a.htm",
+                "description": "Mount Carmel"
+            }
+        ]
+    },
+    {
+        "name": "St. Alexius",
+        "date": "July 17",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Alexius_of_Rome",
+            "http://www.newadvent.org/cathen/01307b.htm"
         ]
     },
     {
@@ -1793,6 +2074,16 @@
         ]
     },
     {
+        "name": "St. Praxedes",
+        "date": "July 21",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Virgin"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Praxedes"
+        ]
+    },
+    {
         "name": "St. Mary Magdalen",
         "date": "July 22",
         "class": 3,
@@ -1816,6 +2107,16 @@
         ]
     },
     {
+        "name": "St. Christina",
+        "date": "July 24",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Virgin", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Christina_of_Bolsena"
+        ]
+    },
+    {
         "name": "St. James the Greater",
         "date": "July 25",
         "class": 2,
@@ -1836,6 +2137,17 @@
         "urls": [
             "https://en.wikipedia.org/wiki/Saint_Anne",
             "http://www.newadvent.org/cathen/01538a.htm"
+        ]
+    },
+    {
+        "name": "St. Pantaleon",
+        "date": "July 27",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Saint_Pantaleon",
+            "http://www.newadvent.org/cathen/11447a.htm"
         ]
     },
     {
@@ -1872,6 +2184,20 @@
             "https://fisheaters.com/customstimeafterpentecost5a.html",
             "https://en.wikipedia.org/wiki/Martha",
             "http://www.newadvent.org/cathen/09721b.htm"
+        ]
+    },
+    {
+        "name": "SS. Abdon & Sennen",
+        "date": "July 30",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Abdon_and_Sennen",
+            {
+                "url": "http://www.newadvent.org/cathen/01032a.htm",
+                "description": "Sts. Abdon and Sennen"
+            }
         ]
     },
     {

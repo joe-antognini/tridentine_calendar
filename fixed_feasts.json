@@ -2215,6 +2215,25 @@
         ]
     },
     {
+        "name": "The Holy Machabees",
+        "date": "August 2",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Woman_with_seven_sons",
+            "https://en.wikipedia.org/wiki/Machabees",
+            {
+                "url": "http://www.newadvent.org/cathen/09493b.htm",
+                "description": "The Machabees"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/09495a.htm",
+                "description": "The Books of Machabees"
+            }
+        ]
+    },
+    {
         "name": "St. Alphonsus Liguori",
         "date": "August 2",
         "class": 3,
@@ -2295,6 +2314,16 @@
         ]
     },
     {
+        "name": "SS. Cyriacus, Largus, & Smaragdus",
+        "date": "August 8",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Cyriacus"
+        ]
+    },
+    {
         "name": "St. Lawrence",
         "date": "August 10",
         "class": 2,
@@ -2304,6 +2333,18 @@
             "https://fisheaters.com/stlawrence.html",
             "https://en.wikipedia.org/wiki/Saint_Lawrence",
             "http://www.newadvent.org/cathen/09089a.htm"
+        ]
+    },
+    {
+        "name": "St. Tiburtius & St. Susanna",
+        "date": "August 11",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Martyr", "Virgin"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Saint_Tiburtius",
+            "https://en.wikipedia.org/wiki/Saint_Susanna",
+            "http://www.newadvent.org/cathen/14720a.htm"
         ]
     },
     {
@@ -2317,6 +2358,21 @@
             {
                 "url": "http://www.newadvent.org/cathen/04004a.htm",
                 "description": "St. Clare of Assisi"
+            }
+        ]
+    },
+    {
+        "name": "SS. Hippolytus & Cassian",
+        "date": "August 13",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Hippolytus_of_Rome",
+            "https://en.wikipedia.org/wiki/Cassian_of_Imola",
+            {
+                "url": "http://www.newadvent.org/cathen/07360c.htm",
+                "description": "Saint Hippolytus of Rome"
             }
         ]
     },
@@ -2354,6 +2410,16 @@
         "urls": [
             "https://en.wikipedia.org/wiki/Hyacinth_of_Poland",
             "http://www.newadvent.org/cathen/07591b.htm"
+        ]
+    },
+    {
+        "name": "St. Agapitus",
+        "date": "August 18",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Agapitus_of_Palestrina"
         ]
     },
     {
@@ -2455,6 +2521,20 @@
         ]
     },
     {
+        "name": "Pope Zephyrinus",
+        "date": "August 26",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Pope", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Pope_Zephyrinus",
+            {
+                "url": "http://www.newadvent.org/cathen/15756c.htm",
+                "description": "Pope St. Zephyrinus"
+            }
+        ]
+    },
+    {
         "name": "St. Joseph Calasnctius",
         "date": "August 27",
         "class": 3,
@@ -2504,6 +2584,20 @@
         ]
     },
     {
+        "name": "SS. Felix & Adauctus",
+        "date": "August 30",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Felix_and_Adauctus",
+            {
+                "url": "http://www.newadvent.org/cathen/06032b.htm",
+                "description": "Sts. Felix and Adauctus"
+            }
+        ]
+    },
+    {
         "name": "St. Raymond Nonnatus",
         "date": "August 31",
         "class": 3,
@@ -2512,6 +2606,17 @@
         "urls": [
             "https://en.wikipedia.org/wiki/Raymond_Nonnatus",
             "http://www.newadvent.org/cathen/12671b.htm"
+        ]
+    },
+    {
+        "name": "St. Giles",
+        "date": "September 1",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Abbot"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Saint_Giles",
+            "http://www.newadvent.org/cathen/06559a.htm"
         ]
     },
     {
@@ -2568,6 +2673,17 @@
         ]
     },
     {
+        "name": "St. Gorgonius",
+        "date": "September 9",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Gorgonius",
+            "http://www.newadvent.org/cathen/06651b.htm"
+        ]
+    },
+    {
         "name": "St. Nicholas of Tolentino",
         "date": "September 10",
         "class": 3,
@@ -2576,6 +2692,20 @@
         "urls": [
             "https://en.wikipedia.org/wiki/Nicholas_of_Tolentino",
             "http://www.newadvent.org/cathen/11065a.htm"
+        ]
+    },
+    {
+        "name": "SS. Protus & Hyacinth",
+        "date": "September 11",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Protus_and_Hyacinth",
+            {
+                "url": "http://www.newadvent.org/cathen/12504a.htm",
+                "description": "Sts. Protus and Hyacinth"
+            }
         ]
     },
     {
@@ -2634,6 +2764,25 @@
         ]
     },
     {
+        "name": "The Stigmata of St. Francis",
+        "date": "September 17",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Francis_of_Assisi",
+            "https://en.wikipedia.org/wiki/Stigmata",
+            {
+                "url": "http://www.newadvent.org/cathen/06221a.htm",
+                "description": "St. Francis of Assisi"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/14294b.htm",
+                "description": "Mystical Stigmata"
+            }
+        ]
+    },
+    {
         "name": "St. Joseph of Cupertino",
         "date": "September 18",
         "class": 3,
@@ -2654,6 +2803,20 @@
             "https://fisheaters.com/customstimeafterpentecost9.html",
             "https://en.wikipedia.org/wiki/Januarius",
             "http://www.newadvent.org/cathen/08295a.htm"
+        ]
+    },
+    {
+        "name": "St. Eustace and Companions",
+        "date": "September 20",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Saint_Eustace",
+            {
+                "url": "http://www.newadvent.org/cathen/05627a.htm",
+                "description": "Sts. Eustace and Companions"
+            }
         ]
     },
     {
@@ -2689,6 +2852,38 @@
             {
                 "url": "http://www.newadvent.org/cathen/09272b.htm",
                 "description": "Pope St. Linus"
+            }
+        ]
+    },
+    {
+        "name": "Our Lady of Ransom",
+        "date": "September 24",
+        "class": 4,
+        "obligation": false,
+        "urls": [
+            "https://en.wikipedia.org/wiki/Feast_of_Our_Lady_of_Ransom",
+            "https://en.wikipedia.org/wiki/Order_of_the_Blessed_Virgin_Mary_of_Mercy",
+            {
+                "url": "http://www.newadvent.org/cathen/12640a.htm",
+                "description": "Feast of Our Lady of Ransom"
+            },
+            {
+                "url": "http://www.newadvent.org/cathen/10197b.htm",
+                "description": "Mercedarians"
+            }
+        ]
+    },
+    {
+        "name": "SS. Cyprian & Justina",
+        "date": "September 26",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Cyprian_and_Justina",
+            {
+                "url": "http://www.newadvent.org/cathen/04583a.htm",
+                "description": "Sts. Cyprian and Justina"
             }
         ]
     },
@@ -2744,6 +2939,17 @@
         ]
     },
     {
+        "name": "St. Remigius",
+        "date": "October 1",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Bishop", "Confessor"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Saint_Remigius",
+            "http://www.newadvent.org/cathen/12763b.htm"
+        ]
+    },
+    {
         "name": "The Holy Guardian Angels",
         "date": "October 2",
         "class": 3,
@@ -2785,6 +2991,16 @@
             "https://fisheaters.com/feastofstfrancisofassisi.html",
             "https://en.wikipedia.org/wiki/Francis_of_Assisi",
             "http://www.newadvent.org/cathen/06221a.htm"
+        ]
+    },
+    {
+        "name": "St. Placid",
+        "date": "October 5",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Placidus_(martyr)"
         ]
     },
     {
@@ -2950,6 +3166,17 @@
         ]
     },
     {
+        "name": "St. Hilarion",
+        "date": "October 21",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Abbot"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Hilarion",
+            "http://www.newadvent.org/cathen/07347a.htm"
+        ]
+    },
+    {
         "name": "St. Anthony Mary Claret",
         "date": "October 23",
         "class": 3,
@@ -2972,6 +3199,34 @@
         "urls": [
             "https://en.wikipedia.org/wiki/Raphael_(archangel)",
             "http://www.newadvent.org/cathen/12640b.htm"
+        ]
+    },
+    {
+        "name": "SS. Chrysanthus & Daria",
+        "date": "October 25",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Chrysanthus_and_Daria",
+            {
+                "url": "http://www.newadvent.org/cathen/03742a.htm",
+                "description": "Sts. Chrysanthus and Daria"
+            }
+        ]
+    },
+    {
+        "name": "Pope Evaristus",
+        "date": "October 26",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Pope", "Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Pope_Evaristus",
+            {
+                "url": "http://www.newadvent.org/cathen/05646a.htm",
+                "description": "Pope St. Evaristus"
+            }
         ]
     },
     {
@@ -3033,6 +3288,20 @@
         "urls": [
             "https://en.wikipedia.org/wiki/Charles_Borromeo",
             "http://www.newadvent.org/cathen/03619a.htm"
+        ]
+    },
+    {
+        "name": "The Four Crowned Holy Martyrs",
+        "date": "November 8",
+        "class": 4,
+        "obligation": false,
+        "attributes": ["Martyr"],
+        "urls": [
+            "https://en.wikipedia.org/wiki/Four_Crowned_Martyrs",
+            {
+                "url": "http://www.newadvent.org/cathen/06163a.htm",
+                "description": "Four Crowned Martyrs"
+            }
         ]
     },
     {

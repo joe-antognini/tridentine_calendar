@@ -40,6 +40,7 @@ class LiturgicalCalendar(object):
         self.calendar = {}
         self.dirname = os.path.dirname(os.path.realpath(__file__))
         
+        # TODO: Convert the json file to a dict.
         with open(os.path.join(self.dirname, 'movable_feasts.json')) as json_file:
             self.movable_feasts = json.load(json_file)
 
@@ -50,25 +51,37 @@ class LiturgicalCalendar(object):
         with open(os.path.join(self.dirname, 'traditional_feasts.json')) as json_file:
             self.traditional_feasts = json.load(json_file)
 
+        self.easter_date = computus(self.year)
         self._mark_solemnities()
         self._mark_sundays()
         self._mark_feasts_memorials_and_commemorations()
         self._mark_traditional_feasts()
 
+    # TODO: Remove this function and convert the json file itself to a dict.
     def _convert_json_to_dict(self, json_obj):
         d = {}
         for elem in json_obj:
             elem_date = dt.datetime.strptime(elem['date'], '%B %d')
             elem_date = elem_date.replace(self.year, elem_date.month, elem_date.day)
+            elem_date = self._convert_date(elem['date'])
             if elem_date not in d:
                 d[elem_date] = elem
             else:
-                if type(d[elem_date) is list:
-                    d[elem_date = d[elem_date + [elem]
+                if type(d[elem_date]) is list:
+                    d[elem_date] = d[elem_date] + [elem]
                 else:
-                    d[elem_date = [d[elem_date, elem]
+                    d[elem_date] = [d[elem_date], elem]
         return d
 
     def _mark_solemnities(self):
-        # Advent
-        self.calendar[dt.date(self.year, 12, 8)] = self.fixed_feasts[
+        # First we do fixed solemnities.
+        for feast in self.fixed_feasts:
+            if feast['class'] == 1:
+                self.calendar[_self.convert_date(feast['date'])] = feast
+
+        # Now the movable solemnities.
+        self.calendar[holy_name_date(self.year)] = self.movable_feasts[
+
+    def _convert_date(self, date_str):
+        date = dt.datetime.strptime(date_str, '%B %d')
+        return date.replace(self.year, date.month, date.year)

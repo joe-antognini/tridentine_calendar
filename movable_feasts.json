@@ -1,498 +1,454 @@
-[
-    {
-        "name": "Advent",
-        "urls": [
-            {
-                "url": "https://fisheaters.com/customsadvent1.html",
-                "description": "Advent Overview"
-            },
-            {
-                "url": "https://fisheaters.com/customsadvent2.html",
-                "description": "Advent Wreath & Candles"
-            },
-            {
-                "url": "https://fisheaters.com/adventcribs.html",
-                "description": "Nativity Scenes"
-            },
-            {
-                "url": "https://fisheaters.com/customsadvent12.html",
-                "description": "Advent Calendars"
-            },
-            {
-                "url": "https://fisheaters.com/customsadvent9.html",
-                "description": "Jesse Trees"
-            },
-            {
-                "url": "https://en.wikipedia.org/wiki/Advent",
-                "description": "Advent"
-            }
-        ]
-    },
-    {
-        "name": "Embertide",
-        "urls": [
-            {
-                "url": "https://fisheaters.com/emberdays.html",
-                "description": "Embertide Overview"
-            },
-            {
-                "url": "http://www.newadvent.org/cathen/05399b.htm",
-                "description": "Ember Days"
-            },
-            {
-                "url": "https://en.wikipedia.org/wiki/Ember_days",
-                "description": "Ember Days"
-            }
-        ]
-    },
-    {
-        "name": "Advent Embertide",
-        "urls": [
-            {
-                "url": "https://fisheaters.com/customsadvent11.html",
-                "description": "Advent Embertide"
-            }
-        ]
-    },
-    {
-        "name": "Gaudete Sunday",
-        "urls": [
-            "https://en.wikipedia.org/wiki/Gaudete_Sunday",
-            "http://www.newadvent.org/cathen/06394b.htm"
-        ]
-    },
-    {
-        "name": "Feast of the Holy Name",
-        "urls": [
-            {
-                "url": "https://fisheaters.com/customschristmas1.html",
-                "description": "Christmastide Overview"
-            },
-            "https://fisheaters.com/customschristmas7a.html",
-            "https://en.wikipedia.org/wiki/Feast_of_the_Holy_Name_of_Jesus",
-            "http://www.newadvent.org/cathen/07420a.htm",
-            {
-                "url": "http://www.newadvent.org/cathen/07421a.htm",
-                "description": "The Holy Name of Jesus"
-            }
-        ]
-    },
-    {
-        "name": "Feast of the Holy Family",
-        "urls": [
-            {
-                "url": "https://fisheaters.com/customstimeafterepiphany1.html",
-                "description": "Time after Epiphany"
-            },
-            "https://fisheaters.com/customstimeafterepiphany1a.html",
-            "https://en.wikipedia.org/wiki/Holy_Family",
-            "
-        ]
-    },
-    {
-        "name": "Plough Monday",
-        "urls": [
-            {
-                "url": "https://fisheaters.com/customstimeafterepiphany1.html",
-                "description": "Time after Epiphany"
-            },
-            "https://en.wikipedia.org/wiki/Plough_Monday"
-        ]
-    },
-    {
-        "name": "Time after Epiphany",
-        "urls": [
-            "https://fisheaters.com/customstimeafterepiphany1.html"
-        ]
-    },
-    {
-        "name": "Septuagesima",
-        "urls": [
-            {
-                "url": "https://fisheaters.com/customsseptuagesima1.html",
-                "description": "Septuagesima Overview"
-            },
-            {
-                "url": "https://fisheaters.com/customsseptuagesima1.html",
-                "description": "Septuagesima"
-            },
-            "https://en.wikipedia.org/wiki/Septuagesima",
-            "http://www.newadvent.org/cathen/13721b.htm"
-        ]
-    },
-    {
-        "name": "Sexagesima",
-        "urls": [
-            {
-                "url": "https://fisheaters.com/customsseptuagesima1.html",
-                "description": "Septuagesima Overview"
-            },
-            "https://en.wikipedia.org/wiki/Sexagesima",
-            "http://www.newadvent.org/cathen/13747a.htm"
-        ]
-    },
-    {
-        "name": "Quinquagesima",
-        "urls": [
-            {
-                "url": "https://fisheaters.com/customsseptuagesima1.html",
-                "description": "Septuagesima Overview"
-            },
-            "https://en.wikipedia.org/wiki/Quinquagesima",
-            "http://www.newadvent.org/cathen/12614a.htm"
-        ]
-    },
-    {
-        "name": "Shrove Monday",
-        "urls": [
-            {
-                "url": "https://fisheaters.com/customsseptuagesima1.html",
-                "description": "Septuagesima Overview"
-            },
-            {
-                "url': "https://fisheaters.com/customsseptuagesima2.html",
-                "description": "Shrovetide"
-            },
-            {
-                "url': "http://www.newadvent.org/cathen/13763a.htm",
-                "description": "Shrovetide"
-            }
-        ]
-    },
-    {
-        "name": "Mardi Gras",
-        "urls": [
-            {
-                "url": "https://fisheaters.com/customsseptuagesima1.html",
-                "description": "Septuagesima Overview"
-            },
-            {
-                "url": "https://fisheaters.com/customsseptuagesima2.html",
-                "description": "Shrovetide"
-            },
-            {
-                "url": "http://www.newadvent.org/cathen/13763a.htm",
-                "description": "Shrovetide"
-            }
-        ]
-    },
-    {
-        "name": "St. Matthias",
-        "attributes": ["Apostle"],
-        "urls": [
-            "https://en.wikipedia.org/wiki/Saint_Matthias",
-            "http://www.newadvent.org/cathen/10066a.htm"
-        ]
-    },
-    {
-        "name": "St. Gabriel of Our Lady of Sorrows",
-        "attributes": ["Confessor"],
-        "urls": [
-            "https://en.wikipedia.org/wiki/Gabriel_of_Our_Lady_of_Sorrows",
-            {
-                "url": "http://www.newadvent.org/cathen/06330c.htm",
-                "description": "Bl. Gabriel Possenti"
-            }
-        ]
-    },
-    {
-        "name": "Lent",
-        "urls": [
-            {
-                "url": "https://fisheaters.com/customslent1.html",
-                "description": "Lent Overview"
-            },
-            {
-                "url": "https://en.wikipedia.org/wiki/Lent",
-                "description": "Lent"
-            },
-            {
-                "url": "http://www.newadvent.org/cathen/09152a.htm",
-                "description": "Lent"
-            }
-        ]
-    },
-    {
-        "name": "Ash Wednesday",
-        "urls": [
-            "https://fisheaters.com/customslent2.html",
-            "https://en.wikipedia.org/wiki/Ash_Wednesday",
-            "http://www.newadvent.org/cathen/01775b.htm"
-        ]
-    },
-    {
-        "name": "Lenten Embertide",
-        "urls": [
-            "https://fisheaters.com/customslent3.html"
-        ]
-    },
-    {
-        "name": "Laetare Sunday",
-        "urls": [
-            "https://fisheaters.com/customslent7.html",
-            "https://en.wikipedia.org/wiki/Laetare_Sunday",
-            "http://www.newadvent.org/cathen/08737c.htm"
-        ]
-    },
-    {
-        "name": "Passiontide",
-        "urls": [
-            "https://fisheaters.com/customslent8.html",
-            "https://en.wikipedia.org/wiki/Passiontide",
-            "http://www.newadvent.org/cathen/11535b.htm"
-        ]
-    },
-    {
-        "name": "Passion Sunday",
-        "urls": [
-            "https://en.wikipedia.org/wiki/Passion_Sunday",
-            "http://www.newadvent.org/cathen/11535a.htm"
-        ]
-    },
-    {
-        "name": "The Seven Sorrows",
-        "urls": [
-            "https://fisheaters.com/customslent10.html",
-            "https://en.wikipedia.org/wiki/Friday_of_Sorrows",
-            "https://en.wikipedia.org/wiki/Our_Lady_of_Sorrows",
-            {
-                "url": "http://www.newadvent.org/cathen/14151b.htm",
-                "description": "Feasts of the Seven Sorrows of the Blessed Virgin Mary"
-            }
-        ]
-    },
-    {
-        "name": "Holy Week",
-        "urls": [
-            "https://en.wikipedia.org/wiki/Holy_Week",
-            "http://www.newadvent.org/cathen/07435a.htm"
-        ]
-    },
-    {
-        "name": "Palm Sunday",
-        "urls": [
-            "https://fisheaters.com/customslent11.html",
-            "https://en.wikipedia.org/wiki/Palm_Sunday",
-            "http://www.newadvent.org/cathen/11432b.htm"
-        ]
-    },
-    {
-        "name": "Spy Wednesday",
-        "urls": [
-            "https://fisheaters.com/customslent12.html",
-            "https://en.wikipedia.org/wiki/Holy_Wednesday"
-        ]
-    },
-    {
-        "name": "Maundy Thursday",
-        "urls": [
-            "https://fisheaters.com/customslent13.html",
-            "https://en.wikipedia.org/wiki/Maundy_Thursday",
-            "http://www.newadvent.org/cathen/10068a.htm"
-        ]
-    },
-    {
-        "name": "Paschal Triduum",
-        "urls": [
-            "https://en.wikipedia.org/wiki/Paschal_Triduum"
-        ]
-    },
-    {
-        "name": "Good Friday",
-        "urls": [
-            "https://fisheaters.com/customslent14.html",
-            "https://en.wikipedia.org/wiki/Good_Friday",
-            "http://www.newadvent.org/cathen/06643a.htm"
-        ]
-    },
-    {
-        "name": "Holy Saturday",
-        "urls": [
-            "https://fisheaters.com/customslent15.html",
-            "https://en.wikipedia.org/wiki/Holy_Saturday",
-            "http://www.newadvent.org/cathen/07424a.htm"
-        ]
-    },
-    {
-        "name": "Easter",
-        "urls": [
-            "https://fisheaters.com/customseastertide2.html",
-            "https://en.wikipedia.org/wiki/Easter",
-            "http://www.newadvent.org/cathen/05224d.htm"
-        ]
-    },
-    {
-        "name": "Eastertide",
-        "urls": [
-            {
-                "url": "https://fisheaters.com/customseastertide1.html",
-                "description": "Eastertide Overview"
-            },
-            {
-                "url": "http://www.newadvent.org/cathen/11516a.htm",
-                "description": "Paschal Tide"
-            }
-        ]
-    },
-    {
-        "name": "Quasimodo Sunday",
-        "urls": [
-            {
-                "url": "https://fisheaters.com/customseastertide4.html",
-                "description": "Low Sunday"
-            },
-            {
-                "url": "https://en.wikipedia.org/wiki/Divine_Mercy_Sunday",
-                "description": "Divine Mercy Sunday"
-            },
-            {
-                "url": "http://www.newadvent.org/cathen/09400a.htm",
-                "description": "Low Sunday"
-            }
-        ]
-    },
-    {
-        "name": "Jubilate Sunday",
-        "urls": [
-            "https://en.wikipedia.org/wiki/Jubilate_Sunday",
-            "http://www.newadvent.org/cathen/08531b.htm"
-        ]
-    },
-    {
-        "name": "Misericordia Sunday",
-        "urls": [
-            "https://en.wikipedia.org/wiki/Misericordia_Sunday"
-        ]
-    },
-    {
-        "name": "Cantate Sunday",
-        "urls": [
-            "https://en.wikipedia.org/wiki/Cantate_Sunday",
-            "http://www.newadvent.org/cathen/03299a.htm"
-        ]
-    },
-    {
-        "name": "Major Rogation",
-        "urls": [
-            "https://fisheaters.com/customseastertide3.html",
-            "https://en.wikipedia.org/wiki/Rogation_days",
-            "http://www.newadvent.org/cathen/13110b.htm"
-        ]
-    },
-    {
-        "name": "Minor Rogation",
-        "urls": [
-            "https://fisheaters.com/customseastertide3.html",
-            "https://en.wikipedia.org/wiki/Rogation_days",
-            "http://www.newadvent.org/cathen/13110b.htm"
-        ]
-    },
-    {
-        "name": "Ascension",
-        "urls": [
-            "https://fisheaters.com/customseastertide6.html",
-            {
-                "url": "https://en.wikipedia.org/wiki/Feast_of_the_Ascension",
-                "description": "Feast of the Ascension"
-            },
-            {
-                "url": "http://www.newadvent.org/cathen/01767b.htm",
-                "description": "Feast of the Ascension"
-            }
-        ]
-    },
-    {
-        "name": "Pentecost",
-        "urls": [
-            {
-                "url": "https://fisheaters.com/customseastertide7.html",
-                "description": "Vigil of the Pentecost and Whitsunday"
-            },
-            {
-                "url": "https://en.wikipedia.org/wiki/Pentecost",
-                "description": "Pentecost"
-            },
-            {
-                "url": "https://en.wikipedia.org/wiki/Whitsun",
-                "description": "Whitsun"
-            },
-            {
-                "url": "http://www.newadvent.org/cathen/15614b.htm",
-                "description": "Pentecost (Whitsunday)"
-            }
-        ]
-    },
-    {
-        "name": "Whit Embertide",
-        "urls": [
-            "https://fisheaters.com/customseastertide8.html"
-        ]
-    },
-    {
-        "name": "Time after Pentecost",
-        "urls": [
-            "https://fisheaters.com/customstimeafterpentecost1.html"
-        ]
-    },
-    {
-        "name": "Trinity Sunday",
-        "urls": [
-            "https://fisheaters.com/customseastertide9.html",
-            "https://en.wikipedia.org/wiki/Trinity_Sunday",
-            "http://www.newadvent.org/cathen/15058a.htm"
-        ]
-    },
-    {
-        "name": "Corpus Christi",
-        "urls": [
-            "https://fisheaters.com/customstimeafterpentecost2.html",
-            "https://en.wikipedia.org/wiki/Corpus_Christi_(feast)",
-            {
-                "url": "http://www.newadvent.org/cathen/04390b.htm",
-                "description": "Feast of Corpus Christi"
-            }
-        ]
-    },
-    {
-        "name": "Feast of the Sacred Heart",
-        "urls": [
-            "https://fisheaters.com/customstimeafterpentecost4.html",
-            "https://en.wikipedia.org/wiki/Feast_of_the_Sacred_Heart",
-            {
-                "url": "https://en.wikipedia.org/wiki/Sacred_Heart",
-                "description": "Sacred Heart"
-            },
-            {
-                "url": "http://www.newadvent.org/cathen/07163a.htm",
-                "description": "Devotion to the Sacred Heart of Jesus"
-            }
-        ]
-    },
-    {
-        "name": "Michaelmas Embertide",
-        "urls": [
-            "https://fisheaters.com/customstimeafterpentecost8.html"
-        ]
-    },
-    {
-        "name": "Christ the King",
-        "urls": [
-            {
-                "url": "https://fisheaters.com/customstimeafterpentecost11.html",
-                "description": "Feast of Christ the King"
-            },
-            "https://en.wikipedia.org/wiki/Christ_the_King",
-            "https://en.wikipedia.org/wiki/Feast_of_Christ_the_King",
-            {
-                "url": "http://www.newadvent.org/library/docs_pi11qp.htm",
-                "description": "Quas Primus"
-            }
-        ]
-    },
-    {
-        "name": "Last Sunday after Pentecost",
-        "urls": [
-            "https://fisheaters.com/customstimeafterpentecost13.html"
-        ]
-    }
-]
+{
+  "Advent": {
+    "urls": [
+      {
+        "url": "https://fisheaters.com/customsadvent1.html", 
+        "description": "Advent Overview"
+      }, 
+      {
+        "url": "https://fisheaters.com/customsadvent2.html", 
+        "description": "Advent Wreath & Candles"
+      }, 
+      {
+        "url": "https://fisheaters.com/adventcribs.html", 
+        "description": "Nativity Scenes"
+      }, 
+      {
+        "url": "https://fisheaters.com/customsadvent12.html", 
+        "description": "Advent Calendars"
+      }, 
+      {
+        "url": "https://fisheaters.com/customsadvent9.html", 
+        "description": "Jesse Trees"
+      }, 
+      {
+        "url": "https://en.wikipedia.org/wiki/Advent", 
+        "description": "Advent"
+      }
+    ]
+  }, 
+  "Embertide": {
+    "urls": [
+      {
+        "url": "https://fisheaters.com/emberdays.html", 
+        "description": "Embertide Overview"
+      }, 
+      {
+        "url": "http://www.newadvent.org/cathen/05399b.htm", 
+        "description": "Ember Days"
+      }, 
+      {
+        "url": "https://en.wikipedia.org/wiki/Ember_days", 
+        "description": "Ember Days"
+      }
+    ]
+  }, 
+  "Advent Embertide": {
+    "urls": [
+      {
+        "url": "https://fisheaters.com/customsadvent11.html", 
+        "description": "Advent Embertide"
+      }
+    ]
+  }, 
+  "Gaudete Sunday": {
+    "urls": [
+      "https://en.wikipedia.org/wiki/Gaudete_Sunday", 
+      "http://www.newadvent.org/cathen/06394b.htm"
+    ]
+  }, 
+  "Feast of the Holy Name": {
+    "urls": [
+      {
+        "url": "https://fisheaters.com/customschristmas1.html", 
+        "description": "Christmastide Overview"
+      }, 
+      "https://fisheaters.com/customschristmas7a.html", 
+      "https://en.wikipedia.org/wiki/Feast_of_the_Holy_Name_of_Jesus", 
+      "http://www.newadvent.org/cathen/07420a.htm", 
+      {
+        "url": "http://www.newadvent.org/cathen/07421a.htm", 
+        "description": "The Holy Name of Jesus"
+      }
+    ]
+  }, 
+  "Feast of the Holy Family": {
+    "urls": [
+      {
+        "url": "https://fisheaters.com/customstimeafterepiphany1.html", 
+        "description": "Time after Epiphany"
+      }, 
+      "https://fisheaters.com/customstimeafterepiphany1a.html", 
+      "https://en.wikipedia.org/wiki/Holy_Family"
+    ]
+  }, 
+  "Plough Monday": {
+    "urls": [
+      {
+        "url": "https://fisheaters.com/customstimeafterepiphany1.html", 
+        "description": "Time after Epiphany"
+      }, 
+      "https://en.wikipedia.org/wiki/Plough_Monday"
+    ]
+  }, 
+  "Time after Epiphany": {
+    "urls": [
+      "https://fisheaters.com/customstimeafterepiphany1.html"
+    ]
+  }, 
+  "Septuagesima": {
+    "urls": [
+      {
+        "url": "https://fisheaters.com/customsseptuagesima1.html", 
+        "description": "Septuagesima Overview"
+      }, 
+      {
+        "url": "https://fisheaters.com/customsseptuagesima1.html", 
+        "description": "Septuagesima"
+      }, 
+      "https://en.wikipedia.org/wiki/Septuagesima", 
+      "http://www.newadvent.org/cathen/13721b.htm"
+    ]
+  }, 
+  "Sexagesima": {
+    "urls": [
+      {
+        "url": "https://fisheaters.com/customsseptuagesima1.html", 
+        "description": "Septuagesima Overview"
+      }, 
+      "https://en.wikipedia.org/wiki/Sexagesima", 
+      "http://www.newadvent.org/cathen/13747a.htm"
+    ]
+  }, 
+  "Quinquagesima": {
+    "urls": [
+      {
+        "url": "https://fisheaters.com/customsseptuagesima1.html", 
+        "description": "Septuagesima Overview"
+      }, 
+      "https://en.wikipedia.org/wiki/Quinquagesima", 
+      "http://www.newadvent.org/cathen/12614a.htm"
+    ]
+  }, 
+  "Shrove Monday": {
+    "urls": [
+      {
+        "url": "https://fisheaters.com/customsseptuagesima1.html", 
+        "description": "Septuagesima Overview"
+      }, 
+      {
+        "url": "https://fisheaters.com/customsseptuagesima2.html", 
+        "description": "Shrovetide"
+      }, 
+      {
+        "url": "http://www.newadvent.org/cathen/13763a.htm", 
+        "description": "Shrovetide"
+      }
+    ]
+  }, 
+  "Mardi Gras": {
+    "urls": [
+      {
+        "url": "https://fisheaters.com/customsseptuagesima1.html", 
+        "description": "Septuagesima Overview"
+      }, 
+      {
+        "url": "https://fisheaters.com/customsseptuagesima2.html", 
+        "description": "Shrovetide"
+      }, 
+      {
+        "url": "http://www.newadvent.org/cathen/13763a.htm", 
+        "description": "Shrovetide"
+      }
+    ]
+  }, 
+  "St. Matthias": {
+    "attributes": [
+      "Apostle"
+    ], 
+    "urls": [
+      "https://en.wikipedia.org/wiki/Saint_Matthias", 
+      "http://www.newadvent.org/cathen/10066a.htm"
+    ]
+  }, 
+  "St. Gabriel of Our Lady of Sorrows": {
+    "attributes": [
+      "Confessor"
+    ], 
+    "urls": [
+      "https://en.wikipedia.org/wiki/Gabriel_of_Our_Lady_of_Sorrows", 
+      {
+        "url": "http://www.newadvent.org/cathen/06330c.htm", 
+        "description": "Bl. Gabriel Possenti"
+      }
+    ]
+  }, 
+  "Lent": {
+    "urls": [
+      {
+        "url": "https://fisheaters.com/customslent1.html", 
+        "description": "Lent Overview"
+      }, 
+      {
+        "url": "https://en.wikipedia.org/wiki/Lent", 
+        "description": "Lent"
+      }, 
+      {
+        "url": "http://www.newadvent.org/cathen/09152a.htm", 
+        "description": "Lent"
+      }
+    ]
+  }, 
+  "Ash Wednesday": {
+    "urls": [
+      "https://fisheaters.com/customslent2.html", 
+      "https://en.wikipedia.org/wiki/Ash_Wednesday", 
+      "http://www.newadvent.org/cathen/01775b.htm"
+    ]
+  }, 
+  "Lenten Embertide": {
+    "urls": [
+      "https://fisheaters.com/customslent3.html"
+    ]
+  }, 
+  "Laetare Sunday": {
+    "urls": [
+      "https://fisheaters.com/customslent7.html", 
+      "https://en.wikipedia.org/wiki/Laetare_Sunday", 
+      "http://www.newadvent.org/cathen/08737c.htm"
+    ]
+  }, 
+  "Passiontide": {
+    "urls": [
+      "https://fisheaters.com/customslent8.html", 
+      "https://en.wikipedia.org/wiki/Passiontide", 
+      "http://www.newadvent.org/cathen/11535b.htm"
+    ]
+  }, 
+  "Passion Sunday": {
+    "urls": [
+      "https://en.wikipedia.org/wiki/Passion_Sunday", 
+      "http://www.newadvent.org/cathen/11535a.htm"
+    ]
+  }, 
+  "The Seven Sorrows": {
+    "urls": [
+      "https://fisheaters.com/customslent10.html", 
+      "https://en.wikipedia.org/wiki/Friday_of_Sorrows", 
+      "https://en.wikipedia.org/wiki/Our_Lady_of_Sorrows", 
+      {
+        "url": "http://www.newadvent.org/cathen/14151b.htm", 
+        "description": "Feasts of the Seven Sorrows of the Blessed Virgin Mary"
+      }
+    ]
+  }, 
+  "Holy Week": {
+    "urls": [
+      "https://en.wikipedia.org/wiki/Holy_Week", 
+      "http://www.newadvent.org/cathen/07435a.htm"
+    ]
+  }, 
+  "Palm Sunday": {
+    "urls": [
+      "https://fisheaters.com/customslent11.html", 
+      "https://en.wikipedia.org/wiki/Palm_Sunday", 
+      "http://www.newadvent.org/cathen/11432b.htm"
+    ]
+  }, 
+  "Spy Wednesday": {
+    "urls": [
+      "https://fisheaters.com/customslent12.html", 
+      "https://en.wikipedia.org/wiki/Holy_Wednesday"
+    ]
+  }, 
+  "Maundy Thursday": {
+    "urls": [
+      "https://fisheaters.com/customslent13.html", 
+      "https://en.wikipedia.org/wiki/Maundy_Thursday", 
+      "http://www.newadvent.org/cathen/10068a.htm"
+    ]
+  }, 
+  "Paschal Triduum": {
+    "urls": [
+      "https://en.wikipedia.org/wiki/Paschal_Triduum"
+    ]
+  }, 
+  "Good Friday": {
+    "urls": [
+      "https://fisheaters.com/customslent14.html", 
+      "https://en.wikipedia.org/wiki/Good_Friday", 
+      "http://www.newadvent.org/cathen/06643a.htm"
+    ]
+  }, 
+  "Holy Saturday": {
+    "urls": [
+      "https://fisheaters.com/customslent15.html", 
+      "https://en.wikipedia.org/wiki/Holy_Saturday", 
+      "http://www.newadvent.org/cathen/07424a.htm"
+    ]
+  }, 
+  "Easter": {
+    "urls": [
+      "https://fisheaters.com/customseastertide2.html", 
+      "https://en.wikipedia.org/wiki/Easter", 
+      "http://www.newadvent.org/cathen/05224d.htm"
+    ]
+  }, 
+  "Eastertide": {
+    "urls": [
+      {
+        "url": "https://fisheaters.com/customseastertide1.html", 
+        "description": "Eastertide Overview"
+      }, 
+      {
+        "url": "http://www.newadvent.org/cathen/11516a.htm", 
+        "description": "Paschal Tide"
+      }
+    ]
+  }, 
+  "Quasimodo Sunday": {
+    "urls": [
+      {
+        "url": "https://fisheaters.com/customseastertide4.html", 
+        "description": "Low Sunday"
+      }, 
+      {
+        "url": "https://en.wikipedia.org/wiki/Divine_Mercy_Sunday", 
+        "description": "Divine Mercy Sunday"
+      }, 
+      {
+        "url": "http://www.newadvent.org/cathen/09400a.htm", 
+        "description": "Low Sunday"
+      }
+    ]
+  }, 
+  "Jubilate Sunday": {
+    "urls": [
+      "https://en.wikipedia.org/wiki/Jubilate_Sunday", 
+      "http://www.newadvent.org/cathen/08531b.htm"
+    ]
+  }, 
+  "Misericordia Sunday": {
+    "urls": [
+      "https://en.wikipedia.org/wiki/Misericordia_Sunday"
+    ]
+  }, 
+  "Cantate Sunday": {
+    "urls": [
+      "https://en.wikipedia.org/wiki/Cantate_Sunday", 
+      "http://www.newadvent.org/cathen/03299a.htm"
+    ]
+  }, 
+  "Major Rogation": {
+    "urls": [
+      "https://fisheaters.com/customseastertide3.html", 
+      "https://en.wikipedia.org/wiki/Rogation_days", 
+      "http://www.newadvent.org/cathen/13110b.htm"
+    ]
+  }, 
+  "Minor Rogation": {
+    "urls": [
+      "https://fisheaters.com/customseastertide3.html", 
+      "https://en.wikipedia.org/wiki/Rogation_days", 
+      "http://www.newadvent.org/cathen/13110b.htm"
+    ]
+  }, 
+  "Ascension": {
+    "urls": [
+      "https://fisheaters.com/customseastertide6.html", 
+      {
+        "url": "https://en.wikipedia.org/wiki/Feast_of_the_Ascension", 
+        "description": "Feast of the Ascension"
+      }, 
+      {
+        "url": "http://www.newadvent.org/cathen/01767b.htm", 
+        "description": "Feast of the Ascension"
+      }
+    ]
+  }, 
+  "Pentecost": {
+    "urls": [
+      {
+        "url": "https://fisheaters.com/customseastertide7.html", 
+        "description": "Vigil of the Pentecost and Whitsunday"
+      }, 
+      {
+        "url": "https://en.wikipedia.org/wiki/Pentecost", 
+        "description": "Pentecost"
+      }, 
+      {
+        "url": "https://en.wikipedia.org/wiki/Whitsun", 
+        "description": "Whitsun"
+      }, 
+      {
+        "url": "http://www.newadvent.org/cathen/15614b.htm", 
+        "description": "Pentecost (Whitsunday)"
+      }
+    ]
+  }, 
+  "Whit Embertide": {
+    "urls": [
+      "https://fisheaters.com/customseastertide8.html"
+    ]
+  }, 
+  "Time after Pentecost": {
+    "urls": [
+      "https://fisheaters.com/customstimeafterpentecost1.html"
+    ]
+  }, 
+  "Trinity Sunday": {
+    "urls": [
+      "https://fisheaters.com/customseastertide9.html", 
+      "https://en.wikipedia.org/wiki/Trinity_Sunday", 
+      "http://www.newadvent.org/cathen/15058a.htm"
+    ]
+  }, 
+  "Corpus Christi": {
+    "urls": [
+      "https://fisheaters.com/customstimeafterpentecost2.html", 
+      "https://en.wikipedia.org/wiki/Corpus_Christi_(feast)", 
+      {
+        "url": "http://www.newadvent.org/cathen/04390b.htm", 
+        "description": "Feast of Corpus Christi"
+      }
+    ]
+  }, 
+  "Feast of the Sacred Heart": {
+    "urls": [
+      "https://fisheaters.com/customstimeafterpentecost4.html", 
+      "https://en.wikipedia.org/wiki/Feast_of_the_Sacred_Heart", 
+      {
+        "url": "https://en.wikipedia.org/wiki/Sacred_Heart", 
+        "description": "Sacred Heart"
+      }, 
+      {
+        "url": "http://www.newadvent.org/cathen/07163a.htm", 
+        "description": "Devotion to the Sacred Heart of Jesus"
+      }
+    ]
+  }, 
+  "Michaelmas Embertide": {
+    "urls": [
+      "https://fisheaters.com/customstimeafterpentecost8.html"
+    ]
+  }, 
+  "Christ the King": {
+    "urls": [
+      {
+        "url": "https://fisheaters.com/customstimeafterpentecost11.html", 
+        "description": "Feast of Christ the King"
+      }, 
+      "https://en.wikipedia.org/wiki/Christ_the_King", 
+      "https://en.wikipedia.org/wiki/Feast_of_Christ_the_King", 
+      {
+        "url": "http://www.newadvent.org/library/docs_pi11qp.htm", 
+        "description": "Quas Primus"
+      }
+    ]
+  }, 
+  "Last Sunday after Pentecost": {
+    "urls": [
+      "https://fisheaters.com/customstimeafterpentecost13.html"
+    ]
+  }
+}

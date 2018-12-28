@@ -40,13 +40,11 @@ class LiturgicalCalendar(object):
         self.calendar = {}
         self.dirname = os.path.dirname(os.path.realpath(__file__))
         
-        # TODO: Convert the json file to a dict.
         with open(os.path.join(self.dirname, 'movable_feasts.json')) as json_file:
             self.movable_feasts = json.load(json_file)
 
         with open(os.path.join(self.dirname, 'fixed_feasts.json')) as json_file:
             self.fixed_feasts = json.load(json_file)
-        self.fixed_feasts = self._convert_json_to_dict(self.fixed_feasts)
 
         with open(os.path.join(self.dirname, 'traditional_feasts.json')) as json_file:
             self.traditional_feasts = json.load(json_file)
@@ -57,31 +55,63 @@ class LiturgicalCalendar(object):
         self._mark_feasts_memorials_and_commemorations()
         self._mark_traditional_feasts()
 
-    # TODO: Remove this function and convert the json file itself to a dict.
-    def _convert_json_to_dict(self, json_obj):
-        d = {}
-        for elem in json_obj:
-            elem_date = dt.datetime.strptime(elem['date'], '%B %d')
-            elem_date = elem_date.replace(self.year, elem_date.month, elem_date.day)
-            elem_date = self._convert_date(elem['date'])
-            if elem_date not in d:
-                d[elem_date] = elem
-            else:
-                if type(d[elem_date]) is list:
-                    d[elem_date] = d[elem_date] + [elem]
-                else:
-                    d[elem_date] = [d[elem_date], elem]
-        return d
-
     def _mark_solemnities(self):
         # First we do fixed solemnities.
-        for feast in self.fixed_feasts:
-            if feast['class'] == 1:
-                self.calendar[_self.convert_date(feast['date'])] = feast
+        for date in self.fixed_feasts:
+            if self.fixed_feasts[date]['class'] == 1:
+                self.calendar[_self.convert_date(date)] = self.fixed_feasts[date]
 
         # Now the movable solemnities.
-        self.calendar[holy_name_date(self.year)] = self.movable_feasts[
+        self.calendar[self.gaudete_sunday] = self.movable_feasts['Gaudete Sunday']
+        self.calendar[self.holy_name_date] = self.movable_feasts['Feast of the Holy Name']
+        self.calendar[self.holy_family_date] = self.movable_feasts['Feast of the Holy Family']
+        self.calendar[self.plough_monday_date] = self.movable_feasts['Plough Monday']
+        self.calendar[self.septuagesima_date] = self.movable_feasts['Septuagesima']
+        self.calendar[self.sexagesima_date] = self.movable_feasts['Sexagesima']
+        self.calendar[self.quinquagesima_date] = self.movable_feasts['Quinquagesima']
 
     def _convert_date(self, date_str):
         date = dt.datetime.strptime(date_str, '%B %d')
         return date.replace(self.year, date.month, date.year)
+
+    @property
+    def gaudete_sunday(self):
+        xmas = dt.date(self.year - 1, 12, 25)
+        return xmas - dt.timedelta(xmas.weekday() + 8)
+
+    @property
+    def holy_name_date(self):
+        new_years_day = dt.date(self.year, 1, 1)
+        holy_name = new_years_day + dt.timedelta(6 - new_years_day.weekday())
+        if holy_name in [new_years_day, dt.date(self.year, 1, 6), dt.date(self.year, 1, 7)]:
+            return dt.date(self.year, 1, 2)
+        else:
+            return holy_name
+
+    @property
+    def holy_family_date(self):
+        epiphany = dt.date(self.year, 1, 6)
+        delta = dt.timedelta(6 - epiphany.weekday())
+        if delta == 0:
+            delta = 7
+        return epiphany + delta
+
+    @property
+    def plough_monday_date(self):
+        return holy_family_date + dt.timedelta(1)
+
+    @property
+    def ash_wednesday_date(self):
+        return self.easter_date - dt.timedelta(46)
+
+    @property
+    def quinquagesima_date(self):
+        return ash_wednesday_date - dt.timedelta(3)
+
+    @property
+    def sexagesima_date(self):
+        return quinquagesima_date - dt.timedelta(7)
+
+    @property
+    def septuagesima_date(self):
+        return sexagesima_date - dt.timedelta(7)

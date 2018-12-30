@@ -52,15 +52,20 @@ class LiturgicalCalendar(object):
 
         self.easter_date = computus(self.year)
         self._mark_solemnities()
-        self._mark_sundays()
-        self._mark_feasts_memorials_and_commemorations()
-        self._mark_traditional_feasts()
+        # self._mark_sundays()
+        # self._mark_feasts_memorials_and_commemorations()
+        # self._mark_traditional_feasts()
 
     def _mark_solemnities(self):
         # First we do fixed solemnities.
         for date in self.fixed_feasts:
-            if self.fixed_feasts[date]['class'] == 1:
-                self.calendar[_self.convert_date(date)] = self.fixed_feasts[date]
+            if type(self.fixed_feasts[date]) is dict:
+                if self.fixed_feasts[date]['class'] == 1:
+                    self.calendar[self._convert_date(date)] = self.fixed_feasts[date]
+            elif type(self.fixed_feasts[date]) is list:
+                for elem in self.fixed_feasts[date]:
+                    if elem['class'] == 1:
+                        self.calendar[self._convert_date(date)] = elem
 
         # Now the movable solemnities.
         function_name_pairs = (
@@ -75,7 +80,7 @@ class LiturgicalCalendar(object):
             (self.mardi_gras_date, 'Mardi Gras'),
             (self.ash_wednesday_date, 'Ash Wednesday'),
             (self.st_matthias_date, 'St. Matthias'),
-            (self.st_gabriel_of_our_lady_of_sorrows, 'St. Gabriel of Our Lady of Sorrows'),
+            (self.st_gabriel_of_our_lady_of_sorrows_date, 'St. Gabriel of Our Lady of Sorrows'),
             (self.laetare_sunday_date, 'Laetare Sunday'),
             (self.passion_sunday_date, 'Passion Sunday'),
             (self.seven_sorrows_date, 'The Seven Sorrows'),
@@ -100,16 +105,22 @@ class LiturgicalCalendar(object):
         )
 
         for date_fn, name in function_name_pairs:
-            self.calendar[date_fn()] = self.movable_feasts[name]
+            if type(date_fn) is list:
+                for elem in date_fn:
+                    self.calendar[elem] = self.movable_feasts[name]
+            else:
+                self.calendar[date_fn] = self.movable_feasts[name]
 
     def _convert_date(self, date_str):
         date = dt.datetime.strptime(date_str, '%B %d')
-        return date.replace(self.year, date.month, date.year)
+        return date.replace(self.year, date.month, date.day)
 
+    @property
     def gaudete_sunday_date(self):
         xmas = dt.date(self.year - 1, 12, 25)
         return xmas - dt.timedelta(xmas.weekday() + 8)
 
+    @property
     def holy_name_date(self):
         new_years_day = dt.date(self.year, 1, 1)
         holy_name = new_years_day + dt.timedelta(6 - new_years_day.weekday())
@@ -118,6 +129,7 @@ class LiturgicalCalendar(object):
         else:
             return holy_name
 
+    @property
     def holy_family_date(self):
         epiphany = dt.date(self.year, 1, 6)
         delta = dt.timedelta(6 - epiphany.weekday())
@@ -125,76 +137,107 @@ class LiturgicalCalendar(object):
             delta = 7
         return epiphany + delta
 
+    @property
     def plough_monday_date(self):
         return self.holy_family_date + dt.timedelta(1)
 
+    @property
     def ash_wednesday_date(self):
         return self.easter_date - dt.timedelta(46)
 
+    @property
     def quinquagesima_date(self):
         return self.ash_wednesday_date - dt.timedelta(3)
 
+    @property
     def shrove_monday_date(self):
         return self.ash_wednesday_date - dt.timedelta(2)
 
+    @property
     def mardi_gras_date(self):
         return self.ash_wednesday_date - dt.timedelta(1)
 
+    @property
     def sexagesima_date(self):
         return self.quinquagesima_date - dt.timedelta(7)
 
+    @property
     def septuagesima_date(self):
         return self.sexagesima_date - dt.timedelta(7)
 
+    @property
     def st_matthias_date(self):
-        if calendar.isleapyear(self.year):
-            return dt.date(self.year, 2, 24)
-        else:
+        if calendar.isleap(self.year):
             return dt.date(self.year, 2, 25)
-
-    def st_gabriel_of_our_lady_of_sorrows(self):
-        if calendar.isleapyear(self.year):
-            return dt.date(self.year, 2, 27)
         else:
-            return dt.date(self.year, 2, 28)
+            return dt.date(self.year, 2, 24)
 
+    @property
+    def st_gabriel_of_our_lady_of_sorrows_date(self):
+        if calendar.isleap(self.year):
+            return dt.date(self.year, 2, 28)
+        else:
+            return dt.date(self.year, 2, 27)
+
+    @property
     def laetare_sunday_date(self):
         return self.easter_date - dt.timedelta(21)
-    
+
     @property
     def passion_sunday_date(self):
         return self.easter_date - dt.timedelta(14)
 
+    @property
     def seven_sorrows_date(self):
         return self.palm_sunday_date - dt.timedelta(2)
 
+    @property
+    def lady_day_date(self):
+        lady_day = dt.date(self.year, 3, 25)
+        if self.palm_sunday_date <= lady_day <= self.quasimodo_sunday_date:
+            return self.quasimodo_sunday_date + dt.timedelta(1)
+        elif lady_day.weekday() == 6:
+            return lady_day + dt.timedelta(1)
+        else:
+            return lady_day
+
+    @property
     def palm_sunday_date(self):
         return self.easter_date - dt.timedelta(7)
 
+    @property
     def spy_wednesday_date(self):
         return self.easter_date - dt.timedelta(4)
 
+    @property
     def maundy_thursday_date(self):
         return self.easter_date - dt.timedelta(3)
 
+    @property
     def good_friday_date(self):
         return self.easter_date - dt.timedelta(2)
 
+    @property
     def holy_saturday_date(self):
         return self.easter_date - dt.timedelta(1)
 
+    @property
     def quasimodo_sunday_date(self):
         return self.easter_date + dt.timedelta(7)
 
+    @property
     def jubilate_sunday_date(self):
         return self.easter_date + dt.timedelta(14)
 
+    @property
     def misericordia_sunday_date(self):
         return self.easter_date + dt.timedelta(21)
 
+    @property
     def cantate_sunday_date(self):
         return self.easter_date + dt.timedelta(28)
 
+    @property
     def major_rogation_date(self):
         major_rogation = dt.date(self.year, 4, 25)
         if major_rogation != self.easter_date:
@@ -202,24 +245,31 @@ class LiturgicalCalendar(object):
         else:
             return major_rogation + dt.timedelta(2)
 
+    @property
     def ascension_date(self):
         return self.easter_date + dt.timedelta(39)
 
+    @property
     def minor_rogation_dates(self):
-        return [self.ascension_date - dt.timedelta(i) for i in range(1, 4)]
+        return sorted([self.ascension_date - dt.timedelta(i) for i in range(1, 4)])
 
+    @property
     def pentecost_date(self):
         return self.easter_date + dt.timedelta(49)
 
+    @property
     def trinity_sunday_date(self):
         return self.pentecost_date + dt.timedelta(7)
 
+    @property
     def corpus_christi_date(self):
         return self.trinity_sunday_date + dt.timedelta(4)
 
+    @property
     def sacred_heart_date(self):
-        return self.corpus_christi + dt.timedelta(8)
+        return self.corpus_christi_date + dt.timedelta(8)
 
+    @property
     def christ_the_king_date(self):
         halloween = dt.date(self.year, 10, 31)
         return halloween - dt.timedelta((halloween.weekday() + 1) % 7)

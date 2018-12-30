@@ -122,12 +122,20 @@
       "http://www.newadvent.org/cathen/08737c.htm"
     ]
   }, 
-  "Passiontide": {
+  "Lady Day": {
     "urls": [
-      "https://fisheaters.com/customslent8.html", 
-      "https://en.wikipedia.org/wiki/Passiontide", 
-      "http://www.newadvent.org/cathen/11535b.htm"
-    ]
+      "https://fisheaters.com/customslent6.html", 
+      {
+        "url": "https://en.wikipedia.org/wiki/Feast_of_the_Annunciation", 
+        "description": "Feast of the Annunciation"
+      }, 
+      "https://en.wikipedia.org/wiki/Lady_Day", 
+      {
+        "url": "http://www.newadvent.org/cathen/01542a.htm", 
+        "description": "Feast of the Annunciation"
+      }
+    ], 
+    "class": 1
   }, 
   "Passion Sunday": {
     "urls": [

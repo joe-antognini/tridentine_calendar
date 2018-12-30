@@ -1047,23 +1047,6 @@
     "obligation": false, 
     "class": 3
   }, 
-  "March 25": {
-    "obligation": false, 
-    "name": "Lady Day", 
-    "urls": [
-      "https://fisheaters.com/customslent6.html", 
-      {
-        "url": "https://en.wikipedia.org/wiki/Feast_of_the_Annunciation", 
-        "description": "Feast of the Annunciation"
-      }, 
-      "https://en.wikipedia.org/wiki/Lady_Day", 
-      {
-        "url": "http://www.newadvent.org/cathen/01542a.htm", 
-        "description": "Feast of the Annunciation"
-      }
-    ], 
-    "class": 1
-  }, 
   "March 27": [
     {
       "name": "St. John Damascene", 
@@ -1079,7 +1062,7 @@
       "class": 3
     }, 
     {
-      "name": "St. John Capistran", 
+      "name": "St. John Capistrano", 
       "titles": [
         "Confessor"
       ], 

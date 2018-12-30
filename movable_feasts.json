@@ -1,48 +1,4 @@
 {
-  "Advent": {
-    "urls": [
-      {
-        "url": "https://fisheaters.com/customsadvent1.html", 
-        "description": "Advent Overview"
-      }, 
-      {
-        "url": "https://fisheaters.com/customsadvent2.html", 
-        "description": "Advent Wreath & Candles"
-      }, 
-      {
-        "url": "https://fisheaters.com/adventcribs.html", 
-        "description": "Nativity Scenes"
-      }, 
-      {
-        "url": "https://fisheaters.com/customsadvent12.html", 
-        "description": "Advent Calendars"
-      }, 
-      {
-        "url": "https://fisheaters.com/customsadvent9.html", 
-        "description": "Jesse Trees"
-      }, 
-      {
-        "url": "https://en.wikipedia.org/wiki/Advent", 
-        "description": "Advent"
-      }
-    ]
-  }, 
-  "Embertide": {
-    "urls": [
-      {
-        "url": "https://fisheaters.com/emberdays.html", 
-        "description": "Embertide Overview"
-      }, 
-      {
-        "url": "http://www.newadvent.org/cathen/05399b.htm", 
-        "description": "Ember Days"
-      }, 
-      {
-        "url": "https://en.wikipedia.org/wiki/Ember_days", 
-        "description": "Ember Days"
-      }
-    ]
-  }, 
   "Advent Embertide": {
     "urls": [
       {
@@ -91,75 +47,39 @@
       "https://en.wikipedia.org/wiki/Plough_Monday"
     ]
   }, 
-  "Time after Epiphany": {
-    "urls": [
-      "https://fisheaters.com/customstimeafterepiphany1.html"
-    ]
-  }, 
   "Septuagesima": {
     "urls": [
-      {
-        "url": "https://fisheaters.com/customsseptuagesima1.html", 
-        "description": "Septuagesima Overview"
-      }, 
-      {
-        "url": "https://fisheaters.com/customsseptuagesima1.html", 
-        "description": "Septuagesima"
-      }, 
+      "https://fisheaters.com/septuagesima.html",
       "https://en.wikipedia.org/wiki/Septuagesima", 
       "http://www.newadvent.org/cathen/13721b.htm"
     ]
   }, 
   "Sexagesima": {
     "urls": [
-      {
-        "url": "https://fisheaters.com/customsseptuagesima1.html", 
-        "description": "Septuagesima Overview"
-      }, 
       "https://en.wikipedia.org/wiki/Sexagesima", 
       "http://www.newadvent.org/cathen/13747a.htm"
     ]
   }, 
   "Quinquagesima": {
     "urls": [
-      {
-        "url": "https://fisheaters.com/customsseptuagesima1.html", 
-        "description": "Septuagesima Overview"
-      }, 
       "https://en.wikipedia.org/wiki/Quinquagesima", 
       "http://www.newadvent.org/cathen/12614a.htm"
     ]
   }, 
+  "Fat Thursday": {
+    "urls": [
+      "https://en.wikipedia.org/wiki/Fat_Thursday"
+    ]
+  },
   "Shrove Monday": {
     "urls": [
-      {
-        "url": "https://fisheaters.com/customsseptuagesima1.html", 
-        "description": "Septuagesima Overview"
-      }, 
-      {
-        "url": "https://fisheaters.com/customsseptuagesima2.html", 
-        "description": "Shrovetide"
-      }, 
-      {
-        "url": "http://www.newadvent.org/cathen/13763a.htm", 
-        "description": "Shrovetide"
-      }
+      "https://en.wikipedia.org/wiki/Shrove_Monday"
     ]
   }, 
   "Mardi Gras": {
     "urls": [
-      {
-        "url": "https://fisheaters.com/customsseptuagesima1.html", 
-        "description": "Septuagesima Overview"
-      }, 
-      {
-        "url": "https://fisheaters.com/customsseptuagesima2.html", 
-        "description": "Shrovetide"
-      }, 
-      {
-        "url": "http://www.newadvent.org/cathen/13763a.htm", 
-        "description": "Shrovetide"
-      }
+      "https://en.wikipedia.org/wiki/Mardi_Gras",
+      "https://en.wikipedia.org/wiki/Shrove_Tuesday"
     ]
   }, 
   "St. Matthias": {
@@ -180,22 +100,6 @@
       {
         "url": "http://www.newadvent.org/cathen/06330c.htm", 
         "description": "Bl. Gabriel Possenti"
-      }
-    ]
-  }, 
-  "Lent": {
-    "urls": [
-      {
-        "url": "https://fisheaters.com/customslent1.html", 
-        "description": "Lent Overview"
-      }, 
-      {
-        "url": "https://en.wikipedia.org/wiki/Lent", 
-        "description": "Lent"
-      }, 
-      {
-        "url": "http://www.newadvent.org/cathen/09152a.htm", 
-        "description": "Lent"
       }
     ]
   }, 
@@ -242,12 +146,6 @@
       }
     ]
   }, 
-  "Holy Week": {
-    "urls": [
-      "https://en.wikipedia.org/wiki/Holy_Week", 
-      "http://www.newadvent.org/cathen/07435a.htm"
-    ]
-  }, 
   "Palm Sunday": {
     "urls": [
       "https://fisheaters.com/customslent11.html", 
@@ -266,11 +164,6 @@
       "https://fisheaters.com/customslent13.html", 
       "https://en.wikipedia.org/wiki/Maundy_Thursday", 
       "http://www.newadvent.org/cathen/10068a.htm"
-    ]
-  }, 
-  "Paschal Triduum": {
-    "urls": [
-      "https://en.wikipedia.org/wiki/Paschal_Triduum"
     ]
   }, 
   "Good Friday": {
@@ -292,18 +185,6 @@
       "https://fisheaters.com/customseastertide2.html", 
       "https://en.wikipedia.org/wiki/Easter", 
       "http://www.newadvent.org/cathen/05224d.htm"
-    ]
-  }, 
-  "Eastertide": {
-    "urls": [
-      {
-        "url": "https://fisheaters.com/customseastertide1.html", 
-        "description": "Eastertide Overview"
-      }, 
-      {
-        "url": "http://www.newadvent.org/cathen/11516a.htm", 
-        "description": "Paschal Tide"
-      }
     ]
   }, 
   "Quasimodo Sunday": {
@@ -389,11 +270,6 @@
   "Whit Embertide": {
     "urls": [
       "https://fisheaters.com/customseastertide8.html"
-    ]
-  }, 
-  "Time after Pentecost": {
-    "urls": [
-      "https://fisheaters.com/customstimeafterpentecost1.html"
     ]
   }, 
   "Trinity Sunday": {

@@ -1,0 +1,111 @@
+{
+  "Advent": {
+    "urls": [
+      {
+        "url": "https://fisheaters.com/customsadvent1.html", 
+        "description": "Advent Overview"
+      }, 
+      {
+        "url": "https://fisheaters.com/customsadvent2.html", 
+        "description": "Advent Wreath & Candles"
+      }, 
+      {
+        "url": "https://fisheaters.com/adventcribs.html", 
+        "description": "Nativity Scenes"
+      }, 
+      {
+        "url": "https://fisheaters.com/customsadvent12.html", 
+        "description": "Advent Calendars"
+      }, 
+      {
+        "url": "https://fisheaters.com/customsadvent9.html", 
+        "description": "Jesse Trees"
+      }, 
+      {
+        "url": "https://en.wikipedia.org/wiki/Advent", 
+        "description": "Advent"
+      }
+    ]
+  }, 
+  "Embertide": {
+    "urls": [
+      {
+        "url": "https://fisheaters.com/emberdays.html", 
+        "description": "Embertide Overview"
+      }, 
+      {
+        "url": "http://www.newadvent.org/cathen/05399b.htm", 
+        "description": "Ember Days"
+      }, 
+      {
+        "url": "https://en.wikipedia.org/wiki/Ember_days", 
+        "description": "Ember Days"
+      }
+    ]
+  }, 
+  "Time after Epiphany": {
+    "urls": [
+      "https://fisheaters.com/customstimeafterepiphany1.html"
+    ]
+  }, 
+  "Septuagesima": {
+    "urls": [
+      {
+        "url": "https://fisheaters.com/customsseptuagesima1.html", 
+        "description": "Septuagesima Overview"
+      }
+    ]
+  },
+  "Shrovetide": {
+    "urls": [
+      "https://fisheaters.com/customsseptuagesima2.html",
+      "https://en.wikipedia.org/wiki/Shrovetide",
+      "https://en.wikipedia.org/wiki/Carnival",
+      "http://www.newadvent.org/cathen/13763a.htm"
+    ]
+  },
+  "Lent": {
+    "urls": [
+      {
+        "url": "https://fisheaters.com/customslent1.html", 
+        "description": "Lent Overview"
+      }, 
+      {
+        "url": "https://en.wikipedia.org/wiki/Lent", 
+        "description": "Lent"
+      }, 
+      {
+        "url": "http://www.newadvent.org/cathen/09152a.htm", 
+        "description": "Lent"
+      }
+    ]
+  }, 
+  "Holy Week": {
+    "urls": [
+      "https://en.wikipedia.org/wiki/Holy_Week", 
+      "http://www.newadvent.org/cathen/07435a.htm"
+    ]
+  }, 
+  "Paschal Triduum": {
+    "urls": [
+      "https://en.wikipedia.org/wiki/Paschal_Triduum"
+    ]
+  }, 
+  "Eastertide": {
+    "urls": [
+      {
+        "url": "https://fisheaters.com/customseastertide1.html", 
+        "description": "Eastertide Overview"
+      }, 
+      {
+        "url": "http://www.newadvent.org/cathen/11516a.htm", 
+        "description": "Paschal Tide"
+      }
+    ]
+  }, 
+  "Time after Pentecost": {
+    "urls": [
+      "https://fisheaters.com/customstimeafterpentecost1.html"
+    ]
+  }
+}

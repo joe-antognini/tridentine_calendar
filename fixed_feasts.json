@@ -1284,20 +1284,18 @@
     "obligation": false, 
     "name": "St. Catherine of Siena", 
     "urls": [
-      {
-        "url": "https://en.wikipedia.org/wiki/Catherine_of_Siena", 
-        "description": "Catherine of Siena"
-      }, 
-      {
-        "url": "http://www.newadvent.org/cathen/03447a.htm", 
-        "description": "St. Catherine of Siena"
-      }
+      "https://en.wikipedia.org/wiki/Catherine_of_Siena", 
+      "http://www.newadvent.org/cathen/03447a.htm"
     ], 
     "class": 3
   }, 
   "May 1": {
     "obligation": false, 
-    "name": "St. Joseph the Worker, formerly ", 
+    "name": "St. Joseph the Worker", 
+    "urlz": [
+      "https://en.wikipedia.org/wiki/Saint_Joseph", 
+      "http://www.newadvent.org/cathen/08504a.htm"
+    ],
     "class": 1
   }, 
   "May 2": {
@@ -3557,7 +3555,6 @@
         "description": "All Saints' Day"
       }, 
       "https://en.wikipedia.org/wiki/All_Saints%27_Day", 
-      "https://en.wikipedia.org/wiki/Allhallowtide", 
       {
         "url": "http://www.newadvent.org/cathen/01315a.htm", 
         "description": "All Saints' Day"
@@ -3572,7 +3569,6 @@
       "https://fisheaters.com/customstimeafterpentecost12ac.html", 
       "https://en.wikipedia.org/wiki/All_Souls%27_Day", 
       "https://en.wikipedia.org/wiki/Day_of_the_Dead", 
-      "https://en.wikipedia.org/wiki/Allhallowtide", 
       "http://www.newadvent.org/cathen/01315b.htm"
     ], 
     "class": 1

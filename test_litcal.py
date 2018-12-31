@@ -19,7 +19,6 @@ class TestLiturgicalCalendarSmoke(unittest.TestCase):
     def test_liturgical_calendar(self):
         self.assertIsNotNone(LiturgicalCalendar(2018))
 
-
 class TestLiturgicalCalendarMovableFeastDates(unittest.TestCase):
     
     def setUp(self):
@@ -27,6 +26,12 @@ class TestLiturgicalCalendarMovableFeastDates(unittest.TestCase):
 
     def test_gaudete_sunday_date(self):
         self.assertEqual(self.litcal_2018.gaudete_sunday_date, dt.date(2017, 12, 17))
+
+    def test_advent_embertide_dates(self):
+        self.assertListEqual(
+            self.litcal_2018.advent_embertide_dates,
+            [dt.date(2017, 12, 20), dt.date(2017, 12, 22), dt.date(2017, 12, 23)],
+        )
 
     def test_holy_name_date(self):
         self.assertEqual(self.litcal_2018.holy_name_date, dt.date(2018, 1, 2))
@@ -54,6 +59,12 @@ class TestLiturgicalCalendarMovableFeastDates(unittest.TestCase):
 
     def test_mardi_gras_date(self):
         self.assertEqual(self.litcal_2018.mardi_gras_date, dt.date(2018, 2, 13))
+
+    def test_lenten_embertide_dates(self):
+        self.assertListEqual(
+            self.litcal_2018.lenten_embertide_dates,
+            [dt.date(2018, 2, 21), dt.date(2018, 2, 23), dt.date(2018, 2, 24)],
+        )
 
     def test_st_matthias_date(self):
         self.assertEqual(self.litcal_2018.st_matthias_date, dt.date(2018, 2, 24))
@@ -119,6 +130,12 @@ class TestLiturgicalCalendarMovableFeastDates(unittest.TestCase):
     def test_pentecost_date(self):
         self.assertEqual(self.litcal_2018.pentecost_date, dt.date(2018, 5, 20))
 
+    def test_whit_embertide_dates(self):
+        self.assertListEqual(
+            self.litcal_2018.whit_embertide_dates,
+            [dt.date(2018, 5, 23), dt.date(2018, 5, 25), dt.date(2018, 5, 26)],
+        )
+
     def test_trinity_sunday_date(self):
         self.assertEqual(self.litcal_2018.trinity_sunday_date, dt.date(2018, 5, 27))
 
@@ -128,5 +145,25 @@ class TestLiturgicalCalendarMovableFeastDates(unittest.TestCase):
     def test_sacred_heart_date(self):
         self.assertEqual(self.litcal_2018.sacred_heart_date, dt.date(2018, 6, 8))
 
+    def test_michaelmas_embertide_dates(self):
+        self.assertListEqual(
+            self.litcal_2018.michaelmas_embertide_dates,
+            [dt.date(2018, 9, 19), dt.date(2018, 9, 21), dt.date(2018, 9, 22)],
+        )
+
     def test_christ_the_king_date(self):
         self.assertEqual(self.litcal_2018.christ_the_king_date, dt.date(2018, 10, 28))
+
+
+class TestLiturgicalCalendarSundayDates(unittest.TestCase):
+    
+    def test_liturgical_calendar_sunday_dates(self):
+        litcal_2018 = LiturgicalCalendar(2018)
+        self.assertEqual(
+            litcal_2018[dt.date(2018, 9, 2)][0]['name'],
+            'Fifteenth Sunday after Pentecost',
+        )
+        self.assertEqual(
+            litcal_2018[dt.date(2018, 11, 25)][0]['name'],
+            'Last Sunday after Pentecost',
+        )

@@ -1,43 +1,39 @@
 {
-  "St. Barbara": {
-    "date": "December 4", 
+  "December 4": {
+    "name": "St. Barbara",
     "urls": [
       "https://fisheaters.com/customsadvent2a.html", 
       "https://en.wikipedia.org/wiki/Saint_Barbara"
     ]
   }, 
-  "Feast of Our Lady of Guadalupe": {
-    "date": "December 12", 
+  "December 12": {
+    "name": "Our Lady of Guadalupe",
     "obligation": false, 
     "urls": [
       "https://fisheaters.com/customsadvent6.html", 
       "https://en.wikipedia.org/wiki/Our_Lady_of_Guadalupe", 
       "http://www.newadvent.org/cathen/07043a.htm"
-    ], 
-    "class": 3
+    ]
   }, 
-  "Las Posadas": {
-    "date": "December 16", 
+  "December 16": {
+    "name": "Las Posadas",
     "urls": [
       "https://fisheaters.com/customsadvent8.html", 
       "https://en.wikipedia.org/wiki/Las_Posadas"
     ]
   }, 
-  "Golden Nights": {
-    "date": "December 17", 
+  "December 17": {
+    "name": "Golden Nights",
     "urls": [
       "https://fisheaters.com/customsadvent10.html", 
       "https://en.wikipedia.org/wiki/O_Antiphons", 
       "http://www.newadvent.org/cathen/11173b.htm"
     ]
   }, 
-  "St. Brigid": {
-    "date": "February 1", 
+  "February 1": {
+    "name": "St. Brigid",
     "urls": [
-      {
-        "url": "https://fisheaters.com/customstimeafterepiphany2a.html", 
-        "description": "St. Brigid"
-      }, 
+      "https://fisheaters.com/customstimeafterepiphany2a.html", 
       {
         "url": "http://www.newadvent.org/cathen/02784b.htm", 
         "description": "Saint Brigid of Ireland"
@@ -45,38 +41,28 @@
       "https://en.wikipedia.org/wiki/Brigid_of_Kildare"
     ]
   }, 
-  "Walpurgisnacht": {
-    "date": "April 30", 
+  "April 30": {
+    "name": "Walpurgisnacht",
     "urls": [
-      {
-        "url": "https://fisheaters.com/walpurgisnacht.html", 
-        "description": "Walpurgisnacht"
-      }, 
-      {
-        "url": "https://en.wikipedia.org/wiki/Walpurgis_Night", 
-        "description": "Walpurgis Night"
-      }
+      "https://fisheaters.com/walpurgisnacht.html", 
+      "https://en.wikipedia.org/wiki/Walpurgis_Night"
     ]
   }, 
-  "St. Walpurga": {
-    "date": "May 1", 
+  "May 1": {
+    "name": "St. Walpurga",
     "urls": [
-      {
-        "url": "https://en.wikipedia.org/wiki/Saint_Walpurga", 
-        "description": "Saint Walpurga"
-      }, 
+      "https://en.wikipedia.org/wiki/Saint_Walpurga", 
       {
         "url": "http://www.newadvent.org/cathen/15526b.htm", 
         "description": "Saint Walburga"
       }
     ]
   }, 
-  "Halloween": {
-    "date": "October 31", 
+  "October 31": {
+    "name": "Halloween",
     "urls": [
       "https://fisheaters.com/customstimeafterpentecost12aa.html", 
-      "https://en.wikipedia.org/wiki/Halloween", 
-      "https://en.wikipedia.org/wiki/Allhallowtide"
+      "https://en.wikipedia.org/wiki/Halloween"
     ]
   }
 }

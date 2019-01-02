@@ -1,3 +1,4 @@
+* Add season mix-ins.
 * Add class and title information to ICS description.
 * Rename `traditional_feasts.json` to something else.
 * Add flags for the ICS conversion (exclude commemorations, etc.)

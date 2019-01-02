@@ -5,6 +5,11 @@ import datetime as dt
 import json
 import os
 
+import ics
+from arrow import Arrow
+
+# TODO: Define the names of the data files here.  (This way they can be monkey patched for testing.)
+
 ORDINALS = {
     1: 'First',
     2: 'Second',
@@ -103,7 +108,7 @@ class LiturgicalCalendar(object):
                             self.calendar[date] += [elem]
                 else:
                     if self.fixed_feasts[date_str]['class'] == 1:
-                        self.calendar[date] += self.fixed_feasts[date_str]
+                        self.calendar[date] += [self.fixed_feasts[date_str]]
             date += dt.timedelta(1)
 
         # Now the movable solemnities.
@@ -200,7 +205,7 @@ class LiturgicalCalendar(object):
                             self.calendar[date] += [elem]
                 else:
                     if self.fixed_feasts[date_str]['class'] != 1:
-                        self.calendar[date] += self.fixed_feasts[date_str]
+                        self.calendar[date] += [self.fixed_feasts[date_str]]
             date += dt.timedelta(1)
 
         # Finally we mark traditional feasts.
@@ -212,11 +217,44 @@ class LiturgicalCalendar(object):
                     for elem in self.traditional_feasts[date_str]:
                         self.calendar[date] += [elem]
                 else:
-                    self.calendar[date] += self.traditional_feasts[date_str]
+                    self.calendar[date] += [self.traditional_feasts[date_str]]
             date += dt.timedelta(1)
 
     def __getitem__(self, key):
         return self.calendar[key]
+
+    def _get_urls(self, urls_obj):
+        urls = []
+        for url_obj in urls_obj:
+            if type(url_obj) is str:
+                urls.append(url_obj)
+            elif type(url_obj) is dict:
+                urls.append(url_obj['url'])
+        return urls
+
+    def to_ics(self):
+        ics_calendar = ics.Calendar()
+        date = self.liturgical_year_start
+        while date <= self.liturgical_year_end:
+            for i, elem in enumerate(self.calendar[date]):
+                name = elem['name']
+                if i > 0:
+                    name = '(' + name + ')'
+                description = '\n'.join(self._get_urls(elem))
+                arrow_date = Arrow.fromdate(date)
+                ics_event = ics.Event(name=name, begin=arrow_date, description=description)
+                ics_event.make_all_day()
+                ics_calendar.events.add(ics_event)
+            date += dt.timedelta(1)
+        return ics_calendar
+
+    def _append_to_ics_file(self, fp):
+        ics_calendar = ics.Calendar(fp.read())
+        return ics_calendar
+    
+    def append_to_ics_file(self, filename):
+        with open(filename) as f:
+            return self._append_to_ics_file(f)
 
     @property
     def gaudete_sunday_date(self):

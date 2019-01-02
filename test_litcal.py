@@ -1,7 +1,8 @@
 import datetime as dt
 import unittest
 
-from litcal import *
+from .litcal import computus
+from .litcal import LiturgicalCalendar
 
 
 class TestComputus(unittest.TestCase):
@@ -23,6 +24,8 @@ class TestLiturgicalCalendarMovableFeastDates(unittest.TestCase):
     
     def setUp(self):
         self.litcal_2018 = LiturgicalCalendar(2018)
+
+    # TODO: Test the liturgical year start and end dates.
 
     def test_gaudete_sunday_date(self):
         self.assertEqual(self.litcal_2018.gaudete_sunday_date, dt.date(2017, 12, 17))
@@ -167,3 +170,7 @@ class TestLiturgicalCalendarSundayDates(unittest.TestCase):
             litcal_2018[dt.date(2018, 11, 25)][0]['name'],
             'Last Sunday after Pentecost',
         )
+
+# TODO: Test the data stored in the calendar.  (Monkey patch the data files we read from.)
+
+# TODO: Test the ICS conversion.

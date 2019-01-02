@@ -27,6 +27,14 @@
       }
     ]
   }, 
+  "Christmastide": {
+    "urls": [
+      {
+        "url": "https://fisheaters.com/customschristmas1.html", 
+        "description": "Christmastide Overview"
+      }
+    ]
+  },
   "Embertide": {
     "urls": [
       {
@@ -57,6 +65,7 @@
     ]
   },
   "Shrovetide": {
+    "season": ["Septuagesima"],
     "urls": [
       "https://fisheaters.com/customsseptuagesima2.html",
       "https://en.wikipedia.org/wiki/Shrovetide",
@@ -81,6 +90,7 @@
     ]
   }, 
   "Passiontide": {
+    "season": ["Lent"],
     "urls": [
       "https://fisheaters.com/customslent8.html", 
       "https://en.wikipedia.org/wiki/Passiontide", 
@@ -88,12 +98,14 @@
     ]
   }, 
   "Holy Week": {
+    "season": ["Passiontide"],
     "urls": [
       "https://en.wikipedia.org/wiki/Holy_Week", 
       "http://www.newadvent.org/cathen/07435a.htm"
     ]
   }, 
   "Paschal Triduum": {
+    "season": ["Holy Week"],
     "urls": [
       "https://en.wikipedia.org/wiki/Paschal_Triduum"
     ]
@@ -116,6 +128,7 @@
     ]
   },
   "Hallowtide": {
+    "season": ["Time after Pentecost"],
     "urls": [
       "https://en.wikipedia.org/wiki/Allhallowtide"
     ]

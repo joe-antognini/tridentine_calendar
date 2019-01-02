@@ -23,7 +23,9 @@ class TestLiturgicalCalendarSmoke(unittest.TestCase):
 class TestLiturgicalCalendarMovableFeastDates(unittest.TestCase):
     
     def setUp(self):
+        self.litcal_2004 = LiturgicalCalendar(2004)
         self.litcal_2018 = LiturgicalCalendar(2018)
+        self.litcal_2050 = LiturgicalCalendar(2050)
 
     # TODO: Test the liturgical year start and end dates.
 
@@ -46,10 +48,14 @@ class TestLiturgicalCalendarMovableFeastDates(unittest.TestCase):
         self.assertEqual(self.litcal_2018.plough_monday_date, dt.date(2018, 1, 8))
 
     def test_ash_wednesday_date(self):
+        self.assertEqual(self.litcal_2004.ash_wednesday_date, dt.date(2004, 2, 25))
         self.assertEqual(self.litcal_2018.ash_wednesday_date, dt.date(2018, 2, 14))
+        self.assertEqual(self.litcal_2050.ash_wednesday_date, dt.date(2050, 2, 23))
 
     def test_septuagesima_date(self):
+        self.assertEqual(self.litcal_2004.septuagesima_date, dt.date(2004, 2, 8))
         self.assertEqual(self.litcal_2018.septuagesima_date, dt.date(2018, 1, 28))
+        self.assertEqual(self.litcal_2050.septuagesima_date, dt.date(2050, 2, 6))
 
     def test_sexagesima_date(self):
         self.assertEqual(self.litcal_2018.sexagesima_date, dt.date(2018, 2, 4))

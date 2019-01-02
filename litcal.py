@@ -84,6 +84,8 @@ class LiturgicalCalendar(object):
         with open(os.path.join(self.dirname, 'traditional_feasts.json')) as json_file:
             self.traditional_feasts = json.load(json_file)
 
+        with open(os.path.join(self.dirname, 'seasons.json')) as json_file:
+            self.seasons = json.load(json_file)
 
         self.easter_date = computus(self.year)
         self.xmas = dt.date(self.year - 1, 12, 25)
@@ -218,6 +220,41 @@ class LiturgicalCalendar(object):
                         self.calendar[date] += [elem]
                 else:
                     self.calendar[date] += [self.traditional_feasts[date_str]]
+            date += dt.timedelta(1)
+
+        self._add_seasons()
+
+    def _add_seasons(self):
+        date = self.liturgical_year_start
+        while date <= self.liturgical_year_end:
+            if date < dt.date(self.year - 1, 12, 25):
+                season_key = 'Advent'
+            elif date < dt.date(self.year, 1, 6):
+                season_key = 'Christmastide'
+            elif date < self.septuagesima_date:
+                season_key = 'Time after Epiphany'
+            elif date < self.ash_wednesday_date:
+                season_key = 'Septuagesima'
+            elif date < self.passion_sunday_date:
+                season_key = 'Lent'
+            elif date < self.palm_sunday_date:
+                season_key = 'Passiontide'
+            elif date < self.maundy_thursday_date:
+                season_key = 'Holy Week'
+            elif date < self.easter_date:
+                season_key = 'Paschal Triduum'
+            elif date < self.pentecost_date:
+                season_key = 'Eastertide'
+            elif date < dt.date(self.year, 10, 31):
+                season_key = 'Time after Pentecost'
+            elif date < dt.date(self.year, 11, 3):
+                season_key = 'Hallowtide'
+            else:
+                season_key = 'Time after Pentecost'
+
+            for i, elem in enumerate(self.calendar[date]):
+                self.calendar[date][i]['season'] = self.seasons[season_key]
+
             date += dt.timedelta(1)
 
     def __getitem__(self, key):

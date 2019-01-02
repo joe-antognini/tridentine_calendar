@@ -30,20 +30,12 @@
   }, 
   "Feast of the Holy Family": {
     "urls": [
-      {
-        "url": "https://fisheaters.com/customstimeafterepiphany1.html", 
-        "description": "Time after Epiphany"
-      }, 
       "https://fisheaters.com/customstimeafterepiphany1a.html", 
       "https://en.wikipedia.org/wiki/Holy_Family"
     ]
   }, 
   "Plough Monday": {
     "urls": [
-      {
-        "url": "https://fisheaters.com/customstimeafterepiphany1.html", 
-        "description": "Time after Epiphany"
-      }, 
       "https://en.wikipedia.org/wiki/Plough_Monday"
     ]
   }, 
@@ -83,7 +75,7 @@
     ]
   }, 
   "St. Matthias": {
-    "attributes": [
+    "titles": [
       "Apostle"
     ], 
     "urls": [
@@ -92,7 +84,7 @@
     ]
   }, 
   "St. Gabriel of Our Lady of Sorrows": {
-    "attributes": [
+    "titles": [
       "Confessor"
     ], 
     "urls": [

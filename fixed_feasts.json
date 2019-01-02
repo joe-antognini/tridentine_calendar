@@ -200,10 +200,6 @@
     "name": "Christmas Eve", 
     "urls": [
       {
-        "url": "https://fisheaters.com/customschristmas1.html", 
-        "description": "Christmas Overview"
-      }, 
-      {
         "url": "https://fisheaters.com/customschristmas2.html", 
         "description": "Christmas Eve and Christmas Day"
       }, 
@@ -220,10 +216,6 @@
     "name": "Christmas", 
     "urls": [
       {
-        "url": "https://fisheaters.com/customschristmas1.html", 
-        "description": "Christmastide Overview"
-      }, 
-      {
         "url": "https://fisheaters.com/customschristmas2.html", 
         "description": "Christmas Eve and Christmas Day"
       }, 
@@ -238,10 +230,6 @@
       "Martyr"
     ], 
     "urls": [
-      {
-        "url": "https://fisheaters.com/customschristmas1.html", 
-        "description": "Christmastide Overview"
-      }, 
       "https://fisheaters.com/customschristmas3.html", 
       "https://en.wikipedia.org/wiki/Saint_Stephen", 
       "http://www.newadvent.org/cathen/14286b.htm"
@@ -256,10 +244,6 @@
       "Evangelist"
     ], 
     "urls": [
-      {
-        "url": "https://fisheaters.com/customschristmas1.html", 
-        "description": "Christmastide Overview"
-      }, 
       "https://fisheaters.com/customschristmas4.html", 
       "https://en.wikipedia.org/wiki/John_the_Evangelist", 
       "http://www.newadvent.org/cathen/08492a.htm"
@@ -273,10 +257,6 @@
       "Martyr"
     ], 
     "urls": [
-      {
-        "url": "https://fisheaters.com/customschristmas1.html", 
-        "description": "Christmastide Overview"
-      }, 
       "https://fisheaters.com/customschristmas5.html", 
       "https://en.wikipedia.org/wiki/Massacre_of_the_Innocents", 
       "http://www.newadvent.org/cathen/07419a.htm"
@@ -291,10 +271,6 @@
       "Martyr"
     ], 
     "urls": [
-      {
-        "url": "https://fisheaters.com/customschristmas1.html", 
-        "description": "Christmastide Overview"
-      }, 
       "https://fisheaters.com/customschristmasx.html", 
       "https://en.wikipedia.org/wiki/Thomas_Becket", 
       "http://www.newadvent.org/cathen/14676a.htm"
@@ -309,10 +285,6 @@
       "Confessor"
     ], 
     "urls": [
-      {
-        "url": "https://fisheaters.com/customschristmas1.html", 
-        "description": "Christmastide Overview"
-      }, 
       "https://fisheaters.com/customschristmas6.html", 
       "https://en.wikipedia.org/wiki/Saint_Sylvester%27s_Day", 
       "https://en.wikipedia.org/wiki/Pope_Sylvester_I", 
@@ -325,10 +297,6 @@
     "obligation": true, 
     "name": "Feast of the Circumcision", 
     "urls": [
-      {
-        "url": "https://fisheaters.com/customschristmas1.html", 
-        "description": "Christmastide Overview"
-      }, 
       "https://fisheaters.com/customschristmas7.html", 
       "https://en.wikipedia.org/wiki/Feast_of_the_Circumcision_of_Christ", 
       "http://www.newadvent.org/cathen/03779a.htm"
@@ -339,10 +307,6 @@
     "obligation": false, 
     "name": "Twelfth Night", 
     "urls": [
-      {
-        "url": "https://fisheaters.com/customschristmas1.html", 
-        "description": "Christmastide Overview"
-      }, 
       "https://fisheaters.com/epiphanyeve.html", 
       "https://en.wikipedia.org/wiki/Twelfth_Night_(holiday)"
     ], 
@@ -350,12 +314,8 @@
   }, 
   "January 6": {
     "obligation": false, 
-    "name": "Three Kings Days", 
+    "name": "Three Kings Day", 
     "urls": [
-      {
-        "url": "https://fisheaters.com/customschristmas1.html", 
-        "description": "Christmastide Overview"
-      }, 
       "https://fisheaters.com/customschristmas8.html", 
       "https://en.wikipedia.org/wiki/Epiphany_(holiday)", 
       "http://www.newadvent.org/cathen/05504c.htm"
@@ -729,7 +689,6 @@
       "Confessor"
     ], 
     "urls": [
-      "https://fisheaters.com/customstimeafterepiphany4.html", 
       "https://en.wikipedia.org/wiki/Saint_Blaise", 
       "http://www.newadvent.org/cathen/02592a.htm"
     ], 

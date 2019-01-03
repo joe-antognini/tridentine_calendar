@@ -1,5 +1,6 @@
 {
   "Advent Embertide": {
+    "liturgical_event": true,
     "urls": [
       {
         "url": "https://fisheaters.com/customsadvent11.html", 
@@ -8,12 +9,14 @@
     ]
   }, 
   "Gaudete Sunday": {
+    "liturgical_event": true,
     "urls": [
       "https://en.wikipedia.org/wiki/Gaudete_Sunday", 
       "http://www.newadvent.org/cathen/06394b.htm"
     ]
   }, 
   "Feast of the Holy Name": {
+    "liturgical_event": true,
     "urls": [
       {
         "url": "https://fisheaters.com/customschristmas1.html", 
@@ -29,17 +32,20 @@
     ]
   }, 
   "Feast of the Holy Family": {
+    "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customstimeafterepiphany1a.html", 
       "https://en.wikipedia.org/wiki/Holy_Family"
     ]
   }, 
   "Plough Monday": {
+    "liturgical_event": false,
     "urls": [
       "https://en.wikipedia.org/wiki/Plough_Monday"
     ]
   }, 
   "Septuagesima": {
+    "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/septuagesima.html",
       "https://en.wikipedia.org/wiki/Septuagesima", 
@@ -47,34 +53,40 @@
     ]
   }, 
   "Sexagesima": {
+    "liturgical_event": true,
     "urls": [
       "https://en.wikipedia.org/wiki/Sexagesima", 
       "http://www.newadvent.org/cathen/13747a.htm"
     ]
   }, 
   "Quinquagesima": {
+    "liturgical_event": true,
     "urls": [
       "https://en.wikipedia.org/wiki/Quinquagesima", 
       "http://www.newadvent.org/cathen/12614a.htm"
     ]
   }, 
   "Fat Thursday": {
+    "liturgical_event": false,
     "urls": [
       "https://en.wikipedia.org/wiki/Fat_Thursday"
     ]
   },
   "Shrove Monday": {
+    "liturgical_event": false,
     "urls": [
       "https://en.wikipedia.org/wiki/Shrove_Monday"
     ]
   }, 
   "Mardi Gras": {
+    "liturgical_event": false,
     "urls": [
       "https://en.wikipedia.org/wiki/Mardi_Gras",
       "https://en.wikipedia.org/wiki/Shrove_Tuesday"
     ]
   }, 
   "St. Matthias": {
+    "liturgical_event": true,
     "titles": [
       "Apostle"
     ], 
@@ -84,6 +96,7 @@
     ]
   }, 
   "St. Gabriel of Our Lady of Sorrows": {
+    "liturgical_event": true,
     "titles": [
       "Confessor"
     ], 
@@ -96,6 +109,7 @@
     ]
   }, 
   "Ash Wednesday": {
+    "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customslent2.html", 
       "https://en.wikipedia.org/wiki/Ash_Wednesday", 
@@ -103,11 +117,13 @@
     ]
   }, 
   "Lenten Embertide": {
+    "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customslent3.html"
     ]
   }, 
   "Laetare Sunday": {
+    "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customslent7.html", 
       "https://en.wikipedia.org/wiki/Laetare_Sunday", 
@@ -115,6 +131,7 @@
     ]
   }, 
   "Lady Day": {
+    "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customslent6.html", 
       {
@@ -130,12 +147,14 @@
     "class": 1
   }, 
   "Passion Sunday": {
+    "liturgical_event": true,
     "urls": [
       "https://en.wikipedia.org/wiki/Passion_Sunday", 
       "http://www.newadvent.org/cathen/11535a.htm"
     ]
   }, 
   "The Seven Sorrows": {
+    "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customslent10.html", 
       "https://en.wikipedia.org/wiki/Friday_of_Sorrows", 
@@ -147,6 +166,7 @@
     ]
   }, 
   "Palm Sunday": {
+    "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customslent11.html", 
       "https://en.wikipedia.org/wiki/Palm_Sunday", 
@@ -154,12 +174,14 @@
     ]
   }, 
   "Spy Wednesday": {
+    "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customslent12.html", 
       "https://en.wikipedia.org/wiki/Holy_Wednesday"
     ]
   }, 
   "Maundy Thursday": {
+    "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customslent13.html", 
       "https://en.wikipedia.org/wiki/Maundy_Thursday", 
@@ -167,6 +189,7 @@
     ]
   }, 
   "Good Friday": {
+    "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customslent14.html", 
       "https://en.wikipedia.org/wiki/Good_Friday", 
@@ -174,6 +197,7 @@
     ]
   }, 
   "Holy Saturday": {
+    "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customslent15.html", 
       "https://en.wikipedia.org/wiki/Holy_Saturday", 
@@ -181,6 +205,7 @@
     ]
   }, 
   "Easter": {
+    "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customseastertide2.html", 
       "https://en.wikipedia.org/wiki/Easter", 
@@ -188,6 +213,7 @@
     ]
   }, 
   "Quasimodo Sunday": {
+    "liturgical_event": true,
     "urls": [
       {
         "url": "https://fisheaters.com/customseastertide4.html", 
@@ -204,23 +230,27 @@
     ]
   }, 
   "Jubilate Sunday": {
+    "liturgical_event": true,
     "urls": [
       "https://en.wikipedia.org/wiki/Jubilate_Sunday", 
       "http://www.newadvent.org/cathen/08531b.htm"
     ]
   }, 
   "Misericordia Sunday": {
+    "liturgical_event": true,
     "urls": [
       "https://en.wikipedia.org/wiki/Misericordia_Sunday"
     ]
   }, 
   "Cantate Sunday": {
+    "liturgical_event": true,
     "urls": [
       "https://en.wikipedia.org/wiki/Cantate_Sunday", 
       "http://www.newadvent.org/cathen/03299a.htm"
     ]
   }, 
   "Major Rogation": {
+    "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customseastertide3.html", 
       "https://en.wikipedia.org/wiki/Rogation_days", 
@@ -228,6 +258,7 @@
     ]
   }, 
   "Minor Rogation": {
+    "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customseastertide3.html", 
       "https://en.wikipedia.org/wiki/Rogation_days", 
@@ -235,6 +266,7 @@
     ]
   }, 
   "Ascension": {
+    "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customseastertide6.html", 
       {
@@ -248,6 +280,7 @@
     ]
   }, 
   "Pentecost": {
+    "liturgical_event": true,
     "urls": [
       {
         "url": "https://fisheaters.com/customseastertide7.html", 
@@ -268,11 +301,13 @@
     ]
   }, 
   "Whit Embertide": {
+    "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customseastertide8.html"
     ]
   }, 
   "Trinity Sunday": {
+    "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customseastertide9.html", 
       "https://en.wikipedia.org/wiki/Trinity_Sunday", 
@@ -280,6 +315,7 @@
     ]
   }, 
   "Corpus Christi": {
+    "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customstimeafterpentecost2.html", 
       "https://en.wikipedia.org/wiki/Corpus_Christi_(feast)", 
@@ -290,6 +326,7 @@
     ]
   }, 
   "Feast of the Sacred Heart": {
+    "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customstimeafterpentecost4.html", 
       "https://en.wikipedia.org/wiki/Feast_of_the_Sacred_Heart", 
@@ -304,11 +341,13 @@
     ]
   }, 
   "Michaelmas Embertide": {
+    "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customstimeafterpentecost8.html"
     ]
   }, 
   "Christ the King": {
+    "liturgical_event": true,
     "urls": [
       {
         "url": "https://fisheaters.com/customstimeafterpentecost11.html", 
@@ -323,6 +362,7 @@
     ]
   }, 
   "Last Sunday after Pentecost": {
+    "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customstimeafterpentecost13.html"
     ]

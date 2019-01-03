@@ -81,9 +81,6 @@ class LiturgicalCalendar(object):
         with open(os.path.join(self.dirname, 'fixed_feasts.json')) as json_file:
             self.fixed_feasts = json.load(json_file)
 
-        with open(os.path.join(self.dirname, 'traditional_feasts.json')) as json_file:
-            self.traditional_feasts = json.load(json_file)
-
         with open(os.path.join(self.dirname, 'seasons.json')) as json_file:
             self.seasons = json.load(json_file)
 
@@ -106,11 +103,17 @@ class LiturgicalCalendar(object):
             if date_str in self.fixed_feasts:
                 if type(self.fixed_feasts[date_str]) is list:
                     for elem in self.fixed_feasts[date_str]:
-                        if elem['class'] == 1:
-                            self.calendar[date] += [elem]
+                        try:
+                            if 'class' in elem and elem['class'] == 1:
+                                self.calendar[date] += [elem]
+                        except KeyError:
+                            continue
                 else:
-                    if self.fixed_feasts[date_str]['class'] == 1:
-                        self.calendar[date] += [self.fixed_feasts[date_str]]
+                    try:
+                        if self.fixed_feasts[date_str]['class'] == 1:
+                            self.calendar[date] += [self.fixed_feasts[date_str]]
+                    except KeyError:
+                        continue
             date += dt.timedelta(1)
 
         # Now the movable solemnities.
@@ -123,6 +126,7 @@ class LiturgicalCalendar(object):
             (self.septuagesima_date, 'Septuagesima'),
             (self.sexagesima_date, 'Sexagesima'),
             (self.quinquagesima_date, 'Quinquagesima'),
+            (self.fat_thursday_date, 'Fat Thursday'),
             (self.shrove_monday_date, 'Shrove Monday'),
             (self.mardi_gras_date, 'Mardi Gras'),
             (self.ash_wednesday_date, 'Ash Wednesday'),
@@ -203,23 +207,17 @@ class LiturgicalCalendar(object):
             if date_str in self.fixed_feasts:
                 if type(self.fixed_feasts[date_str]) is list:
                     for elem in self.fixed_feasts[date_str]:
-                        if elem['class'] != 1:
-                            self.calendar[date] += [elem]
+                        try:
+                            if elem['class'] != 1:
+                                self.calendar[date] += [elem]
+                        except KeyError:
+                            continue
                 else:
-                    if self.fixed_feasts[date_str]['class'] != 1:
-                        self.calendar[date] += [self.fixed_feasts[date_str]]
-            date += dt.timedelta(1)
-
-        # Finally we mark traditional feasts.
-        date = self.liturgical_year_start
-        while date <= self.liturgical_year_end:
-            date_str = date.strftime('%B %d')
-            if date_str in self.traditional_feasts:
-                if type(self.traditional_feasts[date_str]) is list:
-                    for elem in self.traditional_feasts[date_str]:
-                        self.calendar[date] += [elem]
-                else:
-                    self.calendar[date] += [self.traditional_feasts[date_str]]
+                    try:
+                        if self.fixed_feasts[date_str]['class'] != 1:
+                            self.calendar[date] += [self.fixed_feasts[date_str]]
+                    except KeyError:
+                        continue
             date += dt.timedelta(1)
 
         self._add_seasons()
@@ -227,30 +225,36 @@ class LiturgicalCalendar(object):
     def _add_seasons(self):
         date = self.liturgical_year_start
         while date <= self.liturgical_year_end:
-            if date < dt.date(self.year - 1, 12, 25):
+            if date in [self.fat_thursday_date, self.shrove_monday_date, self.mardi_gras_date]:
+                season_key = 'Shrovetide'
+            elif self.liturgical_year_start <= date < dt.date(self.year - 1, 12, 25):
                 season_key = 'Advent'
-            elif date < dt.date(self.year, 1, 6):
+            elif dt.date(self.year - 1, 12, 25) <= date < dt.date(self.year, 1, 6):
                 season_key = 'Christmastide'
-            elif date < self.septuagesima_date:
+            elif dt.date(self.year, 1, 6) <= date < self.septuagesima_date:
                 season_key = 'Time after Epiphany'
-            elif date < self.ash_wednesday_date:
+            elif self.septuagesima_date <= date < self.ash_wednesday_date:
                 season_key = 'Septuagesima'
-            elif date < self.passion_sunday_date:
+            elif self.ash_wednesday_date <= date < self.passion_sunday_date:
                 season_key = 'Lent'
-            elif date < self.palm_sunday_date:
+            elif self.passion_sunday_date <= date < self.palm_sunday_date:
                 season_key = 'Passiontide'
-            elif date < self.maundy_thursday_date:
+            elif self.palm_sunday_date <= date < self.maundy_thursday_date:
                 season_key = 'Holy Week'
-            elif date < self.easter_date:
+            elif self.maundy_thursday_date <= date < self.easter_date:
                 season_key = 'Paschal Triduum'
-            elif date < self.pentecost_date:
+            elif self.easter_date <= date < self.pentecost_date:
                 season_key = 'Eastertide'
-            elif date < dt.date(self.year, 10, 31):
+            elif self.pentecost_date <= date < dt.date(self.year, 10, 31):
                 season_key = 'Time after Pentecost'
-            elif date < dt.date(self.year, 11, 3):
+            elif dt.date(self.year, 10, 31) <= date < dt.date(self.year, 11, 3):
                 season_key = 'Hallowtide'
-            else:
+            elif dt.date(self.year, 11, 3) <= date <= self.liturgical_year_end:
                 season_key = 'Time after Pentecost'
+            else:
+                raise RuntimeError(
+                    'date {} exceeded liturgical year range of {} to {}.'.format(
+                        self.liturgical_year_start, self.liturgical_year_end))
 
             for i, elem in enumerate(self.calendar[date]):
                 self.calendar[date][i]['season'] = self.seasons[season_key]
@@ -333,6 +337,10 @@ class LiturgicalCalendar(object):
     @property
     def quinquagesima_date(self):
         return self.ash_wednesday_date - dt.timedelta(3)
+
+    @property
+    def fat_thursday_date(self):
+        return self.ash_wednesday_date - dt.timedelta(6)
 
     @property
     def shrove_monday_date(self):

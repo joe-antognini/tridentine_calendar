@@ -8,7 +8,9 @@ import os
 import ics
 from arrow import Arrow
 
-# TODO: Define the names of the data files here.  (This way they can be monkey patched for testing.)
+FIXED_FEASTS_FNAME = 'fixed_feasts_ferias_et_al.json'
+MOVABLE_FEASTS_FNAME = 'movable_feasts_ferias_et_al.json'
+SEASONS_FNAME = 'seasons.json'
 
 ORDINALS = {
     1: 'First',
@@ -75,13 +77,13 @@ class LiturgicalCalendar(object):
         self.year = year
         self.dirname = os.path.dirname(os.path.realpath(__file__))
         
-        with open(os.path.join(self.dirname, 'movable_feasts.json')) as json_file:
+        with open(os.path.join(self.dirname, MOVABLE_FEASTS_FNAME)) as json_file:
             self.movable_feasts = json.load(json_file)
 
-        with open(os.path.join(self.dirname, 'fixed_feasts.json')) as json_file:
+        with open(os.path.join(self.dirname, FIXED_FEASTS_FNAME)) as json_file:
             self.fixed_feasts = json.load(json_file)
 
-        with open(os.path.join(self.dirname, 'seasons.json')) as json_file:
+        with open(os.path.join(self.dirname, SEASONS_FNAME)) as json_file:
             self.seasons = json.load(json_file)
 
         self.easter_date = computus(self.year)
@@ -131,7 +133,7 @@ class LiturgicalCalendar(object):
             (self.mardi_gras_date, 'Mardi Gras'),
             (self.ash_wednesday_date, 'Ash Wednesday'),
             (self.lenten_embertide_dates, 'Lenten Embertide'),
-            (self.st_matthias_date, 'St. Matthias'),  # TODO: move this and the next to lower rank.
+            (self.st_matthias_date, 'St. Matthias'),
             (self.st_gabriel_of_our_lady_of_sorrows_date, 'St. Gabriel of Our Lady of Sorrows'),
             (self.laetare_sunday_date, 'Laetare Sunday'),
             (self.passion_sunday_date, 'Passion Sunday'),
@@ -154,6 +156,7 @@ class LiturgicalCalendar(object):
             (self.trinity_sunday_date, 'Trinity Sunday'),
             (self.corpus_christi_date, 'Corpus Christi'),
             (self.sacred_heart_date, 'Feast of the Sacred Heart'),
+            (self.peters_pence_date, 'Peter\'s Pence'),
             (self.michaelmas_embertide_dates, 'Michaelmas Embertide'),
             (self.christ_the_king_date, 'Christ the King'),
         )
@@ -465,6 +468,11 @@ class LiturgicalCalendar(object):
     @property
     def sacred_heart_date(self):
         return self.corpus_christi_date + dt.timedelta(8)
+
+    @property
+    def peters_pence_date(self):
+        ss_peter_paul = dt.date(self.year, 6, 29)
+        return ss_peter_paul + dt.timedelta(((2 - ss_peter_paul.weekday()) % 7) - 3)
 
     @property
     def michaelmas_embertide_dates(self):

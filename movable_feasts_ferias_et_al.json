@@ -340,6 +340,17 @@
       }
     ]
   }, 
+  "Peter's Pence": {
+    "liturgical_event": false,
+    "urls": [
+      "https://fisheaters.com/peterspence.html",
+      "https://en.wikipedia.org/wiki/Peter%27s_Pence",
+      {
+        "url": "http://www.newadvent.org/cathen/11774a.htm",
+        "description": "Peterspence"
+      }
+    ]
+  },
   "Michaelmas Embertide": {
     "liturgical_event": true,
     "urls": [

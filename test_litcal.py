@@ -154,6 +154,10 @@ class TestLiturgicalCalendarMovableFeastDates(unittest.TestCase):
     def test_sacred_heart_date(self):
         self.assertEqual(self.litcal_2018.sacred_heart_date, dt.date(2018, 6, 8))
 
+    def test_peters_pence_date(self):
+        self.assertEqual(self.litcal_2004.peters_pence_date, dt.date(2004, 6, 27))
+        self.assertEqual(self.litcal_2018.peters_pence_date, dt.date(2018, 7, 1))
+
     def test_michaelmas_embertide_dates(self):
         self.assertListEqual(
             self.litcal_2018.michaelmas_embertide_dates,

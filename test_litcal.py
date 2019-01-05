@@ -181,6 +181,32 @@ class TestLiturgicalCalendarSundayDates(unittest.TestCase):
             'Last Sunday after Pentecost',
         )
 
+class TestLiturgicalCalendarICS(unittest.TestCase):
+
+    def setUp(self):
+        self.litcal_2018 = LiturgicalCalendar(2018)
+
+    def test_name_with_article(self):
+        computed_str = self.litcal_2018._name_with_article('St. Barbara')
+        expected_str = 'the Feast of St. Barbara'
+        self.assertEqual(computed_str, expected_str)
+
+        computed_str = self.litcal_2018._name_with_article('SS. Vincent & Anastasius')
+        expected_str = 'the Feast of SS. Vincent & Anastasius'
+        self.assertEqual(computed_str, expected_str)
+
+        computed_str = self.litcal_2018._name_with_article('Third Sunday after Pentecost')
+        expected_str = 'the Third Sunday after Pentecost'
+        self.assertEqual(computed_str, expected_str)
+
+        computed_str = self.litcal_2018._name_with_article('Candlemas')
+        expected_str = 'Candlemas'
+        self.assertEqual(computed_str, expected_str)
+
+    def test_to_ics_smoke(self):
+        ics_calendar = self.litcal_2018.to_ics()
+        self.assertIsNotNone(ics_calendar)
+
 # TODO: Test the data stored in the calendar.  (Monkey patch the data files we read from.)
 
 # TODO: Test the ICS conversion.

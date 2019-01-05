@@ -261,32 +261,80 @@ class LiturgicalCalendar(object):
 
             for i, elem in enumerate(self.calendar[date]):
                 self.calendar[date][i]['season'] = self.seasons[season_key]
+                self.calendar[date][i]['season'].update({'name': season_key})
 
             date += dt.timedelta(1)
 
     def __getitem__(self, key):
         return self.calendar[key]
 
-    def _get_urls(self, urls_obj):
-        urls = []
-        for url_obj in urls_obj:
-            if type(url_obj) is str:
-                urls.append(url_obj)
-            elif type(url_obj) is dict:
-                urls.append(url_obj['url'])
-        return urls
+    def _format_urls(self, event):
+        description = ''
+        if 'urls' in event:
+            description += 'More information about {}:\n'.format(
+                self._name_with_article(event['name']))
+            for url_obj in event['urls']:
+                if type(url_obj) is str:
+                    description += url_obj + '\n'
+                elif type(url_obj) is dict:
+                    description += url_obj['url'] + '\n'
+
+        if 'season' in event:
+            description += '\n'
+            description += 'More information about {}:\n'.format(
+                self._season_with_article(event['season']['name']))
+            for url_obj in event['season']:
+                if type(url_obj) is str:
+                    description += url_obj + '\n'
+                elif type(url_obj) is dict:
+                    description += url_obj['url'] + '\n'
+
+        return description
+
+    def _name_with_article(self, name):
+        if name.startswith('St.') or name.startswith('SS.'):
+            return 'the Feast of ' + name
+        elif name.split()[0] in ORDINALS.values() or name.startswith('Last Sunday'):
+            return 'the ' + name
+        else:
+            return name
+
+    def _season_with_article(self, name):
+        if name.startswith('Time after'):
+            return 'the ' + name
+        else:
+            return name
 
     def to_ics(self):
         ics_calendar = ics.Calendar()
         date = self.liturgical_year_start
         while date <= self.liturgical_year_end:
             for i, elem in enumerate(self.calendar[date]):
-                name = elem['name']
-                if i > 0:
-                    name = '(' + name + ')'
-                description = '\n'.join(self._get_urls(elem))
+                ics_name = elem['name']
+                name_with_article = self._name_with_article(elem['name'])
+                description = ''
+
+                if elem.get('obligation'):
+                    description += 'Today is a holy day of obligation.\n\n'
+                
+                if not elem.get('liturgical_event'):
+                    description += '{} has no special liturgy.\n\n'.format(name_with_article)
+
+                if i > 0 and elem.get('liturgical_event'):
+                    outranking_feast = self.calendar[date][0]['name']
+                    ics_name = '(' + ics_name + ')'
+                    if (outranking_feast in self.movable_feasts or
+                        elem['name'] in self.movable_feasts):
+                        description += 'This year {} is outranked by {}.\n\n'.format(
+                            name_with_article, self._name_with_article(outranking_feast))
+                    else:
+                        description += '{} is outranked by {}.\n\n'.format(
+                            name_with_article.capitalize(),
+                            self._name_with_article(outranking_feast))
+
+                description += self._format_urls(elem)
                 arrow_date = Arrow.fromdate(date)
-                ics_event = ics.Event(name=name, begin=arrow_date, description=description)
+                ics_event = ics.Event(name=ics_name, begin=arrow_date, description=description)
                 ics_event.make_all_day()
                 ics_calendar.events.add(ics_event)
             date += dt.timedelta(1)
@@ -295,7 +343,7 @@ class LiturgicalCalendar(object):
     def _append_to_ics_file(self, fp):
         ics_calendar = ics.Calendar(fp.read())
         return ics_calendar
-    
+
     def append_to_ics_file(self, filename):
         with open(filename) as f:
             return self._append_to_ics_file(f)

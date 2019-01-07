@@ -1,3 +1,4 @@
+* Fix precedence during Easter week.
 * Format the URLs with HTML.
 * Add class and title information to ICS description.
 * Test liturgical year start and end dates

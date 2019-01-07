@@ -1,5 +1,6 @@
 from __future__ import division
 
+import argparse
 import calendar
 import datetime as dt
 import json
@@ -41,6 +42,13 @@ ORDINALS = {
     26: 'Twenty-sixth',
     27: 'Twenty-seventh',
 }
+
+
+def get_args():
+    parser = argparse.ArgumentParser(description='Calculate a liturgical calendar.')
+    parser.add_argument('--year', type=int, help='The year for which to calculate the calendar.')
+    parser.add_argument('--file', help='Name of the ICS file to write the calendar to.')
+    return parser.parse_args()
 
 
 def computus(year):
@@ -101,21 +109,11 @@ class LiturgicalCalendar(object):
         # First we mark fixed solemnities.
         date = self.liturgical_year_start
         while date <= self.liturgical_year_end:
-            date_str = date.strftime('%B %d')
+            date_str = date.strftime('%B %-d')
             if date_str in self.fixed_feasts:
-                if type(self.fixed_feasts[date_str]) is list:
-                    for elem in self.fixed_feasts[date_str]:
-                        try:
-                            if 'class' in elem and elem['class'] == 1:
-                                self.calendar[date] += [elem]
-                        except KeyError:
-                            continue
-                else:
-                    try:
-                        if self.fixed_feasts[date_str]['class'] == 1:
-                            self.calendar[date] += [self.fixed_feasts[date_str]]
-                    except KeyError:
-                        continue
+                for elem in self.fixed_feasts[date_str]:
+                    if 'class' in elem and elem['class'] == 1:
+                        self.calendar[date] += [elem]
             date += dt.timedelta(1)
 
         # Now the movable solemnities.
@@ -206,21 +204,11 @@ class LiturgicalCalendar(object):
         # Then second class fixed feasts or lower.
         date = self.liturgical_year_start
         while date <= self.liturgical_year_end:
-            date_str = date.strftime('%B %d')
+            date_str = date.strftime('%B %-d')
             if date_str in self.fixed_feasts:
-                if type(self.fixed_feasts[date_str]) is list:
-                    for elem in self.fixed_feasts[date_str]:
-                        try:
-                            if elem['class'] != 1:
-                                self.calendar[date] += [elem]
-                        except KeyError:
-                            continue
-                else:
-                    try:
-                        if self.fixed_feasts[date_str]['class'] != 1:
-                            self.calendar[date] += [self.fixed_feasts[date_str]]
-                    except KeyError:
-                        continue
+                for elem in self.fixed_feasts[date_str]:
+                    if 'class' in elem and elem['class'] != 1:
+                        self.calendar[date] += [elem]
             date += dt.timedelta(1)
 
         self._add_seasons()
@@ -268,33 +256,53 @@ class LiturgicalCalendar(object):
     def __getitem__(self, key):
         return self.calendar[key]
 
-    def _format_urls(self, event):
+    def _format_urls(self, event, format_html=False):
         description = ''
         if 'urls' in event:
             description += 'More information about {}:\n'.format(
                 self._name_with_article(event['name']))
+            if format_html:
+                description += '<ul>'
             for url_obj in event['urls']:
                 if type(url_obj) is str:
-                    description += url_obj + '\n'
+                    if format_html:
+                        description += '<li>' + url_obj + '</li>'
+                    else:
+                        description += '* ' + url_obj + '\n'
                 elif type(url_obj) is dict:
-                    description += url_obj['url'] + '\n'
+                    if format_html:
+                        description += '<li>' + url_obj['url'] + '</li>'
+                    else:
+                        description += '* ' + url_obj['url'] + '\n'
+            if format_html:
+                description += '</ul>'
 
         if 'season' in event:
-            description += '\n'
+            if 'urls' in event:
+                description += '\n'
+            if format_html:
+                description += '<ul>'
             description += 'More information about {}:\n'.format(
                 self._season_with_article(event['season']['name']))
-            for url_obj in event['season']:
+            for url_obj in event['season']['urls']:
                 if type(url_obj) is str:
-                    description += url_obj + '\n'
+                    if format_html:
+                        description += '<li>' + url_obj + '</li>'
+                    else:
+                        description += '* ' + url_obj + '\n'
                 elif type(url_obj) is dict:
-                    description += url_obj['url'] + '\n'
+                    description += '* ' + url_obj['url'] + '\n'
+            if format_html:
+                description += '</ul>'
 
         return description
 
     def _name_with_article(self, name):
-        if name.startswith('St.') or name.startswith('SS.'):
+        if name.startswith('St.') or name.startswith('SS.') or name.startswith('Pope'):
             return 'the Feast of ' + name
-        elif name.split()[0] in ORDINALS.values() or name.startswith('Last Sunday'):
+        elif (name.split()[0] in ORDINALS.values() or
+              name.startswith('Last Sunday') or
+              name.startswith('Feast')):
             return 'the ' + name
         else:
             return name
@@ -315,7 +323,7 @@ class LiturgicalCalendar(object):
                 description = ''
 
                 if elem.get('obligation'):
-                    description += 'Today is a holy day of obligation.\n\n'
+                    description += 'Today is a Holy Day of Obligation.\n\n'
                 
                 if not elem.get('liturgical_event'):
                     description += '{} has no special liturgy.\n\n'.format(name_with_article)
@@ -324,15 +332,16 @@ class LiturgicalCalendar(object):
                     outranking_feast = self.calendar[date][0]['name']
                     ics_name = '(' + ics_name + ')'
                     if (outranking_feast in self.movable_feasts or
-                        elem['name'] in self.movable_feasts):
+                        elem['name'] in self.movable_feasts or
+                        'Sunday' in outranking_feast):
                         description += 'This year {} is outranked by {}.\n\n'.format(
                             name_with_article, self._name_with_article(outranking_feast))
                     else:
                         description += '{} is outranked by {}.\n\n'.format(
-                            name_with_article.capitalize(),
+                            name_with_article[0].upper() + name_with_article[1:],
                             self._name_with_article(outranking_feast))
 
-                description += self._format_urls(elem)
+                description += self._format_urls(elem, format_html=True)
                 arrow_date = Arrow.fromdate(date)
                 ics_event = ics.Event(name=ics_name, begin=arrow_date, description=description)
                 ics_event.make_all_day()
@@ -369,13 +378,17 @@ class LiturgicalCalendar(object):
     def holy_family_date(self):
         epiphany = dt.date(self.year, 1, 6)
         delta = dt.timedelta(6 - epiphany.weekday())
-        if delta == 0:
-            delta = 7
+        if delta == dt.timedelta(0):
+            delta = dt.timedelta(7)
         return epiphany + delta
 
     @property
     def plough_monday_date(self):
-        return self.holy_family_date + dt.timedelta(1)
+        epiphany = dt.date(self.year, 1, 6)
+        if epiphany.weekday() == 6:
+            return epiphany + dt.timedelta(1)
+        else:
+            return self.holy_family_date + dt.timedelta(1)
 
     @property
     def ash_wednesday_date(self):
@@ -533,3 +546,10 @@ class LiturgicalCalendar(object):
     def christ_the_king_date(self):
         halloween = dt.date(self.year, 10, 31)
         return halloween - dt.timedelta((halloween.weekday() + 1) % 7)
+
+
+if __name__ == '__main__':
+    args = get_args()
+    litcal = LiturgicalCalendar(args.year)
+    with open(args.file, 'w') as f:
+        f.writelines(litcal.to_ics())

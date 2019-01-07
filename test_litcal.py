@@ -25,9 +25,26 @@ class TestLiturgicalCalendarMovableFeastDates(unittest.TestCase):
     def setUp(self):
         self.litcal_2004 = LiturgicalCalendar(2004)
         self.litcal_2018 = LiturgicalCalendar(2018)
+        self.litcal_2019 = LiturgicalCalendar(2019)
         self.litcal_2050 = LiturgicalCalendar(2050)
 
-    # TODO: Test the liturgical year start and end dates.
+    def test_liturgical_year_start_date(self):
+        self.assertEqual(self.litcal_2004.liturgical_year_start, dt.date(2003, 11, 30))
+        self.assertEqual(self.litcal_2018.liturgical_year_start, dt.date(2017, 12, 3))
+        self.assertEqual(self.litcal_2019.liturgical_year_start, dt.date(2018, 12, 2))
+
+    def test_liturgical_year_end_date(self):
+        self.assertEqual(self.litcal_2004.liturgical_year_end, dt.date(2004, 11, 27))
+        self.assertEqual(self.litcal_2018.liturgical_year_end, dt.date(2018, 12, 1))
+        self.assertEqual(self.litcal_2019.liturgical_year_end, dt.date(2019, 11, 30))
+
+    def test_epiphany_date(self):
+        computed_epiphany_name = self.litcal_2019[dt.date(2019, 1, 6)][0]['name']
+        self.assertEqual(computed_epiphany_name, 'Three Kings Day')
+
+    def test_candlemas_date(self):
+        computed_epiphany_name = self.litcal_2019[dt.date(2019, 2, 2)][0]['name']
+        self.assertEqual(computed_epiphany_name, 'Candlemas')
 
     def test_gaudete_sunday_date(self):
         self.assertEqual(self.litcal_2018.gaudete_sunday_date, dt.date(2017, 12, 17))
@@ -40,12 +57,15 @@ class TestLiturgicalCalendarMovableFeastDates(unittest.TestCase):
 
     def test_holy_name_date(self):
         self.assertEqual(self.litcal_2018.holy_name_date, dt.date(2018, 1, 2))
+        self.assertEqual(self.litcal_2019.holy_name_date, dt.date(2019, 1, 2))
 
     def test_holy_family_date(self):
         self.assertEqual(self.litcal_2018.holy_family_date, dt.date(2018, 1, 7))
+        self.assertEqual(self.litcal_2019.holy_family_date, dt.date(2019, 1, 13))
 
     def test_plough_monday_date(self):
         self.assertEqual(self.litcal_2018.plough_monday_date, dt.date(2018, 1, 8))
+        self.assertEqual(self.litcal_2019.plough_monday_date, dt.date(2019, 1, 7))
 
     def test_ash_wednesday_date(self):
         self.assertEqual(self.litcal_2004.ash_wednesday_date, dt.date(2004, 2, 25))
@@ -185,6 +205,7 @@ class TestLiturgicalCalendarICS(unittest.TestCase):
 
     def setUp(self):
         self.litcal_2018 = LiturgicalCalendar(2018)
+        self.litcal_2019 = LiturgicalCalendar(2019)
 
     def test_name_with_article(self):
         computed_str = self.litcal_2018._name_with_article('St. Barbara')

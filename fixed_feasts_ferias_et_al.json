@@ -626,18 +626,6 @@
       ],
       "class": 3,
       "liturgical_event": true
-    },
-    {
-      "obligation": false,
-      "name": "The Conversion of St. Paul",
-      "urls": [
-        {
-          "url": "https://en.wikipedia.org/wiki/Conversion_of_Paul_the_Apostle",
-          "description": "Conversion of Paul the Apostle"
-        }
-      ],
-      "class": 3,
-      "liturgical_event": true
     }
   ],
   "January 22": [

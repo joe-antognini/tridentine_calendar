@@ -137,11 +137,20 @@ class LiturgicalCalendar(object):
             (self.passion_sunday_date, 'Passion Sunday'),
             (self.seven_sorrows_date, 'The Seven Sorrows'),
             (self.palm_sunday_date, 'Palm Sunday'),
+            (self.palm_sunday_date + dt.timedelta(1), 'Monday of Holy Week'),
+            (self.palm_sunday_date + dt.timedelta(2), 'Tuesday of Holy Week'),
+            (self.palm_sunday_date, 'Palm Sunday'),
             (self.spy_wednesday_date, 'Spy Wednesday'),
             (self.maundy_thursday_date, 'Maundy Thursday'),
             (self.good_friday_date, 'Good Friday'),
             (self.holy_saturday_date, 'Holy Saturday'),
             (self.easter_date, 'Easter'),
+            (self.easter_date + dt.timedelta(1), 'Easter Monday'),
+            (self.easter_date + dt.timedelta(2), 'Easter Tuesday'),
+            (self.easter_date + dt.timedelta(3), 'Easter Wednesday'),
+            (self.easter_date + dt.timedelta(4), 'Easter Thursday'),
+            (self.easter_date + dt.timedelta(5), 'Easter Friday'),
+            (self.easter_date + dt.timedelta(6), 'Easter Saturday'),
             (self.quasimodo_sunday_date, 'Quasimodo Sunday'),
             (self.jubilate_sunday_date, 'Jubilate Sunday'),
             (self.misericordia_sunday_date, 'Misericordia Sunday'),
@@ -268,12 +277,12 @@ class LiturgicalCalendar(object):
                     if format_html:
                         description += '<li>' + url_obj + '</li>'
                     else:
-                        description += '* ' + url_obj + '\n'
+                        description += '• ' + url_obj + '\n'
                 elif type(url_obj) is dict:
                     if format_html:
                         description += '<li>' + url_obj['url'] + '</li>'
                     else:
-                        description += '* ' + url_obj['url'] + '\n'
+                        description += '• ' + url_obj['url'] + '\n'
             if format_html:
                 description += '</ul>'
 
@@ -289,9 +298,9 @@ class LiturgicalCalendar(object):
                     if format_html:
                         description += '<li>' + url_obj + '</li>'
                     else:
-                        description += '* ' + url_obj + '\n'
+                        description += '• ' + url_obj + '\n'
                 elif type(url_obj) is dict:
-                    description += '* ' + url_obj['url'] + '\n'
+                    description += '• ' + url_obj['url'] + '\n'
             if format_html:
                 description += '</ul>'
 
@@ -330,7 +339,7 @@ class LiturgicalCalendar(object):
 
                 if i > 0 and elem.get('liturgical_event'):
                     outranking_feast = self.calendar[date][0]['name']
-                    ics_name = '(' + ics_name + ')'
+                    ics_name = '«' + ics_name + '»'
                     if (outranking_feast in self.movable_feasts or
                         elem['name'] in self.movable_feasts or
                         'Sunday' in outranking_feast):
@@ -341,7 +350,7 @@ class LiturgicalCalendar(object):
                             name_with_article[0].upper() + name_with_article[1:],
                             self._name_with_article(outranking_feast))
 
-                description += self._format_urls(elem, format_html=True)
+                description += self._format_urls(elem, format_html=False)
                 arrow_date = Arrow.fromdate(date)
                 ics_event = ics.Event(name=ics_name, begin=arrow_date, description=description)
                 ics_event.make_all_day()

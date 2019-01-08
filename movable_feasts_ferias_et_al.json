@@ -173,6 +173,12 @@
       "http://www.newadvent.org/cathen/11432b.htm"
     ]
   }, 
+  "Monday of Holy Week": {
+    "liturgical_event": true
+  }, 
+  "Tuesday of Holy Week": {
+    "liturgical_event": true
+  }, 
   "Spy Wednesday": {
     "liturgical_event": true,
     "urls": [
@@ -205,6 +211,54 @@
     ]
   }, 
   "Easter": {
+    "liturgical_event": true,
+    "urls": [
+      "https://fisheaters.com/customseastertide2.html", 
+      "https://en.wikipedia.org/wiki/Easter", 
+      "http://www.newadvent.org/cathen/05224d.htm"
+    ]
+  }, 
+  "Easter Monday": {
+    "liturgical_event": true,
+    "urls": [
+      "https://fisheaters.com/customseastertide2.html", 
+      "https://en.wikipedia.org/wiki/Easter", 
+      "http://www.newadvent.org/cathen/05224d.htm"
+    ]
+  }, 
+  "Easter Tuesday": {
+    "liturgical_event": true,
+    "urls": [
+      "https://fisheaters.com/customseastertide2.html", 
+      "https://en.wikipedia.org/wiki/Easter", 
+      "http://www.newadvent.org/cathen/05224d.htm"
+    ]
+  }, 
+  "Easter Wednesday": {
+    "liturgical_event": true,
+    "urls": [
+      "https://fisheaters.com/customseastertide2.html", 
+      "https://en.wikipedia.org/wiki/Easter", 
+      "http://www.newadvent.org/cathen/05224d.htm"
+    ]
+  }, 
+  "Easter Thursday": {
+    "liturgical_event": true,
+    "urls": [
+      "https://fisheaters.com/customseastertide2.html", 
+      "https://en.wikipedia.org/wiki/Easter", 
+      "http://www.newadvent.org/cathen/05224d.htm"
+    ]
+  }, 
+  "Easter Friday": {
+    "liturgical_event": true,
+    "urls": [
+      "https://fisheaters.com/customseastertide2.html", 
+      "https://en.wikipedia.org/wiki/Easter", 
+      "http://www.newadvent.org/cathen/05224d.htm"
+    ]
+  }, 
+  "Easter Saturday": {
     "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customseastertide2.html", 

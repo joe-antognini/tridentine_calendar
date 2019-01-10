@@ -1,4 +1,4 @@
-* Check precedence for major rogation during Easter week.
+* Check precedence for Major Rogation during Easter week.
 * Add class and title information to ICS description.
 * Fix the ICS writing to file.
 * Make a separate `utils.py` file.

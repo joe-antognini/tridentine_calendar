@@ -1,3 +1,4 @@
+* Check precedence for Michaelmas and Sunday.
 * Check precedence for Major Rogation during Easter week.
 * Add class and title information to ICS description.
 * Fix the ICS writing to file.

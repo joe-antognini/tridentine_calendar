@@ -1,5 +1,7 @@
-* Check precedence for Michaelmas and Sunday.
-* Check precedence for Major Rogation during Easter week.
+* Add documentation.
+* Switch to iCalendar from ics
+* Add a title.
+* Add various classes for the feast information.
 * Add class and title information to ICS description.
 * Fix the ICS writing to file.
 * Make a separate `utils.py` file.
@@ -7,7 +9,6 @@
 * Insert events in order of precedence.
 * Write a CLI interface.
 * Add flags for the ICS conversion (exclude commemorations, etc.).
-* Add documentation.
 * Check to see whether we should use `append` vs `+=` for the list operations.
 * Make code more efficient by running through the year only once.
 * Add Holy Days of obligation for different regions.

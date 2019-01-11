@@ -1,4 +1,4 @@
-from __future__ import division
+"""Generate a liturgical calendar using the 1962 Roman Catholic rubrics."""
 
 import argparse
 import calendar
@@ -45,6 +45,7 @@ ORDINALS = {
 
 
 def get_args():
+    """Define the command line arguments."""
     parser = argparse.ArgumentParser(description='Calculate a liturgical calendar.')
     parser.add_argument('--year', type=int, help='The year for which to calculate the calendar.')
     parser.add_argument('--file', help='Name of the ICS file to write the calendar to.')
@@ -59,6 +60,7 @@ def computus(year):
 
     Returns:
         A `datetime.Date` object with the date of Easter.
+
     """
     a = year % 19
     b = year // 100
@@ -79,9 +81,20 @@ def computus(year):
 
 
 class LiturgicalCalendar(object):
-    """A liturgical calendar following the 1962 Tridentine missal."""
+    """A liturgical calendar following the 1962 Roman Catholic rubrics."""
 
     def __init__(self, year):
+        """Instantiate a `LiturgicalCalendar` object.
+
+        Note that the liturgical year starts before the year given on the first Sunday of Advent.
+        If the year given is 2000, then the liturgical year will start in late November 1999 and end
+        in early December 2000.
+
+        Args:
+            year: int
+                The liturgical year to calculate the calendar for.
+
+        """
         self.year = year
         self.dirname = os.path.dirname(os.path.realpath(__file__))
         
@@ -233,7 +246,7 @@ class LiturgicalCalendar(object):
             date_str = date.strftime('%B %-d')
             if date_str in self.fixed_feasts:
                 for elem in self.fixed_feasts[date_str]:
-                    if 'class' in elem and elem['class'] != 1:
+                    if elem.get('class') != 1:
                         self.calendar[date] += [elem]
             date += dt.timedelta(1)
 
@@ -345,6 +358,7 @@ class LiturgicalCalendar(object):
             return name
 
     def to_ics(self):
+        """Write out the calendar to ICS format."""
         ics_calendar = ics.Calendar()
         date = self.liturgical_year_start
         while date <= self.liturgical_year_end:
@@ -382,14 +396,6 @@ class LiturgicalCalendar(object):
                 ics_calendar.events.add(ics_event)
             date += dt.timedelta(1)
         return ics_calendar
-
-    def _append_to_ics_file(self, fp):
-        ics_calendar = ics.Calendar(fp.read())
-        return ics_calendar
-
-    def append_to_ics_file(self, filename):
-        with open(filename) as f:
-            return self._append_to_ics_file(f)
 
     @property
     def gaudete_sunday_date(self):

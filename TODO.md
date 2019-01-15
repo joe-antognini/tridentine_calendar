@@ -1,4 +1,3 @@
-* Add documentation.
 * Switch to iCalendar from ics
 * Add a title.
 * Add various classes for the feast information.

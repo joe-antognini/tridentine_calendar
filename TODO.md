@@ -1,6 +1,7 @@
 * Add various classes for the feast information.
 * Switch to iCalendar from ics
 * The function-name pairs are a mess.
+* Remove `date` from date function names.
 * Add a title.
 * Add class and title information to ICS description.
 * Fix the ICS writing to file.

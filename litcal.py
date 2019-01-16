@@ -9,6 +9,8 @@ import os
 import ics
 from arrow import Arrow
 
+import litcal.feast_dates as feast_dates
+
 FIXED_FEASTS_FNAME = 'fixed_feasts_ferias_et_al.json'
 MOVABLE_FEASTS_FNAME = 'movable_feasts_ferias_et_al.json'
 SEASONS_FNAME = 'seasons.json'
@@ -79,11 +81,8 @@ class LiturgicalCalendar(object):
         with open(os.path.join(self.dirname, SEASONS_FNAME)) as json_file:
             self.seasons = json.load(json_file)
 
-        self.easter_date = computus(self.year)
-        self.xmas = dt.date(self.year - 1, 12, 25)
-        self.liturgical_year_start = self.xmas - dt.timedelta(self.xmas.weekday() + 22)
-        next_xmas = dt.date(self.year, 12, 25)
-        self.liturgical_year_end = next_xmas - dt.timedelta(next_xmas.weekday() + 23)
+        self.liturgical_year_start = feast_dates.liturgical_year_start(self.year)
+        self.liturgical_year_end = feast_dates.liturgical_year_end(self.year)
 
         self.calendar = {}
         date = self.liturgical_year_start
@@ -103,70 +102,72 @@ class LiturgicalCalendar(object):
 
         # Now the movable solemnities.
         function_name_pairs = (
-            (self.gaudete_sunday_date, 'Gaudete Sunday'),
-            (self.advent_embertide_dates, 'Advent Embertide'),
-            (self.holy_name_date, 'Feast of the Holy Name'),
-            (self.holy_family_date, 'Feast of the Holy Family'),
-            (self.plough_monday_date, 'Plough Monday'),
-            (self.septuagesima_date, 'Septuagesima'),
-            (self.sexagesima_date, 'Sexagesima'),
-            (self.quinquagesima_date, 'Quinquagesima'),
-            (self.fat_thursday_date, 'Fat Thursday'),
-            (self.shrove_monday_date, 'Shrove Monday'),
-            (self.mardi_gras_date, 'Mardi Gras'),
-            (self.ash_wednesday_date, 'Ash Wednesday'),
-            (self.lenten_embertide_dates, 'Lenten Embertide'),
-            (self.st_matthias_date, 'St. Matthias'),
-            (self.st_gabriel_of_our_lady_of_sorrows_date, 'St. Gabriel of Our Lady of Sorrows'),
-            (self.laetare_sunday_date, 'Laetare Sunday'),
-            (self.passion_sunday_date, 'Passion Sunday'),
-            (self.seven_sorrows_date, 'The Seven Sorrows'),
-            (self.palm_sunday_date, 'Palm Sunday'),
-            (self.palm_sunday_date + dt.timedelta(1), 'Monday of Holy Week'),
-            (self.palm_sunday_date + dt.timedelta(2), 'Tuesday of Holy Week'),
-            (self.palm_sunday_date, 'Palm Sunday'),
-            (self.spy_wednesday_date, 'Spy Wednesday'),
-            (self.maundy_thursday_date, 'Maundy Thursday'),
-            (self.good_friday_date, 'Good Friday'),
-            (self.holy_saturday_date, 'Holy Saturday'),
-            (self.easter_date, 'Easter'),
-            (self.easter_date + dt.timedelta(1), 'Easter Monday'),
-            (self.easter_date + dt.timedelta(2), 'Easter Tuesday'),
-            (self.easter_date + dt.timedelta(3), 'Easter Wednesday'),
-            (self.easter_date + dt.timedelta(4), 'Easter Thursday'),
-            (self.easter_date + dt.timedelta(5), 'Easter Friday'),
-            (self.easter_date + dt.timedelta(6), 'Easter Saturday'),
-            (self.quasimodo_sunday_date, 'Quasimodo Sunday'),
-            (self.jubilate_sunday_date, 'Jubilate Sunday'),
-            (self.misericordia_sunday_date, 'Misericordia Sunday'),
-            (self.cantate_sunday_date, 'Cantate Sunday'),
-            (self.major_rogation_date, 'Major Rogation'),
-            (self.ascension_date, 'Ascension'),
-            (self.minor_rogation_dates, 'Minor Rogation'),
-            (self.pentecost_date, 'Pentecost'),
-            (self.whit_embertide_dates, 'Whit Embertide'),
-            (self.trinity_sunday_date, 'Trinity Sunday'),
-            (self.corpus_christi_date, 'Corpus Christi'),
-            (self.sacred_heart_date, 'Feast of the Sacred Heart'),
-            (self.peters_pence_date, 'Peter\'s Pence'),
-            (self.michaelmas_embertide_dates, 'Michaelmas Embertide'),
-            (self.christ_the_king_date, 'Christ the King'),
+            (feast_dates.gaudete_sunday_date, 'Gaudete Sunday'),
+            (feast_dates.advent_embertide_dates, 'Advent Embertide'),
+            (feast_dates.holy_name_date, 'Feast of the Holy Name'),
+            (feast_dates.holy_family_date, 'Feast of the Holy Family'),
+            (feast_dates.plough_monday_date, 'Plough Monday'),
+            (feast_dates.septuagesima_date, 'Septuagesima'),
+            (feast_dates.sexagesima_date, 'Sexagesima'),
+            (feast_dates.quinquagesima_date, 'Quinquagesima'),
+            (feast_dates.fat_thursday_date, 'Fat Thursday'),
+            (feast_dates.shrove_monday_date, 'Shrove Monday'),
+            (feast_dates.mardi_gras_date, 'Mardi Gras'),
+            (feast_dates.ash_wednesday_date, 'Ash Wednesday'),
+            (feast_dates.lenten_embertide_dates, 'Lenten Embertide'),
+            (feast_dates.st_matthias_date, 'St. Matthias'),
+            (feast_dates.st_gabriel_of_our_lady_of_sorrows_date,
+                'St. Gabriel of Our Lady of Sorrows'),
+            (feast_dates.laetare_sunday_date, 'Laetare Sunday'),
+            (feast_dates.passion_sunday_date, 'Passion Sunday'),
+            (feast_dates.seven_sorrows_date, 'The Seven Sorrows'),
+            (feast_dates.palm_sunday_date, 'Palm Sunday'),
+            (lambda x: feast_dates.palm_sunday_date(x) + dt.timedelta(1), 'Monday of Holy Week'),
+            (lambda x: feast_dates.palm_sunday_date(x) + dt.timedelta(2), 'Tuesday of Holy Week'),
+            (feast_dates.palm_sunday_date, 'Palm Sunday'),
+            (feast_dates.spy_wednesday_date, 'Spy Wednesday'),
+            (feast_dates.maundy_thursday_date, 'Maundy Thursday'),
+            (feast_dates.good_friday_date, 'Good Friday'),
+            (feast_dates.holy_saturday_date, 'Holy Saturday'),
+            (feast_dates.easter_date, 'Easter'),
+            (lambda x: feast_dates.easter_date(x) + dt.timedelta(1), 'Easter Monday'),
+            (lambda x: feast_dates.easter_date(x) + dt.timedelta(2), 'Easter Tuesday'),
+            (lambda x: feast_dates.easter_date(x) + dt.timedelta(3), 'Easter Wednesday'),
+            (lambda x: feast_dates.easter_date(x) + dt.timedelta(4), 'Easter Thursday'),
+            (lambda x: feast_dates.easter_date(x) + dt.timedelta(5), 'Easter Friday'),
+            (lambda x: feast_dates.easter_date(x) + dt.timedelta(6), 'Easter Saturday'),
+            (feast_dates.quasimodo_sunday_date, 'Quasimodo Sunday'),
+            (feast_dates.jubilate_sunday_date, 'Jubilate Sunday'),
+            (feast_dates.misericordia_sunday_date, 'Misericordia Sunday'),
+            (feast_dates.cantate_sunday_date, 'Cantate Sunday'),
+            (feast_dates.major_rogation_date, 'Major Rogation'),
+            (feast_dates.ascension_date, 'Ascension'),
+            (feast_dates.minor_rogation_dates, 'Minor Rogation'),
+            (feast_dates.pentecost_date, 'Pentecost'),
+            (feast_dates.whit_embertide_dates, 'Whit Embertide'),
+            (feast_dates.trinity_sunday_date, 'Trinity Sunday'),
+            (feast_dates.corpus_christi_date, 'Corpus Christi'),
+            (feast_dates.sacred_heart_date, 'Feast of the Sacred Heart'),
+            (feast_dates.peters_pence_date, 'Peter\'s Pence'),
+            (feast_dates.michaelmas_embertide_dates, 'Michaelmas Embertide'),
+            (feast_dates.christ_the_king_date, 'Christ the King'),
         )
 
         for date_fn, name in function_name_pairs:
-            if type(date_fn) is list:
-                for elem in date_fn:
+            date = date_fn(self.year)
+            if type(date) is list:
+                for elem in date:
                     self.calendar[elem] += [self.movable_feasts[name]]
                     self.calendar[elem][-1]['name'] = name
             else:
-                self.calendar[date_fn] += [self.movable_feasts[name]]
-                self.calendar[date_fn][-1]['name'] = name
+                self.calendar[date] += [self.movable_feasts[name]]
+                self.calendar[date][-1]['name'] = name
 
         # Mark Sundays, starting with Advent
         for i in range(1, 5):
             if i == 3:
                 continue
-            date = self.xmas - dt.timedelta(self.xmas.weekday() + 22 - 7 * (i - 1))
+            date = self.liturgical_year_start + dt.timedelta(7 * (i - 1))
             self.calendar[date] += [{
                 'name': ORDINALS[i] + ' Sunday of Advent',
                 'liturgical_event': True,
@@ -174,8 +175,8 @@ class LiturgicalCalendar(object):
 
         # Time after Epiphany.
         i = 2
-        date = self.holy_family_date + dt.timedelta(7)
-        while date < self.septuagesima_date:
+        date = feast_dates.holy_family_date(self.year) + dt.timedelta(7)
+        while date < feast_dates.septuagesima_date(self.year):
             self.calendar[date] += [{
                 'name': ORDINALS[i] + ' Sunday after Epiphany',
                 'liturgical_event': True,
@@ -185,21 +186,21 @@ class LiturgicalCalendar(object):
 
         # Lent.
         for i in range(1, 4):
-            date = self.quinquagesima_date + dt.timedelta(7 * i)
+            date = feast_dates.quinquagesima_date(self.year) + dt.timedelta(7 * i)
             self.calendar[date] += [{
                 'name': ORDINALS[i] + ' Sunday of Lent',
                 'liturgical_event': True,
             }]
 
         # Eastertide.
-        self.calendar[self.cantate_sunday_date + dt.timedelta(7)] += [{
+        self.calendar[feast_dates.cantate_sunday_date(self.year) + dt.timedelta(7)] += [{
             'name': 'Sunday after Ascension',
             'liturgical_event': True,
         }]
 
         # Time after Pentecost.
         i = 2
-        date = self.trinity_sunday_date + dt.timedelta(7)
+        date = feast_dates.trinity_sunday_date(self.year) + dt.timedelta(7)
         while date <= self.liturgical_year_end - dt.timedelta(7):
             self.calendar[date] += [{
                 'name': ORDINALS[i] + ' Sunday after Pentecost',
@@ -227,27 +228,46 @@ class LiturgicalCalendar(object):
     def _add_seasons(self):
         date = self.liturgical_year_start
         while date <= self.liturgical_year_end:
-            if date in [self.fat_thursday_date, self.shrove_monday_date, self.mardi_gras_date]:
+            if date in [
+                feast_dates.fat_thursday_date(self.year),
+                feast_dates.shrove_monday_date(self.year),
+                feast_dates.mardi_gras_date(self.year),
+            ]:
                 season_key = 'Shrovetide'
             elif self.liturgical_year_start <= date < dt.date(self.year - 1, 12, 25):
                 season_key = 'Advent'
             elif dt.date(self.year - 1, 12, 25) <= date < dt.date(self.year, 1, 6):
                 season_key = 'Christmastide'
-            elif dt.date(self.year, 1, 6) <= date < self.septuagesima_date:
+            elif dt.date(self.year, 1, 6) <= date < feast_dates.septuagesima_date(self.year):
                 season_key = 'Time after Epiphany'
-            elif self.septuagesima_date <= date < self.ash_wednesday_date:
+            elif (
+                feast_dates.septuagesima_date(self.year) <= date <
+                feast_dates.ash_wednesday_date(self.year)
+            ):
                 season_key = 'Septuagesima'
-            elif self.ash_wednesday_date <= date < self.passion_sunday_date:
+            elif (
+                feast_dates.ash_wednesday_date(self.year) <= date <
+                feast_dates.passion_sunday_date(self.year)
+            ):
                 season_key = 'Lent'
-            elif self.passion_sunday_date <= date < self.palm_sunday_date:
+            elif (
+                feast_dates.passion_sunday_date(self.year) <= date <
+                feast_dates.palm_sunday_date(self.year)
+            ):
                 season_key = 'Passiontide'
-            elif self.palm_sunday_date <= date < self.maundy_thursday_date:
+            elif (
+                feast_dates.palm_sunday_date(self.year) <= date <
+                feast_dates.maundy_thursday_date(self.year)
+            ):
                 season_key = 'Holy Week'
-            elif self.maundy_thursday_date <= date < self.easter_date:
+            elif (
+                feast_dates.maundy_thursday_date(self.year) <= date <
+                feast_dates.easter_date(self.year)
+            ):
                 season_key = 'Paschal Triduum'
-            elif self.easter_date <= date < self.pentecost_date:
+            elif feast_dates.easter_date(self.year) <= date < feast_dates.pentecost_date(self.year):
                 season_key = 'Eastertide'
-            elif self.pentecost_date <= date < dt.date(self.year, 10, 31):
+            elif feast_dates.pentecost_date(self.year) <= date < dt.date(self.year, 10, 31):
                 season_key = 'Time after Pentecost'
             elif dt.date(self.year, 10, 31) <= date < dt.date(self.year, 11, 3):
                 season_key = 'Hallowtide'

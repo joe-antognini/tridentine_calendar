@@ -1,6 +1,7 @@
-* Switch to iCalendar from ics
-* Add a title.
 * Add various classes for the feast information.
+* Switch to iCalendar from ics
+* The function-name pairs are a mess.
+* Add a title.
 * Add class and title information to ICS description.
 * Fix the ICS writing to file.
 * Make a separate `utils.py` file.

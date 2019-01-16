@@ -2,8 +2,10 @@
 
 import calendar
 import datetime as dt
+import functools
 
 
+@functools.lru_cache()
 def computus(year):
     """Calculate the date of Easter.
 
@@ -32,6 +34,7 @@ def computus(year):
     return dt.date(year, month, day)
 
 
+@functools.lru_cache()
 def liturgical_year_start(year):
     """Calculate the start of the liturgical year.
 
@@ -51,6 +54,7 @@ def liturgical_year_start(year):
     return xmas - dt.timedelta(xmas.weekday() + 22)
 
 
+@functools.lru_cache()
 def liturgical_year_end(year):
     """Calculate the last day of the liturgical year.
 
@@ -68,6 +72,7 @@ def liturgical_year_end(year):
     return next_xmas - dt.timedelta(next_xmas.weekday() + 23)
 
 
+@functools.lru_cache()
 def gaudete_sunday_date(year):
     """Calculate the date of Gaudete Sunday.
 
@@ -78,6 +83,7 @@ def gaudete_sunday_date(year):
     return xmas - dt.timedelta(xmas.weekday() + 8)
 
 
+@functools.lru_cache()
 def advent_embertide_dates(year):
     """Calculate the dates of Advent Embertide.
 
@@ -87,6 +93,7 @@ def advent_embertide_dates(year):
     return sorted([gaudete_sunday_date(year) + dt.timedelta(i) for i in [3, 5, 6]])
 
 
+@functools.lru_cache()
 def holy_name_date(year):
     """"Calculate the date of the Feast of the Holy Name.
 
@@ -103,6 +110,7 @@ def holy_name_date(year):
         return holy_name
 
 
+@functools.lru_cache()
 def holy_family_date(year):
     """Calculate the date of the Feast of the Holy Family.
 
@@ -116,6 +124,7 @@ def holy_family_date(year):
     return epiphany + delta
 
 
+@functools.lru_cache()
 def plough_monday_date(year):
     """Calculate the date of Plough Monday.
 
@@ -129,6 +138,7 @@ def plough_monday_date(year):
         return holy_family_date(year) + dt.timedelta(1)
 
 
+@functools.lru_cache()
 def ash_wednesday_date(year):
     """Calculate the date of Ash Wednesday.
 
@@ -139,6 +149,7 @@ def ash_wednesday_date(year):
     return easter_date - dt.timedelta(46)
 
 
+@functools.lru_cache()
 def lenten_embertide_dates(year):
     """Calculate the dates of Lenten Embertide.
 
@@ -148,6 +159,7 @@ def lenten_embertide_dates(year):
     return [ash_wednesday_date(year) + dt.timedelta(i) for i in [7, 9, 10]]
 
 
+@functools.lru_cache()
 def quinquagesima_date(year):
     """Calculate the date of Quinquagesima.
 
@@ -157,6 +169,7 @@ def quinquagesima_date(year):
     return ash_wednesday_date(year) - dt.timedelta(3)
 
 
+@functools.lru_cache()
 def fat_thursday_date(year):
     """Calculate the date of Fat Thursday.
 
@@ -166,6 +179,7 @@ def fat_thursday_date(year):
     return ash_wednesday_date(year) - dt.timedelta(6)
 
 
+@functools.lru_cache()
 def shrove_monday_date(year):
     """Calculate the date of Shrove Monday.
 
@@ -175,6 +189,7 @@ def shrove_monday_date(year):
     return ash_wednesday_date(year) - dt.timedelta(2)
 
 
+@functools.lru_cache()
 def mardi_gras_date(year):
     """Calculate the date of Mardi Gras.
 
@@ -184,6 +199,7 @@ def mardi_gras_date(year):
     return ash_wednesday_date(year) - dt.timedelta(1)
 
 
+@functools.lru_cache()
 def sexagesima_date(year):
     """Calculate the date of Sexagesima.
 
@@ -193,6 +209,7 @@ def sexagesima_date(year):
     return quinquagesima_date(year) - dt.timedelta(7)
 
 
+@functools.lru_cache()
 def septuagesima_date(year):
     """Calculate the date of Septuagesima.
 
@@ -202,6 +219,7 @@ def septuagesima_date(year):
     return sexagesima_date(year) - dt.timedelta(7)
 
 
+@functools.lru_cache()
 def st_matthias_date(year):
     """Calculate the date of the Feast of St. Matthias.
 
@@ -214,6 +232,7 @@ def st_matthias_date(year):
         return dt.date(year, 2, 24)
 
 
+@functools.lru_cache()
 def st_gabriel_of_our_lady_of_sorrows_date(year):
     """Calculate the date of the Feast of St. Gabriel of Our Lady of Sorrows.
 
@@ -227,6 +246,7 @@ def st_gabriel_of_our_lady_of_sorrows_date(year):
         return dt.date(year, 2, 27)
 
 
+@functools.lru_cache()
 def laetare_sunday_date(year):
     """Calculate the date of Laetare Sunday.
 
@@ -237,6 +257,7 @@ def laetare_sunday_date(year):
     return easter - dt.timedelta(21)
 
 
+@functools.lru_cache()
 def passion_sunday_date(year):
     """Calculate the date of Passion Sunday.
 
@@ -247,6 +268,7 @@ def passion_sunday_date(year):
     return easter_date - dt.timedelta(14)
 
 
+@functools.lru_cache()
 def seven_sorrows_date(year):
     """Calculate the date of the Feast of the Seven Sorrows.
 
@@ -256,6 +278,7 @@ def seven_sorrows_date(year):
     return palm_sunday_date(year) - dt.timedelta(2)
 
 
+@functools.lru_cache()
 def lady_day_date(year):
     """Calcualte the date of Lady Day.
 
@@ -273,65 +296,77 @@ def lady_day_date(year):
         return lady_day
 
 
+@functools.lru_cache()
 def palm_sunday_date(year):
     """Calculate the date of Palm Sunday.
 
     Palm Sunday is the Sunday before Easter.
 
     """
-    easter_date = computus(year)
-    return easter_date - dt.timedelta(7)
+    return easter_date(year) - dt.timedelta(7)
 
 
+@functools.lru_cache()
 def spy_wednesday_date(year):
     """Calculate the date of Spy Wednesday.
 
     Spy Wednesday is the Wednesday before Easter.
 
     """
-    easter_date = computus(year)
-    return easter_date - dt.timedelta(4)
+    return easter_date(year) - dt.timedelta(4)
 
 
+@functools.lru_cache()
 def maundy_thursday_date(year):
     """Calculate the date of Maundy Thursday.
 
     Maundy Thursday is the Thursday before Easter.
 
     """
-    easter_date = computus(year)
-    return easter_date - dt.timedelta(3)
+    return easter_date(year) - dt.timedelta(3)
 
+
+@functools.lru_cache()
 def good_friday_date(year):
     """Calculate the date of Good Friday.
 
     Good Friday is the Friday before Easter.
 
     """
-    easter_date = computus(year)
-    return easter_date - dt.timedelta(2)
+    return easter_date(year) - dt.timedelta(2)
 
 
+@functools.lru_cache()
 def holy_saturday_date(year):
     """Calculate the date of Holy Saturday.
 
     Holy Saturday is the Saturday before Easter.
 
     """
-    easter_date = computus(year)
-    return easter_date - dt.timedelta(1)
+    return easter_date(year) - dt.timedelta(1)
 
 
+@functools.lru_cache()
+def easter_date(year):
+    """Calculate the date of Easter.
+
+    This is an alias for `computus`.
+
+    """
+    return computus(year)
+
+
+@functools.lru_cache()
 def quasimodo_sunday_date(year):
     """Calculate the date of Quasimodo Sunday.
 
     Quasimodo Sunday is the first Sunday after Easter.
 
     """
-    easter_date = computus(year)
-    return easter_date + dt.timedelta(7)
+    return easter_date(year) + dt.timedelta(7)
 
 
+@functools.lru_cache()
 def jubilate_sunday_date(year):
     """Calculate the date of Jubilate Sunday.
 
@@ -342,6 +377,7 @@ def jubilate_sunday_date(year):
     return easter_date + dt.timedelta(14)
 
 
+@functools.lru_cache()
 def misericordia_sunday_date(year):
     """Calculate the date of Misericordia Sunday.
 
@@ -352,6 +388,7 @@ def misericordia_sunday_date(year):
     return easter_date + dt.timedelta(21)
 
 
+@functools.lru_cache()
 def cantate_sunday_date(year):
     """Calculate the date of Cantate Sunday.
 
@@ -362,6 +399,7 @@ def cantate_sunday_date(year):
     return easter_date + dt.timedelta(28)
 
 
+@functools.lru_cache()
 def major_rogation_date(year):
     """Calculate the date of the Major Rogation.
 
@@ -377,6 +415,7 @@ def major_rogation_date(year):
         return major_rogation + dt.timedelta(2)
 
 
+@functools.lru_cache()
 def ascension_date(year):
     """Calculate the date of Ascension Thursday.
 
@@ -387,6 +426,7 @@ def ascension_date(year):
     return easter_date + dt.timedelta(39)
 
 
+@functools.lru_cache()
 def minor_rogation_dates(year):
     """Calculate the dates of the Minor Rogation.
 
@@ -396,6 +436,7 @@ def minor_rogation_dates(year):
     return [ascension_date(year) - dt.timedelta(i) for i in range(3, 0, -1)]
 
 
+@functools.lru_cache()
 def pentecost_date(year):
     """Calculate the date of Pentecost.
 
@@ -406,6 +447,7 @@ def pentecost_date(year):
     return easter_date + dt.timedelta(49)
 
 
+@functools.lru_cache()
 def whit_embertide_dates(year):
     """Calculate the dates of Whit Embertide.
 
@@ -415,6 +457,7 @@ def whit_embertide_dates(year):
     return sorted([pentecost_date(year) + dt.timedelta(i) for i in [3, 5, 6]])
 
 
+@functools.lru_cache()
 def trinity_sunday_date(year):
     """Calculate the date of Trinity Sunday.
 
@@ -424,6 +467,7 @@ def trinity_sunday_date(year):
     return pentecost_date(year) + dt.timedelta(7)
 
 
+@functools.lru_cache()
 def corpus_christi_date(year):
     """Calculate the date of the Feast of Corpus Christi.
 
@@ -433,6 +477,7 @@ def corpus_christi_date(year):
     return trinity_sunday_date(year) + dt.timedelta(4)
 
 
+@functools.lru_cache()
 def sacred_heart_date(year):
     """Calculate the date of the Feast of the Sacred Heart.
 
@@ -442,6 +487,7 @@ def sacred_heart_date(year):
     return corpus_christi_date(year) + dt.timedelta(8)
 
 
+@functools.lru_cache()
 def peters_pence_date(year):
     """Calculate the date of Peter's Pence.
 
@@ -452,6 +498,7 @@ def peters_pence_date(year):
     return ss_peter_paul + dt.timedelta(((2 - ss_peter_paul.weekday()) % 7) - 3)
 
 
+@functools.lru_cache()
 def michaelmas_embertide_dates(year):
     """Calculate the dates of Michaelmas Embertide.
 
@@ -465,6 +512,7 @@ def michaelmas_embertide_dates(year):
     return [third_sunday_in_september + dt.timedelta(i) for i in [3, 5, 6]]
 
 
+@functools.lru_cache()
 def christ_the_king_date(year):
     """Calculate the date of the Feast of Christ the King.
 

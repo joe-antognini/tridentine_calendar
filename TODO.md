@@ -1,5 +1,6 @@
+* Fix Palm Sunday bug (it appears twice).
 * Add various classes for the feast information.
-* Switch to iCalendar from ics
+* Switch to iCalendar from ics.
 * The function-name pairs are a mess.
 * Remove `date` from date function names.
 * Add a title.

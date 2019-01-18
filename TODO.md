@@ -10,6 +10,7 @@
 * Move `_name_with_article` to `utils.py`.
 * Precedence with the Major Rogation and Easter.
 * Switch to iCalendar from ics.
+* Package the code.
 * The function-name pairs are a mess.
 * Remove `date` from date function names.
 * Add class and title information to ICS description.

@@ -1,7 +1,7 @@
 import datetime as dt
 import unittest
 
-import litcal.feast_dates as fd
+from .. import feast_dates as fd
 
 
 class TestComputus(unittest.TestCase):

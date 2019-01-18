@@ -1,14 +1,20 @@
-* Add various classes for the feast information.
+* Add a `LiturgicalCalendarEvent` class.
+    - Date
+    - Name
+    - Url
+    - Class
+    - Color
+    - Titles
+    - Whether it is a liturgical event
+    - Whether it is a holy day of obligation
+* Move `_name_with_article` to `utils.py`.
+* Precedence with the Major Rogation and Easter.
 * Switch to iCalendar from ics.
 * The function-name pairs are a mess.
 * Remove `date` from date function names.
-* Add a title.
 * Add class and title information to ICS description.
+* Add color information.
 * Fix the ICS writing to file.
-* Make a separate `utils.py` file.
-* Write out superseding seasonal URLs as well.
-* Insert events in order of precedence.
-* Write a CLI interface.
 * Add flags for the ICS conversion (exclude commemorations, etc.).
 * Check to see whether we should use `append` vs `+=` for the list operations.
 * Make code more efficient by running through the year only once.

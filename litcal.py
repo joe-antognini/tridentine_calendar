@@ -9,41 +9,13 @@ import os
 import ics
 from arrow import Arrow
 
-import litcal.feast_dates as feast_dates
+from . import feast_dates
+from .utils import ORDINALS
+from .utils import description_from_url
 
 FIXED_FEASTS_FNAME = 'fixed_feasts_ferias_et_al.json'
 MOVABLE_FEASTS_FNAME = 'movable_feasts_ferias_et_al.json'
 SEASONS_FNAME = 'seasons.json'
-
-ORDINALS = {
-    1: 'First',
-    2: 'Second',
-    3: 'Third',
-    4: 'Fourth',
-    5: 'Fifth',
-    6: 'Sixth',
-    7: 'Seventh',
-    8: 'Eighth',
-    9: 'Ninth',
-    10: 'Tenth',
-    11: 'Eleventh',
-    12: 'Twelfth',
-    13: 'Thirteenth',
-    14: 'Fourteenth',
-    15: 'Fifteenth',
-    16: 'Sixteenth',
-    17: 'Seventeenth',
-    18: 'Eighteenth',
-    19: 'Nineteenth',
-    20: 'Twentieth',
-    21: 'Twenty-first',
-    22: 'Twenty-second',
-    23: 'Twenty-third',
-    24: 'Twenty-fourth',
-    25: 'Twenty-fifth',
-    26: 'Twenty-sixth',
-    27: 'Twenty-seventh',
-}
 
 
 def get_args():
@@ -52,6 +24,44 @@ def get_args():
     parser.add_argument('--year', type=int, help='The year for which to calculate the calendar.')
     parser.add_argument('--file', help='Name of the ICS file to write the calendar to.')
     return parser.parse_args()
+
+
+class FeastLink:
+    """Contains information about a URL describing a feast, feria, or other event."""
+
+    def __init__(self, url, description):
+        """Instantiate a `FeastLink`.
+
+        Args:
+            url: A string with the URL.
+            description: A string describing the URL that should be shown with the link.
+
+        """
+        self.url = url
+        self.description = description
+
+    @classmethod
+    def from_json(cls, json_obj, default=None):
+        """Instantiate a `FeastLink` object from a JSON object.
+
+        Args:
+            json_obj: An object resulting from parsing the JSON string describing the URL.
+
+        Returns:
+            A `FeastLink` object with the URL and description appropriately set.
+
+        """
+        if type(json_obj) is dict:
+            return cls(json_obj['url'], json_obj['description'])
+        elif type(json_obj) is str:
+            description = description_from_url(json_obj, default)
+            if description is None:
+                description = default
+            return cls(json_obj, description)
+
+    def to_href(self):
+        """Return the URL as an HTML HREF string."""
+        return '<a href={}>{}</a>'.format(self.url, self.description)
 
 
 class LiturgicalCalendar(object):

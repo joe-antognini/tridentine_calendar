@@ -124,7 +124,6 @@ class LiturgicalCalendar(object):
             (feast_dates.palm_sunday_date, 'Palm Sunday'),
             (lambda x: feast_dates.palm_sunday_date(x) + dt.timedelta(1), 'Monday of Holy Week'),
             (lambda x: feast_dates.palm_sunday_date(x) + dt.timedelta(2), 'Tuesday of Holy Week'),
-            (feast_dates.palm_sunday_date, 'Palm Sunday'),
             (feast_dates.spy_wednesday_date, 'Spy Wednesday'),
             (feast_dates.maundy_thursday_date, 'Maundy Thursday'),
             (feast_dates.good_friday_date, 'Good Friday'),

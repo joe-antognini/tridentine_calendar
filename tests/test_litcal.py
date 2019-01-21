@@ -63,6 +63,11 @@ class TestLiturgicalCalendarSeason(unittest.TestCase):
         season = LiturgicalSeason('Advent')
         self.assertEqual(season.name, 'Advent')
 
+    def test_from_json_key(self):
+        season = LiturgicalSeason.from_json_key('Advent')
+        self.assertEqual(season.name, 'Advent')
+        self.assertEqual(season.color, 'Violet')
+
     def test_from_date(self):
         date = dt.date(2018, 12, 4)
         season = LiturgicalSeason.from_date(date)
@@ -112,6 +117,16 @@ class TestLiturgicalCalendarSeason(unittest.TestCase):
         date = dt.date(2019, 11, 2)
         season = LiturgicalSeason.from_date(date)
         self.assertEqual(season.name, 'Hallowtide')
+
+    def test_full_name(self):
+        season = LiturgicalSeason('Advent')
+        self.assertEqual(season.full_name(capitalize=True), 'Advent')
+
+        season = LiturgicalSeason('Time after Pentecost')
+        self.assertEqual(season.full_name(capitalize=True), 'The Time after Pentecost')
+
+        season = LiturgicalSeason('Time after Epiphany')
+        self.assertEqual(season.full_name(capitalize=False), 'the Time after Epiphany')
 
 
 class TestLiturgicalCalendarEvent(unittest.TestCase):
@@ -168,6 +183,40 @@ class TestLiturgicalCalendarEvent(unittest.TestCase):
 
         expected_output = 'the Feast of St. Nicholas'
         self.assertEqual(event.full_name(capitalize=False), expected_output)
+
+    def test_generate_description(self):
+        url = LiturgicalCalendarEventUrl(
+            'https://fisheaters.com/customsadvent5.html',
+            description='Feast of the Immaculate Conception',
+        )
+        event = LiturgicalCalendarEvent(
+            dt.date(2018, 12, 8),
+            'Feast of the Immaculate Conception',
+            liturgical_event=True,
+            holy_day=True,
+            urls=[url],
+            rank=1,
+            color='White',
+        )
+
+        expected_description = (
+            'The Feast of the Immaculate Conception is a Holy Day of Obligation.\n\n'
+            'More information about the Feast of the Immaculate Conception:\n'
+            '• https://fisheaters.com/customsadvent5.html\n\n'
+            'More information about Advent:\n'
+        )
+        description = event.generate_description(html_formatting=False)
+        self.assertTrue(description.startswith(expected_description))
+
+    def test_is_fixed(self):
+        event = LiturgicalCalendarEvent(
+            dt.date(2018, 12, 8),
+            'Feast of the Immaculate Conception',
+        )
+        self.assertTrue(event.is_fixed())
+
+        event = LiturgicalCalendarEvent(dt.date(2019, 4, 21), 'Easter')
+        self.assertFalse(event.is_fixed())
 
 
 class TestLiturgicalCalendarSmoke(unittest.TestCase):

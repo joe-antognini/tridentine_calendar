@@ -9,6 +9,7 @@
     ]
   }, 
   "Gaudete Sunday": {
+    "color": "Rose",
     "liturgical_event": true,
     "urls": [
       "https://en.wikipedia.org/wiki/Gaudete_Sunday", 
@@ -32,6 +33,7 @@
     ]
   }, 
   "Feast of the Holy Family": {
+    "color": "White",
     "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customstimeafterepiphany1a.html", 
@@ -86,6 +88,7 @@
     ]
   }, 
   "St. Matthias": {
+    "color": "Red",
     "liturgical_event": true,
     "titles": [
       "Apostle"
@@ -96,6 +99,7 @@
     ]
   }, 
   "St. Gabriel of Our Lady of Sorrows": {
+    "color": "White",
     "liturgical_event": true,
     "titles": [
       "Confessor"
@@ -123,6 +127,7 @@
     ]
   }, 
   "Laetare Sunday": {
+    "color": "Rose",
     "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customslent7.html", 
@@ -131,6 +136,7 @@
     ]
   }, 
   "Lady Day": {
+    "color": "White",
     "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customslent6.html", 
@@ -166,6 +172,7 @@
     ]
   }, 
   "Palm Sunday": {
+    "color": "Red",
     "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customslent11.html", 
@@ -187,6 +194,7 @@
     ]
   }, 
   "Maundy Thursday": {
+    "color": "White",
     "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customslent13.html", 
@@ -195,6 +203,7 @@
     ]
   }, 
   "Good Friday": {
+    "color": "Black",
     "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customslent14.html", 
@@ -304,6 +313,7 @@
     ]
   }, 
   "Major Rogation": {
+    "color": "White",
     "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customseastertide3.html", 
@@ -312,6 +322,7 @@
     ]
   }, 
   "Minor Rogation": {
+    "color": "White",
     "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customseastertide3.html", 
@@ -334,6 +345,7 @@
     ]
   }, 
   "Pentecost": {
+    "color": "Red",
     "liturgical_event": true,
     "urls": [
       {
@@ -355,12 +367,14 @@
     ]
   }, 
   "Whit Embertide": {
+    "color": "Red",
     "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customseastertide8.html"
     ]
   }, 
   "Trinity Sunday": {
+    "color": "White",
     "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customseastertide9.html", 
@@ -369,6 +383,7 @@
     ]
   }, 
   "Corpus Christi": {
+    "color": "White",
     "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customstimeafterpentecost2.html", 
@@ -380,6 +395,7 @@
     ]
   }, 
   "Feast of the Sacred Heart": {
+    "color": "White",
     "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customstimeafterpentecost4.html", 
@@ -406,12 +422,14 @@
     ]
   },
   "Michaelmas Embertide": {
+    "color": "Violet",
     "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customstimeafterpentecost8.html"
     ]
   }, 
   "Christ the King": {
+    "color": "White",
     "liturgical_event": true,
     "urls": [
       {

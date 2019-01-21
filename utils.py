@@ -1,6 +1,5 @@
 """Utility functions."""
 
-import os
 import urllib
 
 ORDINALS = {
@@ -34,26 +33,35 @@ ORDINALS = {
 }
 
 
-def description_from_url(url, default=None):
-    """Try to reate a URL description from the URL itself.
+def add_domain_to_url_description(url, description=None):
+    """Add the domain name to the description in parentheses.
 
-    For Wikipedia pages this will parse the title of the page from the URL and use that as the
-    description.  For other domains this will return `None`.
+    ```
+    >>> url = 'https://en.wikipedia.org/Saturnin'
+    >>> add_domain_to_url_description(url)
+    Saturnin (Wikipedia)
+    ```
 
     Args:
-        json_obj: An object that results from parsing the JSON string of the URL.  This should
-            be either a `dict` or a `str`.
+        url: str
+            The URL.
+        description: str
+            An optional description for the URL.  If no description exists, this function will try
+            to use the URL to generate a description.  Currently this only works for Wikipedia
+            domains.
 
     Returns:
-        A string with the title of the webpage for Wikipedia domains and `None` otherwise.
+        A string with the description and the domain name in parentheses afterwards.
 
     """
-    netloc = urllib.parse.urlparse(url).netloc
-    if netloc == 'en.wikipedia.org':
-        return os.path.basename(url) + ' (Wikipedia)'
-    elif netloc == 'www.newadvent.org':
-        return default + ' (New Advent)'
-    elif netloc == 'fisheaters.com':
-        return default + ' (Fish Eaters)'
+    domain = urllib.parse.urlparse(url).netloc
+    if domain == 'en.wikipedia.org':
+        domain_name = 'Wikipedia'
+    elif domain == 'www.newadvent.org':
+        domain_name = 'New Advent'
+    elif domain == 'fisheaters.com':
+        domain_name = 'Fish Eaters'
     else:
-        return default
+        domain_name = ''
+
+    return '{} ({})'.format(description, domain_name)

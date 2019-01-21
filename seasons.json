@@ -1,5 +1,6 @@
 {
   "Advent": {
+    "color": "Violet",
     "urls": [
       {
         "url": "https://fisheaters.com/customsadvent1.html", 
@@ -28,6 +29,7 @@
     ]
   }, 
   "Christmastide": {
+    "color": "White",
     "urls": [
       {
         "url": "https://fisheaters.com/customschristmas1.html", 
@@ -52,11 +54,13 @@
     ]
   }, 
   "Time after Epiphany": {
+    "color": "Green",
     "urls": [
       "https://fisheaters.com/customstimeafterepiphany1.html"
     ]
   }, 
   "Septuagesima": {
+    "color": "Violet",
     "urls": [
       {
         "url": "https://fisheaters.com/customsseptuagesima1.html", 
@@ -65,7 +69,8 @@
     ]
   },
   "Shrovetide": {
-    "season": ["Septuagesima"],
+    "season": "Septuagesima",
+    "color": "Violet",
     "urls": [
       "https://fisheaters.com/customsseptuagesima2.html",
       "https://en.wikipedia.org/wiki/Shrovetide",
@@ -74,6 +79,7 @@
     ]
   },
   "Lent": {
+    "color": "Violet",
     "urls": [
       {
         "url": "https://fisheaters.com/customslent1.html", 
@@ -90,7 +96,8 @@
     ]
   }, 
   "Passiontide": {
-    "season": ["Lent"],
+    "season": "Lent",
+    "color": "Violet",
     "urls": [
       "https://fisheaters.com/customslent8.html", 
       "https://en.wikipedia.org/wiki/Passiontide", 
@@ -98,19 +105,22 @@
     ]
   }, 
   "Holy Week": {
-    "season": ["Passiontide"],
+    "season": "Passiontide",
+    "color": "Violet",
     "urls": [
       "https://en.wikipedia.org/wiki/Holy_Week", 
       "http://www.newadvent.org/cathen/07435a.htm"
     ]
   }, 
   "Paschal Triduum": {
-    "season": ["Holy Week"],
+    "season": "Holy Week",
+    "color": "Violet",
     "urls": [
       "https://en.wikipedia.org/wiki/Paschal_Triduum"
     ]
   }, 
   "Eastertide": {
+    "color": "White",
     "urls": [
       {
         "url": "https://fisheaters.com/customseastertide1.html", 
@@ -123,12 +133,13 @@
     ]
   }, 
   "Time after Pentecost": {
+    "color": "Green",
     "urls": [
       "https://fisheaters.com/customstimeafterpentecost1.html"
     ]
   },
   "Hallowtide": {
-    "season": ["Time after Pentecost"],
+    "season": "Time after Pentecost",
     "urls": [
       "https://en.wikipedia.org/wiki/Allhallowtide"
     ]

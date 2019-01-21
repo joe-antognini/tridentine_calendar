@@ -106,8 +106,7 @@ def holy_name_date(year):
     holy_name = new_years_day + dt.timedelta(6 - new_years_day.weekday())
     if holy_name in [new_years_day, dt.date(year, 1, 6), dt.date(year, 1, 7)]:
         return dt.date(year, 1, 2)
-    else:
-        return holy_name
+    return holy_name
 
 
 @functools.lru_cache()
@@ -134,8 +133,7 @@ def plough_monday_date(year):
     epiphany = dt.date(year, 1, 6)
     if epiphany.weekday() == 6:
         return epiphany + dt.timedelta(1)
-    else:
-        return holy_family_date(year) + dt.timedelta(1)
+    return holy_family_date(year) + dt.timedelta(1)
 
 
 @functools.lru_cache()
@@ -145,8 +143,7 @@ def ash_wednesday_date(year):
     Ash Wednesday is forty days prior to Easter, excluding Sundays.
 
     """
-    easter_date = computus(year)
-    return easter_date - dt.timedelta(46)
+    return easter_date(year) - dt.timedelta(46)
 
 
 @functools.lru_cache()
@@ -228,8 +225,7 @@ def st_matthias_date(year):
     """
     if calendar.isleap(year):
         return dt.date(year, 2, 25)
-    else:
-        return dt.date(year, 2, 24)
+    return dt.date(year, 2, 24)
 
 
 @functools.lru_cache()
@@ -242,8 +238,7 @@ def st_gabriel_of_our_lady_of_sorrows_date(year):
     """
     if calendar.isleap(year):
         return dt.date(year, 2, 28)
-    else:
-        return dt.date(year, 2, 27)
+    return dt.date(year, 2, 27)
 
 
 @functools.lru_cache()

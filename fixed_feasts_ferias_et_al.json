@@ -136,8 +136,9 @@
   ],
   "December 8": [
     {
-      "obligation": true,
       "name": "Feast of the Immaculate Conception",
+      "obligation": true,
+      "color": "White",
       "urls": [
         "https://fisheaters.com/customsadvent5.html",
         "http://www.newadvent.org/cathen/07674d.htm",
@@ -323,6 +324,7 @@
   "December 27": [
     {
       "name": "St. John",
+      "color": "White",
       "titles": [
         "Apostle",
         "Evangelist"
@@ -426,18 +428,6 @@
       "liturgical_event": true
     }
   ],
-  "January 13": [
-    {
-      "obligation": false,
-      "name": "Baptism of Christ",
-      "urls": [
-        "https://fisheaters.com/baptism3.html",
-        "https://en.wikipedia.org/wiki/Baptism_of_Jesus"
-      ],
-      "class": 2,
-      "liturgical_event": true
-    }
-  ],
   "January 11": [
     {
       "name": "Pope Hyginus",
@@ -451,6 +441,19 @@
       ],
       "obligation": false,
       "class": 4,
+      "liturgical_event": true
+    }
+  ],
+  "January 13": [
+    {
+      "obligation": false,
+      "name": "Baptism of Christ",
+      "color": "White",
+      "urls": [
+        "https://fisheaters.com/baptism3.html",
+        "https://en.wikipedia.org/wiki/Baptism_of_Jesus"
+      ],
+      "class": 2,
       "liturgical_event": true
     }
   ],
@@ -547,6 +550,7 @@
     {
       "obligation": false,
       "name": "St. Peter's Chair",
+      "color": "White",
       "urls": [
         "https://en.wikipedia.org/wiki/Chair_of_Saint_Peter",
         "http://www.newadvent.org/cathen/03551e.htm"
@@ -617,17 +621,6 @@
       "liturgical_event": true
     }
   ],
-  "January 25": [
-    {
-      "obligation": false,
-      "name": "Conversion of St. Paul",
-      "urls": [
-        "https://en.wikipedia.org/wiki/Conversion_of_Paul_the_Apostle"
-      ],
-      "class": 3,
-      "liturgical_event": true
-    }
-  ],
   "January 22": [
     {
       "name": "SS. Vincent & Anastasius",
@@ -660,6 +653,7 @@
   "January 23": [
     {
       "name": "St. Raymond of Pe\u00f1afort",
+      "color": "Red",
       "titles": [
         "Confessor"
       ],
@@ -689,6 +683,18 @@
         "https://en.wikipedia.org/wiki/Saint_Timothy"
       ],
       "obligation": false,
+      "class": 3,
+      "liturgical_event": true
+    }
+  ],
+  "January 25": [
+    {
+      "obligation": false,
+      "name": "Conversion of St. Paul",
+      "color": "White",
+      "urls": [
+        "https://en.wikipedia.org/wiki/Conversion_of_Paul_the_Apostle"
+      ],
       "class": 3,
       "liturgical_event": true
     }
@@ -826,6 +832,7 @@
   "February 2": [
     {
       "obligation": false,
+      "color": "White",
       "name": "Candlemas",
       "urls": [
         "https://fisheaters.com/customstimeafterepiphany3.html",
@@ -965,6 +972,7 @@
     {
       "obligation": false,
       "name": "The Apparition at Lourdes",
+      "color": "White",
       "urls": [
         "https://en.wikipedia.org/wiki/Lourdes_apparitions",
         "http://www.newadvent.org/cathen/09389b.htm"
@@ -1145,6 +1153,9 @@
     {
       "obligation": false,
       "name": "The Forty Martyrs",
+      "titles": [
+        "Martyr"
+      ],
       "urls": [
         "https://en.wikipedia.org/wiki/Forty_Martyrs_of_Sebaste",
         "http://www.newadvent.org/cathen/06153a.htm"
@@ -1602,6 +1613,7 @@
     {
       "obligation": false,
       "name": "SS. Alexander & Companions",
+      "color": "Red",
       "class": 4,
       "liturgical_event": true
     }
@@ -1986,6 +1998,7 @@
     {
       "obligation": false,
       "name": "The Queenship of Mary",
+      "color": "White",
       "urls": [
         "https://fisheaters.com/queenshipofmary.html",
         {
@@ -2330,6 +2343,7 @@
   "June 23": [
     {
       "name": "St. John's Eve",
+      "color": "Violet",
       "titles": [],
       "urls": [
         "https://fisheaters.com/customstimeafterpentecost3.html",
@@ -2348,6 +2362,7 @@
   "June 24": [
     {
       "name": "St. John's Day",
+      "color": "White",
       "titles": [],
       "urls": [
         "https://fisheaters.com/customstimeafterpentecost3.html",
@@ -2399,9 +2414,32 @@
       "liturgical_event": true
     }
   ],
+  "June 28": [
+    {
+      "name": "Vigil of SS. Peter & Paul",
+      "titles": [],
+      "color": "Violet",
+      "class": 2,
+      "obligation": false,
+      "liturgical_event": true,
+      "urls": [
+        "https://en.wikipedia.org/wiki/Feast_of_Saints_Peter_and_Paul",
+        "https://en.wikipedia.org/wiki/Saint_Peter",
+        "https://en.wikipedia.org/wiki/Paul_the_Apostle",
+        {
+          "url": "http://www.newadvent.org/cathen/11744a.htm",
+          "description": "St. Peter, Prince of the Apostles"
+        },
+        {
+          "url": "http://www.newadvent.org/cathen/11567b.htm",
+          "description": "St. Paul"
+        }
+      ]
+    }
+  ],
   "June 29": [
     {
-      "name": "SS. Peter and Paul",
+      "name": "SS. Peter & Paul",
       "titles": [
         "Apostle"
       ],
@@ -2442,6 +2480,7 @@
     {
       "obligation": false,
       "name": "Feast of the Most Precious Blood",
+      "color": "Red",
       "urls": [
         "https://en.wikipedia.org/wiki/Feast_of_the_Most_Precious_Blood",
         "https://en.wikipedia.org/wiki/Blood_of_Christ",
@@ -2462,6 +2501,7 @@
     {
       "obligation": false,
       "name": "The Visitation",
+      "color": "White",
       "urls": [
         "https://fisheaters.com/visitation.html",
         "https://en.wikipedia.org/wiki/Visitation_(Christianity)",
@@ -2646,6 +2686,7 @@
     {
       "obligation": false,
       "name": "Our Lady of Mt. Carmel",
+      "color": "White",
       "urls": [
         "https://en.wikipedia.org/wiki/Our_Lady_of_Mount_Carmel",
         {
@@ -2986,6 +3027,7 @@
   "August 5": [
     {
       "name": "Church of St. Mary of the Snow",
+      "color": "White",
       "titles": [
         "Dedication"
       ],
@@ -3005,6 +3047,7 @@
     {
       "obligation": false,
       "name": "Feast of the Transfiguration",
+      "color": "White",
       "urls": [
         "https://fisheaters.com/customstimeafterpentecost5.html",
         "https://en.wikipedia.org/wiki/Feast_of_the_Transfiguration",
@@ -3061,6 +3104,23 @@
       ],
       "urls": [
         "https://en.wikipedia.org/wiki/Cyriacus"
+      ],
+      "obligation": false,
+      "class": 4,
+      "liturgical_event": true
+    }
+  ],
+  "August 9": [
+    {
+      "name": "Vigil of St. Lawrence",
+      "color": "Violet",
+      "titles": [
+        "Martyr"
+      ],
+      "urls": [
+        "https://fisheaters.com/stlawrence.html",
+        "https://en.wikipedia.org/wiki/Saint_Lawrence",
+        "http://www.newadvent.org/cathen/09089a.htm"
       ],
       "obligation": false,
       "class": 4,
@@ -3137,10 +3197,28 @@
       "liturgical_event": true
     }
   ],
+  "August 14": [
+    {
+      "name": "Vigil of the Assumption",
+      "color": "Violet",
+      "obligation": false,
+      "urls": [
+        "https://fisheaters.com/customstimeafterpentecost6.html",
+        "https://en.wikipedia.org/wiki/Assumption_of_Mary",
+        {
+          "url": "http://www.newadvent.org/cathen/02006b.htm",
+          "description": "The Feast of the Assumption"
+        }
+      ],
+      "class": 2,
+      "liturgical_event": true
+    }
+  ],
   "August 15": [
     {
       "obligation": true,
       "name": "Marymass",
+      "color": "White",
       "urls": [
         "https://fisheaters.com/customstimeafterpentecost6.html",
         "https://en.wikipedia.org/wiki/Assumption_of_Mary",
@@ -3257,6 +3335,7 @@
     {
       "obligation": false,
       "name": "Feast of the Immaculate Heart",
+      "color": "White",
       "urls": [
         "https://en.wikipedia.org/wiki/Immaculate_Heart_of_Mary",
         {
@@ -3381,6 +3460,7 @@
     {
       "obligation": false,
       "name": "The Beheading of John the Baptist",
+      "color": "Red",
       "urls": [
         "https://en.wikipedia.org/wiki/Beheading_of_John_the_Baptist",
         {
@@ -3510,6 +3590,7 @@
     {
       "obligation": false,
       "name": "The Nativity of Mary",
+      "color": "White",
       "urls": [
         "https://fisheaters.com/customstimeafterpentecost6a.html",
         "https://en.wikipedia.org/wiki/Nativity_of_Mary",
@@ -3574,6 +3655,7 @@
     {
       "obligation": false,
       "name": "The Most Holy Name of Mary",
+      "color": "White",
       "urls": [
         "https://en.wikipedia.org/wiki/The_Most_Holy_Name_of_the_Blessed_Virgin_Mary",
         {
@@ -3589,6 +3671,7 @@
     {
       "obligation": false,
       "name": "Roodmas",
+      "color": "Red",
       "urls": [
         "https://fisheaters.com/customstimeafterpentecost7.html",
         "https://en.wikipedia.org/wiki/Roodmas",
@@ -3606,6 +3689,7 @@
     {
       "obligation": false,
       "name": "The Seven Sorrows",
+      "color": "White",
       "urls": [
         "https://fisheaters.com/customslent10.html",
         "https://en.wikipedia.org/wiki/Our_Lady_of_Sorrows",
@@ -3640,6 +3724,7 @@
   "September 17": [
     {
       "name": "The Stigmata of St. Francis",
+      "color": "White",
       "titles": [
         "Confessor"
       ],
@@ -3764,6 +3849,7 @@
     {
       "obligation": false,
       "name": "Our Lady of Ransom",
+      "color": "White",
       "urls": [
         "https://en.wikipedia.org/wiki/Feast_of_Our_Lady_of_Ransom",
         "https://en.wikipedia.org/wiki/Order_of_the_Blessed_Virgin_Mary_of_Mercy",
@@ -3835,6 +3921,7 @@
     {
       "obligation": false,
       "name": "Michaelmas",
+      "color": "White",
       "urls": [
         "https://fisheaters.com/customstimeafterpentecost10.html",
         "https://en.wikipedia.org/wiki/Michaelmas",
@@ -3884,6 +3971,7 @@
     {
       "obligation": false,
       "name": "The Holy Guardian Angels",
+      "color": "White",
       "urls": [
         "https://en.wikipedia.org/wiki/Memorial_of_the_Holy_Guardian_Angels",
         "https://en.wikipedia.org/wiki/Guardian_angel",
@@ -3967,6 +4055,7 @@
     {
       "obligation": false,
       "name": "Feast of the Holy Rosary",
+      "color": "White",
       "urls": [
         "https://en.wikipedia.org/wiki/Our_Lady_of_the_Rosary",
         "https://en.wikipedia.org/wiki/Rosary",
@@ -4035,6 +4124,7 @@
     {
       "obligation": false,
       "name": "The Motherhood of Mary",
+      "color": "White",
       "class": 2,
       "liturgical_event": true
     }
@@ -4285,6 +4375,7 @@
   "November 1": [
     {
       "obligation": true,
+      "color": "White",
       "name": "Hallowmas",
       "urls": [
         {
@@ -4305,6 +4396,7 @@
     {
       "obligation": false,
       "name": "All Souls' Day",
+      "color": "Black",
       "urls": [
         "https://fisheaters.com/customstimeafterpentecost12ac.html",
         "https://en.wikipedia.org/wiki/All_Souls%27_Day",
@@ -4352,6 +4444,7 @@
   "November 9": [
     {
       "name": "Basilica of St. John Lateran",
+      "color": "White",
       "titles": [
         "Dedication"
       ],
@@ -4516,9 +4609,7 @@
   "November 18": [
     {
       "name": "Basilicas of SS. Peter & Paul",
-      "titles": [
-        "Dedication"
-      ],
+      "color": "White",
       "urls": [
         "https://en.wikipedia.org/wiki/St._Peter%27s_Basilica",
         "https://en.wikipedia.org/wiki/Basilica_of_Saint_Paul_Outside_the_Walls",
@@ -4570,6 +4661,7 @@
     {
       "obligation": false,
       "name": "The Presentation of Mary",
+      "color": "White",
       "urls": [
         "https://en.wikipedia.org/wiki/Presentation_of_Mary",
         {

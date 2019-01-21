@@ -1,15 +1,15 @@
 import unittest
 
-from ..utils import description_from_url
+from ..utils import add_domain_to_url_description
 
 
-class TestDescriptionFromUrl(unittest.TestCase):
+class TestAddDomainToUrlDescription(unittest.TestCase):
 
-    def test_description_from_url(self):
+    def test_add_domain_to_url_description(self):
         url = 'https://en.wikipedia.org/Saturnin'
-        output = description_from_url(url)
+        output = add_domain_to_url_description(url, 'Saturnin')
         self.assertEqual(output, 'Saturnin (Wikipedia)')
 
         url = 'http://www.newadvent.org/cathen/01471a.htm'
-        output = description_from_url(url, 'Saturninus')
+        output = add_domain_to_url_description(url, 'Saturninus')
         self.assertEqual(output, 'Saturninus (New Advent)')

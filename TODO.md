@@ -1,7 +1,4 @@
-* Fix bug with the Sunday within the octave of Christmas.
-* Fix bug with St. Prisca and St. Peter's Chair ranking.
-* Precedence with the Major Rogation and Easter.
-* Switch to iCalendar from ics.
+* Fix bug with Peter's Pence ranking (and handle ranking sanely).
 * Package the code.
 * The function-name pairs are a mess.
 * Remove `date` from date function names.
@@ -10,7 +7,7 @@
 * Add note about feasts during Lent becoming commemorations.
 * Fix the ICS writing to file.
 * Monkey patch the JSON files to a test object during tests.
-* Add tests.
+* Add more tests.
 * Add flags for the ICS conversion (exclude commemorations, etc.).
 * Make code more efficient by running through the year only once.
 * Add Holy Days of obligation for different regions.

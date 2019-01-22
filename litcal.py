@@ -7,9 +7,7 @@ import json
 import os
 import urllib
 
-from arrow import Arrow
-
-import ics
+import icalendar as ical
 
 from . import feast_dates
 from .utils import ORDINALS
@@ -424,6 +422,10 @@ class LiturgicalCalendar:
         function_name_pairs = (
             (feast_dates.gaudete_sunday_date, 'Gaudete Sunday'),
             (feast_dates.advent_embertide_dates, 'Advent Embertide'),
+            (
+                feast_dates.sunday_within_the_octave_of_xmas_date,
+                'Sunday within the Octave of Christmas',
+            ),
             (feast_dates.holy_name_date, 'Feast of the Holy Name'),
             (feast_dates.holy_family_date, 'Feast of the Holy Family'),
             (feast_dates.plough_monday_date, 'Plough Monday'),
@@ -463,6 +465,12 @@ class LiturgicalCalendar:
             (feast_dates.ascension_date, 'Ascension'),
             (feast_dates.minor_rogation_dates, 'Minor Rogation'),
             (feast_dates.pentecost_date, 'Pentecost'),
+            (lambda x: feast_dates.pentecost_date(x) + dt.timedelta(1), 'Pentecost Monday'),
+            (lambda x: feast_dates.pentecost_date(x) + dt.timedelta(2), 'Pentecost Tuesday'),
+            (
+                lambda x: feast_dates.pentecost_date(x) + dt.timedelta(4),
+                'Thursday in Pentecost Week',
+            ),
             (feast_dates.whit_embertide_dates, 'Whit Embertide'),
             (feast_dates.trinity_sunday_date, 'Trinity Sunday'),
             (feast_dates.corpus_christi_date, 'Corpus Christi'),
@@ -519,6 +527,10 @@ class LiturgicalCalendar:
 
         # Eastertide.
         date = feast_dates.cantate_sunday_date(self.year) + dt.timedelta(7)
+        event = LiturgicalCalendarEvent(date, 'Fifth Sunday after Easter', liturgical_event=True)
+        self.calendar[date].append(event)
+
+        date = feast_dates.ascension_date(self.year) + dt.timedelta(3)
         event = LiturgicalCalendarEvent(date, 'Sunday after Ascension', liturgical_event=True)
         self.calendar[date].append(event)
 
@@ -552,9 +564,14 @@ class LiturgicalCalendar:
     def __getitem__(self, key):
         return self.calendar[key]
 
-    def to_ics(self, html_formatting=False):
+    def to_ical(self, html_formatting=False):
         """Write out the calendar to ICS format."""
-        ics_calendar = ics.Calendar()
+        ics_calendar = ical.Calendar()
+        ics_calendar.add('x-wr-calname', 'Tridentine calendar')
+        ics_calendar.add(
+            'x-wr-caldesc',
+            'Liturgical calendar using the 1962 Roman Catholic rubrics.',
+        )
         date = self.liturgical_year_start
         while date <= self.liturgical_year_end:
             for i, elem in enumerate(self.calendar[date]):
@@ -577,12 +594,13 @@ class LiturgicalCalendar:
 
                 description += elem.generate_description(html_formatting)
                 description = description.strip()
-                arrow_date = Arrow.fromdate(date)
-                ics_event = ics.Event(name=ics_name, begin=arrow_date, description=description)
-                ics_event.make_all_day()
-                ics_calendar.events.add(ics_event)
+                ics_event = ical.Event()
+                ics_event.add('summary', ics_name)
+                ics_event.add('dtstart', date)
+                ics_event.add('description', description)
+                ics_calendar.add_component(ics_event)
             date += dt.timedelta(1)
-        return ics_calendar
+        return ics_calendar.to_ical()
 
 
 if __name__ == '__main__':

@@ -16,6 +16,13 @@
       "http://www.newadvent.org/cathen/06394b.htm"
     ]
   }, 
+  "Sunday within the Octave of Christmas": {
+    "color": "White",
+    "liturgical_event": true,
+    "urls": [
+      "https://en.wikipedia.org/wiki/Sunday_within_the_Octave_of_Christmas"
+    ]
+  },
   "Feast of the Holy Name": {
     "liturgical_event": true,
     "urls": [
@@ -366,6 +373,20 @@
       }
     ]
   }, 
+  "Pentecost Monday": {
+    "color": "Red",
+    "liturgical_event": true,
+    "urls": [
+      "https://en.wikipedia.org/wiki/Pentecost"
+    ]
+  },
+  "Pentecost Tuesday": {
+    "color": "Red",
+    "liturgical_event": true,
+    "urls": [
+      "https://en.wikipedia.org/wiki/Pentecost"
+    ]
+  },
   "Whit Embertide": {
     "color": "Red",
     "liturgical_event": true,
@@ -373,6 +394,13 @@
       "https://fisheaters.com/customseastertide8.html"
     ]
   }, 
+  "Thursday in Pentecost Week": {
+    "color": "Red",
+    "liturgical_event": true,
+    "urls": [
+      "https://en.wikipedia.org/wiki/Pentecost"
+    ]
+  },
   "Trinity Sunday": {
     "color": "White",
     "liturgical_event": true,

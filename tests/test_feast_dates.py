@@ -35,6 +35,10 @@ class TestMovableFeastDates(unittest.TestCase):
             [dt.date(2017, 12, 20), dt.date(2017, 12, 22), dt.date(2017, 12, 23)],
         )
 
+    def test_sunday_within_the_octave_of_xmas_date(self):
+        self.assertEqual(fd.sunday_within_the_octave_of_xmas_date(2019), dt.date(2018, 12, 30))
+        self.assertEqual(fd.sunday_within_the_octave_of_xmas_date(2020), dt.date(2019, 12, 29))
+
     def test_holy_name_date(self):
         self.assertEqual(fd.holy_name_date(2018), dt.date(2018, 1, 2))
         self.assertEqual(fd.holy_name_date(2019), dt.date(2019, 1, 2))
@@ -112,11 +116,11 @@ class TestMovableFeastDates(unittest.TestCase):
     def test_quasimodo_sunday_date(self):
         self.assertEqual(fd.quasimodo_sunday_date(2018), dt.date(2018, 4, 8))
 
-    def test_jubilate_sunday_date(self):
-        self.assertEqual(fd.jubilate_sunday_date(2018), dt.date(2018, 4, 15))
-
     def test_misericordia_sunday_date(self):
-        self.assertEqual(fd.misericordia_sunday_date(2018), dt.date(2018, 4, 22))
+        self.assertEqual(fd.misericordia_sunday_date(2018), dt.date(2018, 4, 15))
+
+    def test_jubilate_sunday_date(self):
+        self.assertEqual(fd.jubilate_sunday_date(2018), dt.date(2018, 4, 22))
 
     def test_cantate_sunday_date(self):
         self.assertEqual(fd.cantate_sunday_date(2018), dt.date(2018, 4, 29))

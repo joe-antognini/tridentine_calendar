@@ -94,6 +94,16 @@ def advent_embertide_dates(year):
 
 
 @functools.lru_cache()
+def sunday_within_the_octave_of_xmas_date(year):
+    """Calculate the date of the Sunday within the Octave of Easter."""
+    xmas = dt.date(year - 1, 12, 25)
+    sunday = xmas + dt.timedelta(6 - xmas.weekday())
+    if sunday == xmas:
+        sunday += dt.timedelta(7)
+    return sunday
+
+
+@functools.lru_cache()
 def holy_name_date(year):
     """"Calculate the date of the Feast of the Holy Name.
 
@@ -362,10 +372,10 @@ def quasimodo_sunday_date(year):
 
 
 @functools.lru_cache()
-def jubilate_sunday_date(year):
-    """Calculate the date of Jubilate Sunday.
+def misericordia_sunday_date(year):
+    """Calculate the date of Misericordia Sunday.
 
-    Jubilate Sunday is the second Sunday after Easter.
+    Misericordia Sunday is the second Sunday after Easter.
 
     """
     easter_date = computus(year)
@@ -373,10 +383,10 @@ def jubilate_sunday_date(year):
 
 
 @functools.lru_cache()
-def misericordia_sunday_date(year):
-    """Calculate the date of Misericordia Sunday.
+def jubilate_sunday_date(year):
+    """Calculate the date of Jubilate Sunday.
 
-    Misericordia Sunday is the third Sunday after Easter.
+    Jubilate Sunday is the third Sunday after Easter.
 
     """
     easter_date = computus(year)

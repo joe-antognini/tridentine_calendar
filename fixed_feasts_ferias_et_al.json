@@ -534,6 +534,17 @@
   ],
   "January 18": [
     {
+      "obligation": false,
+      "name": "St. Peter's Chair",
+      "color": "White",
+      "urls": [
+        "https://en.wikipedia.org/wiki/Chair_of_Saint_Peter",
+        "http://www.newadvent.org/cathen/03551e.htm"
+      ],
+      "class": 2,
+      "liturgical_event": true
+    },
+    {
       "name": "St. Prisca",
       "titles": [
         "Virgin",
@@ -545,17 +556,6 @@
       ],
       "obligation": false,
       "class": 4,
-      "liturgical_event": true
-    },
-    {
-      "obligation": false,
-      "name": "St. Peter's Chair",
-      "color": "White",
-      "urls": [
-        "https://en.wikipedia.org/wiki/Chair_of_Saint_Peter",
-        "http://www.newadvent.org/cathen/03551e.htm"
-      ],
-      "class": 2,
       "liturgical_event": true
     }
   ],

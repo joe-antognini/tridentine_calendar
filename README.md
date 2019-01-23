@@ -17,7 +17,7 @@ Or, if you'd like to generate the calendar yourself, follow the instructions bel
 ## Requirements
 
 * Python 3
-* icspy
+* icalendar
 
 ## Usage
 

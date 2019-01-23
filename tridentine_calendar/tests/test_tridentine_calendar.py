@@ -1,10 +1,10 @@
 import datetime as dt
 import unittest
 
-from ..litcal import LiturgicalCalendar
-from ..litcal import LiturgicalCalendarEvent
-from ..litcal import LiturgicalCalendarEventUrl
-from ..litcal import LiturgicalSeason
+from ..tridentine_calendar import LiturgicalCalendar
+from ..tridentine_calendar import LiturgicalCalendarEvent
+from ..tridentine_calendar import LiturgicalCalendarEventUrl
+from ..tridentine_calendar import LiturgicalSeason
 
 
 class TestLiturgicalCalendarEventUrl(unittest.TestCase):

@@ -16,8 +16,15 @@ setup(
     install_requires=[
         'icalendar',
     ],
+    setup_requires=['pytest-runner'],
+    test_requires=['pytest'],
+    python_requires='>=3',
     zip_safe=False,
     classifiers=[
+        'Development Status :: 3 - Alpha',
+        'Intended Audience :: Religion',
+        'Natural Language :: English',
+        'Topic :: Religion',
         'Programming Language :: Python :: 3',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',

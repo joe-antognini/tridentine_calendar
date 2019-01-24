@@ -6,6 +6,7 @@ import datetime as dt
 import json
 import os
 import urllib
+from pkg_resources import resource_string
 
 import icalendar as ical
 
@@ -14,16 +15,9 @@ from .utils import ORDINALS
 from .utils import add_domain_to_url_description
 
 # Load the JSON data.
-_DIRNAME = os.path.dirname(os.path.realpath(__file__))
-
-with open(os.path.join(_DIRNAME, 'movable_feasts_ferias_et_al.json')) as json_file:
-    MOVABLE_FEASTS_DATA = json.load(json_file)
-
-with open(os.path.join(_DIRNAME, 'fixed_feasts_ferias_et_al.json')) as json_file:
-    FIXED_FEASTS_DATA = json.load(json_file)
-
-with open(os.path.join(_DIRNAME, 'seasons.json')) as json_file:
-    SEASON_DATA = json.load(json_file)
+MOVABLE_FEASTS_DATA = json.loads(resource_string(__name__, 'movable_feasts_ferias_et_al.json'))
+FIXED_FEASTS_DATA = json.loads(resource_string(__name__, 'fixed_feasts_ferias_et_al.json'))
+SEASON_DATA = json.loads(resource_string(__name__, 'seasons.json'))
 
 
 def get_args():

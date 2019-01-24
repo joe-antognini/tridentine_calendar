@@ -16,6 +16,7 @@ setup(
     install_requires=[
         'icalendar',
     ],
+    include_package_data=True,
     setup_requires=['pytest-runner'],
     test_requires=['pytest'],
     python_requires='>=3.6',

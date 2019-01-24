@@ -1,7 +1,6 @@
 * Fix bug with Peter's Pence ranking (and handle ranking sanely).
 * Add a command line script.
 * The function-name pairs are a mess.
-* Remove `date` from date function names.
 * Add class and title information to ICS description.
 * Add color information.
 * Add note about feasts during Lent becoming commemorations.

@@ -18,7 +18,7 @@ setup(
     ],
     setup_requires=['pytest-runner'],
     test_requires=['pytest'],
-    python_requires='>=3',
+    python_requires='>=3.6',
     zip_safe=False,
     classifiers=[
         'Development Status :: 3 - Alpha',

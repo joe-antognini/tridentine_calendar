@@ -1,5 +1,6 @@
+*.egg-info
 *.pyc
 *.swp
-.pytest_cache
-*.egg-info
 .eggs
+.pytest_cache
+.tox/

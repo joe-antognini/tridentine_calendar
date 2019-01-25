@@ -1,6 +1,7 @@
 {
   "Advent Embertide": {
     "liturgical_event": true,
+    "class": 2,
     "urls": [
       {
         "url": "https://fisheaters.com/customsadvent11.html", 
@@ -11,6 +12,7 @@
   "Gaudete Sunday": {
     "color": "Rose",
     "liturgical_event": true,
+    "class": 2,
     "urls": [
       "https://en.wikipedia.org/wiki/Gaudete_Sunday", 
       "http://www.newadvent.org/cathen/06394b.htm"
@@ -19,12 +21,14 @@
   "Sunday within the Octave of Christmas": {
     "color": "White",
     "liturgical_event": true,
+    "class": 2,
     "urls": [
       "https://en.wikipedia.org/wiki/Sunday_within_the_Octave_of_Christmas"
     ]
   },
   "Feast of the Holy Name": {
     "liturgical_event": true,
+    "class": 2,
     "urls": [
       {
         "url": "https://fisheaters.com/customschristmas1.html", 
@@ -42,6 +46,7 @@
   "Feast of the Holy Family": {
     "color": "White",
     "liturgical_event": true,
+    "class": 2,
     "urls": [
       "https://fisheaters.com/customstimeafterepiphany1a.html", 
       "https://en.wikipedia.org/wiki/Holy_Family"
@@ -55,6 +60,7 @@
   }, 
   "Septuagesima": {
     "liturgical_event": true,
+    "class": 2,
     "urls": [
       "https://fisheaters.com/septuagesima.html",
       "https://en.wikipedia.org/wiki/Septuagesima", 
@@ -63,6 +69,7 @@
   }, 
   "Sexagesima": {
     "liturgical_event": true,
+    "class": 2,
     "urls": [
       "https://en.wikipedia.org/wiki/Sexagesima", 
       "http://www.newadvent.org/cathen/13747a.htm"
@@ -70,6 +77,7 @@
   }, 
   "Quinquagesima": {
     "liturgical_event": true,
+    "class": 2,
     "urls": [
       "https://en.wikipedia.org/wiki/Quinquagesima", 
       "http://www.newadvent.org/cathen/12614a.htm"
@@ -97,6 +105,7 @@
   "St. Matthias": {
     "color": "Red",
     "liturgical_event": true,
+    "class": 2,
     "titles": [
       "Apostle"
     ], 
@@ -108,6 +117,7 @@
   "St. Gabriel of Our Lady of Sorrows": {
     "color": "White",
     "liturgical_event": true,
+    "class": 3,
     "titles": [
       "Confessor"
     ], 
@@ -121,6 +131,7 @@
   }, 
   "Ash Wednesday": {
     "liturgical_event": true,
+    "class": 1,
     "urls": [
       "https://fisheaters.com/customslent2.html", 
       "https://en.wikipedia.org/wiki/Ash_Wednesday", 
@@ -129,6 +140,7 @@
   }, 
   "Lenten Embertide": {
     "liturgical_event": true,
+    "class": 2,
     "urls": [
       "https://fisheaters.com/customslent3.html"
     ]
@@ -136,6 +148,7 @@
   "Laetare Sunday": {
     "color": "Rose",
     "liturgical_event": true,
+    "class": 1,
     "urls": [
       "https://fisheaters.com/customslent7.html", 
       "https://en.wikipedia.org/wiki/Laetare_Sunday", 
@@ -145,6 +158,7 @@
   "Lady Day": {
     "color": "White",
     "liturgical_event": true,
+    "class": 1,
     "urls": [
       "https://fisheaters.com/customslent6.html", 
       {
@@ -161,12 +175,14 @@
   }, 
   "Passion Sunday": {
     "liturgical_event": true,
+    "class": 1,
     "urls": [
       "https://en.wikipedia.org/wiki/Passion_Sunday", 
       "http://www.newadvent.org/cathen/11535a.htm"
     ]
   }, 
   "The Seven Sorrows": {
+    "class": 3,
     "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customslent10.html", 
@@ -180,6 +196,7 @@
   }, 
   "Palm Sunday": {
     "color": "Red",
+    "class": 1,
     "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customslent11.html", 
@@ -188,12 +205,15 @@
     ]
   }, 
   "Monday of Holy Week": {
+    "class": 1,
     "liturgical_event": true
   }, 
   "Tuesday of Holy Week": {
+    "class": 1,
     "liturgical_event": true
   }, 
   "Spy Wednesday": {
+    "class": 1,
     "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customslent12.html", 
@@ -203,6 +223,7 @@
   "Maundy Thursday": {
     "color": "White",
     "liturgical_event": true,
+    "class": 1,
     "urls": [
       "https://fisheaters.com/customslent13.html", 
       "https://en.wikipedia.org/wiki/Maundy_Thursday", 
@@ -212,6 +233,7 @@
   "Good Friday": {
     "color": "Black",
     "liturgical_event": true,
+    "class": 1,
     "urls": [
       "https://fisheaters.com/customslent14.html", 
       "https://en.wikipedia.org/wiki/Good_Friday", 
@@ -220,6 +242,7 @@
   }, 
   "Holy Saturday": {
     "liturgical_event": true,
+    "class": 1,
     "urls": [
       "https://fisheaters.com/customslent15.html", 
       "https://en.wikipedia.org/wiki/Holy_Saturday", 
@@ -228,6 +251,7 @@
   }, 
   "Easter": {
     "liturgical_event": true,
+    "class": 1,
     "urls": [
       "https://fisheaters.com/customseastertide2.html", 
       "https://en.wikipedia.org/wiki/Easter", 
@@ -236,6 +260,7 @@
   }, 
   "Easter Monday": {
     "liturgical_event": true,
+    "class": 1,
     "urls": [
       "https://fisheaters.com/customseastertide2.html", 
       "https://en.wikipedia.org/wiki/Easter", 
@@ -244,6 +269,7 @@
   }, 
   "Easter Tuesday": {
     "liturgical_event": true,
+    "class": 1,
     "urls": [
       "https://fisheaters.com/customseastertide2.html", 
       "https://en.wikipedia.org/wiki/Easter", 
@@ -252,6 +278,7 @@
   }, 
   "Easter Wednesday": {
     "liturgical_event": true,
+    "class": 1,
     "urls": [
       "https://fisheaters.com/customseastertide2.html", 
       "https://en.wikipedia.org/wiki/Easter", 
@@ -260,6 +287,7 @@
   }, 
   "Easter Thursday": {
     "liturgical_event": true,
+    "class": 1,
     "urls": [
       "https://fisheaters.com/customseastertide2.html", 
       "https://en.wikipedia.org/wiki/Easter", 
@@ -268,6 +296,7 @@
   }, 
   "Easter Friday": {
     "liturgical_event": true,
+    "class": 1,
     "urls": [
       "https://fisheaters.com/customseastertide2.html", 
       "https://en.wikipedia.org/wiki/Easter", 
@@ -276,6 +305,7 @@
   }, 
   "Easter Saturday": {
     "liturgical_event": true,
+    "class": 1,
     "urls": [
       "https://fisheaters.com/customseastertide2.html", 
       "https://en.wikipedia.org/wiki/Easter", 
@@ -284,6 +314,7 @@
   }, 
   "Quasimodo Sunday": {
     "liturgical_event": true,
+    "class": 1,
     "urls": [
       {
         "url": "https://fisheaters.com/customseastertide4.html", 
@@ -301,6 +332,7 @@
   }, 
   "Jubilate Sunday": {
     "liturgical_event": true,
+    "class": 2,
     "urls": [
       "https://en.wikipedia.org/wiki/Jubilate_Sunday", 
       "http://www.newadvent.org/cathen/08531b.htm"
@@ -308,12 +340,14 @@
   }, 
   "Misericordia Sunday": {
     "liturgical_event": true,
+    "class": 2,
     "urls": [
       "https://en.wikipedia.org/wiki/Misericordia_Sunday"
     ]
   }, 
   "Cantate Sunday": {
     "liturgical_event": true,
+    "class": 2,
     "urls": [
       "https://en.wikipedia.org/wiki/Cantate_Sunday", 
       "http://www.newadvent.org/cathen/03299a.htm"
@@ -321,6 +355,7 @@
   }, 
   "Major Rogation": {
     "color": "White",
+    "class": 2,
     "liturgical_event": true,
     "urls": [
       "https://fisheaters.com/customseastertide3.html", 
@@ -339,6 +374,7 @@
   }, 
   "Ascension": {
     "liturgical_event": true,
+    "class": 1,
     "urls": [
       "https://fisheaters.com/customseastertide6.html", 
       {
@@ -354,6 +390,7 @@
   "Pentecost": {
     "color": "Red",
     "liturgical_event": true,
+    "class": 1,
     "urls": [
       {
         "url": "https://fisheaters.com/customseastertide7.html", 
@@ -375,6 +412,7 @@
   }, 
   "Pentecost Monday": {
     "color": "Red",
+    "class": 1,
     "liturgical_event": true,
     "urls": [
       "https://en.wikipedia.org/wiki/Pentecost"
@@ -383,6 +421,7 @@
   "Pentecost Tuesday": {
     "color": "Red",
     "liturgical_event": true,
+    "class": 1,
     "urls": [
       "https://en.wikipedia.org/wiki/Pentecost"
     ]
@@ -390,6 +429,7 @@
   "Whit Embertide": {
     "color": "Red",
     "liturgical_event": true,
+    "class": 1,
     "urls": [
       "https://fisheaters.com/customseastertide8.html"
     ]
@@ -397,6 +437,7 @@
   "Thursday in Pentecost Week": {
     "color": "Red",
     "liturgical_event": true,
+    "class": 1,
     "urls": [
       "https://en.wikipedia.org/wiki/Pentecost"
     ]
@@ -404,6 +445,7 @@
   "Trinity Sunday": {
     "color": "White",
     "liturgical_event": true,
+    "class": 1,
     "urls": [
       "https://fisheaters.com/customseastertide9.html", 
       "https://en.wikipedia.org/wiki/Trinity_Sunday", 
@@ -413,6 +455,7 @@
   "Corpus Christi": {
     "color": "White",
     "liturgical_event": true,
+    "class": 1,
     "urls": [
       "https://fisheaters.com/customstimeafterpentecost2.html", 
       "https://en.wikipedia.org/wiki/Corpus_Christi_(feast)", 
@@ -425,6 +468,7 @@
   "Feast of the Sacred Heart": {
     "color": "White",
     "liturgical_event": true,
+    "class": 1,
     "urls": [
       "https://fisheaters.com/customstimeafterpentecost4.html", 
       "https://en.wikipedia.org/wiki/Feast_of_the_Sacred_Heart", 
@@ -452,6 +496,7 @@
   "Michaelmas Embertide": {
     "color": "Violet",
     "liturgical_event": true,
+    "class": 1,
     "urls": [
       "https://fisheaters.com/customstimeafterpentecost8.html"
     ]
@@ -459,6 +504,7 @@
   "Christ the King": {
     "color": "White",
     "liturgical_event": true,
+    "class": 1,
     "urls": [
       {
         "url": "https://fisheaters.com/customstimeafterpentecost11.html", 
@@ -474,6 +520,7 @@
   }, 
   "Last Sunday after Pentecost": {
     "liturgical_event": true,
+    "class": 2,
     "urls": [
       "https://fisheaters.com/customstimeafterpentecost13.html"
     ]

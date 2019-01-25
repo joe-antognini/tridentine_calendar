@@ -487,6 +487,7 @@ class LiturgicalCalendar:
                 date, 
                 name=ORDINALS[i] + ' Sunday of Advent',
                 liturgical_event=True,
+                rank=1,
             )
             self.calendar[date].append(event)
 
@@ -498,6 +499,7 @@ class LiturgicalCalendar:
                 date, 
                 name=ORDINALS[i] + ' Sunday after Epiphany',
                 liturgical_event=True,
+                rank=2,
             )
             self.calendar[date].append(event)
             i += 1
@@ -510,6 +512,7 @@ class LiturgicalCalendar:
                 date, 
                 name=ORDINALS[i] + ' Sunday of Lent',
                 liturgical_event=True,
+                rank=1,
             )
             self.calendar[date].append(event)
 
@@ -530,12 +533,14 @@ class LiturgicalCalendar:
                 date, 
                 name=ORDINALS[i] + ' Sunday after Pentecost',
                 liturgical_event=True,
+                rank=2,
             )
             self.calendar[date].append(event)
             i += 1
             date += dt.timedelta(7)
 
-        event = LiturgicalCalendarEvent(date, 'Last Sunday after Pentecost', liturgical_event=True)
+        event = LiturgicalCalendarEvent(
+            date, 'Last Sunday after Pentecost', liturgical_event=True, rank=2)
         self.calendar[date].append(event)
 
         # Then second class fixed feasts or lower.
@@ -547,6 +552,7 @@ class LiturgicalCalendar:
                     if elem.get('class') != 1:
                         event = LiturgicalCalendarEvent.from_json(date, elem)
                         self.calendar[date].append(event)
+            self.calendar[date] = sorted(self.calendar[date], key=_feast_sort_key)
             date += dt.timedelta(1)
 
     def __getitem__(self, key):
@@ -568,7 +574,7 @@ class LiturgicalCalendar:
 
                 if i > 0 and elem.liturgical_event:
                     outranking_feast = self.calendar[date][0]
-                    ics_name = '«' + ics_name + '»'
+                    ics_name = '› ' + ics_name
                     if outranking_feast.is_fixed() and elem.is_fixed():
                         description += '{} is outranked by {}.\n\n'.format(
                             elem.full_name(capitalize=True),
@@ -579,6 +585,8 @@ class LiturgicalCalendar:
                             elem.full_name(capitalize=False),
                             outranking_feast.full_name(capitalize=False),
                         )
+                elif not elem.liturgical_event:
+                    ics_name = '» ' + ics_name
 
                 description += elem.generate_description(html_formatting)
                 description = description.strip()
@@ -591,6 +599,22 @@ class LiturgicalCalendar:
         return ics_calendar.to_ical()
 
 
+def _feast_sort_key(feast):
+    """Provides a key to help sort feasts.
+
+    Args:
+        feast: A `LiturgicalEvent` object.
+
+    Returns:
+        The rank of the feast if it has one and is a liturgical event, otherwise 4.
+
+    """
+    if not feast.liturgical_event or not feast.rank:
+        return 4
+    else:
+        return feast.rank
+
+    
 if __name__ == '__main__':
     args = get_args()
     litcal = LiturgicalCalendar(args.year)

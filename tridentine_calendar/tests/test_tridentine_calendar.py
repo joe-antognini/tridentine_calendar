@@ -1,6 +1,7 @@
 import datetime as dt
 import unittest
 
+from ..tridentine_calendar import _feast_sort_key
 from ..tridentine_calendar import LiturgicalCalendar
 from ..tridentine_calendar import LiturgicalCalendarEvent
 from ..tridentine_calendar import LiturgicalCalendarEventUrl
@@ -217,6 +218,18 @@ class TestLiturgicalCalendarEvent(unittest.TestCase):
 
         event = LiturgicalCalendarEvent(dt.date(2019, 4, 21), 'Easter')
         self.assertFalse(event.is_fixed())
+
+
+class TestFeastComparison(unittest.TestCase):
+
+    def test_feast_comparison(self):
+        feast = LiturgicalCalendarEvent(
+            dt.date(2018, 4, 1), name='Easter', rank=1, liturgical_event=True)
+        self.assertEqual(_feast_sort_key(feast), 1)
+
+        feast = LiturgicalCalendarEvent(
+            dt.date(2018, 10, 31), name='Halloween', liturgical_event=False)
+        self.assertEqual(_feast_sort_key(feast), 4)
 
 
 class TestLiturgicalCalendarSmoke(unittest.TestCase):

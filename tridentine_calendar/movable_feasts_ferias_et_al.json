@@ -357,6 +357,7 @@
     "color": "White",
     "class": 2,
     "liturgical_event": true,
+    "addition": true,
     "urls": [
       "https://fisheaters.com/customseastertide3.html", 
       "https://en.wikipedia.org/wiki/Rogation_days", 
@@ -366,6 +367,7 @@
   "Minor Rogation": {
     "color": "White",
     "liturgical_event": true,
+    "class": 2,
     "urls": [
       "https://fisheaters.com/customseastertide3.html", 
       "https://en.wikipedia.org/wiki/Rogation_days", 

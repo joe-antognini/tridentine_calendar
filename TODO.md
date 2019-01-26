@@ -1,5 +1,3 @@
-* Handle the Major Rogation properly.
-* Fix Minor Rogation ranking.
 * Add a note about tied feasts.
 * Fix article with the Feast of Christ the King.
 * Add a `LiturgicalYear` object.

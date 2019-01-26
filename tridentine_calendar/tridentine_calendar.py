@@ -210,6 +210,7 @@ class LiturgicalCalendarEvent:
         titles=None,
         liturgical_event=None,
         holy_day=None,
+        addition=None,
         season=None,
     ):
         """Instantiate a `LiturgicalCalendarEvent`.
@@ -229,6 +230,10 @@ class LiturgicalCalendarEvent:
                 For feast days of one or several saints
             liturgical_event: bool
                 Whether there is a special liturgy associated with this event.
+            addition: bool
+                Whether this event is a liturgical event that occurs in addition to any other
+                liturgical event of the day (e.g., Major Rogation).  These events do not follow the
+                usual rules of precedence.
             holy_day: bool
                 Whether the event is a Holy Day of Obligation.
             season: `LiturgicalSeason`
@@ -242,6 +247,7 @@ class LiturgicalCalendarEvent:
         self.color = color
         self.titles = titles
         self.liturgical_event = liturgical_event
+        self.addition = addition
         self.holy_day = holy_day
         self.season = LiturgicalSeason.from_date(date)
 
@@ -309,6 +315,7 @@ class LiturgicalCalendarEvent:
         event.rank = json_obj.get('class')
         event.titles = json_obj.get('titles')
         event.liturgical_event = json_obj.get('liturgical_event')
+        event.addition = json_obj.get('addition', False)
         event.holy_day = json_obj.get('holy_day', False)
         event.season = LiturgicalSeason.from_date(date)
 
@@ -572,7 +579,7 @@ class LiturgicalCalendar:
                 ics_name = elem.name
                 description = ''
 
-                if i > 0 and elem.liturgical_event:
+                if i > 0 and elem.liturgical_event and not elem.addition:
                     outranking_feast = self.calendar[date][0]
                     ics_name = '› ' + ics_name
                     if outranking_feast.is_fixed() and elem.is_fixed():
@@ -611,6 +618,8 @@ def _feast_sort_key(feast):
     """
     if not feast.liturgical_event or not feast.rank:
         return 4
+    elif feast.addition:
+        return feast.rank + .5
     else:
         return feast.rank
 

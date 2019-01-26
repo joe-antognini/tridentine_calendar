@@ -1,5 +1,3 @@
-* Add a note about tied feasts.
-* Fix article with the Feast of Christ the King.
 * Add a `LiturgicalYear` object.
     - Make `LiturgicalCalendar` support multiple years.
 * Add a command line script.

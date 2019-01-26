@@ -2,10 +2,10 @@ import datetime as dt
 import unittest
 
 from ..tridentine_calendar import _feast_sort_key
-from ..tridentine_calendar import LiturgicalCalendar
 from ..tridentine_calendar import LiturgicalCalendarEvent
 from ..tridentine_calendar import LiturgicalCalendarEventUrl
 from ..tridentine_calendar import LiturgicalSeason
+from ..tridentine_calendar import LiturgicalYear
 
 
 class TestLiturgicalCalendarEventUrl(unittest.TestCase):
@@ -185,6 +185,11 @@ class TestLiturgicalCalendarEvent(unittest.TestCase):
         expected_output = 'the Feast of St. Nicholas'
         self.assertEqual(event.full_name(capitalize=False), expected_output)
 
+        date = dt.date(2019, 10, 27)
+        event = LiturgicalCalendarEvent(date, 'Christ the King', rank=3)
+        expected_output = 'The Feast of Christ the King'
+        self.assertEqual(event.full_name(capitalize=True), expected_output)
+
     def test_generate_description(self):
         url = LiturgicalCalendarEventUrl(
             'https://fisheaters.com/customsadvent5.html',
@@ -232,16 +237,16 @@ class TestFeastComparison(unittest.TestCase):
         self.assertEqual(_feast_sort_key(feast), 4)
 
 
-class TestLiturgicalCalendarSmoke(unittest.TestCase):
+class TestLiturgicalYearSmoke(unittest.TestCase):
 
-    def test_liturgical_calendar(self):
-        self.assertIsNotNone(LiturgicalCalendar(2018))
+    def test_liturgical_year(self):
+        self.assertIsNotNone(LiturgicalYear(2018))
 
 
-class TestLiturgicalCalendarSundayDates(unittest.TestCase):
+class TestLiturgicalYearSundayDates(unittest.TestCase):
     
-    def test_liturgical_calendar_sunday_dates(self):
-        litcal_2018 = LiturgicalCalendar(2018)
+    def test_liturgical_year_sunday_dates(self):
+        litcal_2018 = LiturgicalYear(2018)
         self.assertEqual(
             litcal_2018[dt.date(2018, 9, 2)][0].name,
             'Fifteenth Sunday after Pentecost',
@@ -252,12 +257,7 @@ class TestLiturgicalCalendarSundayDates(unittest.TestCase):
         )
 
 
-class TestLiturgicalCalendarIcal(unittest.TestCase):
+class TestLiturgicalYearIcal(unittest.TestCase):
     def test_to_ical_smoke(self):
-        ics_calendar = LiturgicalCalendar(2019).to_ical()
+        ics_calendar = LiturgicalYear(2019).to_ical()
         self.assertIsNotNone(ics_calendar)
-
-
-# TODO: Test the data stored in the calendar.  (Monkey patch the data files we read from.)
-
-# TODO: Test the ICS conversion.

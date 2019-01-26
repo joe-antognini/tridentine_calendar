@@ -265,7 +265,7 @@ class LiturgicalCalendarEvent:
             The full name of the event, possibly with an article.
 
         """
-        the_feast_of_prefixes = ['St.', 'SS.', 'Pope', 'Our Lady', 'The']
+        the_feast_of_prefixes = ['St.', 'SS.', 'Pope', 'Our Lady', 'The', 'Christ']
         if self.name.split()[0] in the_feast_of_prefixes:
             if self.name.startswith('The'):
                 name = self.name[0].lower() + self.name[1:]
@@ -377,11 +377,11 @@ class LiturgicalCalendarEvent:
         return (self.name in fixed_feasts_on_date)
 
 
-class LiturgicalCalendar:
-    """A liturgical calendar following the 1962 Roman Catholic rubrics."""
+class LiturgicalYear:
+    """A liturgical year following the 1962 Roman Catholic rubrics."""
 
     def __init__(self, year):
-        """Instantiate a `LiturgicalCalendar` object.
+        """Instantiate a `LiturgicalYear` object.
 
         Note that the liturgical year starts before the year given on the first Sunday of Advent.
         If the year given is 2000, then the liturgical year will start in late November 1999 and end
@@ -622,10 +622,3 @@ def _feast_sort_key(feast):
         return feast.rank + .5
     else:
         return feast.rank
-
-    
-if __name__ == '__main__':
-    args = get_args()
-    litcal = LiturgicalCalendar(args.year)
-    with open(args.file, 'w') as f:
-        f.writelines(litcal.to_ics())

@@ -245,6 +245,18 @@ class LiturgicalCalendarEvent:
         self.holy_day = holy_day
         self.season = LiturgicalSeason.from_date(date)
 
+        if color is None:
+            if self.liturgical_event and self.rank != 4 and self.is_fixed():
+                self.color = 'White'
+                if self.titles:
+                    red_titles = ['Martyr', 'Apostle', 'Evangelist']
+                    for red_title in red_titles:
+                        if red_title in self.titles:
+                            self.color = 'Red'
+            else:
+                self.color = self.season.color
+
+
     def full_name(self, capitalize=True):
         """Return the full name of the event, possibly with an article.
 
@@ -300,32 +312,23 @@ class LiturgicalCalendarEvent:
 
         """
         name = json_obj.get('name', name)
-        event = cls(date, name)
+        event = cls(
+            date,
+            name,
+            rank=json_obj.get('class'),
+            titles=json_obj.get('titles'),
+            liturgical_event=json_obj.get('liturgical_event'),
+            addition=json_obj.get('addition', False),
+            holy_day=json_obj.get('holy_day', False),
+        )
         if 'urls' in json_obj:
             event.urls = [
                 LiturgicalCalendarEventUrl.from_json(elem, default=event.name)
                 for elem in json_obj['urls']
             ]
-        event.rank = json_obj.get('class')
-        event.titles = json_obj.get('titles')
-        event.liturgical_event = json_obj.get('liturgical_event')
-        event.addition = json_obj.get('addition', False)
-        event.holy_day = json_obj.get('holy_day', False)
-        event.season = LiturgicalSeason.from_date(date)
 
         if 'color' in json_obj:
             event.color = json_obj['color']
-        else:
-            if event.liturgical_event and event.rank != 4 and event.season.name != 'Lent':
-                color = 'White'
-                if event.titles:
-                    red_titles = ['Martyr', 'Apostle', 'Evangelist']
-                    for red_title in red_titles:
-                        if red_title in event.titles:
-                            color = 'Red'
-            else:
-                color = event.season.color
-            event.color = color
 
         return event
 
@@ -353,8 +356,8 @@ class LiturgicalCalendarEvent:
                     description += '• ' + url_obj.to_href() + '\n'
                 else:
                     description += '• ' + url_obj.url + '\n'
+            description += '\n'
 
-        description += '\n'
         description += 'More information about {}:\n'.format(
                 self.season.full_name(capitalize=False))
         for url_obj in self.season.urls:
@@ -588,7 +591,21 @@ class LiturgicalYear:
                 ics_name = elem.name
                 description = ''
 
-                if i > 0 and elem.liturgical_event and not elem.addition:
+                if i == 0 and elem.color and elem.season.name not in ['Lent', 'Passiontide']:
+                    description += 'The liturgical color today is {}.\n\n'.format(
+                        elem.color.lower())
+                elif (
+                    i == 0 and
+                    elem.season.name in ['Lent', 'Passiontide'] and
+                    elem.rank > 1 and
+                    elem.liturgical_event
+                ):
+                    description += (
+                        'Since {} falls during Lent it will ordinarily be celebrated only as a '
+                        'commemoration during the mass of {}.\n\n'.format(
+                            elem.full_name(capitalize=False), utils.feria_name(date))
+                    )
+                elif i > 0 and elem.liturgical_event and not elem.addition:
                     outranking_feast = self.calendar[date][0]
                     ics_name = '› ' + ics_name
                     if outranking_feast.is_fixed() and elem.is_fixed():
@@ -601,7 +618,8 @@ class LiturgicalYear:
                             elem.full_name(capitalize=False),
                             outranking_feast.full_name(capitalize=False),
                         )
-                elif not elem.liturgical_event:
+
+                if not elem.liturgical_event:
                     ics_name = '» ' + ics_name
 
                 description += elem.generate_description(html_formatting)

@@ -4,6 +4,8 @@ import datetime as dt
 import functools
 import urllib
 
+from . import feast_dates
+
 ORDINALS = {
     1: 'First',
     2: 'Second',
@@ -92,6 +94,31 @@ def liturgical_year(date):
         return date.year
     else:
         return date.year + 1
+
+
+def feria_name(date):
+    """Get the name of a feria.
+
+    For example, March 18, 2019 is the Monday of the second week of Lent.
+
+    Args:
+        date: A `datetime.Date` object.
+
+    Returns:
+        A string with the name of the feria.
+
+    """
+    first_sunday_of_lent = feast_dates.ash_wednesday(date.year) + dt.timedelta(4)
+    name = date.strftime('%A') + ' '
+    if feast_dates.ash_wednesday(date.year) < date < first_sunday_of_lent:
+        name += 'after Ash Wednesday'
+    elif first_sunday_of_lent <= date < feast_dates.passion_sunday(date.year):
+        lent_week = ((date - first_sunday_of_lent) // 7).days + 1
+        name += 'in the {} week of Lent'.format(ORDINALS[lent_week].lower())
+    elif feast_dates.passion_sunday(date.year) <= date < feast_dates.palm_sunday(date.year):
+        name += 'in Passion week'
+
+    return name
 
 
 def add_domain_to_url_description(url, description=None):

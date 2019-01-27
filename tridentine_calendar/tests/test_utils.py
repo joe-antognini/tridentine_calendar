@@ -2,6 +2,7 @@ import datetime as dt
 import unittest
 
 from ..utils import add_domain_to_url_description
+from ..utils import feria_name
 from ..utils import liturgical_year
 from ..utils import liturgical_year_end
 from ..utils import liturgical_year_start
@@ -25,6 +26,13 @@ class TestLiturgicalYearStartEnd(unittest.TestCase):
 
         self.assertEqual(liturgical_year(dt.date(2018, 12, 2)), 2019)
         self.assertEqual(liturgical_year(dt.date(2018, 12, 1)), 2018)
+
+
+class TestFeriaName(unittest.TestCase):
+
+    def test_feria_name(self):
+        name = feria_name(dt.date(2019, 3, 11))
+        self.assertEqual(name, 'Monday in the first week of Lent')
 
 
 class TestAddDomainToUrlDescription(unittest.TestCase):

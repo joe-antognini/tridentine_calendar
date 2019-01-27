@@ -1,8 +1,6 @@
 * Add a command line script.
-* The function-name pairs are a mess.
-* Add class and title information to ICS description.
-* Add color information.
-* Add note about feasts during Lent becoming commemorations.
+* Make a website.
+* Use `feria_name` for ferias of Holy Week, feasts of Easter Week, and Pentecost Week.
 * Monkey patch the JSON files to a test object during tests.
 * Add more tests.
 * Add doctests.

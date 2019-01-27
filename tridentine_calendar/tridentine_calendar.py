@@ -11,8 +11,11 @@ from pkg_resources import resource_string
 import icalendar as ical
 
 from . import feast_dates
+from . import utils
 from .utils import ORDINALS
 from .utils import add_domain_to_url_description
+from .utils import liturgical_year_end
+from .utils import liturgical_year_start
 
 # Load the JSON data.
 MOVABLE_FEASTS_DATA = json.loads(resource_string(__name__, 'movable_feasts_ferias_et_al.json'))
@@ -115,16 +118,7 @@ class LiturgicalSeason:
         
         """
         # First determine the liturgical year.
-        if (
-            feast_dates.liturgical_year_start(date.year) <= date <=
-            feast_dates.liturgical_year_end(date.year)
-        ):
-            year = date.year
-        elif (
-            feast_dates.liturgical_year_start(date.year + 1) <= date <=
-            feast_dates.liturgical_year_end(date.year + 1)
-        ):
-            year = date.year + 1
+        year = utils.liturgical_year(date)
 
         if date in [
             feast_dates.fat_thursday(year),
@@ -132,7 +126,7 @@ class LiturgicalSeason:
             feast_dates.mardi_gras(year),
         ]:
             season_key = 'Shrovetide'
-        elif feast_dates.liturgical_year_start(year) <= date < dt.date(year - 1, 12, 25):
+        elif liturgical_year_start(year) <= date < dt.date(year - 1, 12, 25):
             season_key = 'Advent'
         elif dt.date(year - 1, 12, 25) <= date < dt.date(year, 1, 6):
             season_key = 'Christmastide'
@@ -164,7 +158,7 @@ class LiturgicalSeason:
             season_key = 'Time after Pentecost'
         elif dt.date(year, 10, 31) <= date < dt.date(year, 11, 3):
             season_key = 'Hallowtide'
-        elif dt.date(year, 11, 3) <= date <= feast_dates.liturgical_year_end(year):
+        elif dt.date(year, 11, 3) <= date <= liturgical_year_end(year):
             season_key = 'Time after Pentecost'
         else:
             raise ValueError('Wasn\'t able to calculate season for date {}.'.format(date))
@@ -394,8 +388,8 @@ class LiturgicalYear:
         """
         self.year = year
 
-        self.liturgical_year_start = feast_dates.liturgical_year_start(self.year)
-        self.liturgical_year_end = feast_dates.liturgical_year_end(self.year)
+        self.liturgical_year_start = liturgical_year_start(self.year)
+        self.liturgical_year_end = liturgical_year_end(self.year)
 
         self.calendar = {}
         date = self.liturgical_year_start
@@ -563,10 +557,25 @@ class LiturgicalYear:
             date += dt.timedelta(1)
 
     def __getitem__(self, key):
+        """Return the events for a given day.
+
+        Args:
+            key: A `datetime.date` object.
+
+        Returns:
+            A list of `LiturgicalCalendarEvent` objects.
+
+        """
         return self.calendar[key]
 
     def to_ical(self, html_formatting=False):
-        """Write out the calendar to ICS format."""
+        """Write out the calendar to ICS format.
+
+        Args:
+            html_formatting: Whether to write out the URLs using `<a href>...</a>` formatting.  This
+            will render nicely on many web-based calendars but not on desktop calendar applications.
+
+        """
         ics_calendar = ical.Calendar()
         ics_calendar.add('x-wr-calname', 'Tridentine calendar')
         ics_calendar.add(
@@ -603,7 +612,7 @@ class LiturgicalYear:
                 ics_event.add('description', description)
                 ics_calendar.add_component(ics_event)
             date += dt.timedelta(1)
-        return ics_calendar.to_ical()
+        return ics_calendar
 
 
 def _feast_sort_key(feast):
@@ -622,3 +631,81 @@ def _feast_sort_key(feast):
         return feast.rank + .5
     else:
         return feast.rank
+
+
+class LiturgicalCalendar:
+    """A liturgical calendar following the 1962 Roman Catholic rubrics."""
+
+    def __init__(self, years):
+        """Instantiate a `LiturgicalCalendar` object for the given year or years.
+        
+        Args:
+            years: Integer or list of integers with the years to instantiate the
+            `LiturgicalCalendar` for.
+        
+        """
+        self.liturgical_years = {}
+        if isinstance(years, int):
+            years = [years]
+        for year in years:
+            self.liturgical_years[year] = LiturgicalYear(year)
+
+    def __getitem__(self, key):
+        """Return the events for a given day.
+
+        Args:
+            key: A `datetime.date` object.
+
+        Returns:
+            A list of `LiturgicalCalendarEvent` objects.
+
+        """
+        return self.liturgical_years[utils.liturgical_year(key)][key]
+
+    def to_ical(self, html_formatting=False):
+        """Write out the liturgical calendar to ICS format.
+
+        Args:
+            html_formatting: Whether to write out the URLs using `<a href>...</a>` formatting.  This
+            will render nicely on many web-based calendars but not on desktop calendar applications.
+
+        """
+        ics_calendar = ical.Calendar()
+        ics_calendar.add('x-wr-calname', 'Tridentine calendar')
+        ics_calendar.add(
+            'x-wr-caldesc',
+            'Liturgical calendar using the 1962 Roman Catholic rubrics.',
+        )
+        for liturgical_year in self.liturgical_years:
+            ics_year = self.liturgical_years[liturgical_year].to_ical(html_formatting)
+            for elem in ics_year.walk():
+                ics_calendar.add_component(elem)
+        return ics_calendar.to_ical()
+
+    def extend_existing_ical(self, filename):
+        """Append the liturgical calendar data to an existing ICS file.
+
+        This will read the existing ICS file to determine if HTML formatting should be used for the
+        URLs.
+
+        Args:
+            filename: The ICS file to read from and write to.
+
+        """
+        with open(filename, 'r') as fp:
+            ics_calendar = ical.Calendar.from_ical(fp.read())
+
+        html_formatting = False
+        for elem in ics_calendar.walk():
+            if 'https://' in elem.get('description', ''):
+                if '<a href>' in elem['description']:
+                    html_formatting = True
+                break
+
+        for liturgical_year in self.liturgical_years:
+            ics_year = self.liturgical_years[liturgical_year].to_ical(html_formatting)
+            for elem in ics_year.walk():
+                ics_calendar.add_component(elem)
+
+        with open(filename, 'wb') as fp:
+            fp.write(ics_calendar.to_ical())

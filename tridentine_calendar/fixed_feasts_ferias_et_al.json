@@ -1467,6 +1467,17 @@
       "obligation": false,
       "class": 3,
       "liturgical_event": true
+    },
+    {
+      "obligation": false,
+      "name": "St. Mark's Eve",
+      "urls": [
+        "https://en.wikipedia.org/wiki/St_Mark%27s_Eve",
+        "https://en.wikipedia.org/wiki/Feast_of_Saint_Mark",
+        "https://en.wikipedia.org/wiki/Mark_the_Evangelist",
+        "http://www.newadvent.org/cathen/09672c.htm"
+      ],
+      "liturgical_event": false
     }
   ],
   "April 25": [
@@ -1474,6 +1485,7 @@
       "obligation": false,
       "name": "St. Mark",
       "urls": [
+        "https://en.wikipedia.org/wiki/Feast_of_Saint_Mark",
         "https://en.wikipedia.org/wiki/Mark_the_Evangelist",
         "http://www.newadvent.org/cathen/09672c.htm"
       ],

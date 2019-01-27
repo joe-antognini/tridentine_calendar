@@ -34,43 +34,6 @@ def computus(year):
     return dt.date(year, month, day)
 
 
-@functools.lru_cache()
-def liturgical_year_start(year):
-    """Calculate the start of the liturgical year.
-
-    The start of the liturgical year is the First Sunday of Advent.  This date is calculated for the
-    liturgical year for which Easter falls in the given year.  As a consequence, the start of the
-    liturgical year will fall on the previous year.  For example, if the year 2000 is provided as an
-    argument, the resulting start of the liturgical year will be in late November 1999.
-
-    Args:
-        year: int
-
-    Returns:
-        A `datetime.date` object.
-
-    """
-    xmas = dt.date(year - 1, 12, 25)
-    return xmas - dt.timedelta(xmas.weekday() + 22)
-
-
-@functools.lru_cache()
-def liturgical_year_end(year):
-    """Calculate the last day of the liturgical year.
-
-    The end of the liturgical year is the Saturday before the First Sunday of Advent of the
-    following liturgical year.
-
-    Args:
-        year: int
-
-    Returns:
-        A `datetime.date` object.
-
-    """
-    next_xmas = dt.date(year, 12, 25)
-    return next_xmas - dt.timedelta(next_xmas.weekday() + 23)
-
 
 @functools.lru_cache()
 def gaudete_sunday(year):

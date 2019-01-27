@@ -16,16 +16,6 @@ class TestComputus(unittest.TestCase):
 
 class TestMovableFeastDates(unittest.TestCase):
 
-    def test_liturgical_year_start_date(self):
-        self.assertEqual(fd.liturgical_year_start(2004), dt.date(2003, 11, 30))
-        self.assertEqual(fd.liturgical_year_start(2018), dt.date(2017, 12, 3))
-        self.assertEqual(fd.liturgical_year_start(2019), dt.date(2018, 12, 2))
-
-    def test_liturgical_year_end_date(self):
-        self.assertEqual(fd.liturgical_year_end(2004), dt.date(2004, 11, 27))
-        self.assertEqual(fd.liturgical_year_end(2018), dt.date(2018, 12, 1))
-        self.assertEqual(fd.liturgical_year_end(2019), dt.date(2019, 11, 30))
-
     def test_gaudete_sunday(self):
         self.assertEqual(fd.gaudete_sunday(2018), dt.date(2017, 12, 17))
 

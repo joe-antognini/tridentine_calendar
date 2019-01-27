@@ -1,7 +1,9 @@
 import datetime as dt
+import tempfile
 import unittest
 
 from ..tridentine_calendar import _feast_sort_key
+from ..tridentine_calendar import LiturgicalCalendar
 from ..tridentine_calendar import LiturgicalCalendarEvent
 from ..tridentine_calendar import LiturgicalCalendarEventUrl
 from ..tridentine_calendar import LiturgicalSeason
@@ -261,3 +263,34 @@ class TestLiturgicalYearIcal(unittest.TestCase):
     def test_to_ical_smoke(self):
         ics_calendar = LiturgicalYear(2019).to_ical()
         self.assertIsNotNone(ics_calendar)
+
+
+class TestLiturgicalCalendar(unittest.TestCase):
+    def test_liturgical_calendar_init_single_year(self):
+        litcal = LiturgicalCalendar(2018)
+        self.assertIsNotNone(litcal)
+
+    def test_liturgical_calendar_init_multiple_years(self):
+        litcal = LiturgicalCalendar([2018, 2019])
+        self.assertIsNotNone(litcal)
+
+    def test_liturgical_calendar_getitem(self):
+        litcal = LiturgicalCalendar([2018, 2019])
+        event = litcal[dt.date(2018, 12, 25)][0]
+        self.assertEqual(event.name, 'Christmas')
+
+    def test_liturgical_calendar_to_ics(self):
+        litcal = LiturgicalCalendar([2018, 2019])
+        ics_calendar = LiturgicalYear(2019).to_ical()
+        self.assertIsNotNone(ics_calendar)
+
+    def test_extend_existing_ics(self):
+        litcal = LiturgicalCalendar(2018)
+
+        filename = tempfile.NamedTemporaryFile()
+        with open(filename.name, 'wb') as fp:
+            fp.write(litcal.to_ical())
+
+        new_litcal = LiturgicalCalendar(2019)
+        new_litcal.extend_existing_ical(filename.name)
+        filename.close()

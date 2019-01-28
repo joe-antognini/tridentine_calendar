@@ -713,6 +713,11 @@ class LiturgicalCalendar:
         with open(filename, 'r') as fp:
             ics_calendar = ical.Calendar.from_ical(fp.read())
 
+        existing_years = set()
+        for elem in ics_calendar.walk():
+            if 'dtstart' in elem:
+                existing_years.add(ical.vDDDTypes.from_ical(elem['dtstart']).year)
+
         html_formatting = False
         for elem in ics_calendar.walk():
             if 'https://' in elem.get('description', ''):
@@ -721,6 +726,9 @@ class LiturgicalCalendar:
                 break
 
         for liturgical_year in self.liturgical_years:
+            if liturgical_year in existing_years:
+                continue
+
             ics_year = self.liturgical_years[liturgical_year].to_ical(html_formatting)
             for elem in ics_year.walk():
                 ics_calendar.add_component(elem)

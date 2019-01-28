@@ -16,6 +16,9 @@ setup(
     install_requires=[
         'icalendar',
     ],
+    entry_points={
+        'console_scripts': ['tridentine_calendar=tridentine_calendar.cli:main'],
+    },
     include_package_data=True,
     setup_requires=['pytest-runner'],
     test_requires=['pytest'],

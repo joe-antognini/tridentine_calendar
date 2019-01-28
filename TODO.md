@@ -1,4 +1,6 @@
 * Add a command line script.
+    - Add tests for the command line script.
+* Handle the case where the existing ICS file already has the given year.
 * Make a website.
 * Use `feria_name` for ferias of Holy Week, feasts of Easter Week, and Pentecost Week.
 * Monkey patch the JSON files to a test object during tests.

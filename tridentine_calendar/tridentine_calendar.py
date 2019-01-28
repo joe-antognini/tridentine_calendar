@@ -580,11 +580,6 @@ class LiturgicalYear:
 
         """
         ics_calendar = ical.Calendar()
-        ics_calendar.add('x-wr-calname', 'Tridentine calendar')
-        ics_calendar.add(
-            'x-wr-caldesc',
-            'Liturgical calendar using the 1962 Roman Catholic rubrics.',
-        )
         date = self.liturgical_year_start
         while date <= self.liturgical_year_end:
             for i, elem in enumerate(self.calendar[date]):
@@ -697,7 +692,8 @@ class LiturgicalCalendar:
         for liturgical_year in self.liturgical_years:
             ics_year = self.liturgical_years[liturgical_year].to_ical(html_formatting)
             for elem in ics_year.walk():
-                ics_calendar.add_component(elem)
+                if isinstance(elem, ical.cal.Event):
+                    ics_calendar.add_component(elem)
         return ics_calendar.to_ical()
 
     def extend_existing_ical(self, filename):
@@ -731,7 +727,8 @@ class LiturgicalCalendar:
 
             ics_year = self.liturgical_years[liturgical_year].to_ical(html_formatting)
             for elem in ics_year.walk():
-                ics_calendar.add_component(elem)
+                if isinstance(elem, ical.cal.Event):
+                    ics_calendar.add_component(elem)
 
         with open(filename, 'wb') as fp:
             fp.write(ics_calendar.to_ical())

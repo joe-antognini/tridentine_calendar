@@ -1,6 +1,10 @@
 *.egg-info
 *.pyc
 *.swp
+
 .eggs
 .pytest_cache
 .tox/
+
+build/
+dist/

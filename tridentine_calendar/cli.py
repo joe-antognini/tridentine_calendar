@@ -7,7 +7,7 @@ import sys
 from .tridentine_calendar import LiturgicalCalendar
 
 
-def get_args(args):
+def parse_args(args):
     """Set and parse the command line arguments.
 
     Returns:
@@ -16,6 +16,12 @@ def get_args(args):
     """
     parser = argparse.ArgumentParser(
         description='Generate a liturgical calendar using the 1962 Roman Catholic rubrics.')
+    parser.add_argument(
+        '--use_html_formatting',
+        action='store_true',
+        default=False,
+        help='Whether to format the URLs using <a href>s.',
+    )
     parser.add_argument(
         '--output',
         required=True,
@@ -45,7 +51,7 @@ def _main(args):
         liturgical_calendar.extend_existing_ical(args.output)
     else:
         with open(args.output, 'wb') as fp:
-            fp.write(liturgical_calendar.to_ical())
+            fp.write(liturgical_calendar.to_ical(args.use_html_formatting))
 
 
 def main():

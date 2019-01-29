@@ -6,13 +6,12 @@ application, including Google Calendar, iCalendar, and Yahoo Calendar.  Some eve
 part of the 1962 rubrics are included on the calendar as well.  These are traditionally observed
 feasts and ferias or popular feasts on the modern calendar such as the Feast of Our Lady of
 Guadalupe, Plough Monday, and the Feast of St. Brigid.  In the case that two feasts or ferias
-coincide, the lower-ranking feast or feria is listed in «guillemets».
+coincide, the lower-ranking feast or feria is prepended with '›'.  Non-liturgical events are
+preprended with '»'.
 
-To subscribe to this calendar, use this link:
+A preview of the calendar can be found here: https://joe-antognini.github.io/tridentine-calendar/
 
-[webcal://joe-antognini.github.io/assets/ics/liturgical_calendar.ics](webcal://joe-antognini.github.io/assets/ics/liturgical_calendar.ics)
-
-Or, if you'd like to generate the calendar yourself, follow the instructions below:
+If you'd like to generate the calendar yourself, follow the instructions below:
 
 ## Requirements
 
@@ -22,5 +21,5 @@ Or, if you'd like to generate the calendar yourself, follow the instructions bel
 ## Usage
 
 ```
-$ python litcal.py --year=2019 --file=my_calendar.ics
+$ python tridentine_calendar.py --output=my_calendar.ics 2019
 ```

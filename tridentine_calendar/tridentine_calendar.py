@@ -102,7 +102,9 @@ class LiturgicalSeason:
         """Instantiate a `LiturgicalSeason` object from parsed JSON data."""
         json_obj = SEASON_DATA[json_key]
         if 'urls' in json_obj:
-            urls = [LiturgicalCalendarEventUrl.from_json(elem) for elem in json_obj['urls']]
+            urls = [
+                LiturgicalCalendarEventUrl.from_json(elem, json_key) for elem in json_obj['urls']
+            ]
         if 'color' in json_obj:
             color = json_obj['color']
         elif  'season' in json_obj:

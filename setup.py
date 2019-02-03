@@ -5,7 +5,7 @@ with open('README.md') as fp:
 
 setup(
     name='tridentine_calendar',
-    version='0.1.0',
+    version='0.2.0',
     description='Liturgical calendar calculator using the 1962 Roman Catholic rubrics.',
     long_description=long_description,
     url='https://github.com/joe-antognini/tridentine_calendar',

@@ -274,6 +274,7 @@
     {
       "obligation": false,
       "name": "Christmas Eve",
+      "feast": false,
       "urls": [
         {
           "url": "https://fisheaters.com/customschristmas2.html",
@@ -1166,7 +1167,7 @@
   ],
   "March 12": [
     {
-      "name": "Gregory the Great",
+      "name": "Pope Gregory the Great",
       "titles": [
         "Pope",
         "Confessor",
@@ -1341,7 +1342,7 @@
   ],
   "April 11": [
     {
-      "name": "Leo the Great",
+      "name": "Pope Leo the Great",
       "titles": [
         "Pope",
         "Confessor",
@@ -3058,7 +3059,7 @@
   "August 6": [
     {
       "obligation": false,
-      "name": "Feast of the Transfiguration",
+      "name": "The Transfiguration",
       "color": "White",
       "urls": [
         "https://fisheaters.com/customstimeafterpentecost5.html",

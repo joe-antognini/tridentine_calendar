@@ -1,4 +1,3 @@
-* Make a website.
 * Use `feria_name` for ferias of Holy Week, feasts of Easter Week, and Pentecost Week.
 * Monkey patch the JSON files to a test object during tests.
 * Improve the tests.

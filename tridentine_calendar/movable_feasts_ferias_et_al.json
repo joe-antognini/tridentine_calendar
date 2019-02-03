@@ -2,6 +2,7 @@
   "Advent Embertide": {
     "liturgical_event": true,
     "class": 2,
+    "feast": false,
     "urls": [
       {
         "url": "https://fisheaters.com/customsadvent11.html", 
@@ -132,6 +133,7 @@
   "Ash Wednesday": {
     "liturgical_event": true,
     "class": 1,
+    "feast": false,
     "urls": [
       "https://fisheaters.com/customslent2.html", 
       "https://en.wikipedia.org/wiki/Ash_Wednesday", 
@@ -141,6 +143,7 @@
   "Lenten Embertide": {
     "liturgical_event": true,
     "class": 2,
+    "feast": false,
     "urls": [
       "https://fisheaters.com/customslent3.html"
     ]
@@ -206,15 +209,18 @@
   }, 
   "Monday of Holy Week": {
     "class": 1,
+    "feast": false,
     "liturgical_event": true
   }, 
   "Tuesday of Holy Week": {
     "class": 1,
+    "feast": false,
     "liturgical_event": true
   }, 
   "Spy Wednesday": {
     "class": 1,
     "liturgical_event": true,
+    "feast": false,
     "urls": [
       "https://fisheaters.com/customslent12.html", 
       "https://en.wikipedia.org/wiki/Holy_Wednesday"
@@ -223,6 +229,7 @@
   "Maundy Thursday": {
     "color": "White",
     "liturgical_event": true,
+    "feast": false,
     "class": 1,
     "urls": [
       "https://fisheaters.com/customslent13.html", 
@@ -233,6 +240,7 @@
   "Good Friday": {
     "color": "Black",
     "liturgical_event": true,
+    "feast": false,
     "class": 1,
     "urls": [
       "https://fisheaters.com/customslent14.html", 
@@ -243,6 +251,7 @@
   "Holy Saturday": {
     "liturgical_event": true,
     "class": 1,
+    "feast": false,
     "urls": [
       "https://fisheaters.com/customslent15.html", 
       "https://en.wikipedia.org/wiki/Holy_Saturday", 
@@ -368,6 +377,7 @@
     "color": "White",
     "liturgical_event": true,
     "class": 2,
+    "feast": false,
     "urls": [
       "https://fisheaters.com/customseastertide3.html", 
       "https://en.wikipedia.org/wiki/Rogation_days", 
@@ -432,6 +442,7 @@
     "color": "Red",
     "liturgical_event": true,
     "class": 1,
+    "feast": false,
     "urls": [
       "https://fisheaters.com/customseastertide8.html"
     ]
@@ -467,7 +478,7 @@
       }
     ]
   }, 
-  "Feast of the Sacred Heart": {
+  "The Sacred Heart": {
     "color": "White",
     "liturgical_event": true,
     "class": 1,
@@ -499,6 +510,7 @@
     "color": "Violet",
     "liturgical_event": true,
     "class": 1,
+    "feast": false,
     "urls": [
       "https://fisheaters.com/customstimeafterpentecost8.html"
     ]

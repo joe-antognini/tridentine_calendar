@@ -156,6 +156,7 @@ class TestLiturgicalCalendarEvent(unittest.TestCase):
         self.assertEqual(event.urls[0].description, 'St. Nicholas (Fish Eaters)')
         self.assertEqual(event.urls[1].description, 'Saint Nicholas (Wikipedia)')
         self.assertEqual(event.color, 'White')
+        self.assertEqual(event.feast, True)
 
     def test_from_json_st_saturninus(self):
         date = dt.date(2018, 11, 30)
@@ -174,6 +175,7 @@ class TestLiturgicalCalendarEvent(unittest.TestCase):
         self.assertEqual(event.name, 'St. Andrew')
         self.assertEqual(event.rank, 2)
         self.assertEqual(event.liturgical_event, True)
+        self.assertEqual(event.feast, True)
         self.assertEqual(event.holy_day, False)
         self.assertEqual(event.urls[0].description, 'Andrew the Apostle (Wikipedia)')
         self.assertEqual(event.color, 'Red')
@@ -205,10 +207,13 @@ class TestLiturgicalCalendarEvent(unittest.TestCase):
             urls=[url],
             rank=1,
             color='White',
+            feast=True,
         )
 
         expected_description = (
             'The Feast of the Immaculate Conception is a Holy Day of Obligation.\n\n'
+            'The Feast of the Immaculate Conception is a Class I feast.  '
+            'The liturgical color today is white.\n\n'
             'More information about the Feast of the Immaculate Conception:\n'
             '• https://fisheaters.com/customsadvent5.html\n\n'
             'More information about Advent:\n'

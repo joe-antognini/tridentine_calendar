@@ -204,9 +204,10 @@ class LiturgicalCalendarEvent:
         rank=None,
         color=None,
         titles=None,
-        liturgical_event=None,
-        holy_day=None,
-        addition=None,
+        liturgical_event=True,
+        feast=True,
+        holy_day=False,
+        addition=False,
         season=None,
     ):
         """Instantiate a `LiturgicalCalendarEvent`.
@@ -226,6 +227,8 @@ class LiturgicalCalendarEvent:
                 For feast days of one or several saints
             liturgical_event: bool
                 Whether there is a special liturgy associated with this event.
+            feast: bool
+                Whether the event is a feast or a feria.
             addition: bool
                 Whether this event is a liturgical event that occurs in addition to any other
                 liturgical event of the day (e.g., Major Rogation).  These events do not follow the
@@ -243,6 +246,7 @@ class LiturgicalCalendarEvent:
         self.color = color
         self.titles = titles
         self.liturgical_event = liturgical_event
+        self.feast = feast
         self.addition = addition
         self.holy_day = holy_day
         self.season = LiturgicalSeason.from_date(date)
@@ -273,8 +277,9 @@ class LiturgicalCalendarEvent:
             The full name of the event, possibly with an article.
 
         """
-        the_feast_of_prefixes = ['St.', 'SS.', 'Pope', 'Our Lady', 'The', 'Christ']
-        if self.name.split()[0] in the_feast_of_prefixes:
+        the_feast_of_prefixes = ['St.', 'SS.', 'Pope', 'Our Lady', 'The']
+        other_the_feasts = ['Christ the King']
+        if self.name.split()[0] in the_feast_of_prefixes or self.name in other_the_feasts:
             if self.name.startswith('The'):
                 name = self.name[0].lower() + self.name[1:]
             else:
@@ -283,7 +288,7 @@ class LiturgicalCalendarEvent:
                 full_name = 'the Feast of ' + name
             else:
                 full_name = 'the Commemoration of ' + name
-        elif self.name.split()[0] in ['Basilica', 'Baptism']:
+        elif self.name.split()[0] in ['Basilica', 'Baptism', 'Church', 'Vigil']:
             if self.rank != 4:
                 full_name = 'the Feast of the ' + self.name
             else:
@@ -320,6 +325,7 @@ class LiturgicalCalendarEvent:
             rank=json_obj.get('class'),
             titles=json_obj.get('titles'),
             liturgical_event=json_obj.get('liturgical_event'),
+            feast=json_obj.get('feast', True),
             addition=json_obj.get('addition', False),
             holy_day=json_obj.get('holy_day', False),
         )
@@ -334,11 +340,15 @@ class LiturgicalCalendarEvent:
 
         return event
 
-    def generate_description(self, html_formatting=False):
+    def generate_description(self, html_formatting=False, ranking_feast=True):
         """Create a human-readable description of the event for the ICS file.
 
         Args:
-            html_formatting: Whether to use HTML formatting for the URLs.
+            html_formatting: boolean
+                Whether to use HTML formatting for the URLs.
+            ranking_feast: booleanc
+                Whether the feast is the highest-ranking feast of the day.  The highest ranking
+                feast will have extra information about the liturgical color.
         
         Returns:
             A string with the description.
@@ -348,8 +358,40 @@ class LiturgicalCalendarEvent:
         if self.holy_day:
             description += '{} is a Holy Day of Obligation.\n\n'.format(self.full_name())
 
+        if (
+            self.liturgical_event and
+            self.rank < 4 and
+            (self.season.name not in ['Lent', 'Passiontide'] or self.rank == 1)
+        ):
+            description += '{} is a Class {} {}.'.format(
+                self.full_name(capitalize=True),
+                self.rank * 'I',
+                'feast' if self.feast else 'feria',
+            )
         if not self.liturgical_event:
-            description += '{} has no special liturgy.\n\n'.format(self.full_name())
+            if description != '' and description[-1] == '.':
+                description += '  '
+            description += '{} has no special liturgy.'.format(self.full_name())
+        if ranking_feast:
+            if len(description) > 0 and description[-1] == '.':
+                description += '  '
+            description += 'The liturgical color today is {}.'.format(
+                self.color.lower())
+        if (
+            ranking_feast and
+            self.season.name in ['Lent', 'Passiontide'] and
+            self.liturgical_event and
+            self.rank > 1
+        ):
+            if description != '' and description[-1] == '.':
+                description += '  '
+            description += (
+                'Since {} falls during Lent it will ordinarily be celebrated only as a '
+                'commemoration during the mass of {}.'.format(
+                    self.full_name(capitalize=False), utils.feria_name(self.date))
+            )
+        if description != '':
+            description += '\n\n'
 
         if self.urls:
             description += 'More information about {}:\n'.format(self.full_name(capitalize=False))
@@ -468,7 +510,7 @@ class LiturgicalYear:
             (feast_dates.whit_embertide, 'Whit Embertide'),
             (feast_dates.trinity_sunday, 'Trinity Sunday'),
             (feast_dates.corpus_christi, 'Corpus Christi'),
-            (feast_dates.sacred_heart, 'Feast of the Sacred Heart'),
+            (feast_dates.sacred_heart, 'The Sacred Heart'),
             (feast_dates.peters_pence, 'Peter\'s Pence'),
             (feast_dates.michaelmas_embertide, 'Michaelmas Embertide'),
             (feast_dates.christ_the_king, 'Christ the King'),
@@ -489,12 +531,7 @@ class LiturgicalYear:
             if i == 3:
                 continue
             date = self.liturgical_year_start + dt.timedelta(7 * (i - 1))
-            event = LiturgicalCalendarEvent(
-                date, 
-                name=ORDINALS[i] + ' Sunday of Advent',
-                liturgical_event=True,
-                rank=1,
-            )
+            event = LiturgicalCalendarEvent(date, name=ORDINALS[i] + ' Sunday of Advent', rank=1)
             self.calendar[date].append(event)
 
         # Time after Epiphany.
@@ -502,11 +539,7 @@ class LiturgicalYear:
         date = feast_dates.holy_family(self.year) + dt.timedelta(7)
         while date < feast_dates.septuagesima(self.year):
             event = LiturgicalCalendarEvent(
-                date, 
-                name=ORDINALS[i] + ' Sunday after Epiphany',
-                liturgical_event=True,
-                rank=2,
-            )
+                date, name=ORDINALS[i] + ' Sunday after Epiphany', rank=2)
             self.calendar[date].append(event)
             i += 1
             date += dt.timedelta(7)
@@ -514,21 +547,16 @@ class LiturgicalYear:
         # Lent.
         for i in range(1, 4):
             date = feast_dates.quinquagesima(self.year) + dt.timedelta(7 * i)
-            event = LiturgicalCalendarEvent(
-                date, 
-                name=ORDINALS[i] + ' Sunday of Lent',
-                liturgical_event=True,
-                rank=1,
-            )
+            event = LiturgicalCalendarEvent(date, name=ORDINALS[i] + ' Sunday of Lent', rank=1)
             self.calendar[date].append(event)
 
         # Eastertide.
         date = feast_dates.cantate_sunday(self.year) + dt.timedelta(7)
-        event = LiturgicalCalendarEvent(date, 'Fifth Sunday after Easter', liturgical_event=True)
+        event = LiturgicalCalendarEvent(date, 'Fifth Sunday after Easter', rank=1)
         self.calendar[date].append(event)
 
         date = feast_dates.ascension(self.year) + dt.timedelta(3)
-        event = LiturgicalCalendarEvent(date, 'Sunday after Ascension', liturgical_event=True)
+        event = LiturgicalCalendarEvent(date, 'Sunday after Ascension', rank=1)
         self.calendar[date].append(event)
 
         # Time after Pentecost.
@@ -536,17 +564,12 @@ class LiturgicalYear:
         date = feast_dates.trinity_sunday(self.year) + dt.timedelta(7)
         while date <= self.liturgical_year_end - dt.timedelta(7):
             event = LiturgicalCalendarEvent(
-                date, 
-                name=ORDINALS[i] + ' Sunday after Pentecost',
-                liturgical_event=True,
-                rank=2,
-            )
+                    date, name=ORDINALS[i] + ' Sunday after Pentecost', rank=2)
             self.calendar[date].append(event)
             i += 1
             date += dt.timedelta(7)
 
-        event = LiturgicalCalendarEvent(
-            date, 'Last Sunday after Pentecost', liturgical_event=True, rank=2)
+        event = LiturgicalCalendarEvent(date, 'Last Sunday after Pentecost', rank=2)
         self.calendar[date].append(event)
 
         # Then second class fixed feasts or lower.
@@ -588,38 +611,26 @@ class LiturgicalYear:
                 ics_name = elem.name
                 description = ''
 
-                if i == 0 and elem.color and elem.season.name not in ['Lent', 'Passiontide']:
-                    description += 'The liturgical color today is {}.\n\n'.format(
-                        elem.color.lower())
-                elif (
-                    i == 0 and
-                    elem.season.name in ['Lent', 'Passiontide'] and
-                    elem.rank > 1 and
-                    elem.liturgical_event
-                ):
-                    description += (
-                        'Since {} falls during Lent it will ordinarily be celebrated only as a '
-                        'commemoration during the mass of {}.\n\n'.format(
-                            elem.full_name(capitalize=False), utils.feria_name(date))
-                    )
-                elif i > 0 and elem.liturgical_event and not elem.addition:
+                if i > 0 and elem.liturgical_event and not elem.addition:
                     outranking_feast = self.calendar[date][0]
                     ics_name = '› ' + ics_name
                     if outranking_feast.is_fixed() and elem.is_fixed():
-                        description += '{} is outranked by {}.\n\n'.format(
+                        description += '{} is outranked by {}.'.format(
                             elem.full_name(capitalize=True),
                             outranking_feast.full_name(capitalize=False),
                         )
                     else:
-                        description += 'This year {} is outranked by {}.\n\n'.format(
+                        description += 'This year {} is outranked by {}.'.format(
                             elem.full_name(capitalize=False),
                             outranking_feast.full_name(capitalize=False),
                         )
+                    description += '\n\n'
 
                 if not elem.liturgical_event:
                     ics_name = '» ' + ics_name
 
-                description += elem.generate_description(html_formatting)
+                description += elem.generate_description(
+                    html_formatting, ranking_feast=(i == 0))
                 description = description.strip()
                 ics_event = ical.Event()
                 ics_event.add('summary', ics_name)

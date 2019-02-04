@@ -252,7 +252,12 @@ class LiturgicalCalendarEvent:
         self.season = LiturgicalSeason.from_date(date)
 
         if color is None:
-            if self.liturgical_event and self.rank != 4 and self.is_fixed():
+            if (
+                self.liturgical_event and
+                self.rank != 4 and
+                self.is_fixed() and
+                not (self.rank != 1 and self.season.name in ['Lent', 'Passiontide'])
+            ):
                 self.color = 'White'
                 if self.titles:
                     red_titles = ['Martyr', 'Apostle', 'Evangelist']
@@ -372,11 +377,6 @@ class LiturgicalCalendarEvent:
             if description != '' and description[-1] == '.':
                 description += '  '
             description += '{} has no special liturgy.'.format(self.full_name())
-        if ranking_feast:
-            if len(description) > 0 and description[-1] == '.':
-                description += '  '
-            description += 'The liturgical color today is {}.'.format(
-                self.color.lower())
         if (
             ranking_feast and
             self.season.name in ['Lent', 'Passiontide'] and
@@ -390,6 +390,11 @@ class LiturgicalCalendarEvent:
                 'commemoration during the mass of {}.'.format(
                     self.full_name(capitalize=False), utils.feria_name(self.date))
             )
+        if ranking_feast:
+            if len(description) > 0 and description[-1] == '.':
+                description += '  '
+            description += 'The liturgical color today is {}.'.format(
+                self.color.lower())
         if description != '':
             description += '\n\n'
 

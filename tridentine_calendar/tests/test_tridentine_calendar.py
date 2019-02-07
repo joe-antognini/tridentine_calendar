@@ -211,9 +211,9 @@ class TestLiturgicalCalendarEvent(unittest.TestCase):
         )
 
         expected_description = (
-            'The Feast of the Immaculate Conception is a Holy Day of Obligation.\n\n'
-            'The Feast of the Immaculate Conception is a Class I feast.  '
-            'The liturgical color today is white.\n\n'
+            'The Feast of the Immaculate Conception is a Holy Day of Obligation.  '
+            'This feast is a Class I feast.  '
+            'The liturgical color is white.\n\n'
             'More information about the Feast of the Immaculate Conception:\n'
             '• https://fisheaters.com/customsadvent5.html\n\n'
             'More information about Advent:\n'

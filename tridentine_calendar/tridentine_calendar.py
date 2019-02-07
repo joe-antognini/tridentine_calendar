@@ -361,27 +361,31 @@ class LiturgicalCalendarEvent:
         """
         description = ''
         if self.holy_day:
-            description += '{} is a Holy Day of Obligation.\n\n'.format(self.full_name())
+            description += '{} is a Holy Day of Obligation.'.format(self.full_name())
 
-        if (
-            self.liturgical_event and
-            self.rank < 4 and
-            (self.season.name not in ['Lent', 'Passiontide'] or self.rank == 1)
-        ):
+        if description != '' and description[-1] == '.':
+            description += '  '
+
+        if self.liturgical_event and self.rank < 4:
+            if not ranking_feast or self.holy_day:
+                name = 'This {}'.format('feast' if self.feast else 'feria')
+            else:
+                name = self.full_name(capitalize=True)
             description += '{} is a Class {} {}.'.format(
-                self.full_name(capitalize=True),
+                name,
                 self.rank * 'I',
                 'feast' if self.feast else 'feria',
             )
-        if not self.liturgical_event:
-            if description != '' and description[-1] == '.':
-                description += '  '
+        elif self.liturgical_event and self.rank == 4 and ranking_feast:
+            description += 'Today is a commemoration.'.format(self.full_name(capitalize=True))
+        elif not self.liturgical_event:
             description += '{} has no special liturgy.'.format(self.full_name())
         if (
             ranking_feast and
             self.season.name in ['Lent', 'Passiontide'] and
             self.liturgical_event and
-            self.rank > 1
+            self.feast and
+            1 < self.rank < 4
         ):
             if description != '' and description[-1] == '.':
                 description += '  '
@@ -393,7 +397,7 @@ class LiturgicalCalendarEvent:
         if ranking_feast:
             if len(description) > 0 and description[-1] == '.':
                 description += '  '
-            description += 'The liturgical color today is {}.'.format(
+            description += 'The liturgical color is {}.'.format(
                 self.color.lower())
         if description != '':
             description += '\n\n'
@@ -629,13 +633,17 @@ class LiturgicalYear:
                             elem.full_name(capitalize=False),
                             outranking_feast.full_name(capitalize=False),
                         )
-                    description += '\n\n'
 
                 if not elem.liturgical_event:
                     ics_name = '» ' + ics_name
 
-                description += elem.generate_description(
+                feast_description = elem.generate_description(
                     html_formatting, ranking_feast=(i == 0))
+                if feast_description.startswith('More information about'):
+                    description += '\n\n'
+                elif description != '' and description[-1] == '.':
+                    description += '  '
+                description += feast_description
                 description = description.strip()
                 ics_event = ical.Event()
                 ics_event.add('summary', ics_name)

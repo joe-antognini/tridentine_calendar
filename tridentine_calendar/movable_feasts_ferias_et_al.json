@@ -27,7 +27,7 @@
       "https://en.wikipedia.org/wiki/Sunday_within_the_Octave_of_Christmas"
     ]
   },
-  "Feast of the Holy Name": {
+  "The Holy Name": {
     "liturgical_event": true,
     "class": 2,
     "urls": [
@@ -44,7 +44,7 @@
       }
     ]
   }, 
-  "Feast of the Holy Family": {
+  "The Holy Family": {
     "color": "White",
     "liturgical_event": true,
     "class": 2,

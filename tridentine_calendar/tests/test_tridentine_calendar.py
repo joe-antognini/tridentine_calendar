@@ -201,7 +201,7 @@ class TestLiturgicalCalendarEvent(unittest.TestCase):
         )
         event = LiturgicalCalendarEvent(
             dt.date(2018, 12, 8),
-            'Feast of the Immaculate Conception',
+            'The Immaculate Conception',
             liturgical_event=True,
             holy_day=True,
             urls=[url],
@@ -224,7 +224,7 @@ class TestLiturgicalCalendarEvent(unittest.TestCase):
     def test_is_fixed(self):
         event = LiturgicalCalendarEvent(
             dt.date(2018, 12, 8),
-            'Feast of the Immaculate Conception',
+            'The Immaculate Conception',
         )
         self.assertTrue(event.is_fixed())
 

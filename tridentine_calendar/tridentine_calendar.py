@@ -485,6 +485,7 @@ class LiturgicalYear:
             (feast_dates.lenten_embertide, 'Lenten Embertide'),
             (feast_dates.st_matthias, 'St. Matthias'),
             (feast_dates.st_gabriel_of_our_lady_of_sorrows, 'St. Gabriel of Our Lady of Sorrows'),
+            (feast_dates.lady_day, 'Lady Day'),
             (feast_dates.laetare_sunday, 'Laetare Sunday'),
             (feast_dates.passion_sunday, 'Passion Sunday'),
             (feast_dates.seven_sorrows, 'The Seven Sorrows'),

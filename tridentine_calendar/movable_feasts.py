@@ -25,16 +25,11 @@ class MovableFeast(metaclass=ABCMeta):
 
     """
 
-    def __init__(self, year):
-        # TODO: Determine how the date is saved.
-        pass
-
     @property
     @abstractemethod
     def name(self):
-        raise NotImplementedError
+        raise NotImplementedError('A movable feast must have a name.')
     
     @abstractmethod
-    def date(self, year):
-        # TODO: Determine what the signature of this function should be.
-        pass
+    def date(year):
+        raise NotImplementedError('A movable feast must have a date.')

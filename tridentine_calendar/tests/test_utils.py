@@ -2,10 +2,21 @@ import datetime as dt
 import unittest
 
 from ..utils import add_domain_to_url_description
+from ..utils import computus
 from ..utils import feria_name
 from ..utils import liturgical_year
 from ..utils import liturgical_year_end
 from ..utils import liturgical_year_start
+
+
+class TestComputus(unittest.TestCase):
+
+    def test_computus(self):
+        self.assertEqual(fd.computus(2004), dt.date(2004, 4, 11))
+        self.assertEqual(fd.computus(2018), dt.date(2018, 4, 1))
+        self.assertEqual(fd.computus(2019), dt.date(2019, 4, 21))
+        self.assertEqual(fd.computus(2027), dt.date(2027, 3, 28))
+        self.assertEqual(fd.computus(2050), dt.date(2050, 4, 10))
 
 
 class TestLiturgicalYearStartEnd(unittest.TestCase):

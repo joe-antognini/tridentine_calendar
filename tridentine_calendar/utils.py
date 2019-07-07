@@ -4,7 +4,7 @@ import datetime as dt
 import functools
 import urllib
 
-from . import feast_dates
+import movable_feasts
 
 ORDINALS = {
     1: 'First',
@@ -137,14 +137,14 @@ def feria_name(date):
         A string with the name of the feria.
 
     """
-    first_sunday_of_lent = feast_dates.ash_wednesday(date.year) + dt.timedelta(4)
+    first_sunday_of_lent = movable_feasts.ash_wednesday(date.year) + dt.timedelta(4)
     name = date.strftime('%A') + ' '
-    if feast_dates.ash_wednesday(date.year) < date < first_sunday_of_lent:
+    if movable_feasts.ash_wednesday(date.year) < date < first_sunday_of_lent:
         name += 'after Ash Wednesday'
-    elif first_sunday_of_lent <= date < feast_dates.passion_sunday(date.year):
+    elif first_sunday_of_lent <= date < movable_feasts.passion_sunday(date.year):
         lent_week = ((date - first_sunday_of_lent) // 7).days + 1
         name += 'in the {} week of Lent'.format(ORDINALS[lent_week].lower())
-    elif feast_dates.passion_sunday(date.year) <= date < feast_dates.palm_sunday(date.year):
+    elif movable_feasts.passion_sunday(date.year) <= date < movable_feasts.palm_sunday(date.year):
         name += 'in Passion week'
 
     return name

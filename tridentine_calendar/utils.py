@@ -178,9 +178,7 @@ def get_movable_feast_names_and_dates(year):
         date: A `datetime.date` object with the date of the feast for the given year.
 
     """
-    for key, obj in movable_feasts.__dict__.items():
-        if key.startswith('__') and key.endswith('__'):
-            continue
+    for key, obj in inspect.getmembers(movable_feasts, inspect.isclass):
         if not issubclass(obj, MovableFeast) or isinstance(obj, abc.ABCMeta):
             continue
         yield obj.name, obj.date(year)

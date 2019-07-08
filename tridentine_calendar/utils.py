@@ -1,10 +1,17 @@
 """Utility functions."""
 
+import abc
 import datetime as dt
 import functools
+import inspect
 import urllib
 
-import movable_feasts
+from . import movable_feasts
+from .movable_feasts import AshWednesday
+from .movable_feasts import computus
+from .movable_feasts import MovableFeast
+from .movable_feasts import PalmSunday
+from .movable_feasts import PassionSunday
 
 ORDINALS = {
     1: 'First',
@@ -35,35 +42,6 @@ ORDINALS = {
     26: 'Twenty-sixth',
     27: 'Twenty-seventh',
 }
-
-
-@functools.lru_cache()
-def computus(year):
-    """Calculate the date of Easter.
-
-    Args:
-        year: Integer with the year.
-
-    Returns:
-        A `datetime.Date` object with the date of Easter.
-
-    """
-    a = year % 19
-    b = year // 100
-    c = year % 100
-    d = b // 4
-    e = b % 4
-    f = (b + 8) // 25
-    g = (b - f + 1) // 3
-    h = (19 * a + b - d - g + 15) % 30
-    i = c // 4
-    k = c % 4
-    l = (32 + 2 * e + 2 * i - h - k) % 7
-    m = (a + 11 * h + 22 * l) // 451
-    month = (h + l - 7 * m + 114) // 31
-    day = ((h + l - 7 * m + 114) % 31) + 1
-
-    return dt.date(year, month, day)
 
 
 @functools.lru_cache()
@@ -137,14 +115,14 @@ def feria_name(date):
         A string with the name of the feria.
 
     """
-    first_sunday_of_lent = movable_feasts.ash_wednesday(date.year) + dt.timedelta(4)
+    first_sunday_of_lent = AshWednesday.date(date.year) + dt.timedelta(4)
     name = date.strftime('%A') + ' '
-    if movable_feasts.ash_wednesday(date.year) < date < first_sunday_of_lent:
+    if AshWednesday.date(date.year) < date < first_sunday_of_lent:
         name += 'after Ash Wednesday'
-    elif first_sunday_of_lent <= date < movable_feasts.passion_sunday(date.year):
+    elif first_sunday_of_lent <= date < PassionSunday.date(date.year):
         lent_week = ((date - first_sunday_of_lent) // 7).days + 1
         name += 'in the {} week of Lent'.format(ORDINALS[lent_week].lower())
-    elif movable_feasts.passion_sunday(date.year) <= date < movable_feasts.palm_sunday(date.year):
+    elif PassionSunday.date(date.year) <= date < PalmSunday.date(date.year):
         name += 'in Passion week'
 
     return name
@@ -182,3 +160,27 @@ def add_domain_to_url_description(url, description=None):
         domain_name = ''
 
     return '{} ({})'.format(description, domain_name)
+
+
+def get_movable_feast_names_and_dates(year):
+    """Get all movable feast classes defined in the `movable_feasts` module.
+
+    This function will introspect the `movable_feasts` module and return all subclasses inherited
+    from the `MovableFeast` class.
+
+    Args:
+        year: int
+            The year to get the dates of the movable feasts.
+
+    Yields:
+        name: A string with the name of the feast.  This name corresponds to the data in
+            `movable_feasts_ferias_et_al.json`.
+        date: A `datetime.date` object with the date of the feast for the given year.
+
+    """
+    for key, obj in movable_feasts.__dict__.items():
+        if key.startswith('__') and key.endswith('__'):
+            continue
+        if not issubclass(obj, MovableFeast) or isinstance(obj, abc.ABCMeta):
+            continue
+        yield obj.name, obj.date(year)

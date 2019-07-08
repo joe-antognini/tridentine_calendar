@@ -4,6 +4,16 @@ import unittest
 from .. import movable_feasts as mf
 
 
+class TestComputus(unittest.TestCase):
+
+    def test_computus(self):
+        self.assertEqual(mf.computus(2004), dt.date(2004, 4, 11))
+        self.assertEqual(mf.computus(2018), dt.date(2018, 4, 1))
+        self.assertEqual(mf.computus(2019), dt.date(2019, 4, 21))
+        self.assertEqual(mf.computus(2027), dt.date(2027, 3, 28))
+        self.assertEqual(mf.computus(2050), dt.date(2050, 4, 10))
+
+
 class TestMovableFeastDates(unittest.TestCase):
 
     def test_gaudete_sunday(self):
@@ -11,7 +21,7 @@ class TestMovableFeastDates(unittest.TestCase):
 
     def test_advent_embertide(self):
         self.assertListEqual(
-            mf.AdventEmbertide(2018),
+            mf.AdventEmbertide.date(2018),
             [dt.date(2017, 12, 20), dt.date(2017, 12, 22), dt.date(2017, 12, 23)],
         )
 

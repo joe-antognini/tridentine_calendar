@@ -283,6 +283,8 @@ class TestLiturgicalCalendar(unittest.TestCase):
         litcal = LiturgicalCalendar([2018, 2019])
         event = litcal[dt.date(2018, 12, 25)][0]
         self.assertEqual(event.name, 'Christmas')
+        event = litcal[dt.date(2019, 4, 21)][0]
+        self.assertEqual(event.name, 'Easter')
 
     def test_liturgical_calendar_to_ics(self):
         litcal = LiturgicalCalendar([2018, 2019])

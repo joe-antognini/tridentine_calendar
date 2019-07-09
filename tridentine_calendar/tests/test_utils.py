@@ -4,6 +4,7 @@ import unittest
 from ..utils import add_domain_to_url_description
 from ..utils import computus
 from ..utils import feria_name
+from ..utils import get_movable_feast_names_and_dates
 from ..utils import liturgical_year
 from ..utils import liturgical_year_end
 from ..utils import liturgical_year_start
@@ -46,3 +47,10 @@ class TestAddDomainToUrlDescription(unittest.TestCase):
         url = 'http://www.newadvent.org/cathen/01471a.htm'
         output = add_domain_to_url_description(url, 'Saturninus')
         self.assertEqual(output, 'Saturninus (New Advent)')
+
+
+class TestGetMovableFeastNamesAndDates(unittest.TestCase):
+
+    def test_get_movable_feast_names_and_dates(self):
+        feast_names_and_dates = list(get_movable_feast_names_and_dates(2019))
+        self.assertTrue(feast_names_and_dates != [])

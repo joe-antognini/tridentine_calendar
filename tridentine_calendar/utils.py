@@ -179,6 +179,8 @@ def get_movable_feast_names_and_dates(year):
 
     """
     for key, obj in inspect.getmembers(movable_feasts, inspect.isclass):
-        if not issubclass(obj, MovableFeast) or isinstance(obj, abc.ABCMeta):
+        if key == 'ABCMeta' or key == 'MovableFeast':
+            continue
+        if not issubclass(obj, MovableFeast):
             continue
         yield obj.name, obj.date(year)

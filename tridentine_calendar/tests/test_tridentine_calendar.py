@@ -211,8 +211,8 @@ class TestLiturgicalCalendarEvent(unittest.TestCase):
         )
 
         expected_description = (
-            'The Feast of the Immaculate Conception is a Holy Day of Obligation.  '
-            'This feast is a Class I feast.  '
+            'The Feast of the Immaculate Conception is a Holy Day of Obligation. '
+            'Today is a Class I feast. '
             'The liturgical color is white.\n\n'
             'More information about the Feast of the Immaculate Conception:\n'
             '• https://fisheaters.com/customsadvent5.html\n\n'
@@ -285,6 +285,14 @@ class TestLiturgicalCalendar(unittest.TestCase):
         self.assertEqual(event.name, 'Christmas')
         event = litcal[dt.date(2019, 4, 21)][0]
         self.assertEqual(event.name, 'Easter')
+
+    def test_liturgical_calendar_description(self):
+        litcal = LiturgicalCalendar(2019)
+        event = litcal[dt.date(2018, 12, 8)][0]
+        description = event.generate_description(
+            html_formatting=False, ranking_feast=True)
+        self.assertTrue(description.startswith(
+            'The Feast of the Immaculate Conception is a Holy Day of Obligation.'))
 
     def test_liturgical_calendar_to_ics(self):
         litcal = LiturgicalCalendar([2018, 2019])

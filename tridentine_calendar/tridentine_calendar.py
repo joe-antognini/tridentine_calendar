@@ -332,7 +332,7 @@ class LiturgicalCalendarEvent:
             liturgical_event=json_obj.get('liturgical_event'),
             feast=json_obj.get('feast', True),
             addition=json_obj.get('addition', False),
-            holy_day=json_obj.get('holy_day', False),
+            holy_day=json_obj.get('obligation', False),
         )
         if 'urls' in json_obj:
             event.urls = [
@@ -364,10 +364,12 @@ class LiturgicalCalendarEvent:
             description += '{} is a Holy Day of Obligation.'.format(self.full_name())
 
         if description != '' and description[-1] == '.':
-            description += '  '
+            description += ' '
 
         if self.liturgical_event and self.rank < 4:
-            if not ranking_feast or self.holy_day:
+            if self.holy_day:
+                name = 'Today'
+            elif not ranking_feast:
                 name = 'This {}'.format('feast' if self.feast else 'feria')
             else:
                 name = self.full_name(capitalize=True)
@@ -388,7 +390,7 @@ class LiturgicalCalendarEvent:
             1 < self.rank < 4
         ):
             if description != '' and description[-1] == '.':
-                description += '  '
+                description += ' '
             description += (
                 'Since {} falls during Lent it will ordinarily be celebrated only as a '
                 'commemoration during the mass of {}.'.format(
@@ -396,7 +398,7 @@ class LiturgicalCalendarEvent:
             )
         if ranking_feast:
             if len(description) > 0 and description[-1] == '.':
-                description += '  '
+                description += ' '
             description += 'The liturgical color is {}.'.format(
                 self.color.lower())
         if description != '':
@@ -580,7 +582,7 @@ class LiturgicalYear:
                 if feast_description.startswith('More information about'):
                     description += '\n\n'
                 elif description != '' and description[-1] == '.':
-                    description += '  '
+                    description += ' '
                 description += feast_description
                 description = description.strip()
                 ics_event = ical.Event()

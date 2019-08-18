@@ -275,7 +275,7 @@ class LiturgicalCalendarEvent:
         If the name is 'St. Saturninus' this will return 'The Commemoration of St. Saturninus'.
 
         Args:
-            captilazie: boolean
+            capitalize: boolean
                 Whether to capitalize the first letter.
 
         Returns:
@@ -293,11 +293,18 @@ class LiturgicalCalendarEvent:
                 full_name = 'the Feast of ' + name
             else:
                 full_name = 'the Commemoration of ' + name
-        elif self.name.split()[0] in ['Basilica', 'Baptism', 'Church', 'Vigil']:
+        elif self.name.split()[0] in ['Basilica', 'Baptism', 'Church']:
             if self.rank != 4:
                 full_name = 'the Feast of the ' + self.name
             else:
                 full_name = 'the Commemoration of the ' + self.name
+        elif self.name.split()[0] == 'Vigil':
+            if self.name.split()[2] in the_feast_of_prefixes:
+                full_name = (
+                    'the Vigil of the Feast of ' + ' '.join(self.name.split()[2:])
+                )
+            else:
+                full_name = 'the ' + self.name
         elif (self.name.split()[0] in ORDINALS.values() or
               self.name.startswith('Last Sunday') or
               self.name.startswith('Feast')

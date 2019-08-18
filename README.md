@@ -18,8 +18,22 @@ If you'd like to generate the calendar yourself, follow the instructions below:
 * Python 3
 * icalendar
 
+## Installation
+
+Clone the repository to a directory of your choice:
+
+```
+$ git clone git@github.com:joe-antognini/tridentine_calendar.git
+```
+
+Then install using pip
+
+```
+pip install -e tridentine_calendar/
+```
+
 ## Usage
 
 ```
-$ python tridentine_calendar.py --output=my_calendar.ics 2019
+$ python tridentine_calendar.py --output=my_calendar.ics 2019 2020
 ```

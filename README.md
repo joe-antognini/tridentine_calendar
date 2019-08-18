@@ -35,5 +35,5 @@ pip install -e tridentine_calendar/
 ## Usage
 
 ```
-$ python tridentine_calendar.py --output=my_calendar.ics 2019 2020
+$ tridentine_calendar --output=my_calendar.ics 2019 2020
 ```

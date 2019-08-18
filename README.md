@@ -13,8 +13,8 @@ A preview of the calendar can be found here: https://joe-antognini.github.io/tri
 
 You can subscribe to the calendar using these links:
 
-* [This link for an HTTP friendly calendar](webcal://joe-antognini.github.io/assets/ical/html_tridentine_calendar.ics)
-* [This link for a plaintext friendly calendar](webcal://joe-antognini.github.io/assets/ical/tridentine_calendar.ics)
+* This link for an HTTP friendly calendar: `webcal://joe-antognini.github.io/assets/ical/html_tridentine_calendar.ics`
+* This link for a plaintext friendly calendar: `webcal://joe-antognini.github.io/assets/ical/tridentine_calendar.ics`
 
 If you'd like to generate the calendar yourself, follow the instructions below:
 

@@ -5,8 +5,12 @@ ignore:
 exclude:
   build/,
   dist/,
-  .egg/
-  *.egg-info/,
+  .eggs/,
+  .git/,
+  .github/,
+  .pytest_cache/,
+  .tox/,
+  tridentine_calendar.egg-info/,
 max-line-length = 88
 per-file-ignores:
   */tests/test_*.py:D100,D101,D102

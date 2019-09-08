@@ -5,6 +5,7 @@ ignore:
 exclude:
   build/,
   dist/,
+  .egg/
   *.egg-info/,
 max-line-length = 88
 per-file-ignores:

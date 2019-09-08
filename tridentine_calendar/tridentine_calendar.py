@@ -151,11 +151,7 @@ class LiturgicalSeason:
             season_key = 'Holy Week'
         elif mf.MaundyThursday.date(year) <= date < mf.Easter.date(year):
             season_key = 'Paschal Triduum'
-        elif (
-            mf.Easter.date(year) <=
-            date <
-            mf.Pentecost.date(year)
-        ):
+        elif mf.Easter.date(year) <= date < mf.Pentecost.date(year):
             season_key = 'Eastertide'
         elif mf.Pentecost.date(year) <= date < dt.date(year, 10, 31):
             season_key = 'Time after Pentecost'
@@ -254,11 +250,11 @@ class LiturgicalCalendarEvent:
         self.season = LiturgicalSeason.from_date(date)
 
         if color is None:
-            if (
-                self.liturgical_event and
-                self.rank != 4 and
-                self.is_fixed() and
-                not (self.rank != 1 and self.season.name in ['Lent', 'Passiontide'])
+            if all(
+                self.liturgical_event,
+                self.rank != 4,
+                self.is_fixed(),
+                not (self.rank != 1 and self.season.name in ['Lent', 'Passiontide']),
             ):
                 self.color = 'White'
                 if self.titles:
@@ -286,8 +282,8 @@ class LiturgicalCalendarEvent:
         """
         the_feast_of_prefixes = ['St.', 'SS.', 'Pope', 'Our Lady', 'The']
         other_the_feasts = ['Christ the King']
-        if (
-            self.name.split()[0] in the_feast_of_prefixes or
+        if any(
+            self.name.split()[0] in the_feast_of_prefixes,
             self.name in other_the_feasts
         ):
             if self.name.startswith('The'):
@@ -310,10 +306,10 @@ class LiturgicalCalendarEvent:
                 )
             else:
                 full_name = 'the ' + self.name
-        elif (
-            self.name.split()[0] in ORDINALS.values() or
-            self.name.startswith('Last Sunday') or
-            self.name.startswith('Feast')
+        elif any(
+            self.name.split()[0] in ORDINALS.values(),
+            self.name.startswith('Last Sunday'),
+            self.name.startswith('Feast'),
         ):
             full_name = 'the ' + self.name
         else:
@@ -395,12 +391,12 @@ class LiturgicalCalendarEvent:
             description += 'Today is a commemoration.'
         elif not self.liturgical_event:
             description += f'{self.full_name()} has no special liturgy.'
-        if (
-            ranking_feast and
-            self.season.name in ['Lent', 'Passiontide'] and
-            self.liturgical_event and
-            self.feast and
-            1 < self.rank < 4
+        if all(
+            ranking_feast,
+            self.season.name in ['Lent', 'Passiontide'],
+            self.liturgical_event,
+            self.feast,
+            1 < self.rank < 4,
         ):
             if description != '' and description[-1] == '.':
                 description += ' '

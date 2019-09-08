@@ -250,12 +250,12 @@ class LiturgicalCalendarEvent:
         self.season = LiturgicalSeason.from_date(date)
 
         if color is None:
-            if all(
+            if all([
                 self.liturgical_event,
                 self.rank != 4,
                 self.is_fixed(),
                 not (self.rank != 1 and self.season.name in ['Lent', 'Passiontide']),
-            ):
+            ]):
                 self.color = 'White'
                 if self.titles:
                     red_titles = ['Martyr', 'Apostle', 'Evangelist']
@@ -282,10 +282,10 @@ class LiturgicalCalendarEvent:
         """
         the_feast_of_prefixes = ['St.', 'SS.', 'Pope', 'Our Lady', 'The']
         other_the_feasts = ['Christ the King']
-        if any(
+        if any([
             self.name.split()[0] in the_feast_of_prefixes,
             self.name in other_the_feasts
-        ):
+        ]):
             if self.name.startswith('The'):
                 name = self.name[0].lower() + self.name[1:]
             else:
@@ -306,11 +306,11 @@ class LiturgicalCalendarEvent:
                 )
             else:
                 full_name = 'the ' + self.name
-        elif any(
+        elif any([
             self.name.split()[0] in ORDINALS.values(),
             self.name.startswith('Last Sunday'),
             self.name.startswith('Feast'),
-        ):
+        ]):
             full_name = 'the ' + self.name
         else:
             full_name = self.name
@@ -391,13 +391,13 @@ class LiturgicalCalendarEvent:
             description += 'Today is a commemoration.'
         elif not self.liturgical_event:
             description += f'{self.full_name()} has no special liturgy.'
-        if all(
+        if all([
             ranking_feast,
             self.season.name in ['Lent', 'Passiontide'],
             self.liturgical_event,
             self.feast,
-            1 < self.rank < 4,
-        ):
+            self.rank and 1 < self.rank < 4,
+        ]):
             if description != '' and description[-1] == '.':
                 description += ' '
             description += (

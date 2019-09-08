@@ -26,8 +26,10 @@ class TestMovableFeastDates(unittest.TestCase):
         )
 
     def test_sunday_within_the_octave_of_xmas(self):
-        self.assertEqual(mf.SundayWithinTheOctaveOfXmas.date(2019), dt.date(2018, 12, 30))
-        self.assertEqual(mf.SundayWithinTheOctaveOfXmas.date(2020), dt.date(2019, 12, 29))
+        self.assertEqual(
+            mf.SundayWithinTheOctaveOfXmas.date(2019), dt.date(2018, 12, 30))
+        self.assertEqual(
+            mf.SundayWithinTheOctaveOfXmas.date(2020), dt.date(2019, 12, 29))
 
     def test_holy_name(self):
         self.assertEqual(mf.HolyName.date(2018), dt.date(2018, 1, 2))

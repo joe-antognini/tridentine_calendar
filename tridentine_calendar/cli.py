@@ -12,10 +12,13 @@ def parse_args(args):
 
     Returns:
         args: An `argparse.Namespace` object with the parsed arguments.
-    
+
     """
     parser = argparse.ArgumentParser(
-        description='Generate a liturgical calendar using the 1962 Roman Catholic rubrics.')
+        description=(
+            'Generate a liturgical calendar using the 1962 Roman Catholic rubrics.'
+        )
+    )
     parser.add_argument(
         '--use_html_formatting',
         action='store_true',
@@ -25,8 +28,11 @@ def parse_args(args):
     parser.add_argument(
         '--output',
         required=True,
-        help=('Name of the ICS file to write the calendar out to.  If a file already exists this '
-              'script will attempt to extend the calendar with the years provided.'),
+        help=(
+            'Name of the ICS file to write the calendar out to.  If a file already '
+            'exists this script will attempt to extend the calendar with the years '
+            'provided.'
+        ),
     )
     parser.add_argument(
         'years',
@@ -39,7 +45,10 @@ def parse_args(args):
         '--overwrite_existing',
         action='store_true',
         default=False,
-        help='Whether to overwrite an existing ICS file with the same name as the given output.',
+        help=(
+            'Whether to overwrite an existing ICS file with the same name as the given '
+            'output.',
+        )
     )
 
     return parser.parse_args(args)

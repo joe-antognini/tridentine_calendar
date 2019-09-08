@@ -3,8 +3,8 @@ import os
 import tempfile
 import unittest
 
-from ..cli import parse_args
 from ..cli import _main
+from ..cli import parse_args
 
 
 class TestGetArgs(unittest.TestCase):
@@ -16,7 +16,6 @@ class TestGetArgs(unittest.TestCase):
         self.assertFalse(args.overwrite_existing)
 
     def test_parse_args_multiple_years(self):
-        tmp_file = tempfile.NamedTemporaryFile()
         args = parse_args(['--output', 'foo', '2000', '2010'])
         self.assertEqual(args.output, 'foo')
         self.assertEqual(args.years, [2000, 2010])

@@ -1,3 +1,5 @@
+"""Setup script for `tridentine_calendar`."""
+
 from setuptools import setup
 
 with open('README.md') as fp:
@@ -6,7 +8,8 @@ with open('README.md') as fp:
 setup(
     name='tridentine_calendar',
     version='0.7.0',
-    description='Liturgical calendar calculator using the 1962 Roman Catholic rubrics.',
+    description='Liturgical calendar calculator using the 1962 Roman Catholic '
+                'rubrics.',
     long_description=long_description,
     url='https://github.com/joe-antognini/tridentine_calendar',
     author='Joseph O\'Brien Antognini',
@@ -17,7 +20,8 @@ setup(
         'icalendar',
     ],
     entry_points={
-        'console_scripts': ['tridentine_calendar=tridentine_calendar.cli:main'],
+        'console_scripts':
+            ['tridentine_calendar=tridentine_calendar.cli:main'],
     },
     include_package_data=True,
     setup_requires=['pytest-runner'],

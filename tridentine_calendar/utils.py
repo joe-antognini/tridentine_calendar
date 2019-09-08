@@ -1,6 +1,5 @@
 """Utility functions."""
 
-import abc
 import datetime as dt
 import functools
 import inspect
@@ -8,7 +7,6 @@ import urllib
 
 from . import movable_feasts
 from .movable_feasts import AshWednesday
-from .movable_feasts import computus
 from .movable_feasts import MovableFeast
 from .movable_feasts import PalmSunday
 from .movable_feasts import PassionSunday
@@ -48,10 +46,11 @@ ORDINALS = {
 def liturgical_year_start(year):
     """Calculate the start of the liturgical year.
 
-    The start of the liturgical year is the First Sunday of Advent.  This date is calculated for the
-    liturgical year for which Easter falls in the given year.  As a consequence, the start of the
-    liturgical year will fall on the previous year.  For example, if the year 2000 is provided as an
-    argument, the resulting start of the liturgical year will be in late November 1999.
+    The start of the liturgical year is the First Sunday of Advent.  This date is
+    calculated for the liturgical year for which Easter falls in the given year.  As a
+    consequence, the start of the liturgical year will fall on the previous year.  For
+    example, if the year 2000 is provided as an argument, the resulting start of the
+    liturgical year will be in late November 1999.
 
     Args:
         year: int
@@ -68,8 +67,8 @@ def liturgical_year_start(year):
 def liturgical_year_end(year):
     """Calculate the last day of the liturgical year.
 
-    The end of the liturgical year is the Saturday before the First Sunday of Advent of the
-    following liturgical year.
+    The end of the liturgical year is the Saturday before the First Sunday of Advent of
+    the following liturgical year.
 
     Args:
         year: int
@@ -85,17 +84,17 @@ def liturgical_year_end(year):
 def liturgical_year(date):
     """Determine the liturgical year the date belongs to.
 
-    For most dates this will be equal to the date's year.  However, for dates within Advent and the
-    first part of Christmastide the liturgical year will be the following year.  Thus, January 1,
-    2000 belongs to the liturgical year of 2000, whereas December 24, 2000 belongs to the liturgical
-    year of 2001.
+    For most dates this will be equal to the date's year.  However, for dates within
+    Advent and the first part of Christmastide the liturgical year will be the following
+    year.  Thus, January 1, 2000 belongs to the liturgical year of 2000, whereas
+    December 24, 2000 belongs to the liturgical year of 2001.
 
     Args:
         date: A `datetime.date` object.
 
     Returns:
         The liturgical year as an integer.
-    
+
     """
     if date <= liturgical_year_end(date.year):
         return date.year
@@ -141,9 +140,9 @@ def add_domain_to_url_description(url, description=None):
         url: str
             The URL.
         description: str
-            An optional description for the URL.  If no description exists, this function will try
-            to use the URL to generate a description.  Currently this only works for Wikipedia
-            domains.
+            An optional description for the URL.  If no description exists, this
+            function will try to use the URL to generate a description.  Currently this
+            only works for Wikipedia domains.
 
     Returns:
         A string with the description and the domain name in parentheses afterwards.
@@ -165,8 +164,8 @@ def add_domain_to_url_description(url, description=None):
 def get_movable_feast_names_and_dates(year):
     """Get all movable feast classes defined in the `movable_feasts` module.
 
-    This function will introspect the `movable_feasts` module and return all subclasses inherited
-    from the `MovableFeast` class.
+    This function will introspect the `movable_feasts` module and return all subclasses
+    inherited from the `MovableFeast` class.
 
     Args:
         year: int

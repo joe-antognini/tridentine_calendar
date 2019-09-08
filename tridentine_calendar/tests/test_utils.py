@@ -2,7 +2,6 @@ import datetime as dt
 import unittest
 
 from ..utils import add_domain_to_url_description
-from ..utils import computus
 from ..utils import feria_name
 from ..utils import get_movable_feast_names_and_dates
 from ..utils import liturgical_year

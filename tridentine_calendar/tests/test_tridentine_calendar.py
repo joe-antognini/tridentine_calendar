@@ -2,18 +2,19 @@ import datetime as dt
 import tempfile
 import unittest
 
-from ..tridentine_calendar import _feast_sort_key
 from ..tridentine_calendar import LiturgicalCalendar
 from ..tridentine_calendar import LiturgicalCalendarEvent
 from ..tridentine_calendar import LiturgicalCalendarEventUrl
 from ..tridentine_calendar import LiturgicalSeason
 from ..tridentine_calendar import LiturgicalYear
+from ..tridentine_calendar import _feast_sort_key
 
 
 class TestLiturgicalCalendarEventUrl(unittest.TestCase):
 
     def test_init(self):
-        feast_link = LiturgicalCalendarEventUrl('https://en.wikipedia.org/Saturnin', 'Saturnin')
+        feast_link = LiturgicalCalendarEventUrl(
+            'https://en.wikipedia.org/Saturnin', 'Saturnin')
         self.assertEqual(feast_link.url, 'https://en.wikipedia.org/Saturnin')
         self.assertEqual(feast_link.description, 'Saturnin')
 
@@ -32,12 +33,14 @@ class TestLiturgicalCalendarEventUrl(unittest.TestCase):
         self.assertEqual(feast_link.description, 'Saturnin (Wikipedia)')
 
         json_obj = 'http://www.newadvent.org/cathen/01471a.htm'
-        feast_link = LiturgicalCalendarEventUrl.from_json(json_obj, default='Saturninus')
+        feast_link = LiturgicalCalendarEventUrl.from_json(
+            json_obj, default='Saturninus')
         self.assertEqual(feast_link.url, 'http://www.newadvent.org/cathen/01471a.htm')
         self.assertEqual(feast_link.description, 'Saturninus (New Advent)')
 
         json_obj = 'https://fisheaters.com/customsadvent2a.html'
-        feast_link = LiturgicalCalendarEventUrl.from_json(json_obj, default='St. Barbara')
+        feast_link = LiturgicalCalendarEventUrl.from_json(
+            json_obj, default='St. Barbara')
         self.assertEqual(feast_link.url, 'https://fisheaters.com/customsadvent2a.html')
         self.assertEqual(feast_link.description, 'St. Barbara (Fish Eaters)')
 
@@ -48,7 +51,8 @@ class TestLiturgicalCalendarEventUrl(unittest.TestCase):
 
         json_obj = 'https://en.wikipedia.org/wiki/Saint_Sylvester%27s_Day'
         feast_link = LiturgicalCalendarEventUrl.from_json(json_obj)
-        self.assertEqual(feast_link.url, 'https://en.wikipedia.org/wiki/Saint_Sylvester%27s_Day')
+        self.assertEqual(
+            feast_link.url, 'https://en.wikipedia.org/wiki/Saint_Sylvester%27s_Day')
         self.assertEqual(feast_link.description, 'Saint Sylvester\'s Day (Wikipedia)')
 
     def test_to_href(self):
@@ -261,7 +265,7 @@ class TestLiturgicalYearSmoke(unittest.TestCase):
 
 
 class TestLiturgicalYearSundayDates(unittest.TestCase):
-    
+
     def test_liturgical_year_sunday_dates(self):
         litcal_2018 = LiturgicalYear(2018)
         self.assertEqual(
@@ -305,7 +309,6 @@ class TestLiturgicalCalendar(unittest.TestCase):
             'The Feast of the Immaculate Conception is a Holy Day of Obligation.'))
 
     def test_liturgical_calendar_to_ics(self):
-        litcal = LiturgicalCalendar([2018, 2019])
         ics_calendar = LiturgicalYear(2019).to_ical()
         self.assertIsNotNone(ics_calendar)
 

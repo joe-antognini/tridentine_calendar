@@ -1,16 +1,16 @@
 """Generate a liturgical calendar using the 1962 Roman Catholic rubrics."""
 
 import argparse
-import calendar
 import datetime as dt
 import json
 import os
 import urllib
-from pkg_resources import resource_string
 
 import icalendar as ical
 
-from . import movable_feasts
+from pkg_resources import resource_string
+
+from . import movable_feasts as mf
 from . import utils
 from .utils import ORDINALS
 from .utils import add_domain_to_url_description
@@ -18,15 +18,17 @@ from .utils import liturgical_year_end
 from .utils import liturgical_year_start
 
 # Load the JSON data.
-MOVABLE_FEASTS_DATA = json.loads(resource_string(__name__, 'movable_feasts_ferias_et_al.json'))
-FIXED_FEASTS_DATA = json.loads(resource_string(__name__, 'fixed_feasts_ferias_et_al.json'))
+mf_DATA = json.loads(resource_string(__name__, 'movable_feasts_ferias_et_al.json'))
+FIXED_FEASTS_DATA = json.loads(
+    resource_string(__name__, 'fixed_feasts_ferias_et_al.json'))
 SEASON_DATA = json.loads(resource_string(__name__, 'seasons.json'))
 
 
 def get_args():
     """Define the command line arguments."""
     parser = argparse.ArgumentParser(description='Calculate a liturgical calendar.')
-    parser.add_argument('--year', type=int, help='The year for which to calculate the calendar.')
+    parser.add_argument(
+        '--year', type=int, help='The year for which to calculate the calendar.')
     parser.add_argument('--file', help='Name of the ICS file to write the calendar to.')
     return parser.parse_args()
 
@@ -38,7 +40,8 @@ class LiturgicalCalendarEventUrl:
         """Instantiate a `LiturgicalCalendarEventUrl`.
 
         Args:
-            url: A string with the URL.
+            url: str
+                A string with the URL.
             description: A string describing the URL that should be shown with the link.
 
         """
@@ -50,14 +53,17 @@ class LiturgicalCalendarEventUrl:
         """Instantiate a `LiturgicalCalendarEventUrl` object from a JSON object.
 
         Args:
-            json_obj: An object resulting from parsing the JSON string describing the URL.
+            json_obj:
+                An object resulting from parsing the JSON string describing the URL.
 
         Returns:
-            A `LiturgicalCalendarEventUrl` object with the URL and description appropriately set.
+            A `LiturgicalCalendarEventUrl` object with the URL and description
+            appropriately set.
 
         """
         if type(json_obj) is dict:
-            description = add_domain_to_url_description(json_obj['url'], json_obj['description'])
+            description = add_domain_to_url_description(
+                json_obj['url'], json_obj['description'])
             liturgical_calendar_event_url = cls(json_obj['url'], description)
         elif type(json_obj) is str:
             domain = urllib.parse.urlparse(json_obj).netloc
@@ -69,13 +75,13 @@ class LiturgicalCalendarEventUrl:
                 description = add_domain_to_url_description(json_obj, default)
             liturgical_calendar_event_url = cls(json_obj, description)
         else:
-            raise ValueError('json_obj must be dict or str, found {}.'.format(type(json_obj)))
+            raise ValueError(f'json_obj must be dict or str, found {type(json_obj)}.')
 
         return liturgical_calendar_event_url
 
     def to_href(self):
         """Return the URL as an HTML HREF string."""
-        return '<a href={url}>{description}</a>'.format(url=self.url, description=self.description)
+        return f'<a href={self.url}>{self.description}</a>'
 
 
 class LiturgicalSeason:
@@ -103,67 +109,62 @@ class LiturgicalSeason:
         json_obj = SEASON_DATA[json_key]
         if 'urls' in json_obj:
             urls = [
-                LiturgicalCalendarEventUrl.from_json(elem, json_key) for elem in json_obj['urls']
+                LiturgicalCalendarEventUrl.from_json(elem, json_key)
+                for elem in json_obj['urls']
             ]
         if 'color' in json_obj:
             color = json_obj['color']
-        elif  'season' in json_obj:
+        elif 'season' in json_obj:
             color = LiturgicalSeason.from_json_key(json_obj['season']).color
         return cls(json_key, urls, color)
-    
+
     @classmethod
     def from_date(cls, date):
         """Instantiate a `LiturgicalSeason` from a given date.
 
         Args:
             date: A `datetime.date` object.
-        
+
         """
         # First determine the liturgical year.
         year = utils.liturgical_year(date)
 
         if date in [
-            movable_feasts.FatThursday.date(year),
-            movable_feasts.ShroveMonday.date(year),
-            movable_feasts.MardiGras.date(year),
+            mf.FatThursday.date(year),
+            mf.ShroveMonday.date(year),
+            mf.MardiGras.date(year),
         ]:
             season_key = 'Shrovetide'
         elif liturgical_year_start(year) <= date < dt.date(year - 1, 12, 25):
             season_key = 'Advent'
         elif dt.date(year - 1, 12, 25) <= date < dt.date(year, 1, 6):
             season_key = 'Christmastide'
-        elif dt.date(year, 1, 6) <= date < movable_feasts.Septuagesima.date(year):
+        elif dt.date(year, 1, 6) <= date < mf.Septuagesima.date(year):
             season_key = 'Time after Epiphany'
-        elif (
-            movable_feasts.Septuagesima.date(year) <= date < movable_feasts.AshWednesday.date(year)
-        ):
+        elif mf.Septuagesima.date(year) <= date < mf.AshWednesday.date(year):
             season_key = 'Septuagesima'
-        elif (
-            movable_feasts.AshWednesday.date(year) <= date < movable_feasts.PassionSunday.date(year)
-        ):
+        elif mf.AshWednesday.date(year) <= date < mf.PassionSunday.date(year):
             season_key = 'Lent'
-        elif (
-            movable_feasts.PassionSunday.date(year) <= date < movable_feasts.PalmSunday.date(year)
-        ):
+        elif mf.PassionSunday.date(year) <= date < mf.PalmSunday.date(year):
             season_key = 'Passiontide'
-        elif (
-            movable_feasts.PalmSunday.date(date.year) <= date < movable_feasts.MaundyThursday.date(year)
-        ):
+        elif mf.PalmSunday.date(date.year) <= date < mf.MaundyThursday.date(year):
             season_key = 'Holy Week'
-        elif (
-            movable_feasts.MaundyThursday.date(year) <= date < movable_feasts.Easter.date(year)
-        ):
+        elif mf.MaundyThursday.date(year) <= date < mf.Easter.date(year):
             season_key = 'Paschal Triduum'
-        elif movable_feasts.Easter.date(year) <= date < movable_feasts.Pentecost.date(year):
+        elif (
+            mf.Easter.date(year) <=
+            date <
+            mf.Pentecost.date(year)
+        ):
             season_key = 'Eastertide'
-        elif movable_feasts.Pentecost.date(year) <= date < dt.date(year, 10, 31):
+        elif mf.Pentecost.date(year) <= date < dt.date(year, 10, 31):
             season_key = 'Time after Pentecost'
         elif dt.date(year, 10, 31) <= date < dt.date(year, 11, 3):
             season_key = 'Hallowtide'
         elif dt.date(year, 11, 3) <= date <= liturgical_year_end(year):
             season_key = 'Time after Pentecost'
         else:
-            raise ValueError('Wasn\'t able to calculate season for date {}.'.format(date))
+            raise ValueError(f'Wasn\'t able to calculate season for date {date}.')
 
         return LiturgicalSeason.from_json_key(season_key)
 
@@ -192,7 +193,8 @@ class LiturgicalSeason:
 class LiturgicalCalendarEvent:
     """An event on the liturgical calendar.
 
-    This could be a feast, a feria, or something else (such as a traditional or modern feast).
+    This could be a feast, a feria, or something else (such as a traditional or modern
+    feast).
 
     """
 
@@ -230,9 +232,9 @@ class LiturgicalCalendarEvent:
             feast: bool
                 Whether the event is a feast or a feria.
             addition: bool
-                Whether this event is a liturgical event that occurs in addition to any other
-                liturgical event of the day (e.g., Major Rogation).  These events do not follow the
-                usual rules of precedence.
+                Whether this event is a liturgical event that occurs in addition to any
+                other liturgical event of the day (e.g., Major Rogation).  These events
+                do not follow the usual rules of precedence.
             holy_day: bool
                 Whether the event is a Holy Day of Obligation.
             season: `LiturgicalSeason`
@@ -267,12 +269,12 @@ class LiturgicalCalendarEvent:
             else:
                 self.color = self.season.color
 
-
     def full_name(self, capitalize=True):
         """Return the full name of the event, possibly with an article.
 
-        For example, if the name is 'St. Nicholas', this will return 'The Feast of St. Nicholas'.
-        If the name is 'St. Saturninus' this will return 'The Commemoration of St. Saturninus'.
+        For example, if the name is 'St. Nicholas', this will return 'The Feast of St.
+        Nicholas'.  If the name is 'St. Saturninus' this will return 'The Commemoration
+        of St. Saturninus'.
 
         Args:
             capitalize: boolean
@@ -284,7 +286,10 @@ class LiturgicalCalendarEvent:
         """
         the_feast_of_prefixes = ['St.', 'SS.', 'Pope', 'Our Lady', 'The']
         other_the_feasts = ['Christ the King']
-        if self.name.split()[0] in the_feast_of_prefixes or self.name in other_the_feasts:
+        if (
+            self.name.split()[0] in the_feast_of_prefixes or
+            self.name in other_the_feasts
+        ):
             if self.name.startswith('The'):
                 name = self.name[0].lower() + self.name[1:]
             else:
@@ -305,9 +310,10 @@ class LiturgicalCalendarEvent:
                 )
             else:
                 full_name = 'the ' + self.name
-        elif (self.name.split()[0] in ORDINALS.values() or
-              self.name.startswith('Last Sunday') or
-              self.name.startswith('Feast')
+        elif (
+            self.name.split()[0] in ORDINALS.values() or
+            self.name.startswith('Last Sunday') or
+            self.name.startswith('Feast')
         ):
             full_name = 'the ' + self.name
         else:
@@ -359,16 +365,16 @@ class LiturgicalCalendarEvent:
             html_formatting: boolean
                 Whether to use HTML formatting for the URLs.
             ranking_feast: booleanc
-                Whether the feast is the highest-ranking feast of the day.  The highest ranking
-                feast will have extra information about the liturgical color.
-        
+                Whether the feast is the highest-ranking feast of the day.  The highest
+                ranking feast will have extra information about the liturgical color.
+
         Returns:
             A string with the description.
 
         """
         description = ''
         if self.holy_day:
-            description += '{} is a Holy Day of Obligation.'.format(self.full_name())
+            description += f'{self.full_name()} is a Holy Day of Obligation.'
 
         if description != '' and description[-1] == '.':
             description += ' '
@@ -386,9 +392,9 @@ class LiturgicalCalendarEvent:
                 'feast' if self.feast else 'feria',
             )
         elif self.liturgical_event and self.rank == 4 and ranking_feast:
-            description += 'Today is a commemoration.'.format(self.full_name(capitalize=True))
+            description += 'Today is a commemoration.'
         elif not self.liturgical_event:
-            description += '{} has no special liturgy.'.format(self.full_name())
+            description += f'{self.full_name()} has no special liturgy.'
         if (
             ranking_feast and
             self.season.name in ['Lent', 'Passiontide'] and
@@ -406,13 +412,13 @@ class LiturgicalCalendarEvent:
         if ranking_feast:
             if len(description) > 0 and description[-1] == '.':
                 description += ' '
-            description += 'The liturgical color is {}.'.format(
-                self.color.lower())
+            description += 'The liturgical color is {}.'.format(self.color.lower())
         if description != '':
             description += '\n\n'
 
         if self.urls:
-            description += 'More information about {}:\n'.format(self.full_name(capitalize=False))
+            description += 'More information about {}:\n'.format(
+                self.full_name(capitalize=False))
             for url_obj in self.urls:
                 if html_formatting:
                     description += '• ' + url_obj.to_href() + '\n'
@@ -421,7 +427,7 @@ class LiturgicalCalendarEvent:
             description += '\n'
 
         description += 'More information about {}:\n'.format(
-                self.season.full_name(capitalize=False))
+            self.season.full_name(capitalize=False))
         for url_obj in self.season.urls:
             if html_formatting:
                 description += '• ' + url_obj.to_href() + '\n'
@@ -431,8 +437,16 @@ class LiturgicalCalendarEvent:
         return description.rstrip()
 
     def is_fixed(self):
+        """Determine whether the event has a fixed date.
+
+        Returns:
+            True if the event has a fixed date.
+
+        """
         date_str = self.date.strftime('%B %-d')
-        fixed_feasts_on_date = [elem['name'] for elem in FIXED_FEASTS_DATA.get(date_str, [])]
+        fixed_feasts_on_date = [
+            elem['name'] for elem in FIXED_FEASTS_DATA.get(date_str, [])
+        ]
         return (self.name in fixed_feasts_on_date)
 
 
@@ -442,9 +456,9 @@ class LiturgicalYear:
     def __init__(self, year):
         """Instantiate a `LiturgicalYear` object.
 
-        Note that the liturgical year starts before the year given on the first Sunday of Advent.
-        If the year given is 2000, then the liturgical year will start in late November 1999 and end
-        in early December 2000.
+        Note that the liturgical year starts before the year given on the first Sunday
+        of Advent.  If the year given is 2000, then the liturgical year will start in
+        late November 1999 and end in early December 2000.
 
         Args:
             year: int
@@ -476,10 +490,12 @@ class LiturgicalYear:
         for name, date in utils.get_movable_feast_names_and_dates(self.year):
             if type(date) is list:
                 for elem in date:
-                    event = LiturgicalCalendarEvent.from_json(elem, MOVABLE_FEASTS_DATA[name], name)
+                    event = LiturgicalCalendarEvent.from_json(
+                        elem, mf_DATA[name], name)
                     self.calendar[elem].append(event)
             else:
-                event = LiturgicalCalendarEvent.from_json(date, MOVABLE_FEASTS_DATA[name], name)
+                event = LiturgicalCalendarEvent.from_json(
+                    date, mf_DATA[name], name)
                 self.calendar[date].append(event)
 
         # Mark Sundays, starting with Advent
@@ -487,13 +503,14 @@ class LiturgicalYear:
             if i == 3:
                 continue
             date = self.liturgical_year_start + dt.timedelta(7 * (i - 1))
-            event = LiturgicalCalendarEvent(date, name=ORDINALS[i] + ' Sunday of Advent', rank=1)
+            event = LiturgicalCalendarEvent(
+                date, name=ORDINALS[i] + ' Sunday of Advent', rank=1)
             self.calendar[date].append(event)
 
         # Time after Epiphany.
         i = 2
-        date = movable_feasts.HolyFamily.date(self.year) + dt.timedelta(7)
-        while date < movable_feasts.Septuagesima.date(self.year):
+        date = mf.HolyFamily.date(self.year) + dt.timedelta(7)
+        while date < mf.Septuagesima.date(self.year):
             event = LiturgicalCalendarEvent(
                 date, name=ORDINALS[i] + ' Sunday after Epiphany', rank=2)
             self.calendar[date].append(event)
@@ -502,25 +519,26 @@ class LiturgicalYear:
 
         # Lent.
         for i in range(1, 4):
-            date = movable_feasts.Quinquagesima.date(self.year) + dt.timedelta(7 * i)
-            event = LiturgicalCalendarEvent(date, name=ORDINALS[i] + ' Sunday of Lent', rank=1)
+            date = mf.Quinquagesima.date(self.year) + dt.timedelta(7 * i)
+            event = LiturgicalCalendarEvent(
+                date, name=ORDINALS[i] + ' Sunday of Lent', rank=1)
             self.calendar[date].append(event)
 
         # Eastertide.
-        date = movable_feasts.CantateSunday.date(self.year) + dt.timedelta(7)
+        date = mf.CantateSunday.date(self.year) + dt.timedelta(7)
         event = LiturgicalCalendarEvent(date, 'Fifth Sunday after Easter', rank=1)
         self.calendar[date].append(event)
 
-        date = movable_feasts.Ascension.date(self.year) + dt.timedelta(3)
+        date = mf.Ascension.date(self.year) + dt.timedelta(3)
         event = LiturgicalCalendarEvent(date, 'Sunday after Ascension', rank=1)
         self.calendar[date].append(event)
 
         # Time after Pentecost.
         i = 2
-        date = movable_feasts.TrinitySunday.date(self.year) + dt.timedelta(7)
+        date = mf.TrinitySunday.date(self.year) + dt.timedelta(7)
         while date <= self.liturgical_year_end - dt.timedelta(7):
             event = LiturgicalCalendarEvent(
-                    date, name=ORDINALS[i] + ' Sunday after Pentecost', rank=2)
+                date, name=ORDINALS[i] + ' Sunday after Pentecost', rank=2)
             self.calendar[date].append(event)
             i += 1
             date += dt.timedelta(7)
@@ -556,8 +574,9 @@ class LiturgicalYear:
         """Write out the calendar to ICS format.
 
         Args:
-            html_formatting: Whether to write out the URLs using `<a href>...</a>` formatting.  This
-            will render nicely on many web-based calendars but not on desktop calendar applications.
+            html_formatting: Whether to write out the URLs using `<a href>...</a>`
+                formatting.  This will render nicely on many web-based calendars but not
+                on desktop calendar applications.
 
         """
         ics_calendar = ical.Calendar()
@@ -602,7 +621,7 @@ class LiturgicalYear:
 
 
 def _feast_sort_key(feast):
-    """Provides a key to help sort feasts.
+    """Provide a key to help sort feasts.
 
     Args:
         feast: A `LiturgicalEvent` object.
@@ -624,11 +643,11 @@ class LiturgicalCalendar:
 
     def __init__(self, years):
         """Instantiate a `LiturgicalCalendar` object for the given year or years.
-        
+
         Args:
             years: Integer or list of integers with the years to instantiate the
             `LiturgicalCalendar` for.
-        
+
         """
         self.liturgical_years = {}
         if isinstance(years, int):
@@ -652,8 +671,9 @@ class LiturgicalCalendar:
         """Write out the liturgical calendar to ICS format.
 
         Args:
-            html_formatting: Whether to write out the URLs using `<a href>...</a>` formatting.  This
-            will render nicely on many web-based calendars but not on desktop calendar applications.
+            html_formatting: Whether to write out the URLs using `<a href>...</a>`
+                formatting.  This will render nicely on many web-based calendars but not
+                on desktop calendar applications.
 
         """
         ics_calendar = ical.Calendar()
@@ -672,8 +692,8 @@ class LiturgicalCalendar:
     def extend_existing_ical(self, filename):
         """Append the liturgical calendar data to an existing ICS file.
 
-        This will read the existing ICS file to determine if HTML formatting should be used for the
-        URLs.
+        This will read the existing ICS file to determine if HTML formatting should be
+        used for the URLs.
 
         Args:
             filename: The ICS file to read from and write to.

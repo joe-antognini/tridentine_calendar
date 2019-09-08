@@ -1,0 +1,11 @@
+[flake8]
+ignore:
+  FI1,
+  E225,
+exclude:
+  build/,
+  dist/,
+  *.egg-info/,
+max-line-length = 88
+per-file-ignores:
+  */tests/test_*.py:D100,D101,D102

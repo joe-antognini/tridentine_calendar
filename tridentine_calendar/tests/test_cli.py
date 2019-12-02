@@ -23,7 +23,7 @@ class TestParseArgs(unittest.TestCase):
 
     def test_parse_args_help(self):
         with self.assertRaises(SystemExit):
-            args = parse_args(['-h'])
+            parse_args(['-h'])
 
 
 class TestMain(unittest.TestCase):

@@ -47,8 +47,8 @@ def parse_args(args):
         default=False,
         help=(
             'Whether to overwrite an existing ICS file with the same name as the given '
-            'output.',
-        )
+            'output.'
+        ),
     )
 
     return parser.parse_args(args)

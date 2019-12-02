@@ -7,7 +7,7 @@ from ..cli import _main
 from ..cli import parse_args
 
 
-class TestGetArgs(unittest.TestCase):
+class TestParseArgs(unittest.TestCase):
 
     def test_parse_args_one_year(self):
         args = parse_args(['--output', 'foo', '2000'])
@@ -20,6 +20,10 @@ class TestGetArgs(unittest.TestCase):
         self.assertEqual(args.output, 'foo')
         self.assertEqual(args.years, [2000, 2010])
         self.assertFalse(args.overwrite_existing)
+
+    def test_parse_args_help(self):
+        with self.assertRaises(SystemExit):
+            args = parse_args(['-h'])
 
 
 class TestMain(unittest.TestCase):

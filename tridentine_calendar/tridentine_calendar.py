@@ -307,7 +307,10 @@ class LiturgicalCalendarEvent:
             else:
                 full_name = 'the ' + self.name
         elif any([
-            self.name.split()[0] in ORDINALS.values(),
+            (
+                self.name.split()[0] in ORDINALS.values()
+                and self.name.split()[1] == 'Sunday'
+            ),
             self.name.startswith('Last Sunday'),
             self.name.startswith('Feast'),
         ]):

@@ -2,6 +2,7 @@
 ignore:
   FI1,
   E225,
+  W503,
 exclude:
   build/,
   dist/,

@@ -208,6 +208,16 @@ class TestLiturgicalCalendarEvent(unittest.TestCase):
         expected_output = 'The Vigil of the Assumption'
         self.assertEqual(event.full_name(capitalize=True), expected_output)
 
+        date = dt.date(2020, 1, 5)
+        event = LiturgicalCalendarEvent(date, 'Twelfth Night', rank=1)
+        expected_output = 'Twelfth Night'
+        self.assertEqual(event.full_name(capitalize=True), expected_output)
+
+        date = dt.date(2020, 1, 19)
+        event = LiturgicalCalendarEvent(date, 'Second Sunday after Epiphany', rank=2)
+        expected_output = 'The Second Sunday after Epiphany'
+        self.assertEqual(event.full_name(capitalize=True), expected_output)
+
     def test_generate_description(self):
         url = LiturgicalCalendarEventUrl(
             'https://fisheaters.com/customsadvent5.html',

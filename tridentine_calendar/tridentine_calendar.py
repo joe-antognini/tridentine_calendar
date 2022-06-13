@@ -14,11 +14,12 @@ from . import movable_feasts as mf
 from . import utils
 from .utils import ORDINALS
 from .utils import add_domain_to_url_description
+from .utils import iterate_liturgical_year
 from .utils import liturgical_year_end
 from .utils import liturgical_year_start
 
 # Load the JSON data.
-mf_DATA = json.loads(resource_string(__name__, 'movable_feasts_ferias_et_al.json'))
+MF_DATA = json.loads(resource_string(__name__, 'movable_feasts_ferias_et_al.json'))
 FIXED_FEASTS_DATA = json.loads(
     resource_string(__name__, 'fixed_feasts_ferias_et_al.json'))
 SEASON_DATA = json.loads(resource_string(__name__, 'seasons.json'))
@@ -61,11 +62,11 @@ class LiturgicalCalendarEventUrl:
             appropriately set.
 
         """
-        if type(json_obj) is dict:
+        if isinstance(json_obj, dict):
             description = add_domain_to_url_description(
                 json_obj['url'], json_obj['description'])
             liturgical_calendar_event_url = cls(json_obj['url'], description)
-        elif type(json_obj) is str:
+        elif isinstance(json_obj, str):
             domain = urllib.parse.urlparse(json_obj).netloc
             if domain == 'en.wikipedia.org':
                 description = os.path.basename(json_obj).replace('_', ' ')
@@ -206,6 +207,7 @@ class LiturgicalCalendarEvent:
         feast=True,
         holy_day=False,
         addition=False,
+        is_vigil=False,
         season=None,
     ):
         """Instantiate a `LiturgicalCalendarEvent`.
@@ -233,6 +235,8 @@ class LiturgicalCalendarEvent:
                 do not follow the usual rules of precedence.
             holy_day: bool
                 Whether the event is a Holy Day of Obligation.
+            is_vigil: bool
+                Whether or not the event is a vigil.
             season: `LiturgicalSeason`
                 The liturgical season the event falls in.
 
@@ -247,6 +251,7 @@ class LiturgicalCalendarEvent:
         self.feast = feast
         self.addition = addition
         self.holy_day = holy_day
+        self.is_vigil = is_vigil
         self.season = LiturgicalSeason.from_date(date)
 
         if color is None:
@@ -345,6 +350,7 @@ class LiturgicalCalendarEvent:
             feast=json_obj.get('feast', True),
             addition=json_obj.get('addition', False),
             holy_day=json_obj.get('obligation', False),
+            is_vigil=json_obj.get('is_vigil', False),
         )
         if 'urls' in json_obj:
             event.urls = [
@@ -470,31 +476,28 @@ class LiturgicalYear:
         self.liturgical_year_end = liturgical_year_end(self.year)
 
         self.calendar = {}
-        date = self.liturgical_year_start
-        while date <= self.liturgical_year_end:
+        for date in iterate_liturgical_year(self.year):
             self.calendar[date] = []
-            date += dt.timedelta(1)
 
         # First we mark fixed solemnities.
-        date = self.liturgical_year_start
-        while date <= self.liturgical_year_end:
+        for date in iterate_liturgical_year(self.year):
             date_str = date.strftime('%B %-d')
             if date_str in FIXED_FEASTS_DATA:
                 for elem in FIXED_FEASTS_DATA[date_str]:
                     if elem.get('class') == 1:
                         event = LiturgicalCalendarEvent.from_json(date, elem)
                         self.calendar[date].append(event)
-            date += dt.timedelta(1)
 
+        # Mark movable feasts except for vigils.
         for name, date in utils.get_movable_feast_names_and_dates(self.year):
-            if type(date) is list:
+            if isinstance(date, list):
                 for elem in date:
                     event = LiturgicalCalendarEvent.from_json(
-                        elem, mf_DATA[name], name)
+                        elem, MF_DATA[name], name)
                     self.calendar[elem].append(event)
             else:
                 event = LiturgicalCalendarEvent.from_json(
-                    date, mf_DATA[name], name)
+                    date, MF_DATA[name], name)
                 self.calendar[date].append(event)
 
         # Mark Sundays, starting with Advent
@@ -546,8 +549,7 @@ class LiturgicalYear:
         self.calendar[date].append(event)
 
         # Then second class fixed feasts or lower.
-        date = self.liturgical_year_start
-        while date <= self.liturgical_year_end:
+        for date in iterate_liturgical_year(self.year):
             date_str = date.strftime('%B %-d')
             if date_str in FIXED_FEASTS_DATA:
                 for elem in FIXED_FEASTS_DATA[date_str]:
@@ -555,7 +557,6 @@ class LiturgicalYear:
                         event = LiturgicalCalendarEvent.from_json(date, elem)
                         self.calendar[date].append(event)
             self.calendar[date] = sorted(self.calendar[date], key=_feast_sort_key)
-            date += dt.timedelta(1)
 
     def __getitem__(self, key):
         """Return the events for a given day.
@@ -579,8 +580,7 @@ class LiturgicalYear:
 
         """
         ics_calendar = ical.Calendar()
-        date = self.liturgical_year_start
-        while date <= self.liturgical_year_end:
+        for date in iterate_liturgical_year(self.year):
             for i, elem in enumerate(self.calendar[date]):
                 ics_name = elem.name
                 description = ''
@@ -615,7 +615,6 @@ class LiturgicalYear:
                 ics_event.add('dtstart', date)
                 ics_event.add('description', description)
                 ics_calendar.add_component(ics_event)
-            date += dt.timedelta(1)
         return ics_calendar
 
 
@@ -632,6 +631,8 @@ def _feast_sort_key(feast):
     if not feast.liturgical_event or not feast.rank:
         return 4
     elif feast.addition:
+        return feast.rank + .5
+    elif feast.rank == 2 and feast.is_vigil:
         return feast.rank + .5
     else:
         return feast.rank

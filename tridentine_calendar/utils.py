@@ -102,6 +102,24 @@ def liturgical_year(date):
         return date.year + 1
 
 
+def iterate_liturgical_year(year):
+    """Generator for days in the liturgical year.
+
+    Args:
+        date: An int.
+
+    Yields:
+        `datetime.date` objects starting with the first day of the liturgical
+        year and ending with the last day of the liturgical year.
+
+    """
+    date = liturgical_year_start(year)
+    while date <= liturgical_year_end(year):
+        yield date
+
+        date += dt.timedelta(1)
+
+
 def feria_name(date):
     """Get the name of a feria.
 
@@ -178,7 +196,7 @@ def get_movable_feast_names_and_dates(year):
 
     """
     for key, obj in inspect.getmembers(movable_feasts, inspect.isclass):
-        if key == 'ABCMeta' or key == 'MovableFeast':
+        if key in {'ABCMeta', 'MovableFeast'}:
             continue
         if not issubclass(obj, MovableFeast):
             continue

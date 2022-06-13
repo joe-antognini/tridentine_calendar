@@ -4,6 +4,7 @@ import unittest
 from ..utils import add_domain_to_url_description
 from ..utils import feria_name
 from ..utils import get_movable_feast_names_and_dates
+from ..utils import iterate_liturgical_year
 from ..utils import liturgical_year
 from ..utils import liturgical_year_end
 from ..utils import liturgical_year_start
@@ -27,6 +28,12 @@ class TestLiturgicalYearStartEnd(unittest.TestCase):
 
         self.assertEqual(liturgical_year(dt.date(2018, 12, 2)), 2019)
         self.assertEqual(liturgical_year(dt.date(2018, 12, 1)), 2018)
+
+    def test_iterate_liturgical_year(self):
+        for i, date in enumerate(iterate_liturgical_year(2018)):
+            if i == 0:
+                self.assertEqual(date, liturgical_year_start(2018))
+        self.assertEqual(date, liturgical_year_end(2018))
 
 
 class TestFeriaName(unittest.TestCase):

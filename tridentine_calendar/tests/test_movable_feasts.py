@@ -159,3 +159,11 @@ class TestMovableFeastDates(unittest.TestCase):
 
     def test_christ_the_king(self):
         self.assertEqual(mf.ChristTheKing.date(2018), dt.date(2018, 10, 28))
+
+    def test_st_johns_day(self):
+        self.assertEqual(mf.StJohnsDay.date(2021), dt.date(2021, 6, 24))
+        self.assertEqual(mf.StJohnsDay.date(2022), dt.date(2022, 6, 23))
+
+    def test_st_johns_eve(self):
+        self.assertEqual(mf.StJohnsEve.date(2021), dt.date(2021, 6, 23))
+        self.assertEqual(mf.StJohnsEve.date(2022), dt.date(2022, 6, 22))

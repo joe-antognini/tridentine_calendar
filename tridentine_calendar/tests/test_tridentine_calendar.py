@@ -314,9 +314,13 @@ class TestLiturgicalCalendar(unittest.TestCase):
         litcal = LiturgicalCalendar(2019)
         event = litcal[dt.date(2018, 12, 8)][0]
         description = event.generate_description(
-            html_formatting=False, ranking_feast=True)
-        self.assertTrue(description.startswith(
-            'The Feast of the Immaculate Conception is a Holy Day of Obligation.'))
+            html_formatting=False, ranking_feast=True
+        )
+        self.assertTrue(
+            description.startswith(
+                'The Feast of the Immaculate Conception is a Holy Day of Obligation.'
+            ),
+        )
 
     def test_liturgical_calendar_to_ics(self):
         ics_calendar = LiturgicalYear(2019).to_ical()

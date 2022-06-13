@@ -2353,44 +2353,6 @@
       "liturgical_event": true
     }
   ],
-  "June 23": [
-    {
-      "name": "St. John's Eve",
-      "color": "Violet",
-      "titles": [],
-      "urls": [
-        "https://fisheaters.com/customstimeafterpentecost3.html",
-        "https://en.wikipedia.org/wiki/Saint_John%27s_Eve",
-        "https://en.wikipedia.org/wiki/Saint_John_the_Baptist",
-        {
-          "url": "http://www.newadvent.org/cathen/08486b.htm",
-          "description": "St. John the Baptist"
-        }
-      ],
-      "obligation": false,
-      "class": 2,
-      "liturgical_event": true
-    }
-  ],
-  "June 24": [
-    {
-      "name": "St. John's Day",
-      "color": "White",
-      "titles": [],
-      "urls": [
-        "https://fisheaters.com/customstimeafterpentecost3.html",
-        "https://en.wikipedia.org/wiki/Nativity_of_Saint_John_the_Baptist",
-        "https://en.wikipedia.org/wiki/Saint_John_the_Baptist",
-        {
-          "url": "http://www.newadvent.org/cathen/08486b.htm",
-          "description": "St. John the Baptist"
-        }
-      ],
-      "obligation": false,
-      "class": 1,
-      "liturgical_event": true
-    }
-  ],
   "June 25": [
     {
       "name": "St. William",
@@ -2432,6 +2394,7 @@
       "name": "Vigil of SS. Peter & Paul",
       "titles": [],
       "color": "Violet",
+      "is_vigil": true,
       "class": 2,
       "obligation": false,
       "liturgical_event": true,
@@ -3126,6 +3089,7 @@
   "August 9": [
     {
       "name": "Vigil of St. Lawrence",
+      "is_vigil": true,
       "color": "Violet",
       "titles": [
         "Martyr"
@@ -3213,6 +3177,7 @@
   "August 14": [
     {
       "name": "Vigil of the Assumption",
+      "is_vigil": true,
       "color": "Violet",
       "obligation": false,
       "urls": [

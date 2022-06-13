@@ -801,6 +801,37 @@ class SacredHeart(MovableFeast):
         return CorpusChristi.date(year) + dt.timedelta(8)
 
 
+class StJohnsDay(MovableFeast):
+    """Represents the Feast of St. John."""
+
+    name = 'St. John\'s Day'
+
+    @functools.lru_cache()
+    def date(year):
+        """Calculate the date of St. John's Day.
+
+        Ordinarily St. John's Day is June 24, but occasionally it is
+        transferred to June 23 when the Feast of the Sacred Heart or Corpus
+        Christi falls on June 24.
+
+        """
+        if dt.date(year, 6, 24) in {CorpusChristi.date(year), SacredHeart.date(year)}:
+            return dt.date(year, 6, 23)
+        else:
+            return dt.date(year, 6, 24)
+
+
+class StJohnsEve(MovableFeast):
+    """Represents the St. John's Eve."""
+
+    name = 'St. John\'s Eve'
+
+    @functools.lru_cache()
+    def date(year):
+        """Calculate the date of St. John's Eve."""
+        return StJohnsDay.date(year) - dt.timedelta(1)
+
+
 class PetersPence(MovableFeast):
     """Represents Peter's Pence."""
 

@@ -3,6 +3,8 @@
 import datetime as dt
 import functools
 import inspect
+import random
+import string
 import urllib
 
 from . import movable_feasts
@@ -201,3 +203,12 @@ def get_movable_feast_names_and_dates(year):
         if not issubclass(obj, MovableFeast):
             continue
         yield obj.name, obj.date(year)
+
+
+def gen_uid():
+    time_str = dt.datetime.now().isoformat()
+    rand_hash = ''.join(
+        random.choices(string.ascii_letters + string.digits, k=8)
+    )
+
+    return time_str + '-' + rand_hash + '@joe-antognini.github.io'

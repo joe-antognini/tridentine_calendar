@@ -14,6 +14,7 @@ from . import movable_feasts as mf
 from . import utils
 from .utils import ORDINALS
 from .utils import add_domain_to_url_description
+from .utils import gen_uid
 from .utils import iterate_liturgical_year
 from .utils import liturgical_year_end
 from .utils import liturgical_year_start
@@ -614,6 +615,8 @@ class LiturgicalYear:
                 ics_event.add('summary', ics_name)
                 ics_event.add('dtstart', date)
                 ics_event.add('description', description)
+                ics_event.add('dtstamp', dt.datetime.now())
+                ics_event.add('uid', gen_uid())
                 ics_calendar.add_component(ics_event)
         return ics_calendar
 
@@ -677,6 +680,8 @@ class LiturgicalCalendar:
 
         """
         ics_calendar = ical.Calendar()
+        ics_calendar.add('prodid', '-//Joe Antognini//Tridentine Calendar//EN')
+        ics_calendar.add('version', '2.0')
         ics_calendar.add('x-wr-calname', 'Tridentine calendar')
         ics_calendar.add(
             'x-wr-caldesc',

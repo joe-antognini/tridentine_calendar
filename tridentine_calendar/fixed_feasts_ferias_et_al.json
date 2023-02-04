@@ -22,6 +22,7 @@
         "Apostle"
       ],
       "urls": [
+        "https://www.fisheaters.com/feastofstandrew.html",
         "https://en.wikipedia.org/wiki/Andrew_the_Apostle",
         "http://www.newadvent.org/cathen/01471a.htm"
       ],
@@ -81,7 +82,8 @@
       "name": "St. Barbara",
       "urls": [
         "https://fisheaters.com/customsadvent2a.html", 
-        "https://en.wikipedia.org/wiki/Saint_Barbara"
+        "https://en.wikipedia.org/wiki/Saint_Barbara",
+        "https://www.newadvent.org/cathen/02284d.htm"
       ],
       "liturgical_event": false
     } 
@@ -885,6 +887,7 @@
         "Martyr"
       ],
       "urls": [
+        "https://www.fisheaters.com/stagatha.html",
         "https://en.wikipedia.org/wiki/Agatha_of_Sicily",
         "http://www.newadvent.org/cathen/01203c.htm"
       ],
@@ -1256,6 +1259,7 @@
         "Archangel"
       ],
       "urls": [
+        "https://www.fisheaters.com/stgabriel.html",
         "https://en.wikipedia.org/wiki/Gabriel",
         "http://www.newadvent.org/cathen/06330a.htm"
       ],
@@ -1447,6 +1451,7 @@
         "Martyr"
       ],
       "urls": [
+        "https://www.fisheaters.com/feastofstgeorge.html",
         "https://en.wikipedia.org/wiki/Saint_George",
         "http://www.newadvent.org/cathen/06453a.htm"
       ],
@@ -1904,6 +1909,22 @@
       "liturgical_event": true
     }
   ],
+  "May 22": [
+    {
+      "name": "St. Rita of Cascia",
+      "titles": [
+        "Widow"
+      ],
+      "urls": [
+        "https://www.fisheaters.com/feastofstritaofcascia.html",
+        "https://en.wikipedia.org/wiki/Rita_of_Cascia",
+        "https://www.newadvent.org/cathen/13064a.htm"
+      ],
+      "obligation": false,
+      "class": 3,
+      "liturgical_event": true
+    }
+  ],
   "May 25": [
     {
       "name": "Pope Gregory VII",
@@ -2005,6 +2026,20 @@
       "obligation": false,
       "class": 4,
       "liturgical_event": true
+    },
+    {
+      "name": "St. Joan of Arc",
+      "titles": [
+        "Martyr",
+        "Virgin"
+      ],
+      "urls": [
+        "https://www.fisheaters.com/feastofstjoan.html",
+        "https://en.wikipedia.org/wiki/Joan_of_Arc",
+        "https://www.newadvent.org/cathen/08409c.htm"
+      ],
+      "obligation": false,
+      "liturgical_event": false
     }
   ],
   "May 31": [
@@ -2947,13 +2982,17 @@
       "liturgical_event": true
     }
   ],
-  "August 2": [
+  "August 1": [
     {
       "name": "The Holy Machabees",
       "titles": [
         "Martyr"
       ],
       "urls": [
+        {
+          "url": "https://www.fisheaters.com/customslammas.html",
+          "description": "St. Peter's Chains and the Holy Machabees (Lammas)"
+        },
         "https://en.wikipedia.org/wiki/Woman_with_seven_sons",
         "https://en.wikipedia.org/wiki/Machabees",
         {
@@ -2968,7 +3007,9 @@
       "obligation": false,
       "class": 4,
       "liturgical_event": true
-    },
+    }
+  ],
+  "August 2": [
     {
       "name": "St. Alphonsus Liguori",
       "titles": [
@@ -3223,6 +3264,19 @@
       "obligation": false,
       "class": 2,
       "liturgical_event": true
+    },
+    {
+      "name": "St. Roch",
+      "titles": [
+        "Confessor"
+      ],
+      "urls": [
+        "https://www.fisheaters.com/feastofsanrocco.html",
+        "https://en.wikipedia.org/wiki/Saint_Roch",
+        "https://www.newadvent.org/cathen/13100c.htm"
+      ],
+      "obligation": false,
+      "liturgical_event": false
     }
   ],
   "August 17": [
@@ -3440,6 +3494,10 @@
       "name": "The Beheading of John the Baptist",
       "color": "Red",
       "urls": [
+        {
+          "url": "https://www.fisheaters.com/decollationofstjohn.html",
+          "description": "The Decollation of St. John the Baptist"
+        },
         "https://en.wikipedia.org/wiki/Beheading_of_John_the_Baptist",
         {
           "url": "http://www.newadvent.org/cathen/08486b.htm",
@@ -3887,6 +3945,7 @@
         "Martyr"
       ],
       "urls": [
+        "https://www.fisheaters.com/feastofstwenceslaus.html",
         "https://en.wikipedia.org/wiki/Wenceslaus_I,_Duke_of_Bohemia",
         "http://www.newadvent.org/cathen/15587b.htm"
       ],
@@ -3951,6 +4010,7 @@
       "name": "The Holy Guardian Angels",
       "color": "White",
       "urls": [
+        "https://www.fisheaters.com/guardianangels.html",
         "https://en.wikipedia.org/wiki/Memorial_of_the_Holy_Guardian_Angels",
         "https://en.wikipedia.org/wiki/Guardian_angel",
         {
@@ -3973,6 +4033,7 @@
         "Virgin"
       ],
       "urls": [
+        "https://www.fisheaters.com/feastofstthereseoflisieux.html",
         "https://en.wikipedia.org/wiki/Th%C3%A9r%C3%A8se_of_Lisieux",
         {
           "url": "http://www.newadvent.org/cathen/17721a.htm",
@@ -4166,6 +4227,19 @@
       "obligation": false,
       "class": 3,
       "liturgical_event": true
+    },
+    {
+      "name": "St. Gerard Majella",
+      "titles": [
+        "Confessor"
+      ],
+      "urls": [
+        "https://www.fisheaters.com/stgerardmajella.html",
+        "https://en.wikipedia.org/wiki/Gerard_Majella",
+        "https://www.newadvent.org/cathen/06467c.htm"
+      ],
+      "obligation": false,
+      "liturgical_event": false
     }
   ],
   "October 17": [
@@ -4272,6 +4346,7 @@
         "Archangel"
       ],
       "urls": [
+        "https://www.fisheaters.com/feastofstraphael.html",
         "https://en.wikipedia.org/wiki/Raphael_(archangel)",
         "http://www.newadvent.org/cathen/12640b.htm"
       ],
@@ -4659,6 +4734,7 @@
         "Martyr"
       ],
       "urls": [
+        "https://www.fisheaters.com/stcecilia.html",
         "https://en.wikipedia.org/wiki/Saint_Cecilia",
         "http://www.newadvent.org/cathen/03471b.htm"
       ],

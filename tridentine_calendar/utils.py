@@ -173,7 +173,7 @@ def add_domain_to_url_description(url, description=None):
         domain_name = 'Wikipedia'
     elif domain == 'www.newadvent.org':
         domain_name = 'New Advent'
-    elif domain == 'fisheaters.com':
+    elif domain == 'fisheaters.com' or domain == 'www.fisheaters.com':
         domain_name = 'Fish Eaters'
     else:
         domain_name = ''

@@ -730,3 +730,20 @@ class LiturgicalCalendar:
 
         with open(filename, 'wb') as fp:
             fp.write(ics_calendar.to_ical())
+
+    def remove_existing_year(self, filename, year):
+        """Remove a liturgical year from an existing calendar."""
+        with open(filename, 'r') as fp:
+            ics_calendar = ical.Calendar.from_ical(fp.read())
+
+        start_date = liturgical_year_start(year)
+        end_date = liturgical_year_end(year)
+
+        for i in range(len(ics_calendar.subcomponents))[::-1]:
+            elem = ics_calendar.subcomponents[i]
+            cur_date = ical.vDDDTypes.from_ical(elem['dtstart'])
+            if start_date <= cur_date <= end_date:
+                ics_calendar.subcomponents.pop(i)
+
+        with open(filename, 'wb') as fp:
+            fp.write(ics_calendar.to_ical())

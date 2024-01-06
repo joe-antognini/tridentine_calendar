@@ -50,6 +50,11 @@ def parse_args(args):
             'output.'
         ),
     )
+    parser.add_argument(
+        '--remove_year',
+        type=int,
+        help='Remove a year from an existing calendar.',
+    )
 
     return parser.parse_args(args)
 
@@ -58,6 +63,10 @@ def _main(args):
     liturgical_calendar = LiturgicalCalendar(args.years)
     if os.path.isfile(args.output) and not args.overwrite_existing:
         liturgical_calendar.extend_existing_ical(args.output)
+        if 'remove_year' in args:
+            liturgical_calendar.remove_existing_year(
+                args.output, args.remove_year
+            )
     else:
         with open(args.output, 'wb') as fp:
             fp.write(liturgical_calendar.to_ical(args.use_html_formatting))

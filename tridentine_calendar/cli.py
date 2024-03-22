@@ -63,7 +63,7 @@ def _main(args):
     liturgical_calendar = LiturgicalCalendar(args.years)
     if os.path.isfile(args.output) and not args.overwrite_existing:
         liturgical_calendar.extend_existing_ical(args.output)
-        if 'remove_year' in args:
+        if 'remove_year' in args and args.remove_year is not None:
             liturgical_calendar.remove_existing_year(
                 args.output, args.remove_year, args.use_html_formatting
             )

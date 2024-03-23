@@ -334,5 +334,5 @@ class TestLiturgicalCalendar(unittest.TestCase):
             fp.write(litcal.to_ical())
 
         new_litcal = LiturgicalCalendar(2019)
-        new_litcal.extend_existing_ical(filename.name)
+        new_litcal.extend_existing_ical(filename.name, use_html_formatting=False)
         filename.close()

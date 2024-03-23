@@ -694,7 +694,7 @@ class LiturgicalCalendar:
                     ics_calendar.add_component(elem)
         return ics_calendar.to_ical()
 
-    def extend_existing_ical(self, filename):
+    def extend_existing_ical(self, filename, use_html_formatting):
         """Append the liturgical calendar data to an existing ICS file.
 
         This will read the existing ICS file to determine if HTML formatting should be
@@ -702,6 +702,7 @@ class LiturgicalCalendar:
 
         Args:
             filename: The ICS file to read from and write to.
+            use_html_formatting: Whether to use HTML formatting.
 
         """
         with open(filename, 'r') as fp:
@@ -712,18 +713,13 @@ class LiturgicalCalendar:
             if 'dtstart' in elem:
                 existing_years.add(ical.vDDDTypes.from_ical(elem['dtstart']).year)
 
-        html_formatting = False
-        for elem in ics_calendar.walk():
-            if 'https://' in elem.get('description', ''):
-                if '<a href>' in elem['description']:
-                    html_formatting = True
-                break
-
         for liturgical_year in self.liturgical_years:
             if liturgical_year in existing_years:
                 continue
 
-            ics_year = self.liturgical_years[liturgical_year].to_ical(html_formatting)
+            ics_year = self.liturgical_years[liturgical_year].to_ical(
+                use_html_formatting
+            )
             for elem in ics_year.walk():
                 if isinstance(elem, ical.cal.Event):
                     ics_calendar.add_component(elem)
@@ -731,7 +727,7 @@ class LiturgicalCalendar:
         with open(filename, 'wb') as fp:
             fp.write(ics_calendar.to_ical())
 
-    def remove_existing_year(self, filename, year, use_html_formatting):
+    def remove_existing_year(self, filename, year):
         """Remove a liturgical year from an existing calendar."""
         with open(filename, 'r') as fp:
             ics_calendar = ical.Calendar.from_ical(fp.read())
@@ -746,4 +742,4 @@ class LiturgicalCalendar:
                 ics_calendar.subcomponents.pop(i)
 
         with open(filename, 'wb') as fp:
-            fp.write(ics_calendar.to_ical(use_html_formatting))
+            fp.write(ics_calendar.to_ical())

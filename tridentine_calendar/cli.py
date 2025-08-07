@@ -55,12 +55,19 @@ def parse_args(args):
         type=int,
         help='Remove a year from an existing calendar.',
     )
+    parser.add_argument(
+        '--reuse-uids-from',
+        help=(
+            'An optional path to an existing ICS file to reuse the UIDs from, if they '
+            'can be found.'
+        ),
+    )
 
     return parser.parse_args(args)
 
 
 def _main(args):
-    liturgical_calendar = LiturgicalCalendar(args.years)
+    liturgical_calendar = LiturgicalCalendar(args.years, args.reuse_uids_from)
     if os.path.isfile(args.output) and not args.overwrite_existing:
         liturgical_calendar.extend_existing_ical(args.output, args.use_html_formatting)
         if 'remove_year' in args and args.remove_year is not None:

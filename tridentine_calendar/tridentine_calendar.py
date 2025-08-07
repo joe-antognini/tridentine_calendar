@@ -459,7 +459,7 @@ class LiturgicalCalendarEvent:
 class LiturgicalYear:
     """A liturgical year following the 1962 Roman Catholic rubrics."""
 
-    def __init__(self, year):
+    def __init__(self, year, uid_map=None):
         """Instantiate a `LiturgicalYear` object.
 
         Note that the liturgical year starts before the year given on the first Sunday
@@ -472,6 +472,7 @@ class LiturgicalYear:
 
         """
         self.year = year
+        self.uid_map = uid_map
 
         self.liturgical_year_start = liturgical_year_start(self.year)
         self.liturgical_year_end = liturgical_year_end(self.year)
@@ -616,7 +617,15 @@ class LiturgicalYear:
                 ics_event.add('dtstart', date)
                 ics_event.add('description', description)
                 ics_event.add('dtstamp', dt.datetime.now())
-                ics_event.add('uid', gen_uid())
+                if self.uid_map is not None:
+                    key = (ics_name, date)
+                    if key in self.uid_map:
+                        uid = self.uid_map[key]
+                    else:
+                        uid = gen_uid()
+                else:
+                    uid = gen_uid()
+                ics_event.add('uid', uid)
                 ics_calendar.add_component(ics_event)
         return ics_calendar
 
@@ -644,7 +653,7 @@ def _feast_sort_key(feast):
 class LiturgicalCalendar:
     """A liturgical calendar following the 1962 Roman Catholic rubrics."""
 
-    def __init__(self, years):
+    def __init__(self, years, reuse_uids_from=None):
         """Instantiate a `LiturgicalCalendar` object for the given year or years.
 
         Args:
@@ -652,11 +661,21 @@ class LiturgicalCalendar:
             `LiturgicalCalendar` for.
 
         """
+        self.uid_map = {}
+        if reuse_uids_from is not None:
+            with open(reuse_uids_from) as fp:
+                cal = ical.Calendar.from_ical(fp.read())
+                for event in cal.walk('VEVENT'):
+                    key = (
+                        str(event['summary']),
+                        ical.vDDDTypes.from_ical(event['dtstart']),
+                    )
+                    self.uid_map[key] = str(event['uid'])
         self.liturgical_years = {}
         if isinstance(years, int):
             years = [years]
         for year in years:
-            self.liturgical_years[year] = LiturgicalYear(year)
+            self.liturgical_years[year] = LiturgicalYear(year, self.uid_map)
 
     def __getitem__(self, key):
         """Return the events for a given day.

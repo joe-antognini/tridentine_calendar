@@ -72,7 +72,7 @@ def _main(args):
         liturgical_calendar.extend_existing_ical(args.output, args.use_html_formatting)
         if 'remove_year' in args and args.remove_year is not None:
             liturgical_calendar.remove_existing_year(
-                args.output, args.remove_year, args.use_html_formatting
+                args.output, args.remove_year
             )
     else:
         with open(args.output, 'wb') as fp:

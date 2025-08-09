@@ -8,7 +8,7 @@ import urllib
 
 import icalendar as ical
 
-from importlib import resources
+from pkg_resources import resource_string
 
 from . import movable_feasts as mf
 from . import utils
@@ -20,10 +20,10 @@ from .utils import liturgical_year_end
 from .utils import liturgical_year_start
 
 # Load the JSON data.
-MF_DATA = json.loads(resources.read_text(__name__, 'movable_feasts_ferias_et_al.json'))
+MF_DATA = json.loads(resource_string(__name__, 'movable_feasts_ferias_et_al.json'))
 FIXED_FEASTS_DATA = json.loads(
-    resources.read_text(__name__, 'fixed_feasts_ferias_et_al.json'))
-SEASON_DATA = json.loads(resources.read_text(__name__, 'seasons.json'))
+    resource_string(__name__, 'fixed_feasts_ferias_et_al.json'))
+SEASON_DATA = json.loads(resource_string(__name__, 'seasons.json'))
 
 
 def get_args():

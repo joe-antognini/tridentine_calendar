@@ -6,6 +6,7 @@ ignore:
 exclude:
   build/,
   dist/,
+  venv/,
   .eggs/,
   .git/,
   .github/,

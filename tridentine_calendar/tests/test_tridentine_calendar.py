@@ -1,6 +1,8 @@
 import datetime as dt
 import tempfile
 import unittest
+import os
+import icalendar as ical
 
 from ..tridentine_calendar import LiturgicalCalendar
 from ..tridentine_calendar import LiturgicalCalendarEvent
@@ -336,3 +338,21 @@ class TestLiturgicalCalendar(unittest.TestCase):
         new_litcal = LiturgicalCalendar(2019)
         new_litcal.extend_existing_ical(filename.name, use_html_formatting=False)
         filename.close()
+
+    def test_reuse_uids(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            cal1 = LiturgicalCalendar(2018)
+            ical1_out = cal1.to_ical()
+            ical1 = ical.Calendar.from_ical(ical1_out)
+            fn = os.path.join(tmp_dir, 'cal.ics')
+            with open(fn, 'wb') as fp:
+                fp.write(ical1_out)
+
+            cal2 = LiturgicalCalendar(2018, reuse_uids_from=fn)
+            ical2_out = cal2.to_ical()
+            ical2 = ical.Calendar.from_ical(ical2_out)
+
+            uids1 = {e['uid'] for e in ical1.walk('VEVENT')}
+            uids2 = {e['uid'] for e in ical2.walk('VEVENT')}
+
+            self.assertEqual(uids1, uids2)

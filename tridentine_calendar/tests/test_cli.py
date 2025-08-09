@@ -35,6 +35,7 @@ class TestMain(unittest.TestCase):
                 years=[2018, 2019],
                 overwrite_existing=False,
                 use_html_formatting=False,
+                reuse_uids_from=None,
             )
             _main(args)
 
@@ -45,6 +46,7 @@ class TestMain(unittest.TestCase):
                 years=[2018],
                 overwrite_existing=False,
                 use_html_formatting=True,
+                reuse_uids_from=None,
             )
             _main(args)
 
@@ -53,5 +55,6 @@ class TestMain(unittest.TestCase):
                 years=[2019],
                 overwrite_existing=False,
                 use_html_formatting=True,
+                reuse_uids_from=None,
             )
             _main(args)

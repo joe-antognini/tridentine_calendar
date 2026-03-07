@@ -5,6 +5,7 @@ import io
 import calendar
 from importlib import resources
 
+
 class Translator:
     """Handles translations and localized string formatting."""
 
@@ -14,7 +15,8 @@ class Translator:
             'feast_full_name': 'the Feast of {name}',
             'commemoration_full_name': 'the Commemoration of {name}',
             'basilica_full_name': 'the Feast of the {name}',
-            'basilica_commemoration_full_name': 'the Commemoration of the {name}',
+            'basilica_commemoration_full_name': (
+                'the Commemoration of the {name}'),
             'vigil_full_name': 'the Vigil of the Feast of {name}',
             'vigil_generic_full_name': 'the {name}',
             'ordinal_sunday_full_name': '{ordinal} Sunday of {season}',
@@ -26,18 +28,23 @@ class Translator:
             'class_feria': '{name} is a Class {rank} {type}.',
             'liturgical_color': 'The liturgical color is {color}.',
             'outranking': '{feast} is outranked by {outranking_feast}.',
-            'outranking_this_year': 'This year {feast} is outranked by {outranking_feast}.',
+            'outranking_this_year': (
+                'This year {feast} is outranked by {outranking_feast}.'),
             'holy_day': '{name} is a Holy Day of Obligation.',
             'no_special_liturgy': '{name} has no special liturgy.',
             'today_is_commemoration': 'Today is a commemoration.',
-            'lent_commemoration': 'Since {feast} falls during Lent it will ordinarily be celebrated only as a commemoration during the mass of {feria}.',
+            'lent_commemoration': (
+                'Since {feast} falls during Lent it will ordinarily be '
+                'celebrated only as a commemoration during the mass of '
+                '{feria}.'),
             'more_info': 'More information about {name}:',
             'types': {'feast': 'feast', 'feria': 'feria'},
             'today': 'Today',
             'this_feast': 'This feast',
             'this_feria': 'This feria',
             'calendar_name': 'Tridentine calendar',
-            'calendar_desc': 'Liturgical calendar using the 1962 Roman Catholic rubrics.',
+            'calendar_desc': (
+                'Liturgical calendar using the 1962 Roman Catholic rubrics.'),
         },
         'ja': {
             'feast_full_name': '{name}の祝日',
@@ -55,14 +62,17 @@ class Translator:
             'class_feria': '{name}は{rank}の{type}です。',
             'liturgical_color': '典礼色は{color}です。',
             'outranking': '{feast}は{outranking_feast}に優先されます。',
-            'outranking_this_year': '今年は{feast}は{outranking_feast}に優先されます。',
+            'outranking_this_year': (
+                '今年は{feast}は{outranking_feast}に優先されます。'),
             'holy_day': '{name}は守るべき祝日です。',
             'no_special_liturgy': '{name}には特別な典礼はありません。',
             'today_is_commemoration': '今日は記念日です。',
             'today': '今日',
             'this_feast': 'この祝日',
             'this_feria': 'この平休日',
-            'lent_commemoration': '{feast}は四旬節中のため、通常は{feria}のミサの中で記念としてのみ祝われます。',
+            'lent_commemoration': (
+                '{feast}は四旬節中のため、通常は{feria}のミサの中で記念としてのみ'
+                '祝われます。'),
             'more_info': '{name}についての詳細情報：',
             'types': {'feast': '祝日', 'feria': '平休日'},
             'calendar_name': 'トリエント典礼暦',
@@ -83,18 +93,22 @@ class Translator:
         if self.lang == 'ja':
             self.ordinals = {
                 1: '第一', 2: '第二', 3: '第三', 4: '第四', 5: '第五', 6: '第六',
-                7: '第七', 8: '第八', 9: '第九', 10: '第十', 11: '第十一', 12: '第十二',
-                13: '第十三', 14: '第十四', 15: '第十五', 16: '第十六', 17: '第十七',
-                18: '第十八', 19: '第十九', 20: '第二十', 21: '第二十一', 22: '第二十二',
-                23: '第二十三', 24: '第二十四', 25: '第二十五', 26: '第二十六', 27: '第二十七',
+                7: '第七', 8: '第八', 9: '第九', 10: '第十', 11: '第十一',
+                12: '第十二', 13: '第十三', 14: '第十四', 15: '第十五',
+                16: '第十六', 17: '第十七', 18: '第十八', 19: '第十九',
+                20: '第二十', 21: '第二十一', 22: '第二十二', 23: '第二十三',
+                24: '第二十四', 25: '第二十五', 26: '第二十六', 27: '第二十七',
             }
         else:
             self.ordinals = {
-                1: 'First', 2: 'Second', 3: 'Third', 4: 'Fourth', 5: 'Fifth', 6: 'Sixth',
-                7: 'Seventh', 8: 'Eighth', 9: 'Ninth', 10: 'Tenth', 11: 'Eleventh', 12: 'Twelfth',
-                13: 'Thirteenth', 14: 'Fourteenth', 15: 'Fifteenth', 16: 'Sixteenth', 17: 'Seventeenth',
-                18: 'Eighteenth', 19: 'Nineteenth', 20: 'Twentieth', 21: 'Twenty-first', 22: 'Twenty-second',
-                23: 'Twenty-third', 24: 'Twenty-fourth', 25: 'Twenty-fifth', 26: 'Twenty-sixth', 27: 'Twenty-seventh',
+                1: 'First', 2: 'Second', 3: 'Third', 4: 'Fourth', 5: 'Fifth',
+                6: 'Sixth', 7: 'Seventh', 8: 'Eighth', 9: 'Ninth', 10: 'Tenth',
+                11: 'Eleventh', 12: 'Twelfth', 13: 'Thirteenth',
+                14: 'Fourteenth', 15: 'Fifteenth', 16: 'Sixteenth',
+                17: 'Seventeenth', 18: 'Eighteenth', 19: 'Nineteenth',
+                20: 'Twentieth', 21: 'Twenty-first', 22: 'Twenty-second',
+                23: 'Twenty-third', 24: 'Twenty-fourth', 25: 'Twenty-fifth',
+                26: 'Twenty-sixth', 27: 'Twenty-seventh',
             }
 
     def _load_weekdays(self):
@@ -168,47 +182,68 @@ class Translator:
 
         # Check if it's a Sunday or a Feast starting with 'Feast'
         is_generic_sunday = 'Sunday' in name or '主日' in translated_name
-        is_already_feast = name.startswith('Feast') or translated_name.startswith('祝日')
+        is_already_feast = (name.startswith('Feast')
+                            or translated_name.startswith('祝日'))
 
         if self.lang == 'ja':
             if is_generic_sunday or is_already_feast:
                 return translated_name
             if rank == 4:
-                return self.templates['commemoration_full_name'].format(name=translated_name)
-            return self.templates['feast_full_name'].format(name=translated_name)
+                return self.templates['commemoration_full_name'].format(
+                    name=translated_name)
+            return self.templates['feast_full_name'].format(
+                name=translated_name)
 
         # English logic
-        if any([name.split()[0] in the_feast_of_prefixes, name in other_the_feasts]):
-            name_to_use = name[0].lower() + name[1:] if name.startswith('The') else name
-            template = 'feast_full_name' if rank != 4 else 'commemoration_full_name'
+        if any([name.split()[0] in the_feast_of_prefixes,
+               name in other_the_feasts]):
+            name_to_use = (name[0].lower() + name[1:]
+                           if name.startswith('The') else name)
+            template = (
+                'feast_full_name' if rank != 4 else 'commemoration_full_name')
             return self.templates[template].format(name=name_to_use)
         elif name.split()[0] in ['Basilica', 'Baptism', 'Church']:
-            template = 'basilica_full_name' if rank != 4 else 'basilica_commemoration_full_name'
+            template = (
+                'basilica_full_name' if rank != 4
+                else 'basilica_commemoration_full_name')
             return self.templates[template].format(name=name)
         elif name.split()[0] == 'Vigil':
             if name.split()[2] in the_feast_of_prefixes:
-                return self.templates['vigil_full_name'].format(name=' '.join(name.split()[2:]))
+                name_val = ' '.join(name.split()[2:])
+                return self.templates['vigil_full_name'].format(
+                    name=name_val)
             return self.templates['vigil_generic_full_name'].format(name=name)
-        elif any([(name.split()[0] in self.ordinals.values() and name.split()[1] == 'Sunday'),
-                  name.startswith('Last Sunday'), name.startswith('Feast')]):
+        elif any([(name.split()[0] in self.ordinals.values()
+                   and name.split()[1] == 'Sunday'),
+                  name.startswith('Last Sunday'),
+                  name.startswith('Feast')]):
             return self.templates['vigil_generic_full_name'].format(name=name)
         else:
             return translated_name
 
     def format_class_feria(self, name, rank, is_feast):
-        type_str = self.templates['types']['feast'] if is_feast else self.templates['types']['feria']
-        rank_str = self.translate(str(rank)) if self.lang == 'ja' else rank * 'I'
-        return self.templates['class_feria'].format(name=name, rank=rank_str, type=type_str)
+        type_str = (self.templates['types']['feast'] if is_feast
+                    else self.templates['types']['feria'])
+        if self.lang == 'ja':
+            rank_str = self.translate(str(rank))
+        else:
+            rank_str = rank * 'I'
+        return self.templates['class_feria'].format(
+            name=name, rank=rank_str, type=type_str)
 
     def format_color(self, color):
         translated_color = self.translate(color.capitalize())
         if self.lang == 'en':
-             translated_color = color.lower()
+            translated_color = color.lower()
         return self.templates['liturgical_color'].format(color=translated_color)
 
-    def format_outranking(self, feast, outranking_feast, is_fixed_outranked_by_fixed):
-        template = 'outranking' if is_fixed_outranked_by_fixed else 'outranking_this_year'
-        return self.templates[template].format(feast=feast, outranking_feast=outranking_feast)
+    def format_outranking(
+            self, feast, outranking_feast, is_fixed_outranked_by_fixed):
+        template = (
+            'outranking' if is_fixed_outranked_by_fixed
+            else 'outranking_this_year')
+        return self.templates[template].format(
+            feast=feast, outranking_feast=outranking_feast)
 
     def format_holy_day(self, name):
         return self.templates['holy_day'].format(name=name)
@@ -220,7 +255,8 @@ class Translator:
         return self.templates['today_is_commemoration']
 
     def format_lent_commemoration(self, feast_name, feria_name):
-        return self.templates['lent_commemoration'].format(feast=feast_name, feria=feria_name)
+        return self.templates['lent_commemoration'].format(
+            feast=feast_name, feria=feria_name)
 
     def format_more_info(self, name):
         return self.templates['more_info'].format(name=name)

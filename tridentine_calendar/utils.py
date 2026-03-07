@@ -119,7 +119,8 @@ def feria_name(date, translator=None):
         ordinal = translator.get_ordinal(lent_week)
         if translator.lang == 'en':
             ordinal = ordinal.lower()
-        return translator.templates['feria_in_lent'].format(ordinal=ordinal, weekday=weekday)
+        return translator.templates['feria_in_lent'].format(
+            ordinal=ordinal, weekday=weekday)
     elif PassionSunday.date(date.year) <= date < PalmSunday.date(date.year):
         return translator.templates['feria_in_passion_week'].format(weekday=weekday)
 

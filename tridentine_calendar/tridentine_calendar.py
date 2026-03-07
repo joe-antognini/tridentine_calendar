@@ -127,7 +127,8 @@ class LiturgicalSeason:
         if 'color' in json_obj:
             color = json_obj['color']
         elif 'season' in json_obj:
-            color = LiturgicalSeason.from_json_key(json_obj['season'], lang, translator).color
+            color = LiturgicalSeason.from_json_key(
+                json_obj['season'], lang, translator).color
         return cls(json_key, urls, color, lang, translator)
 
     @classmethod
@@ -391,7 +392,8 @@ class LiturgicalCalendarEvent:
                     name = 'This {}'.format('feast' if self.feast else 'feria')
             else:
                 name = self.full_name(capitalize=True)
-            description += self.translator.format_class_feria(name, self.rank, self.feast)
+            description += self.translator.format_class_feria(
+                name, self.rank, self.feast)
         elif self.liturgical_event and self.rank == 4 and ranking_feast:
             description += self.translator.format_commemoration()
         elif not self.liturgical_event:
@@ -495,7 +497,8 @@ class LiturgicalYear:
                 for elem in FIXED_FEASTS_DATA[date_str]:
                     if elem.get('class') == 1:
                         event = LiturgicalCalendarEvent.from_json(
-                            date, elem, lang=self.lang, translator=self.translator)
+                            date, elem, lang=self.lang,
+                            translator=self.translator)
                         self.calendar[date].append(event)
 
         # Mark movable feasts except for vigils.
@@ -503,11 +506,13 @@ class LiturgicalYear:
             if isinstance(date, list):
                 for elem in date:
                     event = LiturgicalCalendarEvent.from_json(
-                        elem, MF_DATA[name], name, lang=self.lang, translator=self.translator)
+                        elem, MF_DATA[name], name, lang=self.lang,
+                        translator=self.translator)
                     self.calendar[elem].append(event)
             else:
                 event = LiturgicalCalendarEvent.from_json(
-                    date, MF_DATA[name], name, lang=self.lang, translator=self.translator)
+                    date, MF_DATA[name], name, lang=self.lang,
+                    translator=self.translator)
                 self.calendar[date].append(event)
 
         # Mark Sundays, starting with Advent
@@ -517,10 +522,12 @@ class LiturgicalYear:
             date = self.liturgical_year_start + dt.timedelta(7 * (i - 1))
             ordinal = self.translator.get_ordinal(i)
             season = self.translator.translate('Advent')
-            name = self.translator.templates['ordinal_sunday_full_name'].format(
+            name = self.translator.templates[
+                'ordinal_sunday_full_name'].format(
                 ordinal=ordinal, season=season)
             event = LiturgicalCalendarEvent(
-                date, name=name, rank=1, lang=self.lang, translator=self.translator)
+                date, name=name, rank=1, lang=self.lang,
+                translator=self.translator)
             self.calendar[date].append(event)
 
         # Time after Epiphany.
@@ -529,7 +536,8 @@ class LiturgicalYear:
         while date < mf.Septuagesima.date(self.year):
             ordinal = self.translator.get_ordinal(i)
             event_name = self.translator.translate('Epiphany')
-            name = self.translator.templates['ordinal_sunday_after_full_name'].format(
+            name = self.translator.templates[
+                'ordinal_sunday_after_full_name'].format(
                 ordinal=ordinal, event=event_name)
             event = LiturgicalCalendarEvent(
                 date, name=name, rank=2, lang=self.lang, translator=self.translator)
@@ -582,7 +590,8 @@ class LiturgicalYear:
             date += dt.timedelta(7)
 
         event_name = self.translator.translate('Pentecost')
-        name = self.translator.templates['last_sunday_full_name'].format(event=event_name)
+        name = self.translator.templates['last_sunday_full_name'].format(
+            event=event_name)
         event = LiturgicalCalendarEvent(
             date, name=name, rank=2, lang=self.lang, translator=self.translator)
         self.calendar[date].append(event)
@@ -594,7 +603,8 @@ class LiturgicalYear:
                 for elem in FIXED_FEASTS_DATA[date_str]:
                     if elem.get('class') != 1:
                         event = LiturgicalCalendarEvent.from_json(
-                            date, elem, lang=self.lang, translator=self.translator)
+                            date, elem, lang=self.lang,
+                            translator=self.translator)
                         self.calendar[date].append(event)
 
         if self.lang == 'ja':
@@ -648,7 +658,8 @@ class LiturgicalYear:
                                     translator=self.translator
                                 )
                                 if event_ja_name:
-                                    self.translator.translations[event_name] = event_ja_name
+                                    self.translator.translations[
+                                        event_name] = event_ja_name
 
                                 self.calendar[date].append(event)
                     except (ValueError, KeyError, IndexError):
@@ -690,7 +701,8 @@ class LiturgicalYear:
                         translator=self.translator
                     )
                     if event_ja_name:
-                        self.translator.translations[event_name] = event_ja_name
+                        self.translator.translations[
+                            event_name] = event_ja_name
                     self.calendar[target_date].append(event)
         except (FileNotFoundError, UnicodeDecodeError, ModuleNotFoundError):
             pass
@@ -724,10 +736,7 @@ class LiturgicalYear:
 
                 if i > 0 and elem.liturgical_event and not elem.addition:
                     outranking_feast = self.calendar[date][0]
-                    if self.lang == 'ja':
-                        ics_name = '› ' + ics_name
-                    else:
-                        ics_name = '› ' + ics_name
+                    ics_name = '› ' + ics_name
 
                     description += self.translator.format_outranking(
                         elem.full_name(capitalize=True),

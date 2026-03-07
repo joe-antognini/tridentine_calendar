@@ -62,12 +62,17 @@ def parse_args(args):
             'can be found.'
         ),
     )
+    parser.add_argument(
+        '--lang',
+        default='en',
+        help='Language to use for the calendar (e.g., en, ja).',
+    )
 
     return parser.parse_args(args)
 
 
 def _main(args):
-    liturgical_calendar = LiturgicalCalendar(args.years, args.reuse_uids_from)
+    liturgical_calendar = LiturgicalCalendar(args.years, args.reuse_uids_from, args.lang)
     if os.path.isfile(args.output) and not args.overwrite_existing:
         liturgical_calendar.extend_existing_ical(args.output, args.use_html_formatting)
         if 'remove_year' in args and args.remove_year is not None:

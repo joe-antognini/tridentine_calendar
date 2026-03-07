@@ -1,7 +1,10 @@
 """Generate a liturgical calendar using the 1962 Roman Catholic rubrics."""
 
 import argparse
+import calendar
+import csv
 import datetime as dt
+import io
 import json
 import os
 import urllib
@@ -12,7 +15,7 @@ from importlib import resources
 
 from . import movable_feasts as mf
 from . import utils
-from .utils import ORDINALS
+from .i18n import Translator
 from .utils import add_domain_to_url_description
 from .utils import gen_uid
 from .utils import iterate_liturgical_year
@@ -89,7 +92,7 @@ class LiturgicalCalendarEventUrl:
 class LiturgicalSeason:
     """A liturgical season."""
 
-    def __init__(self, name, urls=None, color=None):
+    def __init__(self, name, urls=None, color=None, lang='en', translator=None):
         """Instantiate a `LiturgicalSeason`.
 
         Args:
@@ -99,14 +102,21 @@ class LiturgicalSeason:
                 URLs with more information about the liturgical season.
             color: string
                 The liturgical color of the season.
+            lang: string
+                The language of the season.
+            translator: A `Translator` object.
 
         """
         self.name = name
         self.urls = urls
         self.color = color
+        self.lang = lang
+        self.translator = translator
+        if self.translator is None:
+            self.translator = Translator(self.lang)
 
     @classmethod
-    def from_json_key(cls, json_key):
+    def from_json_key(cls, json_key, lang='en', translator=None):
         """Instantiate a `LiturgicalSeason` object from parsed JSON data."""
         json_obj = SEASON_DATA[json_key]
         if 'urls' in json_obj:
@@ -117,15 +127,17 @@ class LiturgicalSeason:
         if 'color' in json_obj:
             color = json_obj['color']
         elif 'season' in json_obj:
-            color = LiturgicalSeason.from_json_key(json_obj['season']).color
-        return cls(json_key, urls, color)
+            color = LiturgicalSeason.from_json_key(json_obj['season'], lang, translator).color
+        return cls(json_key, urls, color, lang, translator)
 
     @classmethod
-    def from_date(cls, date):
+    def from_date(cls, date, lang='en', translator=None):
         """Instantiate a `LiturgicalSeason` from a given date.
 
         Args:
             date: A `datetime.date` object.
+            lang: string
+            translator: A `Translator` object.
 
         """
         # First determine the liturgical year.
@@ -164,7 +176,7 @@ class LiturgicalSeason:
         else:
             raise ValueError(f'Wasn\'t able to calculate season for date {date}.')
 
-        return LiturgicalSeason.from_json_key(season_key)
+        return LiturgicalSeason.from_json_key(season_key, lang, translator)
 
     def full_name(self, capitalize=True):
         """Return the name of the season, possibly with an article.
@@ -177,10 +189,14 @@ class LiturgicalSeason:
             A string with the name of the season, possibly with an article.
 
         """
-        if self.name.startswith('Time after'):
-            full_name = 'the ' + self.name
+        translated_name = self.translator.translate(self.name)
+        if self.lang == 'ja':
+            full_name = translated_name
         else:
-            full_name = self.name
+            if self.name.startswith('Time after'):
+                full_name = 'the ' + translated_name
+            else:
+                full_name = translated_name
 
         if capitalize:
             full_name = full_name[0].upper() + full_name[1:]
@@ -210,6 +226,8 @@ class LiturgicalCalendarEvent:
         addition=False,
         is_vigil=False,
         season=None,
+        lang='en',
+        translator=None,
     ):
         """Instantiate a `LiturgicalCalendarEvent`.
 
@@ -240,6 +258,9 @@ class LiturgicalCalendarEvent:
                 Whether or not the event is a vigil.
             season: `LiturgicalSeason`
                 The liturgical season the event falls in.
+            lang: string
+                The language of the event.
+            translator: A `Translator` object.
 
         """
         self.date = date
@@ -253,7 +274,11 @@ class LiturgicalCalendarEvent:
         self.addition = addition
         self.holy_day = holy_day
         self.is_vigil = is_vigil
-        self.season = LiturgicalSeason.from_date(date)
+        self.lang = lang
+        self.translator = translator
+        if self.translator is None:
+            self.translator = Translator(self.lang)
+        self.season = LiturgicalSeason.from_date(date, self.lang, self.translator)
 
         if color is None:
             if all([
@@ -286,50 +311,14 @@ class LiturgicalCalendarEvent:
             The full name of the event, possibly with an article.
 
         """
-        the_feast_of_prefixes = ['St.', 'SS.', 'Pope', 'Our Lady', 'The']
-        other_the_feasts = ['Christ the King']
-        if any([
-            self.name.split()[0] in the_feast_of_prefixes,
-            self.name in other_the_feasts
-        ]):
-            if self.name.startswith('The'):
-                name = self.name[0].lower() + self.name[1:]
-            else:
-                name = self.name
-            if self.rank != 4:
-                full_name = 'the Feast of ' + name
-            else:
-                full_name = 'the Commemoration of ' + name
-        elif self.name.split()[0] in ['Basilica', 'Baptism', 'Church']:
-            if self.rank != 4:
-                full_name = 'the Feast of the ' + self.name
-            else:
-                full_name = 'the Commemoration of the ' + self.name
-        elif self.name.split()[0] == 'Vigil':
-            if self.name.split()[2] in the_feast_of_prefixes:
-                full_name = (
-                    'the Vigil of the Feast of ' + ' '.join(self.name.split()[2:])
-                )
-            else:
-                full_name = 'the ' + self.name
-        elif any([
-            (
-                self.name.split()[0] in ORDINALS.values()
-                and self.name.split()[1] == 'Sunday'
-            ),
-            self.name.startswith('Last Sunday'),
-            self.name.startswith('Feast'),
-        ]):
-            full_name = 'the ' + self.name
-        else:
-            full_name = self.name
+        full_name = self.translator.format_feast_full_name(self.name, self.rank)
 
         if capitalize:
             full_name = full_name[0].upper() + full_name[1:]
         return full_name
 
     @classmethod
-    def from_json(cls, date, json_obj, name=None):
+    def from_json(cls, date, json_obj, name=None, lang='en', translator=None):
         """Instantiate a `LiturgicalCalendarEvent` from the parsed JSON data.
 
         Args:
@@ -339,6 +328,8 @@ class LiturgicalCalendarEvent:
                 The parsed JSON data for the event.
             name: string
                 The name of the event.
+            lang: string
+            translator: A `Translator` object.
 
         """
         name = json_obj.get('name', name)
@@ -352,6 +343,8 @@ class LiturgicalCalendarEvent:
             addition=json_obj.get('addition', False),
             holy_day=json_obj.get('obligation', False),
             is_vigil=json_obj.get('is_vigil', False),
+            lang=lang,
+            translator=translator,
         )
         if 'urls' in json_obj:
             event.urls = [
@@ -380,27 +373,29 @@ class LiturgicalCalendarEvent:
         """
         description = ''
         if self.holy_day:
-            description += f'{self.full_name()} is a Holy Day of Obligation.'
+            description += self.translator.format_holy_day(self.full_name())
 
         if description != '' and description[-1] == '.':
             description += ' '
 
         if self.liturgical_event and self.rank < 4:
             if self.holy_day:
-                name = 'Today'
+                if self.lang == 'ja':
+                    name = '今日'
+                else:
+                    name = 'Today'
             elif not ranking_feast:
-                name = 'This {}'.format('feast' if self.feast else 'feria')
+                if self.lang == 'ja':
+                    name = 'この祝日' if self.feast else 'この平休日'
+                else:
+                    name = 'This {}'.format('feast' if self.feast else 'feria')
             else:
                 name = self.full_name(capitalize=True)
-            description += '{} is a Class {} {}.'.format(
-                name,
-                self.rank * 'I',
-                'feast' if self.feast else 'feria',
-            )
+            description += self.translator.format_class_feria(name, self.rank, self.feast)
         elif self.liturgical_event and self.rank == 4 and ranking_feast:
-            description += 'Today is a commemoration.'
+            description += self.translator.format_commemoration()
         elif not self.liturgical_event:
-            description += f'{self.full_name()} has no special liturgy.'
+            description += self.translator.format_no_special_liturgy(self.full_name())
         if all([
             ranking_feast,
             self.season.name in ['Lent', 'Passiontide'],
@@ -410,21 +405,27 @@ class LiturgicalCalendarEvent:
         ]):
             if description != '' and description[-1] == '.':
                 description += ' '
-            description += (
-                'Since {} falls during Lent it will ordinarily be celebrated only as a '
-                'commemoration during the mass of {}.'.format(
-                    self.full_name(capitalize=False), utils.feria_name(self.date))
+            description += self.translator.format_lent_commemoration(
+                self.full_name(capitalize=False),
+                utils.feria_name(self.date, self.translator)
             )
         if ranking_feast:
             if len(description) > 0 and description[-1] == '.':
                 description += ' '
-            description += 'The liturgical color is {}.'.format(self.color.lower())
+            description += self.translator.format_color(self.color)
+
+        if self.titles:
+            titles_str = self.translator.format_titles(self.titles)
+            if description != '' and description[-1] != '\n':
+                description += ' '
+            description += titles_str + ('.' if self.lang == 'en' else '')
+
         if description != '':
             description += '\n\n'
 
         if self.urls:
-            description += 'More information about {}:\n'.format(
-                self.full_name(capitalize=False))
+            description += self.translator.format_more_info(
+                self.full_name(capitalize=False)) + '\n'
             for url_obj in self.urls:
                 if html_formatting:
                     description += '• ' + url_obj.to_href() + '\n'
@@ -432,8 +433,8 @@ class LiturgicalCalendarEvent:
                     description += '• ' + url_obj.url + '\n'
             description += '\n'
 
-        description += 'More information about {}:\n'.format(
-            self.season.full_name(capitalize=False))
+        description += self.translator.format_more_info(
+            self.season.full_name(capitalize=False)) + '\n'
         for url_obj in self.season.urls:
             if html_formatting:
                 description += '• ' + url_obj.to_href() + '\n'
@@ -459,7 +460,7 @@ class LiturgicalCalendarEvent:
 class LiturgicalYear:
     """A liturgical year following the 1962 Roman Catholic rubrics."""
 
-    def __init__(self, year, uid_map=None):
+    def __init__(self, year, uid_map=None, lang='en', translator=None):
         """Instantiate a `LiturgicalYear` object.
 
         Note that the liturgical year starts before the year given on the first Sunday
@@ -469,10 +470,16 @@ class LiturgicalYear:
         Args:
             year: int
                 The liturgical year to calculate the calendar for.
+            lang: string
+            translator: A `Translator` object.
 
         """
         self.year = year
         self.uid_map = uid_map
+        self.lang = lang
+        self.translator = translator
+        if self.translator is None:
+            self.translator = Translator(self.lang)
 
         self.liturgical_year_start = liturgical_year_start(self.year)
         self.liturgical_year_end = liturgical_year_end(self.year)
@@ -487,7 +494,8 @@ class LiturgicalYear:
             if date_str in FIXED_FEASTS_DATA:
                 for elem in FIXED_FEASTS_DATA[date_str]:
                     if elem.get('class') == 1:
-                        event = LiturgicalCalendarEvent.from_json(date, elem)
+                        event = LiturgicalCalendarEvent.from_json(
+                            date, elem, lang=self.lang, translator=self.translator)
                         self.calendar[date].append(event)
 
         # Mark movable feasts except for vigils.
@@ -495,11 +503,11 @@ class LiturgicalYear:
             if isinstance(date, list):
                 for elem in date:
                     event = LiturgicalCalendarEvent.from_json(
-                        elem, MF_DATA[name], name)
+                        elem, MF_DATA[name], name, lang=self.lang, translator=self.translator)
                     self.calendar[elem].append(event)
             else:
                 event = LiturgicalCalendarEvent.from_json(
-                    date, MF_DATA[name], name)
+                    date, MF_DATA[name], name, lang=self.lang, translator=self.translator)
                 self.calendar[date].append(event)
 
         # Mark Sundays, starting with Advent
@@ -507,16 +515,24 @@ class LiturgicalYear:
             if i == 3:
                 continue
             date = self.liturgical_year_start + dt.timedelta(7 * (i - 1))
+            ordinal = self.translator.get_ordinal(i)
+            season = self.translator.translate('Advent')
+            name = self.translator.templates['ordinal_sunday_full_name'].format(
+                ordinal=ordinal, season=season)
             event = LiturgicalCalendarEvent(
-                date, name=ORDINALS[i] + ' Sunday of Advent', rank=1)
+                date, name=name, rank=1, lang=self.lang, translator=self.translator)
             self.calendar[date].append(event)
 
         # Time after Epiphany.
         i = 2
         date = mf.HolyFamily.date(self.year) + dt.timedelta(7)
         while date < mf.Septuagesima.date(self.year):
+            ordinal = self.translator.get_ordinal(i)
+            event_name = self.translator.translate('Epiphany')
+            name = self.translator.templates['ordinal_sunday_after_full_name'].format(
+                ordinal=ordinal, event=event_name)
             event = LiturgicalCalendarEvent(
-                date, name=ORDINALS[i] + ' Sunday after Epiphany', rank=2)
+                date, name=name, rank=2, lang=self.lang, translator=self.translator)
             self.calendar[date].append(event)
             i += 1
             date += dt.timedelta(7)
@@ -524,30 +540,51 @@ class LiturgicalYear:
         # Lent.
         for i in range(1, 4):
             date = mf.Quinquagesima.date(self.year) + dt.timedelta(7 * i)
+            ordinal = self.translator.get_ordinal(i)
+            season = self.translator.translate('Lent')
+            name = self.translator.templates['ordinal_sunday_full_name'].format(
+                ordinal=ordinal, season=season)
             event = LiturgicalCalendarEvent(
-                date, name=ORDINALS[i] + ' Sunday of Lent', rank=1)
+                date, name=name, rank=1, lang=self.lang, translator=self.translator)
             self.calendar[date].append(event)
 
         # Eastertide.
         date = mf.CantateSunday.date(self.year) + dt.timedelta(7)
-        event = LiturgicalCalendarEvent(date, 'Fifth Sunday after Easter', rank=1)
+        ordinal = self.translator.get_ordinal(5)
+        event_name = self.translator.translate('Easter')
+        name = self.translator.templates['ordinal_sunday_after_full_name'].format(
+            ordinal=ordinal, event=event_name)
+        event = LiturgicalCalendarEvent(
+            date, name=name, rank=1, lang=self.lang, translator=self.translator)
         self.calendar[date].append(event)
 
         date = mf.Ascension.date(self.year) + dt.timedelta(3)
-        event = LiturgicalCalendarEvent(date, 'Sunday after Ascension', rank=1)
+        event_name = self.translator.translate('Ascension')
+        name = self.translator.templates['ordinal_sunday_after_full_name'].format(
+            ordinal='', event=event_name).replace('  ', ' ').strip()
+        # In Japanese, ''後主日 works. In English ' Sunday after Ascension' works.
+        event = LiturgicalCalendarEvent(
+            date, name=name, rank=1, lang=self.lang, translator=self.translator)
         self.calendar[date].append(event)
 
         # Time after Pentecost.
         i = 2
         date = mf.TrinitySunday.date(self.year) + dt.timedelta(7)
         while date <= self.liturgical_year_end - dt.timedelta(7):
+            ordinal = self.translator.get_ordinal(i)
+            event_name = self.translator.translate('Pentecost')
+            name = self.translator.templates['ordinal_sunday_after_full_name'].format(
+                ordinal=ordinal, event=event_name)
             event = LiturgicalCalendarEvent(
-                date, name=ORDINALS[i] + ' Sunday after Pentecost', rank=2)
+                date, name=name, rank=2, lang=self.lang, translator=self.translator)
             self.calendar[date].append(event)
             i += 1
             date += dt.timedelta(7)
 
-        event = LiturgicalCalendarEvent(date, 'Last Sunday after Pentecost', rank=2)
+        event_name = self.translator.translate('Pentecost')
+        name = self.translator.templates['last_sunday_full_name'].format(event=event_name)
+        event = LiturgicalCalendarEvent(
+            date, name=name, rank=2, lang=self.lang, translator=self.translator)
         self.calendar[date].append(event)
 
         # Then second class fixed feasts or lower.
@@ -556,9 +593,107 @@ class LiturgicalYear:
             if date_str in FIXED_FEASTS_DATA:
                 for elem in FIXED_FEASTS_DATA[date_str]:
                     if elem.get('class') != 1:
-                        event = LiturgicalCalendarEvent.from_json(date, elem)
+                        event = LiturgicalCalendarEvent.from_json(
+                            date, elem, lang=self.lang, translator=self.translator)
                         self.calendar[date].append(event)
+
+        if self.lang == 'ja':
+            self._load_extra_ja_feasts()
+
+        for date in iterate_liturgical_year(self.year):
             self.calendar[date] = sorted(self.calendar[date], key=_feast_sort_key)
+
+    def _load_extra_ja_feasts(self):
+        extra_files = [
+            'i18n/ja/fixed_feasts_local.csv',
+            'i18n/ja/fixed_feasts_missing.csv',
+        ]
+
+        for resource_path in extra_files:
+            try:
+                package_path = resource_path.split('/')
+                filename = package_path[-1]
+                directory = '.'.join(['tridentine_calendar'] + package_path[:-1])
+                content = resources.read_binary(directory, filename)
+                decoded_content = content.decode('shift_jis')
+                reader = csv.DictReader(io.StringIO(decoded_content))
+                for row in reader:
+                    date_en = row.get('dates_en')
+                    if not date_en:
+                        continue
+                    try:
+                        day, month_str = date_en.split('-')
+                        month = list(calendar.month_abbr).index(month_str)
+                        for date in iterate_liturgical_year(self.year):
+                            if date.month == month and date.day == int(day):
+                                titles = []
+                                if row.get('titles_1'):
+                                    titles.append(row.get('titles_1'))
+                                if row.get('titles_2'):
+                                    titles.append(row.get('titles_2'))
+
+                                event_name = row.get('en')
+                                event_ja_name = row.get('ja')
+
+                                rank = row.get('class')
+                                rank = int(rank) if rank and rank.isdigit() else 4
+
+                                event = LiturgicalCalendarEvent(
+                                    date,
+                                    name=event_name,
+                                    rank=rank,
+                                    titles=titles if titles else None,
+                                    color=row.get('color'),
+                                    lang=self.lang,
+                                    translator=self.translator
+                                )
+                                if event_ja_name:
+                                    self.translator.translations[event_name] = event_ja_name
+
+                                self.calendar[date].append(event)
+                    except (ValueError, KeyError, IndexError):
+                        continue
+            except (FileNotFoundError, UnicodeDecodeError, ModuleNotFoundError):
+                continue
+
+        # Load movable local feast
+        resource_path = 'i18n/ja/movable_feasts_local.csv'
+        try:
+            package_path = resource_path.split('/')
+            filename = package_path[-1]
+            directory = '.'.join(['tridentine_calendar'] + package_path[:-1])
+            content = resources.read_binary(directory, filename)
+            decoded_content = content.decode('shift_jis')
+            reader = csv.DictReader(io.StringIO(decoded_content))
+            for row in reader:
+                if calendar.isleap(self.year):
+                    target_date = dt.date(self.year, 2, 26)
+                else:
+                    target_date = dt.date(self.year, 2, 25)
+
+                if target_date in self.calendar:
+                    event_name = row.get('en')
+                    event_ja_name = row.get('ja')
+                    titles = []
+                    if row.get('titles_1'):
+                        titles.append(row.get('titles_1'))
+                    if row.get('titles_2'):
+                        titles.append(row.get('titles_2'))
+
+                    event = LiturgicalCalendarEvent(
+                        target_date,
+                        name=event_name,
+                        rank=4,
+                        titles=titles if titles else None,
+                        color=row.get('color'),
+                        lang=self.lang,
+                        translator=self.translator
+                    )
+                    if event_ja_name:
+                        self.translator.translations[event_name] = event_ja_name
+                    self.calendar[target_date].append(event)
+        except (FileNotFoundError, UnicodeDecodeError, ModuleNotFoundError):
+            pass
 
     def __getitem__(self, key):
         """Return the events for a given day.
@@ -584,22 +719,21 @@ class LiturgicalYear:
         ics_calendar = ical.Calendar()
         for date in iterate_liturgical_year(self.year):
             for i, elem in enumerate(self.calendar[date]):
-                ics_name = elem.name
+                ics_name = self.translator.translate(elem.name)
                 description = ''
 
                 if i > 0 and elem.liturgical_event and not elem.addition:
                     outranking_feast = self.calendar[date][0]
-                    ics_name = '› ' + ics_name
-                    if outranking_feast.is_fixed() and elem.is_fixed():
-                        description += '{} is outranked by {}.'.format(
-                            elem.full_name(capitalize=True),
-                            outranking_feast.full_name(capitalize=False),
-                        )
+                    if self.lang == 'ja':
+                        ics_name = '› ' + ics_name
                     else:
-                        description += 'This year {} is outranked by {}.'.format(
-                            elem.full_name(capitalize=False),
-                            outranking_feast.full_name(capitalize=False),
-                        )
+                        ics_name = '› ' + ics_name
+
+                    description += self.translator.format_outranking(
+                        elem.full_name(capitalize=True),
+                        outranking_feast.full_name(capitalize=False),
+                        outranking_feast.is_fixed() and elem.is_fixed()
+                    )
 
                 if not elem.liturgical_event:
                     ics_name = '» ' + ics_name
@@ -653,14 +787,18 @@ def _feast_sort_key(feast):
 class LiturgicalCalendar:
     """A liturgical calendar following the 1962 Roman Catholic rubrics."""
 
-    def __init__(self, years, reuse_uids_from=None):
+    def __init__(self, years, reuse_uids_from=None, lang='en'):
         """Instantiate a `LiturgicalCalendar` object for the given year or years.
 
         Args:
             years: Integer or list of integers with the years to instantiate the
             `LiturgicalCalendar` for.
+            lang: string
 
         """
+        self.lang = lang
+        self.translator = Translator(self.lang)
+
         self.uid_map = {}
         if reuse_uids_from is not None:
             with open(reuse_uids_from) as fp:
@@ -675,7 +813,8 @@ class LiturgicalCalendar:
         if isinstance(years, int):
             years = [years]
         for year in years:
-            self.liturgical_years[year] = LiturgicalYear(year, self.uid_map)
+            self.liturgical_years[year] = LiturgicalYear(
+                year, self.uid_map, self.lang, self.translator)
 
     def __getitem__(self, key):
         """Return the events for a given day.
@@ -701,10 +840,15 @@ class LiturgicalCalendar:
         ics_calendar = ical.Calendar()
         ics_calendar.add('prodid', '-//Joe Antognini//Tridentine Calendar//EN')
         ics_calendar.add('version', '2.0')
-        ics_calendar.add('x-wr-calname', 'Tridentine calendar')
+
+        cal_name = self.translator.translate('Tridentine calendar')
+        cal_desc = self.translator.translate(
+            'Liturgical calendar using the 1962 Roman Catholic rubrics.')
+
+        ics_calendar.add('x-wr-calname', cal_name)
         ics_calendar.add(
             'x-wr-caldesc',
-            'Liturgical calendar using the 1962 Roman Catholic rubrics.',
+            cal_desc,
         )
         for liturgical_year in self.liturgical_years:
             ics_year = self.liturgical_years[liturgical_year].to_ical(html_formatting)

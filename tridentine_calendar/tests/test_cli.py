@@ -36,6 +36,7 @@ class TestMain(unittest.TestCase):
                 overwrite_existing=False,
                 use_html_formatting=False,
                 reuse_uids_from=None,
+                lang='en',
             )
             _main(args)
 
@@ -47,6 +48,7 @@ class TestMain(unittest.TestCase):
                 overwrite_existing=False,
                 use_html_formatting=True,
                 reuse_uids_from=None,
+                lang='en',
             )
             _main(args)
 
@@ -56,5 +58,6 @@ class TestMain(unittest.TestCase):
                 overwrite_existing=False,
                 use_html_formatting=True,
                 reuse_uids_from=None,
+                lang='en',
             )
             _main(args)

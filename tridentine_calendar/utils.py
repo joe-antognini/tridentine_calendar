@@ -13,36 +13,6 @@ from .movable_feasts import MovableFeast
 from .movable_feasts import PalmSunday
 from .movable_feasts import PassionSunday
 
-ORDINALS = {
-    1: 'First',
-    2: 'Second',
-    3: 'Third',
-    4: 'Fourth',
-    5: 'Fifth',
-    6: 'Sixth',
-    7: 'Seventh',
-    8: 'Eighth',
-    9: 'Ninth',
-    10: 'Tenth',
-    11: 'Eleventh',
-    12: 'Twelfth',
-    13: 'Thirteenth',
-    14: 'Fourteenth',
-    15: 'Fifteenth',
-    16: 'Sixteenth',
-    17: 'Seventeenth',
-    18: 'Eighteenth',
-    19: 'Nineteenth',
-    20: 'Twentieth',
-    21: 'Twenty-first',
-    22: 'Twenty-second',
-    23: 'Twenty-third',
-    24: 'Twenty-fourth',
-    25: 'Twenty-fifth',
-    26: 'Twenty-sixth',
-    27: 'Twenty-seventh',
-}
-
 
 @functools.lru_cache()
 def liturgical_year_start(year):
@@ -122,29 +92,39 @@ def iterate_liturgical_year(year):
         date += dt.timedelta(1)
 
 
-def feria_name(date):
+def feria_name(date, translator=None):
     """Get the name of a feria.
 
     For example, March 18, 2019 is the Monday of the second week of Lent.
 
     Args:
         date: A `datetime.Date` object.
+        translator: A `Translator` object.
 
     Returns:
         A string with the name of the feria.
 
     """
+    if translator is None:
+        from .i18n import Translator
+        translator = Translator()
+
+    weekday = translator.translate(date.strftime('%A'))
     first_sunday_of_lent = AshWednesday.date(date.year) + dt.timedelta(4)
-    name = date.strftime('%A') + ' '
+
     if AshWednesday.date(date.year) < date < first_sunday_of_lent:
-        name += 'after Ash Wednesday'
+        return translator.templates['feria_after_ash_wednesday'].format(weekday=weekday)
     elif first_sunday_of_lent <= date < PassionSunday.date(date.year):
         lent_week = ((date - first_sunday_of_lent) // 7).days + 1
-        name += 'in the {} week of Lent'.format(ORDINALS[lent_week].lower())
+        ordinal = translator.get_ordinal(lent_week)
+        if translator.lang == 'en':
+            ordinal = ordinal.lower()
+        return translator.templates['feria_in_lent'].format(
+            ordinal=ordinal, weekday=weekday)
     elif PassionSunday.date(date.year) <= date < PalmSunday.date(date.year):
-        name += 'in Passion week'
+        return translator.templates['feria_in_passion_week'].format(weekday=weekday)
 
-    return name
+    return weekday
 
 
 def add_domain_to_url_description(url, description=None):

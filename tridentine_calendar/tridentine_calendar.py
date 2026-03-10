@@ -193,6 +193,13 @@ class LiturgicalSeason:
         translated_name = self.translator.translate(self.name)
         if self.lang == 'ja':
             full_name = translated_name
+        elif self.lang == 'fr':
+            if self.name.startswith('Time after'):
+                full_name = 'le ' + translated_name
+            elif self.name == 'Advent':
+                full_name = 'l\'' + translated_name.lower()
+            else:
+                full_name = translated_name
         else:
             if self.name.startswith('Time after'):
                 full_name = 'the ' + translated_name
@@ -383,11 +390,15 @@ class LiturgicalCalendarEvent:
             if self.holy_day:
                 if self.lang == 'ja':
                     name = '今日'
+                elif self.lang == 'fr':
+                    name = 'Aujourd\'hui'
                 else:
                     name = 'Today'
             elif not ranking_feast:
                 if self.lang == 'ja':
                     name = 'この祝日' if self.feast else 'この平休日'
+                elif self.lang == 'fr':
+                    name = 'Cette fête' if self.feast else 'Cette férie'
                 else:
                     name = 'This {}'.format('feast' if self.feast else 'feria')
             else:

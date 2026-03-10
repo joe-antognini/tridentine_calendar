@@ -262,8 +262,8 @@ class Translator:
 
         # Check if it's a Sunday or a Feast starting with 'Feast'
         is_generic_sunday = (
-            'Sunday' in name or '主日' in translated_name or
-            'Dimanche' in translated_name)
+            'Sunday' in name or '主日' in translated_name
+            or 'Dimanche' in translated_name)
         is_already_feast = (name.startswith('Feast')
                             or translated_name.startswith('祝日'))
 
@@ -280,13 +280,15 @@ class Translator:
             if is_generic_sunday or is_already_feast:
                 return translated_name
 
-            vowels = ('A', 'E', 'I', 'O', 'U', 'Y', 'É', 'È', 'Ê', 'Ë', 'À', 'Â', 'Î', 'Ï', 'Ô', 'Û', 'Ù')
+            vowels = (
+                'A', 'E', 'I', 'O', 'U', 'Y', 'É', 'È', 'Ê', 'Ë', 'À', 'Â',
+                'Î', 'Ï', 'Ô', 'Û', 'Ù')
 
             # Special case for Noël
             if translated_name == 'Noël':
-                 if rank == 4:
-                     return "la Commémoraison de Noël"
-                 return "la Fête de Noël"
+                if rank == 4:
+                    return "la Commémoraison de Noël"
+                return "la Fête de Noël"
 
             if translated_name.upper().startswith(vowels):
                 if rank == 4:
@@ -296,20 +298,30 @@ class Translator:
 
             if any(name.startswith(p) for p in ['St.', 'SS.', 'Pope']):
                 # Translate prefixes for French
-                french_name = translated_name.replace('St.', 'Saint').replace('SS.', 'Saints').replace('Pope', 'Pape')
+                french_name = translated_name.replace(
+                    'St.', 'Saint').replace('SS.', 'Saints').replace(
+                        'Pope', 'Pape')
                 if french_name[0].upper() in vowels:
-                     if rank == 4:
-                         return f"la Commémoraison d'{french_name}"
-                     else:
-                         return f"la Fête d'{french_name}"
+                    if rank == 4:
+                        return f"la Commémoraison d'{french_name}"
+                    else:
+                        return f"la Fête d'{french_name}"
                 if rank == 4:
                     return f"la Commémoraison de {french_name}"
                 else:
                     return f"la Fête de {french_name}"
 
-            if any(prefix in name for prefix in ['Our Lady', 'St. Mary', 'Blessed Virgin', 'Visitation', 'Immaculate Conception', 'Circumcision', 'Assomption', 'Presentation', 'Motherhood']):
+            feminine_prefixes = [
+                'Our Lady', 'St. Mary', 'Blessed Virgin', 'Visitation',
+                'Immaculate Conception', 'Circumcision', 'Assomption',
+                'Presentation', 'Motherhood']
+            masculine_prefixes = [
+                'Christ', 'The', 'Baptism', 'Most Precious Blood',
+                'Corpus Christi', 'Sacred Heart', 'Precious Blood']
+
+            if any(prefix in name for prefix in feminine_prefixes):
                 article = "la "
-            elif any(name.startswith(p) for p in ['Christ', 'The', 'Baptism', 'Most Precious Blood', 'Corpus Christi', 'Sacred Heart', 'Precious Blood']):
+            elif any(name.startswith(p) for p in masculine_prefixes):
                 article = "le "
             elif name.endswith('Sunday') or 'Dimanche' in translated_name:
                 article = "le "

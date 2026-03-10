@@ -533,9 +533,15 @@ class LiturgicalYear:
             date = self.liturgical_year_start + dt.timedelta(7 * (i - 1))
             ordinal = self.translator.get_ordinal(i)
             season = self.translator.translate('Advent')
-            name = self.translator.templates[
-                'ordinal_sunday_full_name'].format(
-                ordinal=ordinal, season=season)
+            if self.lang == 'fr':
+                template = self.translator.templates[
+                    'ordinal_sunday_advent_full_name']
+                name = template.format(
+                    ordinal=ordinal, season=season[0].lower() + season[1:])
+            else:
+                name = self.translator.templates[
+                    'ordinal_sunday_full_name'].format(
+                    ordinal=ordinal, season=season)
             event = LiturgicalCalendarEvent(
                 date, name=name, rank=1, lang=self.lang,
                 translator=self.translator)
@@ -547,9 +553,14 @@ class LiturgicalYear:
         while date < mf.Septuagesima.date(self.year):
             ordinal = self.translator.get_ordinal(i)
             event_name = self.translator.translate('Epiphany')
-            name = self.translator.templates[
-                'ordinal_sunday_after_full_name'].format(
-                ordinal=ordinal, event=event_name)
+            if self.lang == 'fr':
+                name = self.translator.templates[
+                    'ordinal_sunday_after_full_name'].format(
+                    ordinal=ordinal, event='l\'' + event_name)
+            else:
+                name = self.translator.templates[
+                    'ordinal_sunday_after_full_name'].format(
+                    ordinal=ordinal, event=event_name)
             event = LiturgicalCalendarEvent(
                 date, name=name, rank=2, lang=self.lang, translator=self.translator)
             self.calendar[date].append(event)
@@ -571,16 +582,24 @@ class LiturgicalYear:
         date = mf.CantateSunday.date(self.year) + dt.timedelta(7)
         ordinal = self.translator.get_ordinal(5)
         event_name = self.translator.translate('Easter')
-        name = self.translator.templates['ordinal_sunday_after_full_name'].format(
-            ordinal=ordinal, event=event_name)
+        if self.lang == 'fr':
+            name = self.translator.templates['ordinal_sunday_after_full_name'].format(
+                ordinal=ordinal, event=event_name)
+        else:
+            name = self.translator.templates['ordinal_sunday_after_full_name'].format(
+                ordinal=ordinal, event=event_name)
         event = LiturgicalCalendarEvent(
             date, name=name, rank=1, lang=self.lang, translator=self.translator)
         self.calendar[date].append(event)
 
         date = mf.Ascension.date(self.year) + dt.timedelta(3)
         event_name = self.translator.translate('Ascension')
-        name = self.translator.templates['ordinal_sunday_after_full_name'].format(
-            ordinal='', event=event_name).replace('  ', ' ').strip()
+        if self.lang == 'fr':
+            name = self.translator.templates['ordinal_sunday_after_full_name'].format(
+                ordinal='', event='l\'' + event_name).replace('  ', ' ').strip()
+        else:
+            name = self.translator.templates['ordinal_sunday_after_full_name'].format(
+                ordinal='', event=event_name).replace('  ', ' ').strip()
         # In Japanese, ''後主日 works. In English ' Sunday after Ascension' works.
         event = LiturgicalCalendarEvent(
             date, name=name, rank=1, lang=self.lang, translator=self.translator)
@@ -592,8 +611,14 @@ class LiturgicalYear:
         while date <= self.liturgical_year_end - dt.timedelta(7):
             ordinal = self.translator.get_ordinal(i)
             event_name = self.translator.translate('Pentecost')
-            name = self.translator.templates['ordinal_sunday_after_full_name'].format(
-                ordinal=ordinal, event=event_name)
+            if self.lang == 'fr':
+                name = self.translator.templates[
+                    'ordinal_sunday_after_full_name'].format(
+                    ordinal=ordinal, event='la ' + event_name)
+            else:
+                name = self.translator.templates[
+                    'ordinal_sunday_after_full_name'].format(
+                    ordinal=ordinal, event=event_name)
             event = LiturgicalCalendarEvent(
                 date, name=name, rank=2, lang=self.lang, translator=self.translator)
             self.calendar[date].append(event)
@@ -601,8 +626,12 @@ class LiturgicalYear:
             date += dt.timedelta(7)
 
         event_name = self.translator.translate('Pentecost')
-        name = self.translator.templates['last_sunday_full_name'].format(
-            event=event_name)
+        if self.lang == 'fr':
+            name = self.translator.templates['last_sunday_full_name'].format(
+                event='la ' + event_name)
+        else:
+            name = self.translator.templates['last_sunday_full_name'].format(
+                event=event_name)
         event = LiturgicalCalendarEvent(
             date, name=name, rank=2, lang=self.lang, translator=self.translator)
         self.calendar[date].append(event)

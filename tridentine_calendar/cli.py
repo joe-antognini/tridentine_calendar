@@ -65,7 +65,8 @@ def parse_args(args):
     parser.add_argument(
         '--lang',
         default='en',
-        help='Language to use for the calendar (e.g., en, ja).',
+        choices=['en', 'ja', 'fr'],
+        help='Language to use for the calendar (e.g., en, ja, fr).',
     )
 
     return parser.parse_args(args)

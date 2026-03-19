@@ -86,12 +86,12 @@ Pope Leo the Great,"St Léon le Grand, pape"
 Pope Linus,"St Lin, pape"
 Pope Marcellus I,"St Marcel Ier, pape"
 Pope Martin I,"St Martin I, pape"
-Pope Melchiades,"St Melchiade, pape"
+Pope Melchiades,"St Miltiade, pape"
 Pope Pius I,"St Pie I, pape"
 Pope Pius V,"St Pie V, pape"
 Pope Pius X,"St Pie X, pape"
 Pope Silverius,"St Silvère, pape"
-Pope Sylvester I,"St Sylvester I, pape"
+Pope Sylvester I,"St Sylvestre Ier, pape"
 Pope Zephyrinus,"St Zéphyrin, pape"
 Precious Blood,Précieux Sang
 Precious Blood of Jesus,Précieux Sang de Jésus
@@ -145,7 +145,7 @@ St. Andrew Corsini,St Andrew Corsini
 St. Angela Merici,St Angela Merici
 St. Anne,Ste Anne
 St. Anselm,St Anselm
-St. Anthony Mary Claret,St Anthony Mary Claret
+St. Anthony Mary Claret,St Antoine-Marie Claret
 St. Anthony Mary Zaccaria,St Anthony Mary Zaccaria
 St. Anthony of Padua,St Antoine de Padoue
 St. Anthony the Great,St Antoine le Grand
@@ -154,7 +154,7 @@ St. Apollinaris,St Apollinaris
 St. Athanasius,St Athanase
 St. Augustine,St Augustin
 St. Augustine of Canterbury,St Augustin de Cantorbéry
-St. Barbara,St Barbara
+St. Barbara,Ste Barbe
 St. Barnabas,St Barnabé
 St. Bartholomew,St Barthélemy
 St. Basil the Great,St Basil the Great
@@ -162,7 +162,7 @@ St. Bede the Venerable,St Bede the Venerable
 St. Benedict,St Benoît
 St. Bernard,St Bernard
 St. Bernardine of Siena,St Bernardin de Sienne
-St. Bibiana,St Bibiana
+St. Bibiana,Ste Bibiane
 St. Blaise,St Blaise
 St. Bonaventure,St Bonaventure
 St. Boniface,St Boniface
@@ -179,7 +179,7 @@ St. Catherine of Siena,Ste Catherine de Sienne
 St. Cecilia,Ste Cécile
 St. Charles Borromeo,St Charles Borromeo
 St. Christina,St Christina
-St. Clare,St Clare
+St. Clare,Ste Claire
 St. Columba,St Columba
 St. Cyril of Alexandria,St Cyrille d'Alexandrie
 St. Cyril of Jerusalem,St Cyrille de Jérusalem
@@ -197,7 +197,7 @@ St. Fidelis of Sigmaringen,St Fidèle de Sigmaringen
 St. Frances of Rome,Ste Françoise Romaine
 St. Francis Borgi,St Francis Borgi
 St. Francis Caracciolo,St Francis Caracciolo
-St. Francis Xavier,St Francis Xavier
+St. Francis Xavier,St François Xavier
 St. Francis de Sales,St François de Sales
 St. Francis of Assisi,St François d'Assise
 St. Francis of Paula,St François de Paule
@@ -247,7 +247,7 @@ St. John of Matha,St Jean de Matha
 St. John of St. Facundo,St Jean de San Facundo
 St. John of the Cross,St Jean de la Croix
 St. John's Day,St Jean's Day
-St. John's Eve,St Jean's Eve
+St. John's Eve,Vigile de la Fête de St Jean
 St. Josaphat,St Josaphat
 St. Joseph,St Joseph
 St. Joseph Calasanctius,St Joseph Calasanctius
@@ -256,10 +256,10 @@ St. Joseph the Worker,St Joseph the Worker
 St. Juliana Falconieri,St Juliana Falconieri
 St. Justin,St Justin
 St. Lawrence,St Laurent
-St. Lawrence Justinian,St Lawrence Justinian
+St. Lawrence Justinian,St Laurent Justinien
 St. Lawrence of Brindisi,St Laurent de Brindisi
 St. Louis,St Louis
-St. Lucy,St Lucy
+St. Lucy,Ste Lucie
 St. Luke,St Luc
 St. Margaret,St Margaret
 St. Margaret Mary Alacoque,St Margaret Mary Alacoque
@@ -314,7 +314,7 @@ St. Simeon,St Simeon
 St. Stanislaus,St Stanislaus
 St. Stephen,St Étienne
 St. Stephen I,St Étienne I
-St. Sylvester,St Sylvester
+St. Sylvester,St Sylvestre
 St. Teresa of Avila,Ste Thérèse d'Avila
 St. Theresa of Lisieux,Ste Thérèse de l'Enfant-Jésus
 St. Thomas,St Thomas
@@ -369,10 +369,10 @@ Thursday in Pentecost Week,Thursday in Pentecost Week
 Trinity Sunday,Dimanche de la Sainte Trinité
 Tuesday of Holy Week,Mardi saint
 Twelfth Night,La Nuit des Rois
-Vigil of Pentecost,Vigile de Pentecost
+Vigil of Pentecost,Vigile de la Pentecôte
 Vigil of SS. Peter & Paul,Vigile de Sts Pierre et Paul
-Vigil of St. Lawrence,Vigile de St Lawrence
-Vigil of the Assumption,Vigile de the Assumption
+Vigil of St. Lawrence,Vigile de St Laurent
+Vigil of the Assumption,Vigile de l'Assomption
 Walpurgisnacht,Walpurgisnacht
 Whit Embertide,Whit Embertide
 Whit Monday,Lundi de Pentecôte
@@ -441,7 +441,7 @@ St. Raphael the Archangel,St Raphaël Archange
 St. Martin of Tours,St Martin de Tours
 St. Clement I,St Clément Ier
 St. John the Evangelist,St Jean l'Évangéliste
-St. Sylvester I,St Sylvestre Ier
+St. Sylvester I,"St Sylvestre Ier, pape"
 St Raymond of Peñafort,St Raymond de Peñafort
 St John of Matha,St Jean de Matha
 St Cyril of Alexandria,St Cyrille d'Alexandrie
@@ -480,3 +480,4 @@ St. Jane Frances de Chantal,Ste Jeanne-Françoise de Chantal
 St. Peter of Alcantara,St Pierre d'Alcantara
 Sts. Cyril and Methodius,Sts Cyrille et Méthode
 The Seven Holy Brothers and Sts. Rufina and Secunda,Les Sept Saints Frères et les Stes Rufine et Seconde
+St. Jean's Eve,Vigile de la Fête de St Jean

@@ -247,6 +247,15 @@ class TestLiturgicalCalendarEvent(unittest.TestCase):
         description = event.generate_description(html_formatting=False)
         self.assertTrue(description.startswith(expected_description))
 
+    def test_generate_description_with_custom_description(self):
+        event = LiturgicalCalendarEvent(
+            dt.date(2018, 12, 2),
+            'First Sunday of Advent',
+            custom_description='This is a custom message.',
+        )
+        description = event.generate_description()
+        self.assertTrue(description.startswith('This is a custom message.\n\n'))
+
     def test_is_fixed(self):
         event = LiturgicalCalendarEvent(
             dt.date(2018, 12, 8),
@@ -274,6 +283,16 @@ class TestLiturgicalYearSmoke(unittest.TestCase):
 
     def test_liturgical_year(self):
         self.assertIsNotNone(LiturgicalYear(2018))
+
+    def test_liturgical_year_with_message(self):
+        message = 'Happy New Liturgical Year!'
+        litcal = LiturgicalYear(2019, new_years_message=message)
+        start_date = litcal.liturgical_year_start
+        events = litcal[start_date]
+        self.assertTrue(any(e.name == '» New Liturgical Year' for e in events))
+        new_year_event = [e for e in events if e.name == '» New Liturgical Year'][0]
+        self.assertEqual(new_year_event.custom_description, message)
+        self.assertEqual(new_year_event.rank, 4)
 
 
 class TestLiturgicalYearSundayDates(unittest.TestCase):

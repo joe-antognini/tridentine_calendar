@@ -209,6 +209,7 @@ class LiturgicalCalendarEvent:
         holy_day=False,
         addition=False,
         is_vigil=False,
+        custom_description=None,
         season=None,
     ):
         """Instantiate a `LiturgicalCalendarEvent`.
@@ -253,6 +254,7 @@ class LiturgicalCalendarEvent:
         self.addition = addition
         self.holy_day = holy_day
         self.is_vigil = is_vigil
+        self.custom_description = custom_description
         self.season = LiturgicalSeason.from_date(date)
 
         if color is None:
@@ -379,13 +381,16 @@ class LiturgicalCalendarEvent:
 
         """
         description = ''
+        if self.custom_description:
+            description += self.custom_description + '\n\n'
+
         if self.holy_day:
             description += f'{self.full_name()} is a Holy Day of Obligation.'
 
         if description != '' and description[-1] == '.':
             description += ' '
 
-        if self.liturgical_event and self.rank < 4:
+        if self.liturgical_event and self.rank is not None and self.rank < 4:
             if self.holy_day:
                 name = 'Today'
             elif not ranking_feast:
@@ -459,7 +464,7 @@ class LiturgicalCalendarEvent:
 class LiturgicalYear:
     """A liturgical year following the 1962 Roman Catholic rubrics."""
 
-    def __init__(self, year, uid_map=None):
+    def __init__(self, year, uid_map=None, new_years_message=None):
         """Instantiate a `LiturgicalYear` object.
 
         Note that the liturgical year starts before the year given on the first Sunday
@@ -558,6 +563,17 @@ class LiturgicalYear:
                     if elem.get('class') != 1:
                         event = LiturgicalCalendarEvent.from_json(date, elem)
                         self.calendar[date].append(event)
+
+            if date == self.liturgical_year_start and new_years_message:
+                event = LiturgicalCalendarEvent(
+                    date,
+                    name='» New Liturgical Year',
+                    liturgical_event=False,
+                    rank=4,
+                    custom_description=new_years_message,
+                )
+                self.calendar[date].append(event)
+
             self.calendar[date] = sorted(self.calendar[date], key=_feast_sort_key)
 
     def __getitem__(self, key):
@@ -601,7 +617,7 @@ class LiturgicalYear:
                             outranking_feast.full_name(capitalize=False),
                         )
 
-                if not elem.liturgical_event:
+                if not elem.liturgical_event and not elem.name.startswith('»'):
                     ics_name = '» ' + ics_name
 
                 feast_description = elem.generate_description(
@@ -653,7 +669,7 @@ def _feast_sort_key(feast):
 class LiturgicalCalendar:
     """A liturgical calendar following the 1962 Roman Catholic rubrics."""
 
-    def __init__(self, years, reuse_uids_from=None):
+    def __init__(self, years, reuse_uids_from=None, new_years_message=None):
         """Instantiate a `LiturgicalCalendar` object for the given year or years.
 
         Args:
@@ -675,7 +691,9 @@ class LiturgicalCalendar:
         if isinstance(years, int):
             years = [years]
         for year in years:
-            self.liturgical_years[year] = LiturgicalYear(year, self.uid_map)
+            self.liturgical_years[year] = LiturgicalYear(
+                year, self.uid_map, new_years_message
+            )
 
     def __getitem__(self, key):
         """Return the events for a given day.

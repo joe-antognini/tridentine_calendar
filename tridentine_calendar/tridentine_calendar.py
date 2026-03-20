@@ -583,8 +583,8 @@ class LiturgicalYear:
         ordinal = self.translator.get_ordinal(5)
         event_name = self.translator.translate('Easter')
         if self.lang == 'fr':
-            name = self.translator.templates['ordinal_sunday_after_full_name'].format(
-                ordinal=ordinal, event=event_name)
+            name = self.translator.templates['ordinal_sunday_full_name'].format(
+                ordinal=ordinal, season=event_name)
         else:
             name = self.translator.templates['ordinal_sunday_after_full_name'].format(
                 ordinal=ordinal, event=event_name)
@@ -595,8 +595,7 @@ class LiturgicalYear:
         date = mf.Ascension.date(self.year) + dt.timedelta(3)
         event_name = self.translator.translate('Ascension')
         if self.lang == 'fr':
-            name = self.translator.templates['ordinal_sunday_after_full_name'].format(
-                ordinal='', event='l\'' + event_name).replace('  ', ' ').strip()
+            name = 'Dimanche après l\'' + event_name
         else:
             name = self.translator.templates['ordinal_sunday_after_full_name'].format(
                 ordinal='', event=event_name).replace('  ', ' ').strip()

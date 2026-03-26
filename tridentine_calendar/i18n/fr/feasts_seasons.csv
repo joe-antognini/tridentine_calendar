@@ -136,7 +136,7 @@ St. Agapitus,St Agapitus
 St. Agatha,Ste Agathe
 St. Agnes,Ste Agnès
 St. Albert the Great,St Albert the Great
-St. Alexius,St Alexius
+St. Alexius,St Alexis
 St. Alphonsus Liguori,St Alphonse de Liguori
 St. Ambrose,St Ambrose
 St. Andrew,St André
@@ -146,11 +146,11 @@ St. Angela Merici,Ste Angèle Mérici
 St. Anne,Ste Anne
 St. Anselm,St Anselme
 St. Anthony Mary Claret,St Antoine-Marie Claret
-St. Anthony Mary Zaccaria,St Anthony Mary Zaccaria
+St. Anthony Mary Zaccaria,St Antoine-Marie Zaccaria
 St. Anthony of Padua,St Antoine de Padoue
 St. Anthony the Great,St Antoine le Grand
 St. Antoninus,St Antoninus
-St. Apollinaris,St Apollinaris
+St. Apollinaris,St Apollinaire
 St. Athanasius,St Athanase
 St. Augustine,St Augustin
 St. Augustine of Canterbury,St Augustin de Cantorbéry
@@ -172,13 +172,13 @@ St. Brigid,Ste Brigitte
 St. Bruno,St Bruno
 St. Cabrini,St Cabrini
 St. Cajetan,St Cajetan
-St. Camillus de Lellis,St Camillus de Lellis
+St. Camillus de Lellis,St Camille de Lellis
 St. Casimir,St Casimir
 St. Catherine of Alexandria,Ste Catherine d'Alexandrie
 St. Catherine of Siena,Ste Catherine de Sienne
 St. Cecilia,Ste Cécile
 St. Charles Borromeo,St Charles Borromeo
-St. Christina,St Christina
+St. Christina,Ste Christine
 St. Clare,Ste Claire
 St. Columba,St Columba
 St. Cyril of Alexandria,St Cyrille d'Alexandrie
@@ -187,7 +187,7 @@ St. Didacus,St Didacus
 St. Dominic,St Dominique
 St. Dymphna,St Dymphna
 St. Edward,St Edward
-St. Elizabeth,St Elizabeth
+St. Elizabeth,Ste Élisabeth
 St. Elizabeth of Hungary,Ste Élisabeth de Hongrie
 St. Ephrem,St Éphrem
 St. Eusebius,St Eusebius
@@ -213,7 +213,7 @@ St. Gregory Barbarigo,St Grégoire Barbarigo
 St. Gregory Nazianzen,St Grégoire Nazianzen
 St. Gregory Thaumaturgus,St Grégoire Thaumaturgus
 St. Hedwig,St Hedwig
-St. Henry,St Henry
+St. Henry,St Henri
 St. Hermenegild,St Herménégilde
 St. Hilarion,St Hilarion
 St. Hilary,St Hilaire
@@ -221,14 +221,14 @@ St. Hildegard of Bingen,Ste Hildegarde de Bingen
 St. Hyacinth,St Hyacinth
 St. Ignatius,St Ignatius
 St. Ignatius of Loyola,St Ignace de Loyola
-St. Irenaeus,St Irenaeus
+St. Irenaeus,St Irénée
 St. Isidore,St Isidore
 St. Isidore the Farmer,St Isidore the Farmer
 St. James the Greater,St Jacques le Majeur
 St. Jane Frances Fremiot de Chantal,St Jane Frances Fremiot de Chantal
 St. Januarius,St Januarius
 St. Jerome,St Jérôme
-St. Jerome Emilian,St Jerome Emilian
+St. Jerome Emilian,St Jérôme Emilien
 St. Joachim,St Joachim
 St. Joan of Arc,Ste Jeanne d'Arc
 St. John,St Jean
@@ -265,7 +265,7 @@ St. Margaret,Ste Marguerite
 St. Margaret Mary Alacoque,St Margaret Mary Alacoque
 St. Mark,St Marc
 St. Mark's Eve,St Mark's Eve
-St. Martha,St Martha
+St. Martha,Ste Marthe
 St. Martina,Ste Martine
 St. Mary Magdalen,St Mary Magdalen
 St. Mary Magdalen of Pazzi,Ste Marie-Madeleine de Pazzi
@@ -276,7 +276,7 @@ St. Monica,Ste Monique
 St. Nicholas,St Nicolas
 St. Nicholas of Tolentino,St Nicolas de Tolentino
 St. Norbert,St Norbert
-St. Pantaleon,St Pantaleon
+St. Pantaleon,St Pantaléon
 St. Pascal Baylon,St Pascal Baylon
 St. Patrick,St Patrice
 St. Paul,St Paul
@@ -295,7 +295,7 @@ St. Philip Neri,St Philip Neri
 St. Pio of Pietrelcina,St Padre Pio de Pietrelcina
 St. Placid,St Placid
 St. Polycarp,St Polycarpe
-St. Praxedes,St Praxedes
+St. Praxedes,Ste Praxède
 St. Prisca,St Prisca
 St. Raphael,St Raphael
 St. Raymond Nonnatus,St Raymond Nonnatus
@@ -328,7 +328,7 @@ St. Titus,St Tite
 St. Ubald,St Ubald
 St. Valentine,St Valentine
 St. Venantius,St Venant de Camerino
-St. Veronica,St Veronica
+St. Veronica,Ste Véronique
 St. Vincent Ferrer,St Vincent Ferrer
 St. Vincent de Paul,St Vincent de Paul
 St. Walpurga,St Walpurga
@@ -483,3 +483,4 @@ The Seven Holy Brothers and Sts. Rufina and Secunda,Les Sept Saints Frères et l
 St. Jean's Eve,Vigile de la Fête de St Jean
 "SS. Vitus, Modestus & Crescentia","Sts Vite, Modeste, et Crescence"
 SS. Gervasius & Protasius,Gervais et Protais
+"SS. Nazarius, Celsus, Victor I & Innocent I","Sts Nazaire et Celse, Victor Ier, Innocent Ier, papes"

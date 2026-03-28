@@ -89,7 +89,7 @@ class Translator:
             'ordinal_sunday_full_name': '{ordinal} dimanche de {season}',
             'ordinal_sunday_advent_full_name': '{ordinal} dimanche de l\'{season}',
             'ordinal_sunday_after_full_name': '{ordinal} dimanche après {event}',
-            'last_sunday_full_name': 'dernier dimanche après {event}',
+            'last_sunday_full_name': 'Dernier dimanche après {event}',
             'feria_in_lent': '{weekday} de la {ordinal} semaine de Carême',
             'feria_after_ash_wednesday': '{weekday} après le Mercredi des Cendres',
             'feria_in_passion_week': '{weekday} de la semaine de la Passion',

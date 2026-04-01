@@ -77,6 +77,43 @@ class Translator:
             'types': {'feast': '祝日', 'feria': '平休日'},
             'calendar_name': 'トリエント典礼暦',
             'calendar_desc': '1962年のローマ・カトリックの規定に基づく典礼暦。',
+        },
+        'fr': {
+            'feast_full_name': 'la fête de {name}',
+            'commemoration_full_name': 'la commémoraison de {name}',
+            'basilica_full_name': 'la fête de la {name}',
+            'basilica_commemoration_full_name': (
+                'la commémoraison de la {name}'),
+            'vigil_full_name': 'la vigile de la fête de {name}',
+            'vigil_generic_full_name': '{name}',
+            'ordinal_sunday_full_name': '{ordinal} dimanche de {season}',
+            'ordinal_sunday_advent_full_name': '{ordinal} dimanche de l\'{season}',
+            'ordinal_sunday_after_full_name': '{ordinal} dimanche après {event}',
+            'last_sunday_full_name': 'Dernier dimanche après {event}',
+            'feria_in_lent': '{weekday} de la {ordinal} semaine de Carême',
+            'feria_after_ash_wednesday': '{weekday} après le Mercredi des Cendres',
+            'feria_in_passion_week': '{weekday} de la semaine de la Passion',
+            'class_feria': '{name} est une {type} de {rank}.',
+            'liturgical_color': 'La couleur liturgique est le {color}.',
+            'outranking': '{feast} est surpassé par {outranking_feast}.',
+            'outranking_this_year': (
+                'Cette année {feast} est surpassé par {outranking_feast}.'),
+            'holy_day': '{name} est un jour d\'obligation.',
+            'no_special_liturgy': '{name} n\'a pas de liturgie spéciale.',
+            'today_is_commemoration': 'Aujourd\'hui est une commémoraison.',
+            'lent_commemoration': (
+                'Puisque {feast} tombe pendant le Carême, il sera ordinairement '
+                'célébré seulement comme une commémoraison pendant la messe de '
+                '{feria}.'),
+            'more_info': 'Plus d\'informations sur {name} :',
+            'types': {'feast': 'fête', 'feria': 'férie'},
+            'today': 'Aujourd\'hui',
+            'this_feast': 'Cette fête',
+            'this_feria': 'Cette férie',
+            'calendar_name': 'Calendrier Tridentin',
+            'calendar_desc': (
+                'Calendrier liturgique utilisant les rubriques de 1962 de '
+                'l\'Église catholique romaine.'),
         }
     }
 
@@ -88,6 +125,8 @@ class Translator:
         self._load_weekdays()
         if lang == 'ja':
             self._load_ja()
+        elif lang == 'fr':
+            self._load_fr()
 
     def _load_ordinals(self):
         if self.lang == 'ja':
@@ -98,6 +137,17 @@ class Translator:
                 16: '第十六', 17: '第十七', 18: '第十八', 19: '第十九',
                 20: '第二十', 21: '第二十一', 22: '第二十二', 23: '第二十三',
                 24: '第二十四', 25: '第二十五', 26: '第二十六', 27: '第二十七',
+            }
+        elif self.lang == 'fr':
+            self.ordinals = {
+                1: 'Premier', 2: 'Deuxième', 3: 'Troisième', 4: 'Quatrième',
+                5: 'Cinquième', 6: 'Sixième', 7: 'Septième', 8: 'Huitième',
+                9: 'Neuvième', 10: 'Dixième', 11: 'Onzième', 12: 'Douzième',
+                13: 'Treizième', 14: 'Quatorzième', 15: 'Quinzième',
+                16: 'Seizième', 17: 'Dix-septième', 18: 'Dix-huitième',
+                19: 'Dix-neuvième', 20: 'Vingtième', 21: 'Vingt-et-unième',
+                22: 'Vingt-deuxième', 23: 'Vingt-troisième', 24: 'Vingt-quatrième',
+                25: 'Vingt-cinquième', 26: 'Vingt-sixième', 27: 'Vingt-septième',
             }
         else:
             self.ordinals = {
@@ -117,6 +167,12 @@ class Translator:
                 'Monday': '月曜日', 'Tuesday': '火曜日', 'Wednesday': '水曜日',
                 'Thursday': '木曜日', 'Friday': '金曜日', 'Saturday': '土曜日',
                 'Sunday': '日曜日'
+            }
+        elif self.lang == 'fr':
+            self.weekdays = {
+                'Monday': 'Lundi', 'Tuesday': 'Mardi', 'Wednesday': 'Mercredi',
+                'Thursday': 'Jeudi', 'Friday': 'Vendredi', 'Saturday': 'Samedi',
+                'Sunday': 'Dimanche'
             }
         else:
             self.weekdays = {day: day for day in calendar.day_name}
@@ -140,20 +196,42 @@ class Translator:
         for en, ja in core_overrides.items():
             self.translations[en] = ja
 
-    def _load_csv(self, resource_path, en_col, ja_col):
+    def _load_fr(self):
+        # Load main terms
+        self._load_csv('i18n/fr/feasts_seasons.csv', 'en', 'fr')
+        self._load_csv('i18n/fr/titles_lexicon.csv', 'en', 'fr')
+        self._load_csv('i18n/fr/color_lexicon.csv', 'en', 'fr')
+        self._load_csv('i18n/fr/class_lexicon.csv', 'en', 'fr')
+
+        # Add or override core terms for better Sunday/Feria construction
+        core_overrides = {
+            'Epiphany': 'Épiphanie',
+            'Pentecost': 'Pentecôte',
+            'Easter': 'Pâques',
+            'Advent': 'Avent',
+            'Lent': 'Carême',
+            'Ascension': 'Ascension',
+        }
+        for en, fr in core_overrides.items():
+            self.translations[en] = fr
+
+    def _load_csv(self, resource_path, en_col, lang_col):
         try:
             package_path = resource_path.split('/')
             filename = package_path[-1]
             directory = '.'.join(['tridentine_calendar'] + package_path[:-1])
 
             content = resources.read_binary(directory, filename)
-            decoded_content = content.decode('shift_jis')
+            if self.lang == 'ja':
+                decoded_content = content.decode('shift_jis')
+            else:
+                decoded_content = content.decode('utf-8')
             reader = csv.DictReader(io.StringIO(decoded_content))
             for row in reader:
                 en_val = row.get(en_col)
-                ja_val = row.get(ja_col)
-                if en_val and ja_val:
-                    self.translations[en_val] = ja_val
+                lang_val = row.get(lang_col)
+                if en_val and lang_val:
+                    self.translations[en_val] = lang_val
         except FileNotFoundError:
             # Resource not found, skip
             pass
@@ -194,6 +272,30 @@ class Translator:
             return self.templates['feast_full_name'].format(
                 name=translated_name)
 
+        if self.lang == 'fr':
+            if is_generic_sunday or is_already_feast:
+                return translated_name
+            if (translated_name.lower().startswith('la ')
+                    or translated_name.lower().startswith('l\'')):
+                # E.g., La Circoncision, L'Annonciation, etc.
+                return translated_name
+
+            template = (
+                'feast_full_name' if rank != 4 else 'commemoration_full_name')
+
+            vowels = 'aeiouyàâéèêëîïôûùh'
+            if translated_name[0].lower() in vowels:
+                # Use the name with first letter lowercased for elision
+                fmt_name = 'l\'' + translated_name[0].lower() + translated_name[1:]
+                # la fête de l'annonciation
+                return self.templates[template].replace(
+                    ' de {name}', ' {name}').format(name=fmt_name)
+            else:
+                # Special case for St. Joseph where we want "de Saint Joseph"
+                if translated_name.startswith('Saint'):
+                    return self.templates[template].format(name=translated_name)
+                return self.templates[template].format(name=translated_name)
+
         # English logic
         if any([name.split()[0] in the_feast_of_prefixes,
                name in other_the_feasts]):
@@ -226,6 +328,8 @@ class Translator:
                     else self.templates['types']['feria'])
         if self.lang == 'ja':
             rank_str = self.translate(str(rank))
+        elif self.lang == 'fr':
+            rank_str = self.translate(str(rank))
         else:
             rank_str = rank * 'I'
         return self.templates['class_feria'].format(
@@ -235,6 +339,8 @@ class Translator:
         translated_color = self.translate(color.capitalize())
         if self.lang == 'en':
             translated_color = color.lower()
+        elif self.lang == 'fr':
+            translated_color = translated_color.lower()
         return self.templates['liturgical_color'].format(color=translated_color)
 
     def format_outranking(

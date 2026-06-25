@@ -252,8 +252,12 @@ class Translator:
     def get_ordinal(self, n):
         return self.ordinals.get(n, str(n))
 
-    def format_feast_full_name(self, name, rank):
+    def format_feast_full_name(self, name, rank, titles=None):
         translated_name = self.translate(name)
+        if titles:
+            titles_str = self.format_titles(titles)
+            if titles_str:
+                translated_name = f"{translated_name} ({titles_str})"
 
         the_feast_of_prefixes = ['St.', 'SS.', 'Pope', 'Our Lady', 'The']
         other_the_feasts = ['Christ the King']
@@ -299,8 +303,8 @@ class Translator:
         # English logic
         if any([name.split()[0] in the_feast_of_prefixes,
                name in other_the_feasts]):
-            name_to_use = (name[0].lower() + name[1:]
-                           if name.startswith('The') else name)
+            name_to_use = (translated_name[0].lower() + translated_name[1:]
+                           if name.startswith('The') else translated_name)
             template = (
                 'feast_full_name' if rank != 4 else 'commemoration_full_name')
             return self.templates[template].format(name=name_to_use)
@@ -308,18 +312,22 @@ class Translator:
             template = (
                 'basilica_full_name' if rank != 4
                 else 'basilica_commemoration_full_name')
-            return self.templates[template].format(name=name)
+            return self.templates[template].format(name=translated_name)
         elif name.split()[0] == 'Vigil':
             if name.split()[2] in the_feast_of_prefixes:
                 name_val = ' '.join(name.split()[2:])
+                if titles:
+                    titles_str = self.format_titles(titles)
+                    if titles_str:
+                        name_val = f"{name_val} ({titles_str})"
                 return self.templates['vigil_full_name'].format(
                     name=name_val)
-            return self.templates['vigil_generic_full_name'].format(name=name)
+            return self.templates['vigil_generic_full_name'].format(name=translated_name)
         elif any([(name.split()[0] in self.ordinals.values()
                    and name.split()[1] == 'Sunday'),
                   name.startswith('Last Sunday'),
                   name.startswith('Feast')]):
-            return self.templates['vigil_generic_full_name'].format(name=name)
+            return self.templates['vigil_generic_full_name'].format(name=translated_name)
         else:
             return translated_name
 
@@ -371,6 +379,11 @@ class Translator:
         if not titles:
             return ""
         translated_titles = [self.translate(t) for t in titles]
+        if self.lang in ('en', 'fr'):
+            translated_titles = [
+                t[0].upper() + t[1:] if t else t
+                for t in translated_titles
+            ]
         if self.lang == 'ja':
             return "、".join(translated_titles)
         return ", ".join(translated_titles)

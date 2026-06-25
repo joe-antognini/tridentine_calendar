@@ -356,3 +356,68 @@ class TestLiturgicalCalendar(unittest.TestCase):
             uids2 = {e['uid'] for e in ical2.walk('VEVENT')}
 
             self.assertEqual(uids1, uids2)
+
+    def test_titles_in_parentheses(self):
+        from tridentine_calendar.i18n import Translator
+        # English test
+        event_en = LiturgicalCalendarEvent(
+            dt.date(2018, 7, 14),
+            'St. Bonaventure',
+            titles=['Bishop', 'Confessor', 'Doctor of the Church'],
+            rank=3,
+            color='White',
+            liturgical_event=True,
+            feast=True,
+            lang='en',
+            translator=Translator(lang='en')
+        )
+        desc_en = event_en.generate_description()
+        self.assertIn(
+            'The Feast of St. Bonaventure (Bishop, Confessor, Doctor of the Church) is a Class III feast.',
+            desc_en
+        )
+        self.assertIn('The liturgical color is white.', desc_en)
+        # Verify that titles are not repeated at the end
+        self.assertFalse(desc_en.strip().endswith('Doctor of the Church.'))
+
+        # French test
+        event_fr = LiturgicalCalendarEvent(
+            dt.date(2018, 7, 14),
+            'St. Bonaventure',
+            titles=['Bishop', 'Confessor', 'Doctor of the Church'],
+            rank=3,
+            color='White',
+            liturgical_event=True,
+            feast=True,
+            lang='fr',
+            translator=Translator(lang='fr')
+        )
+        desc_fr = event_fr.generate_description()
+        # Verify capitalization and placement.
+        self.assertIn(
+            'La fête de St Bonaventure (Évêque, Confesseur, Docteur de l\'Église) est une fête de III',
+            desc_fr
+        )
+        self.assertIn('La couleur liturgique est le blanc.', desc_fr)
+
+        # Japanese test
+        event_ja = LiturgicalCalendarEvent(
+            dt.date(2018, 7, 14),
+            'St. Bonaventure',
+            titles=['Bishop', 'Confessor', 'Doctor of the Church'],
+            rank=3,
+            color='White',
+            liturgical_event=True,
+            feast=True,
+            lang='ja',
+            translator=Translator(lang='ja')
+        )
+        desc_ja = event_ja.generate_description()
+        # Print for debugging or assert basic structure
+        self.assertIn('聖ボナヴェントゥラ', desc_ja)
+        self.assertIn('司教', desc_ja)
+        self.assertIn('証聖者', desc_ja)
+        self.assertIn('教会博士', desc_ja)
+        self.assertIn('(', desc_ja)
+        self.assertIn(')', desc_ja)
+

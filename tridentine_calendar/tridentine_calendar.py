@@ -319,7 +319,7 @@ class LiturgicalCalendarEvent:
             The full name of the event, possibly with an article.
 
         """
-        full_name = self.translator.format_feast_full_name(self.name, self.rank)
+        full_name = self.translator.format_feast_full_name(self.name, self.rank, self.titles)
 
         if capitalize:
             full_name = full_name[0].upper() + full_name[1:]
@@ -426,12 +426,6 @@ class LiturgicalCalendarEvent:
             if len(description) > 0 and description[-1] == '.':
                 description += ' '
             description += self.translator.format_color(self.color)
-
-        if self.titles:
-            titles_str = self.translator.format_titles(self.titles)
-            if description != '' and description[-1] != '\n':
-                description += ' '
-            description += titles_str + ('.' if self.lang == 'en' else '')
 
         if description != '':
             description += '\n\n'

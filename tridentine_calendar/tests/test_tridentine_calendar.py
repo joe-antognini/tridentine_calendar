@@ -411,7 +411,7 @@ class TestLiturgicalCalendar(unittest.TestCase):
         desc_fr = event_fr.generate_description()
         # Verify capitalization and placement.
         self.assertIn(
-            'La fête de St Bonaventure (Évêque, Confesseur, Docteur de '
+            'La fête de st Bonaventure (évêque, confesseur, docteur de '
             'l\'Église) est une fête de III',
             desc_fr
         )
@@ -422,12 +422,12 @@ class TestLiturgicalCalendar(unittest.TestCase):
         ]
         desc_fr_with_urls = event_fr.generate_description()
         self.assertIn(
-            "Plus d'informations sur la fête de St Bonaventure :",
+            "Plus d'informations sur la fête de st Bonaventure :",
             desc_fr_with_urls
         )
         self.assertNotIn(
-            "Plus d'informations sur la fête de St Bonaventure (Évêque, "
-            "Confesseur, Docteur de l'Église) :",
+            "Plus d'informations sur la fête de st Bonaventure (évêque, "
+            "confesseur, docteur de l'Église) :",
             desc_fr_with_urls
         )
 

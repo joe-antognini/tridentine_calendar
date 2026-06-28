@@ -142,14 +142,14 @@ class Translator:
             }
         elif self.lang == 'fr':
             self.ordinals = {
-                1: 'Premier', 2: 'Deuxième', 3: 'Troisième', 4: 'Quatrième',
-                5: 'Cinquième', 6: 'Sixième', 7: 'Septième', 8: 'Huitième',
-                9: 'Neuvième', 10: 'Dixième', 11: 'Onzième', 12: 'Douzième',
-                13: 'Treizième', 14: 'Quatorzième', 15: 'Quinzième',
-                16: 'Seizième', 17: 'Dix-septième', 18: 'Dix-huitième',
-                19: 'Dix-neuvième', 20: 'Vingtième', 21: 'Vingt-et-unième',
-                22: 'Vingt-deuxième', 23: 'Vingt-troisième', 24: 'Vingt-quatrième',
-                25: 'Vingt-cinquième', 26: 'Vingt-sixième', 27: 'Vingt-septième',
+                1: 'premier', 2: 'deuxième', 3: 'troisième', 4: 'quatrième',
+                5: 'cinquième', 6: 'sixième', 7: 'septième', 8: 'huitième',
+                9: 'neuvième', 10: 'dixième', 11: 'onzième', 12: 'douzième',
+                13: 'treizième', 14: 'quatorzième', 15: 'quinzième',
+                16: 'seizième', 17: 'dix-septième', 18: 'dix-huitième',
+                19: 'dix-neuvième', 20: 'vingtième', 21: 'vingt-et-unième',
+                22: 'vingt-deuxième', 23: 'vingt-troisième', 24: 'vingt-quatrième',
+                25: 'vingt-cinquième', 26: 'vingt-sixième', 27: 'vingt-septième',
             }
         else:
             self.ordinals = {

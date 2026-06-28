@@ -304,7 +304,7 @@ class LiturgicalCalendarEvent:
             else:
                 self.color = self.season.color
 
-    def full_name(self, capitalize=True):
+    def full_name(self, capitalize=True, with_titles=True):
         """Return the full name of the event, possibly with an article.
 
         For example, if the name is 'St. Nicholas', this will return 'The Feast of St.
@@ -314,12 +314,15 @@ class LiturgicalCalendarEvent:
         Args:
             capitalize: boolean
                 Whether to capitalize the first letter.
+            with_titles: boolean
+                Whether to include the saint's titles in parentheses.
 
         Returns:
             The full name of the event, possibly with an article.
 
         """
-        full_name = self.translator.format_feast_full_name(self.name, self.rank, self.titles)
+        titles = self.titles if with_titles else None
+        full_name = self.translator.format_feast_full_name(self.name, self.rank, titles)
 
         if capitalize:
             full_name = full_name[0].upper() + full_name[1:]
@@ -380,8 +383,10 @@ class LiturgicalCalendarEvent:
 
         """
         description = ''
+        with_titles = ranking_feast
         if self.holy_day:
-            description += self.translator.format_holy_day(self.full_name())
+            description += self.translator.format_holy_day(self.full_name(with_titles=with_titles))
+            with_titles = False
 
         if description != '' and description[-1] == '.':
             description += ' '
@@ -402,13 +407,15 @@ class LiturgicalCalendarEvent:
                 else:
                     name = 'This {}'.format('feast' if self.feast else 'feria')
             else:
-                name = self.full_name(capitalize=True)
+                name = self.full_name(capitalize=True, with_titles=with_titles)
+                with_titles = False
             description += self.translator.format_class_feria(
                 name, self.rank, self.feast)
         elif self.liturgical_event and self.rank == 4 and ranking_feast:
             description += self.translator.format_commemoration()
         elif not self.liturgical_event:
-            description += self.translator.format_no_special_liturgy(self.full_name())
+            description += self.translator.format_no_special_liturgy(self.full_name(with_titles=with_titles))
+            with_titles = False
         if all([
             ranking_feast,
             self.season.name in ['Lent', 'Passiontide'],
@@ -419,9 +426,10 @@ class LiturgicalCalendarEvent:
             if description != '' and description[-1] == '.':
                 description += ' '
             description += self.translator.format_lent_commemoration(
-                self.full_name(capitalize=False),
+                self.full_name(capitalize=False, with_titles=with_titles),
                 utils.feria_name(self.date, self.translator)
             )
+            with_titles = False
         if ranking_feast:
             if len(description) > 0 and description[-1] == '.':
                 description += ' '
@@ -432,7 +440,8 @@ class LiturgicalCalendarEvent:
 
         if self.urls:
             description += self.translator.format_more_info(
-                self.full_name(capitalize=False)) + '\n'
+                self.full_name(capitalize=False, with_titles=with_titles)) + '\n'
+            with_titles = False
             for url_obj in self.urls:
                 if html_formatting:
                     description += '• ' + url_obj.to_href() + '\n'

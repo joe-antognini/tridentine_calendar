@@ -380,6 +380,18 @@ class TestLiturgicalCalendar(unittest.TestCase):
         # Verify that titles are not repeated at the end
         self.assertFalse(desc_en.strip().endswith('Doctor of the Church.'))
 
+        # Test subsequent name occurrence (e.g. in URL info) has no titles
+        event_en.urls = [LiturgicalCalendarEventUrl('https://example.com', 'Bonaventure')]
+        desc_en_with_urls = event_en.generate_description()
+        self.assertIn(
+            'More information about the Feast of St. Bonaventure:',
+            desc_en_with_urls
+        )
+        self.assertNotIn(
+            'More information about the Feast of St. Bonaventure (Bishop, Confessor, Doctor of the Church):',
+            desc_en_with_urls
+        )
+
         # French test
         event_fr = LiturgicalCalendarEvent(
             dt.date(2018, 7, 14),
@@ -399,6 +411,17 @@ class TestLiturgicalCalendar(unittest.TestCase):
             desc_fr
         )
         self.assertIn('La couleur liturgique est le blanc.', desc_fr)
+
+        event_fr.urls = [LiturgicalCalendarEventUrl('https://example.com', 'Bonaventure')]
+        desc_fr_with_urls = event_fr.generate_description()
+        self.assertIn(
+            "Plus d'informations sur la fête de St Bonaventure :",
+            desc_fr_with_urls
+        )
+        self.assertNotIn(
+            "Plus d'informations sur la fête de St Bonaventure (Évêque, Confesseur, Docteur de l'Église) :",
+            desc_fr_with_urls
+        )
 
         # Japanese test
         event_ja = LiturgicalCalendarEvent(
@@ -420,4 +443,15 @@ class TestLiturgicalCalendar(unittest.TestCase):
         self.assertIn('教会博士', desc_ja)
         self.assertIn('(', desc_ja)
         self.assertIn(')', desc_ja)
+
+        event_ja.urls = [LiturgicalCalendarEventUrl('https://example.com', 'Bonaventure')]
+        desc_ja_with_urls = event_ja.generate_description()
+        self.assertIn(
+            '聖ボナヴェントゥラの祝日についての詳細情報：',
+            desc_ja_with_urls
+        )
+        self.assertNotIn(
+            '聖ボナヴェントゥラ (司教、証聖者、教会博士)の祝日についての詳細情報：',
+            desc_ja_with_urls
+        )
 

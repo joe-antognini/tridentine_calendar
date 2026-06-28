@@ -202,7 +202,7 @@ class LiturgicalSeason:
             if self.name.startswith('Time after'):
                 full_name = 'le ' + translated_name
             elif self.name == 'Advent':
-                full_name = 'l\'' + translated_name.lower()
+                full_name = 'l\'' + translated_name
             else:
                 full_name = translated_name
         else:
@@ -549,7 +549,7 @@ class LiturgicalYear:
                 template = self.translator.templates[
                     'ordinal_sunday_advent_full_name']
                 name = template.format(
-                    ordinal=ordinal, season=season[0].lower() + season[1:])
+                    ordinal=ordinal, season=season)
             else:
                 name = self.translator.templates[
                     'ordinal_sunday_full_name'].format(

@@ -196,4 +196,7 @@ def gen_uid():
 
 def make_initial__the__lowercase(s: str) -> str:
     """Make the first character of a string lowercase."""
-    return (s[:1].lower() + s[1:]) if s.startswith('The ') else s
+    prefixes = ('The ', 'La ', 'Le ', 'Les ', 'L\'')
+    if any(s.startswith(prefix) for prefix in prefixes):
+        return s[:1].lower() + s[1:]
+    return s

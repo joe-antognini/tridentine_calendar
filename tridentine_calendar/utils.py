@@ -192,3 +192,8 @@ def gen_uid():
     )
 
     return time_str + '-' + rand_hash + '@joe-antognini.github.io'
+
+
+def make_initial__the__lowercase(s: str) -> str:
+    """Make the first character of a string lowercase."""
+    return (s[:1].lower() + s[1:]) if s.startswith('The ') else s

@@ -5,6 +5,8 @@ import io
 import calendar
 from importlib import resources
 
+from tridentine_calendar.utils import make_initial__the__lowercase
+
 
 class Translator:
     """Handles translations and localized string formatting."""
@@ -357,7 +359,9 @@ class Translator:
             'outranking' if is_fixed_outranked_by_fixed
             else 'outranking_this_year')
         return self.templates[template].format(
-            feast=feast, outranking_feast=outranking_feast)
+            feast=make_initial__the__lowercase(feast),
+            outranking_feast=outranking_feast,
+        )
 
     def format_holy_day(self, name):
         return self.templates['holy_day'].format(name=name)

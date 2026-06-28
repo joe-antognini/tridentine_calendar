@@ -8,6 +8,7 @@ from ..utils import iterate_liturgical_year
 from ..utils import liturgical_year
 from ..utils import liturgical_year_end
 from ..utils import liturgical_year_start
+from ..utils import make_initial__the__lowercase
 
 
 class TestLiturgicalYearStartEnd(unittest.TestCase):
@@ -60,3 +61,19 @@ class TestGetMovableFeastNamesAndDates(unittest.TestCase):
     def test_get_movable_feast_names_and_dates(self):
         feast_names_and_dates = list(get_movable_feast_names_and_dates(2019))
         self.assertTrue(feast_names_and_dates != [])
+
+
+class TestMakeInitial_The_Lowercase(unittest.TestCase):
+
+    def test_make_initial__the__lowercase(self):
+        s = 'Hello World'
+        self.assertEqual(make_initial__the__lowercase(s), 'Hello World')
+
+        s = 'The Hello World'
+        self.assertEqual(make_initial__the__lowercase(s), 'the Hello World')
+
+        s = 'There Hello World'
+        self.assertEqual(make_initial__the__lowercase(s), 'There Hello World')
+
+        s = 'To Hello World'
+        self.assertEqual(make_initial__the__lowercase(s), 'To Hello World')

@@ -97,9 +97,8 @@ class Translator:
             'feria_in_passion_week': '{weekday} de la semaine de la Passion',
             'class_feria': '{name} est une {type} de {rank}.',
             'liturgical_color': 'La couleur liturgique est le {color}.',
-            'outranking': '{feast} est surpassée par {outranking_feast}.',
-            'outranking_this_year': (
-                'Cette année {feast} est surpassé par {outranking_feast}.'),
+            'outranking': '{feast} est omise.',
+            'outranking_this_year': 'Cette année {feast} est omise.',
             'holy_day': '{name} est un jour d\'obligation.',
             'no_special_liturgy': '{name} n\'a pas de liturgie spéciale.',
             'today_is_commemoration': 'Aujourd\'hui est une commémoraison.',

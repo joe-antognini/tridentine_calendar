@@ -291,9 +291,9 @@ class Translator:
 
             vowels = 'aeiouyàâéèêëîïôûùh'
             if translated_name[0].lower() in vowels:
-                # Use the name with first letter lowercased for elision
-                fmt_name = 'l\'' + translated_name[0].lower() + translated_name[1:]
-                # la fête de l'annonciation
+                # Use the name for elision
+                fmt_name = 'l\'' + translated_name
+                # la fête de l'Annonciation
                 return self.templates[template].replace(
                     ' de {name}', ' {name}').format(name=fmt_name)
             else:
@@ -387,7 +387,7 @@ class Translator:
         if not titles:
             return ""
         translated_titles = [self.translate(t) for t in titles]
-        if self.lang in ('en', 'fr'):
+        if self.lang == 'en':
             translated_titles = [
                 t[0].upper() + t[1:] if t else t
                 for t in translated_titles

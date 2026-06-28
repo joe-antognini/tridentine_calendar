@@ -16,7 +16,7 @@ def test_fr_feast_full_name():
     translator = Translator(lang='fr')
     # Normal feast
     assert translator.format_feast_full_name(
-        'St. Hilary', 3) == 'la fête de St Hilaire'
+        'St. Hilary', 3) == 'la fête de st Hilaire'
     # Elision (handled by L'Annonciation in CSV)
     assert translator.format_feast_full_name(
         'The Annunciation', 1) == 'L\'Annonciation'
@@ -25,7 +25,7 @@ def test_fr_feast_full_name():
         'The Circumcision', 1) == 'La Circoncision'
     # Commemoration
     assert translator.format_feast_full_name(
-        'St. Hilary', 4) == 'la commémoraison de St Hilaire'
+        'St. Hilary', 4) == 'la commémoraison de st Hilaire'
 
 
 def test_fr_class_feria():

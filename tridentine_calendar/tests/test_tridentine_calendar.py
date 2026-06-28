@@ -373,7 +373,8 @@ class TestLiturgicalCalendar(unittest.TestCase):
         )
         desc_en = event_en.generate_description()
         self.assertIn(
-            'The Feast of St. Bonaventure (Bishop, Confessor, Doctor of the Church) is a Class III feast.',
+            'The Feast of St. Bonaventure (Bishop, Confessor, Doctor of the '
+            'Church) is a Class III feast.',
             desc_en
         )
         self.assertIn('The liturgical color is white.', desc_en)
@@ -381,14 +382,17 @@ class TestLiturgicalCalendar(unittest.TestCase):
         self.assertFalse(desc_en.strip().endswith('Doctor of the Church.'))
 
         # Test subsequent name occurrence (e.g. in URL info) has no titles
-        event_en.urls = [LiturgicalCalendarEventUrl('https://example.com', 'Bonaventure')]
+        event_en.urls = [
+            LiturgicalCalendarEventUrl('https://example.com', 'Bonaventure')
+        ]
         desc_en_with_urls = event_en.generate_description()
         self.assertIn(
             'More information about the Feast of St. Bonaventure:',
             desc_en_with_urls
         )
         self.assertNotIn(
-            'More information about the Feast of St. Bonaventure (Bishop, Confessor, Doctor of the Church):',
+            'More information about the Feast of St. Bonaventure (Bishop, '
+            'Confessor, Doctor of the Church):',
             desc_en_with_urls
         )
 
@@ -407,19 +411,23 @@ class TestLiturgicalCalendar(unittest.TestCase):
         desc_fr = event_fr.generate_description()
         # Verify capitalization and placement.
         self.assertIn(
-            'La fête de St Bonaventure (Évêque, Confesseur, Docteur de l\'Église) est une fête de III',
+            'La fête de St Bonaventure (Évêque, Confesseur, Docteur de '
+            'l\'Église) est une fête de III',
             desc_fr
         )
         self.assertIn('La couleur liturgique est le blanc.', desc_fr)
 
-        event_fr.urls = [LiturgicalCalendarEventUrl('https://example.com', 'Bonaventure')]
+        event_fr.urls = [
+            LiturgicalCalendarEventUrl('https://example.com', 'Bonaventure')
+        ]
         desc_fr_with_urls = event_fr.generate_description()
         self.assertIn(
             "Plus d'informations sur la fête de St Bonaventure :",
             desc_fr_with_urls
         )
         self.assertNotIn(
-            "Plus d'informations sur la fête de St Bonaventure (Évêque, Confesseur, Docteur de l'Église) :",
+            "Plus d'informations sur la fête de St Bonaventure (Évêque, "
+            "Confesseur, Docteur de l'Église) :",
             desc_fr_with_urls
         )
 
@@ -444,7 +452,9 @@ class TestLiturgicalCalendar(unittest.TestCase):
         self.assertIn('(', desc_ja)
         self.assertIn(')', desc_ja)
 
-        event_ja.urls = [LiturgicalCalendarEventUrl('https://example.com', 'Bonaventure')]
+        event_ja.urls = [
+            LiturgicalCalendarEventUrl('https://example.com', 'Bonaventure')
+        ]
         desc_ja_with_urls = event_ja.generate_description()
         self.assertIn(
             '聖ボナヴェントゥラの祝日についての詳細情報：',
@@ -454,4 +464,3 @@ class TestLiturgicalCalendar(unittest.TestCase):
             '聖ボナヴェントゥラ (司教、証聖者、教会博士)の祝日についての詳細情報：',
             desc_ja_with_urls
         )
-

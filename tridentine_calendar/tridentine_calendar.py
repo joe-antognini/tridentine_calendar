@@ -385,7 +385,9 @@ class LiturgicalCalendarEvent:
         description = ''
         with_titles = ranking_feast
         if self.holy_day:
-            description += self.translator.format_holy_day(self.full_name(with_titles=with_titles))
+            description += self.translator.format_holy_day(
+                self.full_name(with_titles=with_titles)
+            )
             with_titles = False
 
         if description != '' and description[-1] == '.':
@@ -414,7 +416,9 @@ class LiturgicalCalendarEvent:
         elif self.liturgical_event and self.rank == 4 and ranking_feast:
             description += self.translator.format_commemoration()
         elif not self.liturgical_event:
-            description += self.translator.format_no_special_liturgy(self.full_name(with_titles=with_titles))
+            description += self.translator.format_no_special_liturgy(
+                self.full_name(with_titles=with_titles)
+            )
             with_titles = False
         if all([
             ranking_feast,

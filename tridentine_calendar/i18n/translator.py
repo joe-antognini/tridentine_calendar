@@ -324,12 +324,16 @@ class Translator:
                         name_val = f"{name_val} ({titles_str})"
                 return self.templates['vigil_full_name'].format(
                     name=name_val)
-            return self.templates['vigil_generic_full_name'].format(name=translated_name)
+            return self.templates['vigil_generic_full_name'].format(
+                name=translated_name
+            )
         elif any([(name.split()[0] in self.ordinals.values()
                    and name.split()[1] == 'Sunday'),
                   name.startswith('Last Sunday'),
                   name.startswith('Feast')]):
-            return self.templates['vigil_generic_full_name'].format(name=translated_name)
+            return self.templates['vigil_generic_full_name'].format(
+                name=translated_name
+            )
         else:
             return translated_name
 

@@ -31,9 +31,9 @@ def test_fr_feast_full_name():
 def test_fr_class_feria():
     translator = Translator(lang='fr')
     assert translator.format_class_feria(
-        'Aujourd\'hui', 1, True) == 'Aujourd\'hui est une fête de Ière classe.'
+        'Aujourd\'hui', 1, True) == 'Aujourd\'hui est une fête de Ire classe.'
     assert translator.format_class_feria(
-        'Cette férie', 3, False) == 'Cette férie est une férie de IIIème classe.'
+        'Cette férie', 3, False) == 'Cette férie est une férie de IIIe classe.'
 
 
 def test_fr_liturgical_calendar_output():
@@ -51,4 +51,4 @@ def test_fr_liturgical_calendar_output():
     assert 'La couleur liturgique est le blanc.' in description
     # Since it is a holy day of obligation, "Aujourd'hui" is used instead of
     # the full name in the class_feria string
-    assert "Aujourd'hui est une fête de Ière classe." in description
+    assert "Aujourd'hui est une fête de Ire classe." in description

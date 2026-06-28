@@ -265,7 +265,9 @@ class Translator:
         other_the_feasts = ['Christ the King']
 
         # Check if it's a Sunday or a Feast starting with 'Feast'
-        is_generic_sunday = 'Sunday' in name or '主日' in translated_name
+        is_generic_sunday = (
+            'Sunday' in name or '主日' in translated_name
+            or 'dimanche' in translated_name.lower())
         is_already_feast = (name.startswith('Feast')
                             or translated_name.startswith('祝日'))
 
@@ -279,23 +281,28 @@ class Translator:
                 name=translated_name)
 
         if self.lang == 'fr':
-            if is_generic_sunday or is_already_feast:
+            if is_already_feast:
                 return translated_name
             if (translated_name.lower().startswith('la ')
+                    or translated_name.lower().startswith('le ')
+                    or translated_name.lower().startswith('les ')
                     or translated_name.lower().startswith('l\'')):
-                # E.g., La Circoncision, L'Annonciation, etc.
+                # E.g., La Circoncision, Le Christ-Roi, Les martyrs canadiens, etc.
                 return translated_name
 
             template = (
                 'feast_full_name' if rank != 4 else 'commemoration_full_name')
+
+            if is_generic_sunday:
+                return self.templates[template].replace(
+                    ' de {name}', ' du {name}').format(name=translated_name)
 
             vowels = 'aeiouyàâéèêëîïôûùh'
             if translated_name[0].lower() in vowels:
                 # Use the name for elision
                 fmt_name = 'l\'' + translated_name
                 # la fête de l'Annonciation
-                return self.templates[template].replace(
-                    ' de {name}', ' {name}').format(name=fmt_name)
+                return self.templates[template].format(name=fmt_name)
             else:
                 # Special case for St. Joseph where we want "de Saint Joseph"
                 if translated_name.startswith('Saint'):

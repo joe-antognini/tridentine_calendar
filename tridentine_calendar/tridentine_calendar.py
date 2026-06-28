@@ -23,10 +23,15 @@ from .utils import liturgical_year_end
 from .utils import liturgical_year_start
 
 # Load the JSON data.
-MF_DATA = json.loads(resources.read_text(__name__, 'movable_feasts_ferias_et_al.json'))
+MF_DATA = json.loads(
+    (resources.files(__name__) / 'movable_feasts_ferias_et_al.json').read_text()
+)
 FIXED_FEASTS_DATA = json.loads(
-    resources.read_text(__name__, 'fixed_feasts_ferias_et_al.json'))
-SEASON_DATA = json.loads(resources.read_text(__name__, 'seasons.json'))
+    (resources.files(__name__) / 'fixed_feasts_ferias_et_al.json').read_text()
+)
+SEASON_DATA = json.loads(
+    (resources.files(__name__) / 'seasons.json').read_text()
+)
 
 
 def get_args():

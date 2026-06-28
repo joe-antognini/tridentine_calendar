@@ -223,7 +223,7 @@ class Translator:
             filename = package_path[-1]
             directory = '.'.join(['tridentine_calendar'] + package_path[:-1])
 
-            content = resources.read_binary(directory, filename)
+            content = (resources.files(directory) / filename).read_bytes()
             if self.lang == 'ja':
                 decoded_content = content.decode('shift_jis')
             else:

@@ -16,7 +16,7 @@ def test_fr_feast_full_name():
     translator = Translator(lang='fr')
     # Normal feast
     assert translator.format_feast_full_name(
-        'St. Hilary', 3) == 'la fête de st Hilaire'
+        'St. Hilary', 3) == 'la fête de St Hilaire'
     # Elision (handled by L'Annonciation in CSV)
     assert translator.format_feast_full_name(
         'The Annunciation', 1) == 'L\'Annonciation'
@@ -25,7 +25,7 @@ def test_fr_feast_full_name():
         'The Circumcision', 1) == 'La Circoncision'
     # Commemoration
     assert translator.format_feast_full_name(
-        'St. Hilary', 4) == 'la commémoraison de st Hilaire'
+        'St. Hilary', 4) == 'la commémoraison de St Hilaire'
 
 
 def test_fr_class_feria():
@@ -61,11 +61,11 @@ def test_fr_plural_agreement():
     assert "sont" in translator.format_class_feria("Les martyrs", 2, True)
     assert "n'ont pas" in translator.format_no_special_liturgy("Les Grandes Ô")
 
-    # Test "sts"
-    assert "sont" in translator.format_class_feria("sts Abdon et Sennen", 3, True)
+    # Test "Sts"
+    assert "sont" in translator.format_class_feria("Sts Abdon et Sennen", 3, True)
 
-    # Test "stes"
-    assert "sont" in translator.format_class_feria("stes Perpétue et Félicité", 3, True)
+    # Test "Stes"
+    assert "sont" in translator.format_class_feria("Stes Perpétue et Félicité", 3, True)
 
     # Test outranking plural
     outranking = translator.format_outranking("Les martyrs", "Une fête", True)

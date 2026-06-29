@@ -253,7 +253,7 @@ class Translator:
     def _is_plural(self, name):
         if self.lang != 'fr':
             return False
-        plural_prefixes = ('Les ', 'les ', 'sts ', 'stes ')
+        plural_prefixes = ('Les ', 'les ', 'Sts ', 'Stes ', 'sts ', 'stes ')
         return name.lstrip('» ').lstrip('› ').startswith(plural_prefixes)
 
     def get_ordinal(self, n):

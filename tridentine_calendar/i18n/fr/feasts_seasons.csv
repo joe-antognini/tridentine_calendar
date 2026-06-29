@@ -1,21 +1,21 @@
 en,fr
-Advent Embertide,Advent Embertide
-All Saints Day,La Toussaint
-All Souls Day,Commémoraison des fidèles défunts
-All Souls' Day,Jour des morts
-Ascension,Ascension
-Ash Wednesday,Mercredi des Cendres
-Baptism of Christ,Baptême du Seigneur
-Basilica of St. John Lateran,Dédicace de l'archibasilique du Latran
-Basilicas of SS. Peter & Paul,Dédicace des basiliques de St Pierre et St Paul
-Canadian Martyrs,Les martyrs canadiens
-Candlemas,La Chandeleur
+Advent Embertide,les Quatre-Temps de l'Avent
+All Saints Day,la Toussaint
+All Souls Day,la Commémoraison des fidèles défunts
+All Souls' Day,le Jour des morts
+Ascension,l'Ascension
+Ash Wednesday,le Mercredi des Cendres
+Baptism of Christ,le Baptême du Seigneur
+Basilica of St. John Lateran,la Dédicace de l'archibasilique du Latran
+Basilicas of SS. Peter & Paul,la Dédicace des basiliques de St Pierre et St Paul
+Canadian Martyrs,les martyrs canadiens
+Candlemas,la Chandeleur
 Cantate Sunday,Quatrième dimanche de Pâques
 Chair of Unity Octave,Octave de la Chaire d'Unité
-Childermas,Les saints Innocents
+Childermas,les saints Innocents
 Christ the King,Le Christ-Roi
 Christmas,Noël
-Christmas Eve,Vigile de Noël
+Christmas Eve,la Vigile de Noël
 Church of St. Mary of the Snow,Notre-Dame des Neiges
 Conversion of St. Paul,Conversion de St Paul
 Corpus Christi,La Fête-Dieu
@@ -27,32 +27,32 @@ Easter Sunday,Dimanche de Pâques
 Easter Thursday,Jeudi de Pâques
 Easter Tuesday,Mardi de Pâques
 Easter Wednesday,Mercredi de Pâques
-Epiphany,Épiphanie
+Epiphany,l'Épiphanie
 Fat Thursday,Jeudi Gras
 Fourteen Holy Helpers,Fourteen Holy Helpers
 Gaudete Sunday,Dimanche de Gaudete
-Golden Nights,Les Grandes Ô
+Golden Nights,les Grandes Ô
 Good Friday,Vendredi saint
 Halloween,Halloween
-Hallowmas,Toussaint
+Hallowmas,la Toussaint
 Holy Family,Ste Famille
-Holy Name,saint Nom
-Holy Name of Jesus,saint Nom de Jésus
+Holy Name,le saint Nom
+Holy Name of Jesus,le saint Nom de Jésus
 Holy Saturday,Samedi saint
 Jubilate Sunday,Troisième dimanche de Pâques
-Lady Day,L'Annonciation
+Lady Day,l'Annonciation
 Laetare Sunday,Dimanche de Lætare
 Las Posadas,Las Posadas
-Last Sunday after Pentecost,Last Sunday after Pentecost
-Lenten Embertide,Lenten Embertide
-Major Rogation,La Grande Litanie
+Last Sunday after Pentecost,le dernier dimanche après la Pentecôte
+Lenten Embertide,les Quatre-Temps de Carême
+Major Rogation,la Grande Litanie
 Mardi Gras,Mardi Gras
 Martinmas,Saint-Martin
-Marymass,L'Assomption
+Marymass,l'Assomption
 Maundy Thursday,Jeudi saint
 Michaelmas,Fête de la Saint-Michel
-Michaelmas Embertide,Quatre-Temps de Septembre
-Minor Rogation,Les Rogations
+Michaelmas Embertide,les Quatre-Temps de Septembre
+Minor Rogation,les Rogations
 Misericordia Sunday,Deuxième dimanche de Pâques
 Monday of Holy Week,Lundi saint
 Our Lady of Fatima,Notre-Dame de Fatima
@@ -65,34 +65,34 @@ Our Lady of Walsingham,Notre-Dame de Walsingham
 Our Lady of the Rosary,Notre-Dame du Rosaire
 Palm Sunday,Dimanche des Rameaux
 Passion Sunday,Dimanche de la Passion
-Pentecost,Pentecôte
+Pentecost,la Pentecôte
 Pentecost Monday,Lundi de la Pentecôte
 Pentecost Tuesday,Mardi de la Pentecôte
 Peter's Pence,Denier de Saint-Pierre
 Plough Monday,Plough Monday
-Pope Anicetus,"St Anicet"
-Pope Callistus I,"St Calixte I"
-Pope Celestine V,"St Célestin V"
-Pope Clement I,"St Clément I"
-Pope Cornelius & St. Cyprian,"St Corneille et St Cyprien"
-Pope Damasus I,"St Damase I"
-Pope Evaristus,"St Évariste"
-Pope Fabian & St. Sebastian,"St Fabien et St Sébastien"
-Pope Felix I,"St Félix I"
-Pope Gregory VII,"St Grégoire VII"
-Pope Gregory the Great,"St Grégoire le Grand"
-Pope Hyginus,"St Hygin"
-Pope Leo the Great,"St Léon le Grand"
-Pope Linus,"St Lin"
-Pope Marcellus I,"St Marcel Ier"
-Pope Martin I,"St Martin I"
-Pope Melchiades,"St Miltiade"
-Pope Pius I,"St Pie I"
-Pope Pius V,"St Pie V"
-Pope Pius X,"St Pie X"
-Pope Silverius,"St Silvère"
-Pope Sylvester I,"St Sylvestre Ier"
-Pope Zephyrinus,"St Zéphyrin"
+Pope Anicetus,St Anicet
+Pope Callistus I,St Calixte I
+Pope Celestine V,St Célestin V
+Pope Clement I,St Clément I
+Pope Cornelius & St. Cyprian,St Corneille et St Cyprien
+Pope Damasus I,St Damase I
+Pope Evaristus,St Évariste
+Pope Fabian & St. Sebastian,St Fabien et St Sébastien
+Pope Felix I,St Félix I
+Pope Gregory VII,St Grégoire VII
+Pope Gregory the Great,St Grégoire le Grand
+Pope Hyginus,St Hygin
+Pope Leo the Great,St Léon le Grand
+Pope Linus,St Lin
+Pope Marcellus I,St Marcel Ier
+Pope Martin I,St Martin I
+Pope Melchiades,St Miltiade
+Pope Pius I,St Pie I
+Pope Pius V,St Pie V
+Pope Pius X,St Pie X
+Pope Silverius,St Silvère
+Pope Sylvester I,St Sylvestre Ier
+Pope Zephyrinus,St Zéphyrin
 Precious Blood,Précieux Sang
 Precious Blood of Jesus,Précieux Sang de Jésus
 Quasimodo Sunday,Dimanche de Quasimodo
@@ -123,7 +123,7 @@ SS. Philip & James,Sts Philip et James
 SS. Primus & Felician,Sts Prime et Félicien
 SS. Protus & Hyacinth,Sts Prote et Hyacinthe
 SS. Simon & Jude,Sts Simon et Jude
-SS. Soter & Caius,"Sts Sôter et Caïus"
+SS. Soter & Caius,Sts Sôter et Caïus
 SS. Vincent & Anastasius,Sts Vincent et Anastase
 "SS. Vitus, Modestus, & Crescentia","Sts Vitus, Modestus, et Crescentia"
 Sacred Heart,Sacré-Cœur
@@ -246,14 +246,13 @@ St. John of God,St Jean de Dieu
 St. John of Matha,St Jean de Matha
 St. John of St. Facundo,St Jean de San Facundo
 St. John of the Cross,St Jean de la Croix
-St. John's Day,La Saint-Jean
-<<<<<<< HEAD
-St. John's Eve,Vigile de la Fête de St Jean
+St. John's Day,la Saint-Jean
+St. John's Eve,la Vigile de la Fête de St Jean
 St. Josaphat,St Josaphat
 St. Joseph,St Joseph
 St. Joseph Calasanctius,St Joseph Calasanz
 St. Joseph of Cupertino,St Joseph de Cupertino
-St. Joseph the Worker,"St Joseph, artisan"
+St. Joseph the Worker,St Joseph, artisan
 St. Juliana Falconieri,Ste Julienne Falconieri
 St. Justin,St Justin
 St. Lawrence,St Laurent
@@ -336,46 +335,46 @@ St. Walpurga,St Walpurga
 St. Wenceslaus,St Venceslas
 St. William,St Guillaume
 Sunday within the Octave of Christmas,Dimanche dans l'Octave de Noël
-The Annunciation,L'Annonciation
-The Apparition at Lourdes,L'Apparition de l'Immaculée
-The Assumption,L'Assomption
+The Annunciation,l'Annonciation
+The Apparition at Lourdes,l'Apparition de l'Immaculée
+The Assumption,l'Assomption
 The Beheading of John the Baptist,Décollation de St Jean-Baptiste
-The Circumcision,La Circoncision
-The Forty Martyrs,Les Quarante Martyrs
-The Four Crowned Holy Martyrs,Les Quatre saints Couronnés
-The Holy Family,La sainte Famille
-The Holy Guardian Angels,Les saints Anges Gardiens
-The Holy Machabees,Les saints Machabées
-The Holy Name,Le saint Nom de Jésus
-The Holy Rosary,Le saint Rosaire
-The Immaculate Conception,L'Immaculée Conception
-The Immaculate Heart,Le Cœur Immaculé de Marie
-The Most Holy Name of Mary,Le saint Nom de Marie
-The Most Precious Blood,Le Précieux Sang
-The Motherhood of Mary,La Maternité de la B.V.M.
-The Nativity of Mary,La Nativité de la B.V.M.
-The Presentation of Mary,La Présentation de Marie au Temple
-The Purification,La Purification
-The Queenship of Mary,La Royauté de la B.V.M.
-The Sacred Heart,Le Sacré-Cœur de Jésus
-The Seven Holy Brothers and SS. Rufina and Secunda,Les Sept saints Frères et les Stes Rufine et Seconde
-The Seven Holy Founders of the Servite Order,Les Sept saints Fondateurs de l'Ordre des Servites
-The Seven Sorrows,Les Sept Douleurs de la B.V.M.
-The Stigmata of St. Francis,Les Stigmates de St François
-The Supplica (Our Lady of Pompeii),La Supplique à Notre-Dame de Pompéi
-The Transfiguration,La Transfiguration
-The Visitation,La Visitation
+The Circumcision,la Circoncision
+The Forty Martyrs,les Quarante Martyrs
+The Four Crowned Holy Martyrs,les Quatre saints Couronnés
+The Holy Family,la sainte Famille
+The Holy Guardian Angels,les saints Anges Gardiens
+The Holy Machabees,les saints Machabées
+The Holy Name,le saint Nom de Jésus
+The Holy Rosary,le saint Rosaire
+The Immaculate Conception,l'Immaculée Conception
+The Immaculate Heart,le Cœur Immaculé de Marie
+The Most Holy Name of Mary,le saint Nom de Marie
+The Most Precious Blood,le Précieux Sang
+The Motherhood of Mary,la Maternité de la B.V.M.
+The Nativity of Mary,la Nativité de la B.V.M.
+The Presentation of Mary,la Présentation de la B.V.M. au Temple
+The Purification,la Purification
+The Queenship of Mary,la Royauté de la B.V.M.
+The Sacred Heart,le Sacré-Cœur de Jésus
+The Seven Holy Brothers and SS. Rufina and Secunda,les Sept saints Frères et les Stes Rufine et Seconde
+The Seven Holy Founders of the Servite Order,les Sept saints Fondateurs de l'Ordre des Servites
+The Seven Sorrows,les sept Douleurs de la B.V.M.
+The Stigmata of St. Francis,les Stigmates de St François
+The Supplica (Our Lady of Pompeii),la Supplique à Notre-Dame de Pompéi
+The Transfiguration,la Transfiguration
+The Visitation,la Visitation
 Three Kings Day,Épiphanie
-Thursday in Pentecost Week,Le jeudi de la Pentecôte
-Trinity Sunday,Dimanche de la sainte Trinité
+Thursday in Pentecost Week,le jeudi de la Pentecôte
+Trinity Sunday,le dimanche de la sainte Trinité
 Tuesday of Holy Week,Mardi saint
-Twelfth Night,La Nuit des Rois
-Vigil of Pentecost,Vigile de la Pentecôte
-Vigil of SS. Peter & Paul,Vigile de Sts Pierre et Paul
-Vigil of St. Lawrence,Vigile de St Laurent
-Vigil of the Assumption,Vigile de l'Assomption
+Twelfth Night,la Nuit des Rois
+Vigil of Pentecost,la Vigile de la Pentecôte
+Vigil of SS. Peter & Paul,la Vigile de Sts Pierre et Paul
+Vigil of St. Lawrence,la Vigile de St Laurent
+Vigil of the Assumption,la Vigile de l'Assomption
 Walpurgisnacht,Walpurgisnacht
-Whit Embertide,Whit Embertide
+Whit Embertide,les Quatre-Temps de la Pentecôte
 Whit Monday,Lundi de Pentecôte
 Whit Tuesday,Mardi de Pentecôte
 Monday,Lundi
@@ -413,23 +412,23 @@ Twenty-fifth,Vingt-cinquième
 Twenty-sixth,Vingt-sixième
 Twenty-seventh,Vingt-septième
 Last Sunday,Dernier dimanche
-Advent,Avent
-Lent,Carême
-Septuagesima,Septuagésime
-Passiontide,Temps de la Passion
-Eastertide,Temps Pascal
-Christmastide,Temps de Noël
-Time after Epiphany,Temps après l'Épiphanie
-Time after Pentecost,Temps après la Pentecôte
-Holy Week,Semaine Sainte
-Paschal Triduum,Triduum Pascal
+Advent,l'Avent
+Lent,le Carême
+Septuagesima,la Septuagésime
+Passiontide,le Temps de la Passion
+Eastertide,le Temps Pascal
+Christmastide,le Temps de Noël
+Time after Epiphany,le Temps après l'Épiphanie
+Time after Pentecost,le Temps après la Pentecôte
+Holy Week,la Semaine Sainte
+Paschal Triduum,le Triduum Pascal
 Shrovetide,Jours Gras
-Hallowtide,Octave de la Toussaint
-Lady Day,L'Annonciation
-Lenten Embertide,Quatre-Temps de Carême
-Advent Embertide,Quatre-Temps de l'Avent
-Whit Embertide,Quatre-Temps de la Pentecôte
-September Embertide,Quatre-Temps de Septembre
+Hallowtide,l'Octave de la Toussaint
+Lady Day,l'Annonciation
+Lenten Embertide,les Quatre-Temps de Carême
+Advent Embertide,les Quatre-Temps de l'Avent
+Whit Embertide,les Quatre-Temps de la Pentecôte
+September Embertide,les Quatre-Temps de Septembre
 St. Peter,St Pierre
 St. Bernadette,Ste Bernadette
 St. Gregory the Great,St Grégoire le Grand
@@ -442,14 +441,14 @@ St. Raphael the Archangel,St Raphaël Archange
 St. Martin of Tours,St Martin de Tours
 St. Clement I,St Clément Ier
 St. John the Evangelist,St Jean l'Évangéliste
-St. Sylvester I,"St Sylvestre Ier"
+St. Sylvester I,St Sylvestre Ier
 St Raymond of Peñafort,St Raymond de Peñafort
 St John of Matha,St Jean de Matha
 St Cyril of Alexandria,St Cyrille d'Alexandrie
 St Peter Damien,St Pierre Damien
 St Mary of Egypt,Ste Marie l'Égyptienne
 St Fidelis of Sigmaringen,St Fidèle de Sigmaringen
-St Joseph the Worker,"St Joseph, artisan"
+St Joseph the Worker,St Joseph, artisan
 St Bernardine of Siena,St Bernardin de Sienne
 Pentecost Wednesday,Mercredi de la Pentecôte
 Pentecost Thursday,Jeudi de la Pentecôte
@@ -457,10 +456,10 @@ Pentecost Friday,Vendredi de la Pentecôte
 Pentecost Saturday,Samedi de la Pentecôte
 St Basil the Great,St Basile le Grand
 St Henry,St Henri
-The Seven Holy Brothers and Sts Rufina and Secunda,Les Sept saints Frères et les Stes Rufine et Seconde
+The Seven Holy Brothers and Sts Rufina and Secunda,les Sept saints Frères et les Stes Rufine et Seconde
 St Rose of Lima,Ste Rose de Lima
 St Veronica,Ste Véronique
-Canadian martyrs,Les martyrs canadiens
+Canadian martyrs,les martyrs canadiens
 St Theresa of Lisieux,Ste Thérèse de l'Enfant-Jésus
 St Peter of Alcántara,St Pierre d'Alcántara
 Nativity of Mary,Nativité de Marie
@@ -480,8 +479,8 @@ St. John of Kanti,St Jean de Kenty
 St. Jane Frances de Chantal,Ste Jeanne de Chantal
 St. Peter of Alcantara,St Pierre d'Alcantara
 Sts. Cyril and Methodius,Sts Cyrille et Méthode
-The Seven Holy Brothers and Sts. Rufina and Secunda,Les Sept saints Frères et les Stes Rufine et Seconde
-St. Jean's Eve,Vigile de la Fête de St Jean
+The Seven Holy Brothers and Sts. Rufina and Secunda,les Sept saints Frères et les Stes Rufine et Seconde
+St. Jean's Eve,la Vigile de la Fête de St Jean
 "SS. Vitus, Modestus & Crescentia","Sts Vite, Modeste, et Crescence"
 SS. Gervasius & Protasius,Gervais et Protais
 "SS. Nazarius, Celsus, Victor I & Innocent I","Sts Nazaire et Celse, Victor Ier, Innocent Ier"

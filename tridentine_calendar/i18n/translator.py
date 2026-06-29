@@ -250,6 +250,12 @@ class Translator:
             return self.weekdays[text]
         return self.translations.get(text, text)
 
+    def _is_plural(self, name):
+        if self.lang != 'fr':
+            return False
+        plural_prefixes = ('Les ', 'les ', 'sts ', 'stes ')
+        return name.lstrip('» ').lstrip('› ').startswith(plural_prefixes)
+
     def get_ordinal(self, n):
         return self.ordinals.get(n, str(n))
 
@@ -352,7 +358,12 @@ class Translator:
             rank_str = self.translate(str(rank))
         else:
             rank_str = rank * 'I'
-        return self.templates['class_feria'].format(
+
+        template = self.templates['class_feria']
+        if self._is_plural(name):
+            template = template.replace(' est ', ' sont ')
+
+        return template.format(
             name=name, rank=rank_str, type=type_str)
 
     def format_color(self, color):
@@ -365,19 +376,29 @@ class Translator:
 
     def format_outranking(
             self, feast, outranking_feast, is_fixed_outranked_by_fixed):
-        template = (
+        template_key = (
             'outranking' if is_fixed_outranked_by_fixed
             else 'outranking_this_year')
-        return self.templates[template].format(
+        template = self.templates[template_key]
+        if self._is_plural(feast):
+            template = template.replace(' est ', ' sont ')
+            template = template.replace(' omise.', ' omises.')
+        return template.format(
             feast=make_initial__the__lowercase(feast),
             outranking_feast=outranking_feast,
         )
 
     def format_holy_day(self, name):
-        return self.templates['holy_day'].format(name=name)
+        template = self.templates['holy_day']
+        if self._is_plural(name):
+            template = template.replace(' est ', ' sont ')
+        return template.format(name=name)
 
     def format_no_special_liturgy(self, name):
-        return self.templates['no_special_liturgy'].format(name=name)
+        template = self.templates['no_special_liturgy']
+        if self._is_plural(name):
+            template = template.replace(' n\'a pas ', ' n\'ont pas ')
+        return template.format(name=name)
 
     def format_commemoration(self):
         return self.templates['today_is_commemoration']

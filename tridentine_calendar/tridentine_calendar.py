@@ -900,7 +900,9 @@ class LiturgicalCalendar:
 
         """
         ics_calendar = ical.Calendar()
-        ics_calendar.add('prodid', '-//Joe Antognini//Tridentine Calendar//EN')
+        ics_calendar.add(
+            'prodid', f'-//Joe Antognini//Tridentine Calendar//{self.lang.upper()}'
+        )
         ics_calendar.add('version', '2.0')
 
         cal_name = self.translator.translate('Tridentine calendar')

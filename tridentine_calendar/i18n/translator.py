@@ -98,10 +98,10 @@ class Translator:
             'class_feria': '{name} est une {type} de {rank}.',
             'liturgical_color': 'La couleur liturgique est le {color}.',
             'outranking': '{feast} est omise.',
-            'outranking_this_year': 'Cette année {feast} est omise.',
+            'outranking_this_year': 'Cette année, {feast} est omise.',
             'holy_day': '{name} est un jour d\'obligation.',
             'no_special_liturgy': '{name} n\'a pas de liturgie spéciale.',
-            'today_is_commemoration': 'Aujourd\'hui est une commémoraison.',
+            'today_is_commemoration': 'Aujourd\'hui, c\'est une commémoraison.',
             'lent_commemoration': (
                 'Puisque {feast} tombe pendant le Carême, il sera ordinairement '
                 'célébré seulement comme une commémoraison pendant la messe de '

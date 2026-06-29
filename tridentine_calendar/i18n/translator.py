@@ -300,8 +300,11 @@ class Translator:
                 name=translated_name)
 
         if self.lang == 'fr':
-            if is_already_feast or is_generic_sunday or not is_feast:
+            if is_already_feast or not is_feast:
                 return translated_name
+
+            if is_generic_sunday:
+                return "le " + translated_name
 
             # Special cases for feasts that are already fully named with articles in the lexicon
             # and should not have "la fête de" prefixed.

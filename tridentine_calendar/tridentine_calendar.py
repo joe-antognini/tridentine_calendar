@@ -327,7 +327,8 @@ class LiturgicalCalendarEvent:
 
         """
         titles = self.titles if with_titles else None
-        full_name = self.translator.format_feast_full_name(self.name, self.rank, titles)
+        full_name = self.translator.format_feast_full_name(
+            self.name, self.rank, titles, is_feast=self.feast)
 
         if capitalize:
             full_name = full_name[0].upper() + full_name[1:]

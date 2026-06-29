@@ -259,12 +259,25 @@ class Translator:
     def get_ordinal(self, n):
         return self.ordinals.get(n, str(n))
 
-    def format_feast_full_name(self, name, rank, titles=None):
+    def format_feast_full_name(self, name, rank, titles=None, is_feast=True):
         translated_name = self.translate(name)
+
+        is_plural = self._is_plural(translated_name)
+
         if titles:
-            titles_str = self.format_titles(titles)
+            titles_str = self.format_titles(titles, plural=is_plural)
             if titles_str:
-                translated_name = f"{translated_name} ({titles_str})"
+                if self.lang == 'fr':
+                    # To avoid redundant descriptions like 'st Miltiade, pape (pape, martyr)'
+                    # We also check for singular title if we are currently pluralized
+                    titles_str_sing = self.format_titles(titles, plural=False)
+                    if (translated_name.endswith(f", {titles_str}")
+                            or translated_name.endswith(f", {titles_str_sing}")):
+                        pass
+                    else:
+                        translated_name = f"{translated_name} ({titles_str})"
+                else:
+                    translated_name = f"{translated_name} ({titles_str})"
 
         the_feast_of_prefixes = ['St.', 'SS.', 'Pope', 'Our Lady', 'The']
         other_the_feasts = ['Christ the King']
@@ -274,7 +287,8 @@ class Translator:
             'Sunday' in name or '主日' in translated_name
             or 'dimanche' in translated_name.lower())
         is_already_feast = (name.startswith('Feast')
-                            or translated_name.startswith('祝日'))
+                            or translated_name.startswith('祝日')
+                            or translated_name.startswith('Fête'))
 
         if self.lang == 'ja':
             if is_generic_sunday or is_already_feast:
@@ -286,21 +300,37 @@ class Translator:
                 name=translated_name)
 
         if self.lang == 'fr':
-            if is_already_feast:
+            if is_already_feast or is_generic_sunday or not is_feast:
                 return translated_name
-            if (translated_name.lower().startswith('la ')
-                    or translated_name.lower().startswith('le ')
-                    or translated_name.lower().startswith('les ')
-                    or translated_name.lower().startswith('l\'')):
-                # E.g., La Circoncision, Le Christ-Roi, Les martyrs canadiens, etc.
+
+            # Special cases for feasts that are already fully named with articles in the lexicon
+            # and should not have "la fête de" prefixed.
+            lexicon_full_feasts = [
+                "L'Annonciation", "La Circoncision", "La Toussaint", "La Chandeleur",
+                "La Fête-Dieu", "L'Assomption", "L'Immaculée Conception"
+            ]
+            if translated_name in lexicon_full_feasts:
                 return translated_name
 
             template = (
                 'feast_full_name' if rank != 4 else 'commemoration_full_name')
 
-            if is_generic_sunday:
+            if translated_name.lower().startswith('les '):
+                # la fête des saints Innocents
+                fmt_name = translated_name[4:]
                 return self.templates[template].replace(
-                    ' de {name}', ' du {name}').format(name=translated_name)
+                    ' de {name}', ' des {name}').format(name=fmt_name)
+            elif translated_name.lower().startswith('le '):
+                # la fête du Sacré-Cœur
+                fmt_name = translated_name[3:]
+                return self.templates[template].replace(
+                    ' de {name}', ' du {name}').format(name=fmt_name)
+            elif translated_name.lower().startswith('la '):
+                # e.g. La sainte Famille -> la fête de la sainte Famille
+                return self.templates[template].format(name=translated_name)
+            elif translated_name.lower().startswith('l\''):
+                # e.g. L'Apparition de l'Immaculée -> la fête de l'Apparition...
+                return self.templates[template].format(name=translated_name)
 
             vowels = 'aeiouyàâéèêëîïôûùh'
             if translated_name[0].lower() in vowels:
@@ -410,10 +440,36 @@ class Translator:
     def format_more_info(self, name):
         return self.templates['more_info'].format(name=name)
 
-    def format_titles(self, titles):
+    def _pluralize_fr_title(self, title):
+        """Pluralize a French title."""
+        if not title:
+            return title
+
+        # Split by ' et ' to handle compound titles like 'vierge et martyre'
+        parts = title.split(' et ')
+        plural_parts = []
+        for part in parts:
+            # Handle cases with 'de' like 'docteur de l'Église'
+            subparts = part.split(' de ')
+            if len(subparts) > 1:
+                # Only pluralize the first part: 'docteurs de l'Église'
+                plural_parts.append(
+                    subparts[0] + 's de ' + ' de '.join(subparts[1:]))
+            else:
+                plural_parts.append(part + 's')
+
+        return ' et '.join(plural_parts)
+
+    def format_titles(self, titles, plural=False):
         if not titles:
             return ""
         translated_titles = [self.translate(t) for t in titles]
+
+        if self.lang == 'fr' and plural:
+            translated_titles = [
+                self._pluralize_fr_title(t) for t in translated_titles
+            ]
+
         if self.lang == 'en':
             translated_titles = [
                 t[0].upper() + t[1:] if t else t

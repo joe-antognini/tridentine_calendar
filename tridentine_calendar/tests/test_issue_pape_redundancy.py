@@ -22,6 +22,6 @@ def test_fr_papes_redundancy():
     titles = ["Pope", "Martyr"]
     full_name = translator.format_feast_full_name(name, 3, titles)
     # Current: "la fête de Sts Sôter et Caïus, papes (pape, martyr)"
-    # Expected: "la fête de Sts Sôter et Caïus (pape, martyr)"
+    # Expected: "la fête de Sts Sôter et Caïus (papes, martyrs)"
     assert ", papes (" not in full_name
-    assert full_name == "la fête de Sts Sôter et Caïus (pape, martyr)"
+    assert full_name == "la fête de Sts Sôter et Caïus (papes, martyrs)"

@@ -783,6 +783,8 @@ class LiturgicalYear:
         for date in iterate_liturgical_year(self.year):
             for i, elem in enumerate(self.calendar[date]):
                 ics_name = self.translator.translate(elem.name)
+                if self.lang == 'fr' and ics_name:
+                    ics_name = ics_name[0].upper() + ics_name[1:]
                 description = ''
 
                 if i > 0 and elem.liturgical_event and not elem.addition:

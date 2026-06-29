@@ -268,8 +268,9 @@ class Translator:
             titles_str = self.format_titles(titles, plural=is_plural)
             if titles_str:
                 if self.lang == 'fr':
-                    # To avoid redundant descriptions like 'st Miltiade, pape (pape, martyr)'
-                    # We also check for singular title if we are currently pluralized
+                    # To avoid redundant descriptions like 'st Miltiade, pape (pape,
+                    # martyr)'.
+                    # We also check for singular title if we are currently pluralized.
                     titles_str_sing = self.format_titles(titles, plural=False)
                     if (translated_name.endswith(f", {titles_str}")
                             or translated_name.endswith(f", {titles_str_sing}")):
@@ -303,8 +304,8 @@ class Translator:
             if is_already_feast or is_generic_sunday or not is_feast:
                 return translated_name
 
-            # Special cases for feasts that are already fully named with articles in the lexicon
-            # and should not have "la fête de" prefixed.
+            # Special cases for feasts that are already fully named with articles in
+            # the lexicon and should not have "la fête de" prefixed.
             lexicon_full_feasts = [
                 "L'Annonciation", "La Circoncision", "La Toussaint", "La Chandeleur",
                 "La Fête-Dieu", "L'Assomption", "L'Immaculée Conception"

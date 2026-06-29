@@ -52,3 +52,25 @@ def test_fr_liturgical_calendar_output():
     # Since it is a holy day of obligation, "Aujourd'hui" is used instead of
     # the full name in the class_feria string
     assert "Aujourd'hui est une fête de Ire classe." in description
+
+
+def test_fr_plural_agreement():
+    translator = Translator(lang='fr')
+
+    # Test "Les"
+    assert "sont" in translator.format_class_feria("Les martyrs", 2, True)
+    assert "n'ont pas" in translator.format_no_special_liturgy("Les Grandes Ô")
+
+    # Test "sts"
+    assert "sont" in translator.format_class_feria("sts Abdon et Sennen", 3, True)
+
+    # Test "stes"
+    assert "sont" in translator.format_class_feria("stes Perpétue et Félicité", 3, True)
+
+    # Test outranking plural
+    outranking = translator.format_outranking("Les martyrs", "Une fête", True)
+    assert "sont omises" in outranking
+
+    # Test holy day plural
+    holy = translator.format_holy_day("Les Grandes Ô")
+    assert "sont" in holy

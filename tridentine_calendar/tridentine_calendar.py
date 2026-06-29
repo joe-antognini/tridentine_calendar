@@ -199,12 +199,7 @@ class LiturgicalSeason:
         if self.lang == 'ja':
             full_name = translated_name
         elif self.lang == 'fr':
-            if self.name.startswith('Time after'):
-                full_name = 'le ' + translated_name
-            elif self.name == 'Advent':
-                full_name = 'l\'' + translated_name
-            else:
-                full_name = translated_name
+            full_name = self.translator._contract(translated_name)
         else:
             if self.name.startswith('Time after'):
                 full_name = 'the ' + translated_name
@@ -403,7 +398,7 @@ class LiturgicalCalendarEvent:
                 if self.lang == 'ja':
                     name = '今日'
                 elif self.lang == 'fr':
-                    name = 'Aujourd\'hui'
+                    name = "Aujourd'hui"
                 else:
                     name = 'Today'
             elif not ranking_feast:
@@ -458,8 +453,11 @@ class LiturgicalCalendarEvent:
                     description += '• ' + url_obj.url + '\n'
             description += '\n'
 
-        description += self.translator.format_more_info(
-            self.season.full_name(capitalize=False)) + '\n'
+        more_info_season = self.translator.format_more_info(
+            self.season.full_name(capitalize=False))
+        if self.lang == 'fr':
+            more_info_season = self.translator._contract(more_info_season)
+        description += more_info_season + '\n'
         for url_obj in self.season.urls:
             if html_formatting:
                 description += '• ' + url_obj.to_href() + '\n'
@@ -545,15 +543,9 @@ class LiturgicalYear:
             date = self.liturgical_year_start + dt.timedelta(7 * (i - 1))
             ordinal = self.translator.get_ordinal(i)
             season = self.translator.translate('Advent')
-            if self.lang == 'fr':
-                template = self.translator.templates[
-                    'ordinal_sunday_advent_full_name']
-                name = template.format(
-                    ordinal=ordinal, season=season)
-            else:
-                name = self.translator.templates[
-                    'ordinal_sunday_full_name'].format(
-                    ordinal=ordinal, season=season)
+            name = self.translator.templates[
+                'ordinal_sunday_full_name'].format(
+                ordinal=ordinal, season=season)
             event = LiturgicalCalendarEvent(
                 date, name=name, rank=1, lang=self.lang,
                 translator=self.translator)
@@ -565,14 +557,9 @@ class LiturgicalYear:
         while date < mf.Septuagesima.date(self.year):
             ordinal = self.translator.get_ordinal(i)
             event_name = self.translator.translate('Epiphany')
-            if self.lang == 'fr':
-                name = self.translator.templates[
-                    'ordinal_sunday_after_full_name'].format(
-                    ordinal=ordinal, event='l\'' + event_name)
-            else:
-                name = self.translator.templates[
-                    'ordinal_sunday_after_full_name'].format(
-                    ordinal=ordinal, event=event_name)
+            name = self.translator.templates[
+                'ordinal_sunday_after_full_name'].format(
+                ordinal=ordinal, event=event_name)
             event = LiturgicalCalendarEvent(
                 date, name=name, rank=2, lang=self.lang, translator=self.translator)
             self.calendar[date].append(event)
@@ -606,11 +593,8 @@ class LiturgicalYear:
 
         date = mf.Ascension.date(self.year) + dt.timedelta(3)
         event_name = self.translator.translate('Ascension')
-        if self.lang == 'fr':
-            name = 'Dimanche après l\'' + event_name
-        else:
-            name = self.translator.templates['ordinal_sunday_after_full_name'].format(
-                ordinal='', event=event_name).replace('  ', ' ').strip()
+        name = self.translator.templates['ordinal_sunday_after_full_name'].format(
+            ordinal='', event=event_name).replace('  ', ' ').strip()
         # In Japanese, ''後主日 works. In English ' Sunday after Ascension' works.
         event = LiturgicalCalendarEvent(
             date, name=name, rank=1, lang=self.lang, translator=self.translator)
@@ -622,14 +606,9 @@ class LiturgicalYear:
         while date <= self.liturgical_year_end - dt.timedelta(7):
             ordinal = self.translator.get_ordinal(i)
             event_name = self.translator.translate('Pentecost')
-            if self.lang == 'fr':
-                name = self.translator.templates[
-                    'ordinal_sunday_after_full_name'].format(
-                    ordinal=ordinal, event='la ' + event_name)
-            else:
-                name = self.translator.templates[
-                    'ordinal_sunday_after_full_name'].format(
-                    ordinal=ordinal, event=event_name)
+            name = self.translator.templates[
+                'ordinal_sunday_after_full_name'].format(
+                ordinal=ordinal, event=event_name)
             event = LiturgicalCalendarEvent(
                 date, name=name, rank=2, lang=self.lang, translator=self.translator)
             self.calendar[date].append(event)
@@ -637,12 +616,8 @@ class LiturgicalYear:
             date += dt.timedelta(7)
 
         event_name = self.translator.translate('Pentecost')
-        if self.lang == 'fr':
-            name = self.translator.templates['last_sunday_full_name'].format(
-                event='la ' + event_name)
-        else:
-            name = self.translator.templates['last_sunday_full_name'].format(
-                event=event_name)
+        name = self.translator.templates['last_sunday_full_name'].format(
+            event=event_name)
         event = LiturgicalCalendarEvent(
             date, name=name, rank=2, lang=self.lang, translator=self.translator)
         self.calendar[date].append(event)
@@ -784,6 +759,7 @@ class LiturgicalYear:
             for i, elem in enumerate(self.calendar[date]):
                 ics_name = self.translator.translate(elem.name)
                 if self.lang == 'fr' and ics_name:
+                    ics_name = self.translator._contract(ics_name)
                     ics_name = ics_name[0].upper() + ics_name[1:]
                 description = ''
 

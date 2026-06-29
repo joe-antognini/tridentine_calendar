@@ -83,13 +83,12 @@ class Translator:
         'fr': {
             'feast_full_name': 'la fête de {name}',
             'commemoration_full_name': 'la commémoraison de {name}',
-            'basilica_full_name': 'la fête de la {name}',
+            'basilica_full_name': 'la fête de {name}',
             'basilica_commemoration_full_name': (
-                'la commémoraison de la {name}'),
+                'la commémoraison de {name}'),
             'vigil_full_name': 'la vigile de la fête de {name}',
             'vigil_generic_full_name': '{name}',
             'ordinal_sunday_full_name': '{ordinal} dimanche de {season}',
-            'ordinal_sunday_advent_full_name': '{ordinal} dimanche de l\'{season}',
             'ordinal_sunday_after_full_name': '{ordinal} dimanche après {event}',
             'last_sunday_full_name': 'Dernier dimanche après {event}',
             'feria_in_lent': '{weekday} de la {ordinal} semaine de Carême',
@@ -206,12 +205,12 @@ class Translator:
 
         # Add or override core terms for better Sunday/Feria construction
         core_overrides = {
-            'Epiphany': 'Épiphanie',
-            'Pentecost': 'Pentecôte',
+            'Epiphany': "l'Épiphanie",
+            'Pentecost': 'la Pentecôte',
             'Easter': 'Pâques',
-            'Advent': 'Avent',
-            'Lent': 'Carême',
-            'Ascension': 'Ascension',
+            'Advent': "l'Avent",
+            'Lent': 'le Carême',
+            'Ascension': "l'Ascension",
         }
         for en, fr in core_overrides.items():
             self.translations[en] = fr
@@ -249,6 +248,48 @@ class Translator:
         if text in self.weekdays:
             return self.weekdays[text]
         return self.translations.get(text, text)
+
+    def _contract(self, text):
+        """Apply French contractions and elisions."""
+        if self.lang != 'fr':
+            return text
+
+        # Clean up any double articles that might have been introduced
+        # (e.g., from translated names that already have articles)
+        text = text.replace('le le ', 'le ')
+        text = text.replace('la la ', 'la ')
+        text = text.replace('le la ', 'la ')
+        text = text.replace('la le ', 'le ')
+        text = text.replace("l'l'", "l'")
+        text = text.replace("le l'", "l'")
+        text = text.replace("la l'", "l'")
+
+        # Contractions
+        text = text.replace('de le ', 'du ')
+        text = text.replace('de les ', 'des ')
+        text = text.replace('de la Dimanche', 'du Dimanche')
+
+        # Elisions
+        vowels = 'aeiouyàâéèêëîïôûùh'
+        for v in vowels:
+            text = text.replace(f'de {v}', f"de l'{v}")
+            text = text.replace(f'de {v.upper()}', f"de l'{v.upper()}")
+
+        # Special cases for le/la
+        for v in vowels:
+            text = text.replace(f'le {v}', f"l'{v}")
+            text = text.replace(f'le {v.upper()}', f"l'{v.upper()}")
+            text = text.replace(f'la {v}', f"l'{v}")
+            text = text.replace(f'la {v.upper()}', f"l'{v.upper()}")
+
+        # Final cleanup
+        text = text.replace('de du ', 'du ')
+        text = text.replace('de des ', 'des ')
+        text = text.replace("de l'l'", "de l'")
+        text = text.replace('de le ', 'du ')
+        text = text.replace('de les ', 'des ')
+
+        return text
 
     def _is_plural(self, name):
         if self.lang != 'fr':
@@ -288,31 +329,12 @@ class Translator:
         if self.lang == 'fr':
             if is_already_feast:
                 return translated_name
-            if (translated_name.lower().startswith('la ')
-                    or translated_name.lower().startswith('le ')
-                    or translated_name.lower().startswith('les ')
-                    or translated_name.lower().startswith('l\'')):
-                # E.g., La Circoncision, Le Christ-Roi, Les martyrs canadiens, etc.
-                return translated_name
 
-            template = (
+            template_key = (
                 'feast_full_name' if rank != 4 else 'commemoration_full_name')
+            template = self.templates[template_key]
 
-            if is_generic_sunday:
-                return self.templates[template].replace(
-                    ' de {name}', ' du {name}').format(name=translated_name)
-
-            vowels = 'aeiouyàâéèêëîïôûùh'
-            if translated_name[0].lower() in vowels:
-                # Use the name for elision
-                fmt_name = 'l\'' + translated_name
-                # la fête de l'Annonciation
-                return self.templates[template].format(name=fmt_name)
-            else:
-                # Special case for St. Joseph where we want "de Saint Joseph"
-                if translated_name.startswith('Saint'):
-                    return self.templates[template].format(name=translated_name)
-                return self.templates[template].format(name=translated_name)
+            return self._contract(template.format(name=translated_name))
 
         # English logic
         if any([name.split()[0] in the_feast_of_prefixes,

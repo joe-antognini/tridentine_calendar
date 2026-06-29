@@ -253,7 +253,8 @@ class Translator:
     def _is_plural(self, name):
         if self.lang != 'fr':
             return False
-        plural_prefixes = ('Les ', 'les ', 'Sts ', 'Stes ', 'sts ', 'stes ')
+        plural_prefixes = (
+            'Les ', 'les ', 'Sts ', 'Stes ', 'sts ', 'stes ', 'Quatre-Temps')
         return name.lstrip('» ').lstrip('› ').startswith(plural_prefixes)
 
     def get_ordinal(self, n):
@@ -268,9 +269,8 @@ class Translator:
             titles_str = self.format_titles(titles, plural=is_plural)
             if titles_str:
                 if self.lang == 'fr':
-                    # To avoid redundant descriptions like 'st Miltiade, pape (pape,
-                    # martyr)'.
-                    # We also check for singular title if we are currently pluralized.
+                    # To avoid redundant descriptions like 'st Miltiade, pape (pape, martyr)'
+                    # We also check for singular title if we are currently pluralized
                     titles_str_sing = self.format_titles(titles, plural=False)
                     if (translated_name.endswith(f", {titles_str}")
                             or translated_name.endswith(f", {titles_str_sing}")):
@@ -301,10 +301,28 @@ class Translator:
                 name=translated_name)
 
         if self.lang == 'fr':
-            if is_already_feast or not is_feast:
+            if is_already_feast:
                 return translated_name
 
             if is_generic_sunday:
+                return "le " + translated_name
+
+            if not is_feast:
+                # Add definite article for ferias in descriptions
+                if (translated_name.lower().startswith('la ')
+                        or translated_name.lower().startswith('le ')
+                        or translated_name.lower().startswith('les ')
+                        or translated_name.lower().startswith('l\'')):
+                    return translated_name
+
+                if translated_name.startswith('Quatre-Temps'):
+                    return "les " + translated_name
+                elif translated_name.startswith('Vigile'):
+                    return "la " + translated_name
+
+                vowels = 'aeiouyàâéèêëîïôûùh'
+                if translated_name[0].lower() in vowels:
+                    return "l'" + translated_name
                 return "le " + translated_name
 
             # Special cases for feasts that are already fully named with articles in the lexicon

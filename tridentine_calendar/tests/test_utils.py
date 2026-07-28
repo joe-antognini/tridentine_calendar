@@ -3,6 +3,7 @@ import unittest
 
 from ..utils import add_domain_to_url_description
 from ..utils import feria_name
+from ..utils import fixed_feast_date_key
 from ..utils import get_movable_feast_names_and_dates
 from ..utils import iterate_liturgical_year
 from ..utils import liturgical_year
@@ -42,6 +43,13 @@ class TestFeriaName(unittest.TestCase):
     def test_feria_name(self):
         name = feria_name(dt.date(2019, 3, 11))
         self.assertEqual(name, 'Monday in the first week of Lent')
+
+
+class TestFixedFeastDateKey(unittest.TestCase):
+
+    def test_fixed_feast_date_key(self):
+        self.assertEqual(fixed_feast_date_key(dt.date(2025, 1, 1)), 'January 1')
+        self.assertEqual(fixed_feast_date_key(dt.date(2025, 12, 25)), 'December 25')
 
 
 class TestAddDomainToUrlDescription(unittest.TestCase):

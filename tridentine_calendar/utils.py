@@ -14,6 +14,28 @@ from .movable_feasts import PalmSunday
 from .movable_feasts import PassionSunday
 
 
+ENGLISH_MONTH_NAMES = (
+    None,
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+)
+
+
+def fixed_feast_date_key(date):
+    """Return the month-day key used in the fixed-feast data."""
+    return '{} {}'.format(ENGLISH_MONTH_NAMES[date.month], date.day)
+
+
 @functools.lru_cache()
 def liturgical_year_start(year):
     """Calculate the start of the liturgical year.

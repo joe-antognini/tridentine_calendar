@@ -297,6 +297,16 @@ class TestLiturgicalYearIcal(unittest.TestCase):
 
 
 class TestLiturgicalCalendar(unittest.TestCase):
+    def _event_uid_map(self, ical_data):
+        calendar = ical.Calendar.from_ical(ical_data)
+        return {
+            (
+                str(event['summary']),
+                ical.vDDDTypes.from_ical(event['dtstart']),
+            ): str(event['uid'])
+            for event in calendar.walk('VEVENT')
+        }
+
     def test_liturgical_calendar_init_single_year(self):
         litcal = LiturgicalCalendar(2018)
         self.assertIsNotNone(litcal)
@@ -331,31 +341,68 @@ class TestLiturgicalCalendar(unittest.TestCase):
     def test_extend_existing_ics(self):
         litcal = LiturgicalCalendar(2018)
 
-        filename = tempfile.NamedTemporaryFile()
-        with open(filename.name, 'wb') as fp:
-            fp.write(litcal.to_ical())
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            filename = os.path.join(tmp_dir, 'cal.ics')
+            with open(filename, 'wb') as fp:
+                fp.write(litcal.to_ical())
 
-        new_litcal = LiturgicalCalendar(2019)
-        new_litcal.extend_existing_ical(filename.name, use_html_formatting=False)
-        filename.close()
+            before_events = self._event_uid_map(litcal.to_ical())
+            new_litcal = LiturgicalCalendar(2019)
+            new_litcal.extend_existing_ical(filename, use_html_formatting=False)
+
+            with open(filename, 'rb') as fp:
+                extended_calendar = ical.Calendar.from_ical(fp.read())
+            event_dates = [
+                ical.vDDDTypes.from_ical(event['dtstart'])
+                for event in extended_calendar.walk('VEVENT')
+            ]
+
+            self.assertGreater(len(event_dates), len(before_events))
+            self.assertIn(2019, {date.year for date in event_dates})
 
     def test_reuse_uids(self):
         with tempfile.TemporaryDirectory() as tmp_dir:
             cal1 = LiturgicalCalendar(2018)
             ical1_out = cal1.to_ical()
-            ical1 = ical.Calendar.from_ical(ical1_out)
             fn = os.path.join(tmp_dir, 'cal.ics')
             with open(fn, 'wb') as fp:
                 fp.write(ical1_out)
 
             cal2 = LiturgicalCalendar(2018, reuse_uids_from=fn)
             ical2_out = cal2.to_ical()
-            ical2 = ical.Calendar.from_ical(ical2_out)
 
-            uids1 = {e['uid'] for e in ical1.walk('VEVENT')}
-            uids2 = {e['uid'] for e in ical2.walk('VEVENT')}
+            uids1 = self._event_uid_map(ical1_out)
+            uids2 = self._event_uid_map(ical2_out)
 
             self.assertEqual(uids1, uids2)
+            self.assertIn(('› St. Francis Xavier', dt.date(2017, 12, 3)), uids2)
+            self.assertIn(('» St. Barbara', dt.date(2017, 12, 4)), uids2)
+            self.assertIn(('› St. Francis Xavier', dt.date(2017, 12, 3)),
+                          cal2.uid_map)
+            self.assertIn(('» St. Barbara', dt.date(2017, 12, 4)),
+                          cal2.uid_map)
+
+    def test_reuse_uids_with_japanese_summaries(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            cal1 = LiturgicalCalendar(2018, lang='ja')
+            ical1_out = cal1.to_ical()
+            fn = os.path.join(tmp_dir, 'cal.ics')
+            with open(fn, 'wb') as fp:
+                fp.write(ical1_out)
+
+            cal2 = LiturgicalCalendar(2018, reuse_uids_from=fn, lang='ja')
+            ical2_out = cal2.to_ical()
+
+            uids1 = self._event_uid_map(ical1_out)
+            uids2 = self._event_uid_map(ical2_out)
+            japanese_keys = [
+                key for key in uids1
+                if any(ord(ch) > 127 and ch not in '›»' for ch in key[0])
+            ]
+
+            self.assertEqual(uids1, uids2)
+            self.assertTrue(japanese_keys)
+            self.assertIn(japanese_keys[0], cal2.uid_map)
 
     def test_titles_in_parentheses(self):
         from tridentine_calendar.i18n import Translator

@@ -473,7 +473,7 @@ class LiturgicalCalendarEvent:
             True if the event has a fixed date.
 
         """
-        date_str = self.date.strftime('%B %-d')
+        date_str = utils.fixed_feast_date_key(self.date)
         fixed_feasts_on_date = [
             elem['name'] for elem in FIXED_FEASTS_DATA.get(date_str, [])
         ]
@@ -513,7 +513,7 @@ class LiturgicalYear:
 
         # First we mark fixed solemnities.
         for date in iterate_liturgical_year(self.year):
-            date_str = date.strftime('%B %-d')
+            date_str = utils.fixed_feast_date_key(date)
             if date_str in FIXED_FEASTS_DATA:
                 for elem in FIXED_FEASTS_DATA[date_str]:
                     if elem.get('class') == 1:
@@ -624,7 +624,7 @@ class LiturgicalYear:
 
         # Then second class fixed feasts or lower.
         for date in iterate_liturgical_year(self.year):
-            date_str = date.strftime('%B %-d')
+            date_str = utils.fixed_feast_date_key(date)
             if date_str in FIXED_FEASTS_DATA:
                 for elem in FIXED_FEASTS_DATA[date_str]:
                     if elem.get('class') != 1:
@@ -839,7 +839,7 @@ class LiturgicalCalendar:
 
         self.uid_map = {}
         if reuse_uids_from is not None:
-            with open(reuse_uids_from) as fp:
+            with open(reuse_uids_from, 'rb') as fp:
                 cal = ical.Calendar.from_ical(fp.read())
                 for event in cal.walk('VEVENT'):
                     key = (
@@ -908,7 +908,7 @@ class LiturgicalCalendar:
             use_html_formatting: Whether to use HTML formatting.
 
         """
-        with open(filename, 'r') as fp:
+        with open(filename, 'rb') as fp:
             ics_calendar = ical.Calendar.from_ical(fp.read())
 
         existing_years = set()
@@ -932,7 +932,7 @@ class LiturgicalCalendar:
 
     def remove_existing_year(self, filename, year):
         """Remove a liturgical year from an existing calendar."""
-        with open(filename, 'r') as fp:
+        with open(filename, 'rb') as fp:
             ics_calendar = ical.Calendar.from_ical(fp.read())
 
         start_date = liturgical_year_start(year)

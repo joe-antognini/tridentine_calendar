@@ -1,6 +1,6 @@
 """Setup script for `tridentine_calendar`."""
 
-from setuptools import setup
+from setuptools import find_packages, setup
 
 with open('README.md') as fp:
     long_description=fp.read()
@@ -15,7 +15,13 @@ setup(
     author='Joseph O\'Brien Antognini',
     author_email='joe.antognini@gmail.com',
     license='MIT',
-    packages=['tridentine_calendar'],
+    packages=find_packages(exclude=('tridentine_calendar.tests',)),
+    package_data={
+        'tridentine_calendar': ['*.json'],
+        'tridentine_calendar.i18n': ['*.csv'],
+        'tridentine_calendar.i18n.fr': ['*.csv'],
+        'tridentine_calendar.i18n.ja': ['*.csv'],
+    },
     install_requires=[
         'icalendar',
     ],

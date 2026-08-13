@@ -1,1 +1,2 @@
 include tridentine_calendar/*.json
+recursive-include tridentine_calendar/i18n *.csv

@@ -1488,6 +1488,7 @@
       ],
       "obligation": false,
       "class": 4,
+      "color": "Red",
       "liturgical_event": true
     }
   ],

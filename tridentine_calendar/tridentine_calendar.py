@@ -651,8 +651,8 @@ class LiturgicalYear:
                 package_path = resource_path.split('/')
                 filename = package_path[-1]
                 directory = '.'.join(['tridentine_calendar'] + package_path[:-1])
-                content = resources.read_binary(directory, filename)
-                decoded_content = content.decode('shift_jis')
+                content = (resources.files(directory) / filename).read_bytes()
+                decoded_content = content.decode('utf-8')
                 reader = csv.DictReader(io.StringIO(decoded_content))
                 for row in reader:
                     date_en = row.get('dates_en')
@@ -700,8 +700,8 @@ class LiturgicalYear:
             package_path = resource_path.split('/')
             filename = package_path[-1]
             directory = '.'.join(['tridentine_calendar'] + package_path[:-1])
-            content = resources.read_binary(directory, filename)
-            decoded_content = content.decode('shift_jis')
+            content = (resources.files(directory) / filename).read_bytes()
+            decoded_content = content.decode('utf-8')
             reader = csv.DictReader(io.StringIO(decoded_content))
             for row in reader:
                 if calendar.isleap(self.year):

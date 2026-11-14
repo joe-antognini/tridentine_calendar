@@ -222,14 +222,15 @@ class Translator:
             directory = '.'.join(['tridentine_calendar'] + package_path[:-1])
 
             content = (resources.files(directory) / filename).read_bytes()
-            if self.lang == 'ja':
-                decoded_content = content.decode('shift_jis')
-            else:
-                decoded_content = content.decode('utf-8')
+            decoded_content = content.decode('utf-8')
             reader = csv.DictReader(io.StringIO(decoded_content))
             for row in reader:
-                en_val = row.get(en_col)
-                lang_val = row.get(lang_col)
+                en_val = row.get(en_col) or row.get('en')
+                lang_val = (
+                    row.get(lang_col)
+                    or row.get('translated')
+                    or row.get(self.lang)
+                )
                 if en_val and lang_val:
                     self.translations[en_val] = lang_val
         except FileNotFoundError:

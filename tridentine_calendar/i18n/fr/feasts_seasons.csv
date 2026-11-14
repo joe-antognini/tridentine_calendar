@@ -1,17 +1,4 @@
 en,fr
-<<<<<<< HEAD
-Advent Embertide,Les Quatre-Temps de l'Avent
-All Saints Day,La Toussaint
-All Souls Day,Commémoraison des fidèles défunts
-All Souls' Day,Jour des morts
-Ascension,Ascension
-Ash Wednesday,Mercredi des Cendres
-Baptism of Christ,Baptême du Seigneur
-Basilica of St. John Lateran,Dédicace de l'archibasilique du Latran
-Basilicas of SS. Peter & Paul,Dédicace des basiliques de St Pierre et St Paul
-Canadian Martyrs,Les martyrs canadiens
-Candlemas,La Chandeleur
-=======
 Advent Embertide,les Quatre-Temps de l'Avent
 All Saints Day,la Toussaint
 All Souls Day,la Commémoraison des fidèles défunts
@@ -23,7 +10,6 @@ Basilica of St. John Lateran,la Dédicace de l'archibasilique du Latran
 Basilicas of SS. Peter & Paul,la Dédicace des basiliques de St Pierre et St Paul
 Canadian Martyrs,les martyrs canadiens
 Candlemas,la Chandeleur
->>>>>>> i18n
 Cantate Sunday,Quatrième dimanche de Pâques
 Chair of Unity Octave,Octave de la Chaire d'Unité
 Childermas,les saints Innocents
@@ -57,27 +43,16 @@ Jubilate Sunday,Troisième dimanche de Pâques
 Lady Day,l'Annonciation
 Laetare Sunday,Dimanche de Lætare
 Las Posadas,Las Posadas
-<<<<<<< HEAD
-Last Sunday after Pentecost,Last Sunday after Pentecost
-Lenten Embertide,Les Quatre-Temps de Carême
-Major Rogation,La Grande Litanie
-=======
 Last Sunday after Pentecost,le dernier dimanche après la Pentecôte
 Lenten Embertide,les Quatre-Temps de Carême
 Major Rogation,la Grande Litanie
->>>>>>> i18n
 Mardi Gras,Mardi Gras
 Martinmas,Saint-Martin
 Marymass,l'Assomption
 Maundy Thursday,Jeudi saint
 Michaelmas,Fête de la Saint-Michel
-<<<<<<< HEAD
-Michaelmas Embertide,Les Quatre-Temps de Septembre
-Minor Rogation,Les Rogations
-=======
 Michaelmas Embertide,les Quatre-Temps de Septembre
 Minor Rogation,les Rogations
->>>>>>> i18n
 Misericordia Sunday,Deuxième dimanche de Pâques
 Monday of Holy Week,Lundi saint
 Our Lady of Fatima,Notre-Dame de Fatima
@@ -399,11 +374,7 @@ Vigil of SS. Peter & Paul,la Vigile de Sts Pierre et Paul
 Vigil of St. Lawrence,la Vigile de St Laurent
 Vigil of the Assumption,la Vigile de l'Assomption
 Walpurgisnacht,Walpurgisnacht
-<<<<<<< HEAD
-Whit Embertide,Les Quatre-Temps de la Pentecôte
-=======
 Whit Embertide,les Quatre-Temps de la Pentecôte
->>>>>>> i18n
 Whit Monday,Lundi de Pentecôte
 Whit Tuesday,Mardi de Pentecôte
 Monday,Lundi
@@ -452,21 +423,12 @@ Time after Pentecost,le Temps après la Pentecôte
 Holy Week,la Semaine Sainte
 Paschal Triduum,le Triduum Pascal
 Shrovetide,Jours Gras
-<<<<<<< HEAD
-Hallowtide,Octave de la Toussaint
-Lady Day,L'Annonciation
-Lenten Embertide,Les Quatre-Temps de Carême
-Advent Embertide,Les Quatre-Temps de l'Avent
-Whit Embertide,Les Quatre-Temps de la Pentecôte
-September Embertide,Les Quatre-Temps de Septembre
-=======
 Hallowtide,l'Octave de la Toussaint
 Lady Day,l'Annonciation
 Lenten Embertide,les Quatre-Temps de Carême
 Advent Embertide,les Quatre-Temps de l'Avent
 Whit Embertide,les Quatre-Temps de la Pentecôte
 September Embertide,les Quatre-Temps de Septembre
->>>>>>> i18n
 St. Peter,St Pierre
 St. Bernadette,Ste Bernadette
 St. Gregory the Great,St Grégoire le Grand

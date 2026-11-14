@@ -330,7 +330,7 @@ class Translator:
             or 'dimanche' in translated_name.lower())
         is_already_feast = (name.startswith('Feast')
                             or translated_name.startswith('祝日')
-                            or translated_name.startswith('Fête'))
+                            or 'fête' in translated_name.lower())
 
         if self.lang == 'ja':
             if is_generic_sunday or is_already_feast:
@@ -346,49 +346,15 @@ class Translator:
                 return translated_name
 
             if is_generic_sunday:
-                return "le " + translated_name
-
-            # Special cases for feasts that are already fully named with articles in
-            # the lexicon and should not have "la fête de" prefixed.
-            lexicon_full_feasts = [
-                "L'Annonciation", "La Circoncision", "La Toussaint", "La Chandeleur",
-                "La Fête-Dieu", "L'Assomption", "L'Immaculée Conception"
-            ]
-            if translated_name in lexicon_full_feasts:
-                return translated_name
+                if translated_name.lower().startswith(('le ', "l'", 'la ', 'les ')):
+                    return translated_name
+                return self._contract("le " + translated_name)
 
             template_key = (
                 'feast_full_name' if rank != 4 else 'commemoration_full_name')
             template = self.templates[template_key]
 
-            if translated_name.lower().startswith('les '):
-                # la fête des saints Innocents
-                fmt_name = translated_name[4:]
-                return self.templates[template].replace(
-                    ' de {name}', ' des {name}').format(name=fmt_name)
-            elif translated_name.lower().startswith('le '):
-                # la fête du Sacré-Cœur
-                fmt_name = translated_name[3:]
-                return self.templates[template].replace(
-                    ' de {name}', ' du {name}').format(name=fmt_name)
-            elif translated_name.lower().startswith('la '):
-                # e.g. La sainte Famille -> la fête de la sainte Famille
-                return self.templates[template].format(name=translated_name)
-            elif translated_name.lower().startswith('l\''):
-                # e.g. L'Apparition de l'Immaculée -> la fête de l'Apparition...
-                return self.templates[template].format(name=translated_name)
-
-            vowels = 'aeiouyàâéèêëîïôûùh'
-            if translated_name[0].lower() in vowels:
-                # Use the name for elision
-                fmt_name = 'l\'' + translated_name
-                # la fête de l'Annonciation
-                return self.templates[template].format(name=fmt_name)
-            else:
-                # Special case for St. Joseph where we want "de Saint Joseph"
-                if translated_name.startswith('Saint'):
-                    return self.templates[template].format(name=translated_name)
-                return self.templates[template].format(name=translated_name)
+            return self._contract(template.format(name=translated_name))
 
         # English logic
         if any([name.split()[0] in the_feast_of_prefixes,

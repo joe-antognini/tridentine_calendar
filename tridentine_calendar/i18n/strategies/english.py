@@ -42,7 +42,7 @@ class EnglishStrategy(BaseLanguageStrategy):
         'today': 'Today',
         'this_feast': 'This feast',
         'this_feria': 'This feria',
-        'calendar_name': 'Tridentine calendar',
+        'calendar_name': 'TLM Calendar',
         'calendar_desc': (
             'Liturgical calendar using the 1962 Roman Catholic rubrics.'),
     }

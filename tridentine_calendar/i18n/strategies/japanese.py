@@ -45,7 +45,7 @@ class JapaneseStrategy(BaseLanguageStrategy):
             '祝われます。'),
         'more_info': '{name}についての詳細情報：',
         'types': {'feast': '祝日', 'feria': '平休日'},
-        'calendar_name': 'トリエント典礼暦',
+        'calendar_name': '特別形式のミサ暦',
         'calendar_desc': '1962年のローマ・カトリックの規定に基づく典礼暦。',
     }
 

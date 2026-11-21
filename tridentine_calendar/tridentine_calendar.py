@@ -756,15 +756,14 @@ class LiturgicalCalendar:
                 on desktop calendar applications.
 
         """
+        cal_name = self.translator.get_calendar_name()
+        cal_desc = self.translator.get_calendar_description()
+
         ics_calendar = ical.Calendar()
         ics_calendar.add(
-            'prodid', f'-//Joe Antognini//Tridentine Calendar//{self.lang.upper()}'
+            'prodid', f'-//Joe Antognini//{cal_name}//{self.lang.upper()}'
         )
         ics_calendar.add('version', '2.0')
-
-        cal_name = self.translator.translate('Tridentine calendar')
-        cal_desc = self.translator.translate(
-            'Liturgical calendar using the 1962 Roman Catholic rubrics.')
 
         ics_calendar.add('x-wr-calname', cal_name)
         ics_calendar.add(

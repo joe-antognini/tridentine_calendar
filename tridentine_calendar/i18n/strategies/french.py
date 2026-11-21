@@ -41,7 +41,7 @@ class FrenchStrategy(BaseLanguageStrategy):
         'today': 'Aujourd\'hui',
         'this_feast': 'Cette fête',
         'this_feria': 'Cette férie',
-        'calendar_name': 'Calendrier Tridentin',
+        'calendar_name': 'Messe traditionnelle',
         'calendar_desc': (
             'Calendrier liturgique utilisant les rubriques de 1962 de '
             'l\'Église catholique romaine.'),

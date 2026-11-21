@@ -173,3 +173,34 @@ def test_strategy_feria_formatting():
     assert ja.format_feria_in_lent(1, '月曜日') == '四旬節第一週の月曜日'
     assert ja.format_feria_after_ash_wednesday('木曜日') == '灰の水曜日後の木曜日'
     assert ja.format_feria_in_passion_week('火曜日') == '受難週の火曜日'
+
+
+def test_calendar_name_and_prodid_localization():
+    from tridentine_calendar.tridentine_calendar import LiturgicalCalendar
+    import icalendar as ical
+
+    en_trans = Translator('en')
+    fr_trans = Translator('fr')
+    ja_trans = Translator('ja')
+
+    assert en_trans.get_calendar_name() == 'TLM Calendar'
+    assert fr_trans.get_calendar_name() == 'Messe traditionnelle'
+    assert ja_trans.get_calendar_name() == '特別形式のミサ暦'
+
+    # Test backward compatibility of translate('Tridentine calendar')
+    assert en_trans.translate('Tridentine calendar') == 'TLM Calendar'
+    assert fr_trans.translate('Tridentine calendar') == 'Messe traditionnelle'
+    assert ja_trans.translate('Tridentine calendar') == '特別形式のミサ暦'
+
+    # Test LiturgicalCalendar.to_ical() PRODID and X-WR-CALNAME
+    for lang, expected_name in [
+        ('en', 'TLM Calendar'),
+        ('fr', 'Messe traditionnelle'),
+        ('ja', '特別形式のミサ暦'),
+    ]:
+        cal = LiturgicalCalendar(2024, lang=lang)
+        ics_bytes = cal.to_ical()
+        parsed = ical.Calendar.from_ical(ics_bytes)
+        expected_prodid = f'-//Joe Antognini//{expected_name}//{lang.upper()}'
+        assert parsed.get('prodid') == expected_prodid
+        assert parsed.get('x-wr-calname') == expected_name

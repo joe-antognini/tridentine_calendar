@@ -103,6 +103,12 @@ class Translator:
     def get_today(self) -> str:
         return self.strategy.get_today()
 
+    def get_calendar_name(self) -> str:
+        return self.strategy.get_calendar_name()
+
+    def get_calendar_description(self) -> str:
+        return self.strategy.get_calendar_description()
+
     def get_this_day(self, is_feast: bool) -> str:
         return self.strategy.get_this_day(is_feast)
 

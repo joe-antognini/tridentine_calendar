@@ -70,7 +70,20 @@ class BaseLanguageStrategy(ABC):
         """Translate a single term or return the original text."""
         if text in self.weekdays:
             return self.weekdays[text]
+        if text in ('Tridentine calendar', 'Tridentine Calendar'):
+            return self.get_calendar_name()
         return self.translations.get(text, text)
+
+    def get_calendar_name(self) -> str:
+        """Get the localized calendar name."""
+        return self.templates.get('calendar_name', 'TLM Calendar')
+
+    def get_calendar_description(self) -> str:
+        """Get the localized calendar description."""
+        return self.templates.get(
+            'calendar_desc',
+            'Liturgical calendar using the 1962 Roman Catholic rubrics.',
+        )
 
     def get_ordinal(self, n: int) -> str:
         """Return the localized ordinal for an integer."""

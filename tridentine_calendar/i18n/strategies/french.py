@@ -235,11 +235,25 @@ class FrenchStrategy(BaseLanguageStrategy):
             'outranking' if is_fixed_outranked_by_fixed
             else 'outranking_this_year')
         template = self.templates[template_key]
-        if self._is_plural(feast):
+        is_plural = self._is_plural(feast)
+        is_masculine = (
+            'dimanche' in feast.lower() or feast.lower().startswith('le ')
+        )
+        if is_plural:
             template = template.replace(' est ', ' sont ')
-            template = template.replace(' omise.', ' omises.')
+            if is_masculine:
+                template = template.replace(' omise.', ' omis.')
+            else:
+                template = template.replace(' omise.', ' omises.')
+        elif is_masculine:
+            template = template.replace(' omise.', ' omis.')
+
+        if is_fixed_outranked_by_fixed:
+            formatted_feast = feast[0].upper() + feast[1:] if feast else feast
+        else:
+            formatted_feast = make_initial__the__lowercase(feast)
         return template.format(
-            feast=make_initial__the__lowercase(feast),
+            feast=formatted_feast,
             outranking_feast=outranking_feast,
         )
 

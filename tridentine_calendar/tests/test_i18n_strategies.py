@@ -204,3 +204,50 @@ def test_calendar_name_and_prodid_localization():
         expected_prodid = f'-//Joe Antognini//{expected_name}//{lang.upper()}'
         assert parsed.get('prodid') == expected_prodid
         assert parsed.get('x-wr-calname') == expected_name
+
+
+def test_outranking_capitalization():
+    en_trans = Translator('en')
+    fr_trans = Translator('fr')
+    ja_trans = Translator('ja')
+
+    # Fixed outranked by fixed: starts directly with feast name -> capitalized
+    expected_en_fixed = (
+        'The Commemoration of St. Praxedes is outranked by the Feast of '
+        'St. Lawrence.'
+    )
+    assert en_trans.format_outranking(
+        'the Commemoration of St. Praxedes', 'the Feast of St. Lawrence', True
+    ) == expected_en_fixed
+
+    assert fr_trans.format_outranking(
+        'la commémoraison de Ste Praxède', 'la fête de St Laurent', True
+    ) == 'La commémoraison de Ste Praxède est omise.'
+
+    assert ja_trans.format_outranking(
+        '聖プラクセデス', '聖ラウレンツィオ', True
+    ) == '聖プラクセデスは聖ラウレンツィオに優先されます。'
+
+    # Non-fixed (outranked this year): preceded by "This year" / "Cette année, "
+    # -> lowercase article
+    expected_en_year = (
+        'This year the Commemoration of St. Praxedes is outranked by the '
+        'Feast of St. Lawrence.'
+    )
+    assert en_trans.format_outranking(
+        'The Commemoration of St. Praxedes', 'the Feast of St. Lawrence', False
+    ) == expected_en_year
+
+    assert fr_trans.format_outranking(
+        'La commémoraison de Ste Praxède', 'la fête de St Laurent', False
+    ) == 'Cette année, la commémoraison de Ste Praxède est omise.'
+
+    assert fr_trans.format_outranking(
+        'le vingt-deuxième dimanche après la Pentecôte',
+        'la fête de Le Christ-Roi',
+        False
+    ) == 'Cette année, le vingt-deuxième dimanche après la Pentecôte est omis.'
+
+    assert ja_trans.format_outranking(
+        '聖プラクセデス', '聖ラウレンツィオ', False
+    ) == '今年は聖プラクセデスは聖ラウレンツィオに優先されます。'

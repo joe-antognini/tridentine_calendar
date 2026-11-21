@@ -69,7 +69,30 @@ def test_fr_plural_agreement():
 
     # Test outranking plural
     outranking = translator.format_outranking("Les martyrs", "Une fête", True)
-    assert "sont omises" in outranking
+    assert outranking == "Les martyrs sont omises."
+
+    # Test outranking singular fixed (starts capitalized)
+    outranking_fixed = translator.format_outranking(
+        "la commémoraison de Sts Marc et Marcellianus", "La fête de St Éphrem", True
+    )
+    assert outranking_fixed == "La commémoraison de Sts Marc et Marcellianus est omise."
+
+    # Test outranking singular this year (starts with Cette année, next word lowercase)
+    outranking_year = translator.format_outranking(
+        "La commémoraison de Ste Praxède", "Le dimanche", False
+    )
+    assert outranking_year == "Cette année, la commémoraison de Ste Praxède est omise."
+
+    # Test outranking masculine Sunday (est omis)
+    outranking_sunday = translator.format_outranking(
+        "le vingt-deuxième dimanche après la Pentecôte",
+        "La fête de Le Christ-Roi",
+        False
+    )
+    expected_sunday = (
+        "Cette année, le vingt-deuxième dimanche après la Pentecôte est omis."
+    )
+    assert outranking_sunday == expected_sunday
 
     # Test holy day plural
     holy = translator.format_holy_day("Les Grandes Ô")
@@ -98,3 +121,59 @@ def test_fr_ics_export():
     assert any('Circoncision' in s for s in summaries)
     prefixes = ('La ', 'Le ', "L'", '» ', '› ')
     assert any(s.startswith(prefixes) for s in summaries)
+
+
+def test_fr_omitted_commemorations_ics():
+    import icalendar as ical
+    cal = LiturgicalCalendar(2024, lang='fr')
+    ics_bytes = cal.to_ical()
+    ics = ical.Calendar.from_ical(ics_bytes)
+    descriptions = [
+        str(comp.get('description'))
+        for comp in ics.subcomponents
+        if comp.name == 'VEVENT'
+    ]
+    # 18 juin (Sts Marc et Marcellianus)
+    expected_marc = (
+        'La commémoraison de Sts Marc et Marcellianus (martyrs) est omise.'
+    )
+    assert any(d.startswith(expected_marc) for d in descriptions)
+
+    # 19 juin (Sts Gervase et Protase)
+    expected_gervase = (
+        'La commémoraison de Sts Gervase et Protase (martyrs) est omise.'
+    )
+    assert any(d.startswith(expected_gervase) for d in descriptions)
+
+    # 8 août (Sts Cyriacus...)
+    expected_cyriacus = (
+        'La commémoraison de Sts Cyriacus, Largus, et Smaragdus (martyrs) '
+        'est omise.'
+    )
+    assert any(d.startswith(expected_cyriacus) for d in descriptions)
+
+
+def test_fr_omitted_sunday_ics():
+    import icalendar as ical
+    # 25 oct 2026: Christ the King outranks 22nd Sunday after Pentecost
+    cal26 = LiturgicalCalendar(2026, lang='fr')
+    ics26 = ical.Calendar.from_ical(cal26.to_ical())
+    desc26 = [
+        str(comp.get('description'))
+        for comp in ics26.subcomponents
+        if comp.name == 'VEVENT'
+    ]
+    expected_sunday_26 = (
+        'Cette année, le vingt-deuxième dimanche après la Pentecôte est omis.'
+    )
+    assert any(d.startswith(expected_sunday_26) for d in desc26)
+
+    # 1 nov 2020: All Saints outranks 22nd Sunday after Pentecost
+    cal20 = LiturgicalCalendar(2020, lang='fr')
+    ics20 = ical.Calendar.from_ical(cal20.to_ical())
+    desc20 = [
+        str(comp.get('description'))
+        for comp in ics20.subcomponents
+        if comp.name == 'VEVENT'
+    ]
+    assert any(d.startswith(expected_sunday_26) for d in desc20)

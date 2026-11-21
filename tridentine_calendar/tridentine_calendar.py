@@ -1,10 +1,7 @@
 """Generate a liturgical calendar using the 1962 Roman Catholic rubrics."""
 
 import argparse
-import calendar
-import csv
 import datetime as dt
-import io
 import json
 import os
 import urllib
@@ -195,17 +192,7 @@ class LiturgicalSeason:
             A string with the name of the season, possibly with an article.
 
         """
-        translated_name = self.translator.translate(self.name)
-        if self.lang == 'ja':
-            full_name = translated_name
-        elif self.lang == 'fr':
-            full_name = self.translator._contract(translated_name)
-        else:
-            if self.name.startswith('Time after'):
-                full_name = 'the ' + translated_name
-            else:
-                full_name = translated_name
-
+        full_name = self.translator.format_season_name(self.name)
         if capitalize:
             full_name = full_name[0].upper() + full_name[1:]
 
@@ -396,19 +383,9 @@ class LiturgicalCalendarEvent:
 
         if self.liturgical_event and self.rank < 4:
             if self.holy_day:
-                if self.lang == 'ja':
-                    name = '今日'
-                elif self.lang == 'fr':
-                    name = "Aujourd'hui"
-                else:
-                    name = 'Today'
+                name = self.translator.get_today()
             elif not ranking_feast:
-                if self.lang == 'ja':
-                    name = 'この祝日' if self.feast else 'この平休日'
-                elif self.lang == 'fr':
-                    name = 'Cette fête' if self.feast else 'Cette férie'
-                else:
-                    name = 'This {}'.format('feast' if self.feast else 'feria')
+                name = self.translator.get_this_day(self.feast)
             else:
                 name = self.full_name(capitalize=True, with_titles=with_titles)
                 with_titles = False
@@ -454,11 +431,8 @@ class LiturgicalCalendarEvent:
                     description += '• ' + url_obj.url + '\n'
             description += '\n'
 
-        more_info_season = self.translator.format_more_info(
-            self.season.full_name(capitalize=False))
-        if self.lang == 'fr':
-            more_info_season = self.translator._contract(more_info_season)
-        description += more_info_season + '\n'
+        description += self.translator.format_more_info(
+            self.season.full_name(capitalize=False)) + '\n'
         for url_obj in self.season.urls:
             if html_formatting:
                 description += '• ' + url_obj.to_href() + '\n'
@@ -582,12 +556,8 @@ class LiturgicalYear:
         date = mf.CantateSunday.date(self.year) + dt.timedelta(7)
         ordinal = self.translator.get_ordinal(5)
         event_name = self.translator.translate('Easter')
-        if self.lang == 'fr':
-            name = self.translator.templates['ordinal_sunday_full_name'].format(
-                ordinal=ordinal, season=event_name)
-        else:
-            name = self.translator.templates['ordinal_sunday_after_full_name'].format(
-                ordinal=ordinal, event=event_name)
+        name = self.translator.format_fifth_sunday_of_easter(
+            ordinal, event_name)
         event = LiturgicalCalendarEvent(
             date, name=name, rank=1, lang=self.lang, translator=self.translator)
         self.calendar[date].append(event)
@@ -634,105 +604,18 @@ class LiturgicalYear:
                             translator=self.translator)
                         self.calendar[date].append(event)
 
-        if self.lang == 'ja':
-            self._load_extra_ja_feasts()
+        self.translator.load_local_calendar_feasts(
+            self.calendar, self.year, LiturgicalCalendarEvent
+        )
 
         for date in iterate_liturgical_year(self.year):
             self.calendar[date] = sorted(self.calendar[date], key=_feast_sort_key)
 
     def _load_extra_ja_feasts(self):
-        extra_files = [
-            'i18n/ja/fixed_feasts_local.csv',
-            'i18n/ja/fixed_feasts_missing.csv',
-        ]
-
-        for resource_path in extra_files:
-            try:
-                package_path = resource_path.split('/')
-                filename = package_path[-1]
-                directory = '.'.join(['tridentine_calendar'] + package_path[:-1])
-                content = (resources.files(directory) / filename).read_bytes()
-                decoded_content = content.decode('utf-8')
-                reader = csv.DictReader(io.StringIO(decoded_content))
-                for row in reader:
-                    date_en = row.get('dates_en')
-                    if not date_en:
-                        continue
-                    try:
-                        day, month_str = date_en.split('-')
-                        month = list(calendar.month_abbr).index(month_str)
-                        for date in iterate_liturgical_year(self.year):
-                            if date.month == month and date.day == int(day):
-                                titles = []
-                                if row.get('titles_1'):
-                                    titles.append(row.get('titles_1'))
-                                if row.get('titles_2'):
-                                    titles.append(row.get('titles_2'))
-
-                                event_name = row.get('en')
-                                event_ja_name = row.get('ja')
-
-                                rank = row.get('class')
-                                rank = int(rank) if rank and rank.isdigit() else 4
-
-                                event = LiturgicalCalendarEvent(
-                                    date,
-                                    name=event_name,
-                                    rank=rank,
-                                    titles=titles if titles else None,
-                                    color=row.get('color'),
-                                    lang=self.lang,
-                                    translator=self.translator
-                                )
-                                if event_ja_name:
-                                    self.translator.translations[
-                                        event_name] = event_ja_name
-
-                                self.calendar[date].append(event)
-                    except (ValueError, KeyError, IndexError):
-                        continue
-            except (FileNotFoundError, UnicodeDecodeError, ModuleNotFoundError):
-                continue
-
-        # Load movable local feast
-        resource_path = 'i18n/ja/movable_feasts_local.csv'
-        try:
-            package_path = resource_path.split('/')
-            filename = package_path[-1]
-            directory = '.'.join(['tridentine_calendar'] + package_path[:-1])
-            content = (resources.files(directory) / filename).read_bytes()
-            decoded_content = content.decode('utf-8')
-            reader = csv.DictReader(io.StringIO(decoded_content))
-            for row in reader:
-                if calendar.isleap(self.year):
-                    target_date = dt.date(self.year, 2, 26)
-                else:
-                    target_date = dt.date(self.year, 2, 25)
-
-                if target_date in self.calendar:
-                    event_name = row.get('en')
-                    event_ja_name = row.get('ja')
-                    titles = []
-                    if row.get('titles_1'):
-                        titles.append(row.get('titles_1'))
-                    if row.get('titles_2'):
-                        titles.append(row.get('titles_2'))
-
-                    event = LiturgicalCalendarEvent(
-                        target_date,
-                        name=event_name,
-                        rank=4,
-                        titles=titles if titles else None,
-                        color=row.get('color'),
-                        lang=self.lang,
-                        translator=self.translator
-                    )
-                    if event_ja_name:
-                        self.translator.translations[
-                            event_name] = event_ja_name
-                    self.calendar[target_date].append(event)
-        except (FileNotFoundError, UnicodeDecodeError, ModuleNotFoundError):
-            pass
+        """Deprecated: delegates to translator strategy for local feasts."""
+        self.translator.load_local_calendar_feasts(
+            self.calendar, self.year, LiturgicalCalendarEvent
+        )
 
     def __getitem__(self, key):
         """Return the events for a given day.
@@ -758,10 +641,7 @@ class LiturgicalYear:
         ics_calendar = ical.Calendar()
         for date in iterate_liturgical_year(self.year):
             for i, elem in enumerate(self.calendar[date]):
-                ics_name = self.translator.translate(elem.name)
-                if self.lang == 'fr' and ics_name:
-                    ics_name = self.translator._contract(ics_name)
-                    ics_name = ics_name[0].upper() + ics_name[1:]
+                ics_name = self.translator.format_ics_summary(elem.name)
                 description = ''
 
                 if i > 0 and elem.liturgical_event and not elem.addition:

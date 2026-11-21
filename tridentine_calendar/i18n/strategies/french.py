@@ -128,6 +128,24 @@ class FrenchStrategy(BaseLanguageStrategy):
         plural_prefixes = ('Les ', 'les ', 'Sts ', 'Stes ', 'sts ', 'stes ')
         return name.lstrip('» ').lstrip('› ').startswith(plural_prefixes)
 
+    def format_season_name(self, name: str) -> str:
+        return self._contract(self.translate(name))
+
+    def format_fifth_sunday_of_easter(self, ordinal: str, event_name: str) -> str:
+        return self.templates['ordinal_sunday_full_name'].format(
+            ordinal=ordinal, season=event_name
+        )
+
+    def format_ics_summary(self, name: str) -> str:
+        ics_name = self.translate(name)
+        if ics_name:
+            ics_name = self._contract(ics_name)
+            ics_name = ics_name[0].upper() + ics_name[1:]
+        return ics_name
+
+    def format_more_info(self, name: str) -> str:
+        return self._contract(self.templates['more_info'].format(name=name))
+
     def _pluralize_fr_title(self, title: str) -> str:
         """Pluralize a French title."""
         if not title:

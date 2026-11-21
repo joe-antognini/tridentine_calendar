@@ -113,16 +113,12 @@ def feria_name(date, translator=None):
     first_sunday_of_lent = AshWednesday.date(date.year) + dt.timedelta(4)
 
     if AshWednesday.date(date.year) < date < first_sunday_of_lent:
-        return translator.templates['feria_after_ash_wednesday'].format(weekday=weekday)
+        return translator.format_feria_after_ash_wednesday(weekday)
     elif first_sunday_of_lent <= date < PassionSunday.date(date.year):
         lent_week = ((date - first_sunday_of_lent) // 7).days + 1
-        ordinal = translator.get_ordinal(lent_week)
-        if translator.lang == 'en':
-            ordinal = ordinal.lower()
-        return translator.templates['feria_in_lent'].format(
-            ordinal=ordinal, weekday=weekday)
+        return translator.format_feria_in_lent(lent_week, weekday)
     elif PassionSunday.date(date.year) <= date < PalmSunday.date(date.year):
-        return translator.templates['feria_in_passion_week'].format(weekday=weekday)
+        return translator.format_feria_in_passion_week(weekday)
 
     return weekday
 

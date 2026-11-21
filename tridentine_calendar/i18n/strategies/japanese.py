@@ -1,8 +1,14 @@
 """Japanese language strategy."""
 
-from typing import List, Optional
+import calendar as cal_mod
+import csv
+import datetime as dt
+import io
+from importlib import resources
+from typing import Any, Dict, List, Optional
 
 from tridentine_calendar.i18n.base import BaseLanguageStrategy
+from tridentine_calendar.utils import iterate_liturgical_year
 
 
 class JapaneseStrategy(BaseLanguageStrategy):
@@ -122,3 +128,117 @@ class JapaneseStrategy(BaseLanguageStrategy):
     def format_color(self, color: str) -> str:
         translated_color = self.translate(color.capitalize())
         return self.templates['liturgical_color'].format(color=translated_color)
+
+    def load_local_calendar_feasts(
+        self,
+        calendar_dict: Dict,
+        year: int,
+        event_cls: Any,
+        translator: Any = None
+    ) -> None:
+        """Load Japan-specific local feasts into the calendar."""
+        extra_files = [
+            'i18n/ja/fixed_feasts_local.csv',
+            'i18n/ja/fixed_feasts_missing.csv',
+        ]
+
+        for resource_path in extra_files:
+            try:
+                package_path = resource_path.split('/')
+                filename = package_path[-1]
+                directory = '.'.join(
+                    ['tridentine_calendar'] + package_path[:-1])
+                content = (
+                    resources.files(directory) / filename).read_bytes()
+                decoded_content = content.decode('utf-8')
+                reader = csv.DictReader(io.StringIO(decoded_content))
+                for row in reader:
+                    date_en = row.get('dates_en')
+                    if not date_en:
+                        continue
+                    try:
+                        day, month_str = date_en.split('-')
+                        month = list(
+                            cal_mod.month_abbr).index(month_str)
+                        for date in iterate_liturgical_year(year):
+                            if (date.month == month
+                                    and date.day == int(day)):
+                                titles = []
+                                if row.get('titles_1'):
+                                    titles.append(row.get('titles_1'))
+                                if row.get('titles_2'):
+                                    titles.append(row.get('titles_2'))
+
+                                event_name = row.get('en')
+                                event_ja_name = row.get('ja')
+
+                                rank = row.get('class')
+                                rank = (int(rank)
+                                        if rank and rank.isdigit()
+                                        else 4)
+
+                                if event_ja_name:
+                                    self.translations[
+                                        event_name] = event_ja_name
+
+                                event = event_cls(
+                                    date,
+                                    name=event_name,
+                                    rank=rank,
+                                    titles=(titles if titles
+                                            else None),
+                                    color=row.get('color'),
+                                    lang=self.lang_code,
+                                    translator=translator
+                                )
+
+                                calendar_dict[date].append(event)
+                    except (ValueError, KeyError, IndexError):
+                        continue
+            except (FileNotFoundError, UnicodeDecodeError,
+                    ModuleNotFoundError):
+                continue
+
+        # Load movable local feast
+        resource_path = 'i18n/ja/movable_feasts_local.csv'
+        try:
+            package_path = resource_path.split('/')
+            filename = package_path[-1]
+            directory = '.'.join(
+                ['tridentine_calendar'] + package_path[:-1])
+            content = (
+                resources.files(directory) / filename).read_bytes()
+            decoded_content = content.decode('utf-8')
+            reader = csv.DictReader(io.StringIO(decoded_content))
+            for row in reader:
+                if cal_mod.isleap(year):
+                    target_date = dt.date(year, 2, 26)
+                else:
+                    target_date = dt.date(year, 2, 25)
+
+                if target_date in calendar_dict:
+                    event_name = row.get('en')
+                    event_ja_name = row.get('ja')
+                    titles = []
+                    if row.get('titles_1'):
+                        titles.append(row.get('titles_1'))
+                    if row.get('titles_2'):
+                        titles.append(row.get('titles_2'))
+
+                    if event_ja_name:
+                        self.translations[
+                            event_name] = event_ja_name
+
+                    event = event_cls(
+                        target_date,
+                        name=event_name,
+                        rank=4,
+                        titles=titles if titles else None,
+                        color=row.get('color'),
+                        lang=self.lang_code,
+                        translator=translator
+                    )
+                    calendar_dict[target_date].append(event)
+        except (FileNotFoundError, UnicodeDecodeError,
+                ModuleNotFoundError):
+            pass

@@ -63,8 +63,17 @@ class EnglishStrategy(BaseLanguageStrategy):
         self.ordinals = dict(self.ORDINALS)
         self.weekdays = {day: day for day in calendar.day_name}
 
-    def translate(self, text: str) -> str:
-        return text
+    def format_season_name(self, name: str) -> str:
+        translated_name = self.translate(name)
+        if name.startswith('Time after'):
+            return 'the ' + translated_name
+        return translated_name
+
+    def format_feria_in_lent(self, lent_week: int, weekday: str) -> str:
+        ordinal = self.get_ordinal(lent_week).lower()
+        return self.templates['feria_in_lent'].format(
+            ordinal=ordinal, weekday=weekday
+        )
 
     def format_feast_full_name(
         self,

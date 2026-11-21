@@ -1,6 +1,6 @@
 """Translator class for internationalization support."""
 
-from typing import Dict, List, Optional
+from typing import Any, Dict, List, Optional
 
 from .base import BaseLanguageStrategy
 from .factory import get_strategy
@@ -96,6 +96,40 @@ class Translator:
 
     def format_more_info(self, name: str) -> str:
         return self.strategy.format_more_info(name)
+
+    def format_season_name(self, name: str) -> str:
+        return self.strategy.format_season_name(name)
+
+    def get_today(self) -> str:
+        return self.strategy.get_today()
+
+    def get_this_day(self, is_feast: bool) -> str:
+        return self.strategy.get_this_day(is_feast)
+
+    def format_fifth_sunday_of_easter(self, ordinal: str, event_name: str) -> str:
+        return self.strategy.format_fifth_sunday_of_easter(ordinal, event_name)
+
+    def format_ics_summary(self, name: str) -> str:
+        return self.strategy.format_ics_summary(name)
+
+    def format_feria_in_lent(self, lent_week: int, weekday: str) -> str:
+        return self.strategy.format_feria_in_lent(lent_week, weekday)
+
+    def format_feria_after_ash_wednesday(self, weekday: str) -> str:
+        return self.strategy.format_feria_after_ash_wednesday(weekday)
+
+    def format_feria_in_passion_week(self, weekday: str) -> str:
+        return self.strategy.format_feria_in_passion_week(weekday)
+
+    def load_local_calendar_feasts(
+        self,
+        calendar_dict: Dict,
+        year: int,
+        event_cls: Any
+    ) -> None:
+        self.strategy.load_local_calendar_feasts(
+            calendar_dict, year, event_cls, translator=self
+        )
 
     def format_titles(self, titles: List[str], plural: bool = False) -> str:
         return self.strategy.format_titles(titles, plural=plural)

@@ -74,3 +74,27 @@ def test_fr_plural_agreement():
     # Test holy day plural
     holy = translator.format_holy_day("Les Grandes Ô")
     assert "sont" in holy
+
+
+def test_fr_fifth_sunday_of_easter():
+    cal = LiturgicalCalendar(2024, lang='fr')
+    date = dt.date(2024, 5, 5)
+    events = cal[date]
+    assert len(events) > 0
+    assert events[0].name == 'cinquième dimanche de Pâques'
+
+
+def test_fr_ics_export():
+    import icalendar as ical
+    cal = LiturgicalCalendar(2024, lang='fr')
+    ics_bytes = cal.to_ical()
+    assert ics_bytes is not None
+    ics = ical.Calendar.from_ical(ics_bytes)
+    summaries = [
+        str(comp.get('summary'))
+        for comp in ics.subcomponents
+        if comp.name == 'VEVENT'
+    ]
+    assert any('Circoncision' in s for s in summaries)
+    prefixes = ('La ', 'Le ', "L'", '» ', '› ')
+    assert any(s.startswith(prefixes) for s in summaries)

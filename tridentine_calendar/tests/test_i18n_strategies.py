@@ -82,3 +82,94 @@ def test_translator_lang_setter():
     trans.lang = 'fr'
     assert trans.lang == 'fr'
     assert trans.translate('Monday') == 'Lundi'
+
+
+def test_strategy_season_formatting():
+    en = Translator('en')
+    fr = Translator('fr')
+    ja = Translator('ja')
+
+    assert en.format_season_name('Time after Epiphany') == 'the Time after Epiphany'
+    assert en.format_season_name('Advent') == 'Advent'
+
+    assert fr.format_season_name('Time after Epiphany') == "le Temps après l'Épiphanie"
+    assert fr.format_season_name('Advent') == "l'Avent"
+
+    assert ja.format_season_name('Advent') == '待降節'
+
+
+def test_strategy_today_and_this_day():
+    en = Translator('en')
+    fr = Translator('fr')
+    ja = Translator('ja')
+
+    assert en.get_today() == 'Today'
+    assert en.get_this_day(is_feast=True) == 'This feast'
+    assert en.get_this_day(is_feast=False) == 'This feria'
+
+    assert fr.get_today() == "Aujourd'hui"
+    assert fr.get_this_day(is_feast=True) == 'Cette fête'
+    assert fr.get_this_day(is_feast=False) == 'Cette férie'
+
+    assert ja.get_today() == '今日'
+    assert ja.get_this_day(is_feast=True) == 'この祝日'
+    assert ja.get_this_day(is_feast=False) == 'この平休日'
+
+
+def test_strategy_fifth_sunday_of_easter():
+    en = Translator('en')
+    fr = Translator('fr')
+    ja = Translator('ja')
+
+    assert (
+        en.format_fifth_sunday_of_easter('Fifth', 'Easter')
+        == 'Fifth Sunday after Easter'
+    )
+    assert fr.format_fifth_sunday_of_easter('5e', 'Pâques') == '5e dimanche de Pâques'
+    assert ja.format_fifth_sunday_of_easter('第五', '復活節') == '復活節後第五主日'
+
+
+def test_strategy_ics_summary():
+    en = Translator('en')
+    fr = Translator('fr')
+    ja = Translator('ja')
+
+    assert en.format_ics_summary('St. Hilary') == 'St. Hilary'
+    assert ja.format_ics_summary('St. Hilary') == '聖ヒラリオ'
+
+    # French contracts and capitalizes
+    summary = fr.format_ics_summary('The Circumcision')
+    assert summary == 'La Circoncision'
+
+
+def test_strategy_feria_formatting():
+    en = Translator('en')
+    fr = Translator('fr')
+    ja = Translator('ja')
+
+    assert (
+        en.format_feria_in_lent(1, 'Monday')
+        == 'Monday in the first week of Lent'
+    )
+    assert (
+        en.format_feria_after_ash_wednesday('Thursday')
+        == 'Thursday after Ash Wednesday'
+    )
+    assert en.format_feria_in_passion_week('Tuesday') == 'Tuesday in Passion week'
+
+    assert (
+        fr.format_feria_in_lent(1, 'Lundi')
+        == 'Lundi de la premier semaine de Carême'
+    )
+    assert (
+        fr.format_feria_after_ash_wednesday('Jeudi')
+        == 'Jeudi après le Mercredi des Cendres'
+    )
+    assert (
+        fr.format_feria_in_passion_week('Mardi')
+        == 'Mardi de la semaine de la Passion'
+    )
+
+    assert ja.format_feria_in_lent(1, '月曜日') == '四旬節第一週の月曜日'
+    assert ja.format_feria_after_ash_wednesday('木曜日') == '灰の水曜日後の木曜日'
+    assert ja.format_feria_in_passion_week('火曜日') == '受難週の火曜日'

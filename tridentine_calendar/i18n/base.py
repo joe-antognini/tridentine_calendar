@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 import csv
 import io
 from importlib import resources
-from typing import Dict, List, Optional
+from typing import Any, Dict, List, Optional
 
 from tridentine_calendar.utils import make_initial__the__lowercase
 
@@ -149,6 +149,50 @@ class BaseLanguageStrategy(ABC):
         """Format more information header."""
         return self.templates['more_info'].format(name=name)
 
-    def load_local_calendar_feasts(self, calendar_builder, year: int) -> None:
+    def format_season_name(self, name: str) -> str:
+        """Format the name of a liturgical season."""
+        return self.translate(name)
+
+    def get_today(self) -> str:
+        """Get the localized word for 'Today'."""
+        return self.templates.get('today', 'Today')
+
+    def get_this_day(self, is_feast: bool) -> str:
+        """Get the localized demonstrative noun ('This feast' / 'This feria')."""
+        key = 'this_feast' if is_feast else 'this_feria'
+        return self.templates.get(key, 'This feast' if is_feast else 'This feria')
+
+    def format_fifth_sunday_of_easter(self, ordinal: str, event_name: str) -> str:
+        """Format the 5th Sunday after Easter (Rogate Sunday)."""
+        return self.templates['ordinal_sunday_after_full_name'].format(
+            ordinal=ordinal, event=event_name
+        )
+
+    def format_ics_summary(self, name: str) -> str:
+        """Format event summary for ICS calendar exports."""
+        return self.translate(name)
+
+    def format_feria_in_lent(self, lent_week: int, weekday: str) -> str:
+        """Format the name of a feria during Lent."""
+        ordinal = self.get_ordinal(lent_week)
+        return self.templates['feria_in_lent'].format(
+            ordinal=ordinal, weekday=weekday
+        )
+
+    def format_feria_after_ash_wednesday(self, weekday: str) -> str:
+        """Format the name of a feria after Ash Wednesday."""
+        return self.templates['feria_after_ash_wednesday'].format(weekday=weekday)
+
+    def format_feria_in_passion_week(self, weekday: str) -> str:
+        """Format the name of a feria during Passion week."""
+        return self.templates['feria_in_passion_week'].format(weekday=weekday)
+
+    def load_local_calendar_feasts(
+        self,
+        calendar_dict: Dict,
+        year: int,
+        event_cls: Any,
+        translator: Any = None
+    ) -> None:
         """Optional hook for region/language-specific local feasts (e.g. Japan)."""
         pass

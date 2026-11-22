@@ -1,5 +1,7 @@
 import datetime as dt
+
 from tridentine_calendar.i18n import Translator
+from tridentine_calendar.i18n.strategies.french import FrenchStrategy
 from tridentine_calendar.tridentine_calendar import LiturgicalCalendar
 from tridentine_calendar.tridentine_calendar import LiturgicalYear
 
@@ -74,9 +76,9 @@ def test_fr_plural_agreement():
 
     # Test outranking singular fixed (starts capitalized)
     outranking_fixed = translator.format_outranking(
-        "la commémoraison de Sts Marc et Marcellianus", "La fête de St Éphrem", True
+        "la commémoraison de Sts Marc et Marcellien", "La fête de St Éphrem", True
     )
-    assert outranking_fixed == "La commémoraison de Sts Marc et Marcellianus est omise."
+    assert outranking_fixed == "La commémoraison de Sts Marc et Marcellien est omise."
 
     # Test outranking singular this year (starts with Cette année, next word lowercase)
     outranking_year = translator.format_outranking(
@@ -134,9 +136,9 @@ def test_fr_omitted_commemorations_ics():
         for comp in ics.subcomponents
         if comp.name == 'VEVENT'
     ]
-    # 18 juin (Sts Marc et Marcellianus)
+    # 18 juin (Sts Marc et Marcellien)
     expected_marc = (
-        'La commémoraison de Sts Marc et Marcellianus (martyrs) est omise.'
+        'La commémoraison de Sts Marc et Marcellien (martyrs) est omise.'
     )
     assert any(d.startswith(expected_marc) for d in descriptions)
 
@@ -148,7 +150,7 @@ def test_fr_omitted_commemorations_ics():
 
     # 8 août (Sts Cyriacus...)
     expected_cyriacus = (
-        'La commémoraison de Sts Cyriacus, Largus, et Smaragdus (martyrs) '
+        'La commémoraison de Sts Cyriaque, Large et Smaragde (martyrs) '
         'est omise.'
     )
     assert any(d.startswith(expected_cyriacus) for d in descriptions)
@@ -209,3 +211,16 @@ def test_french_lent_commemoration_plural_saints_agreement():
 
     assert 'il sera ordinairement célébré' not in joined
     assert 'elle sera ordinairement célébrée' in joined
+
+
+def test_french_spouse_of_bvm_title():
+    strategy = FrenchStrategy()
+    formatted = strategy.format_feast_full_name(
+        'St. Joseph',
+        rank=1,
+        titles=['Spouse of the Blessed Virgin Mary', 'Confessor'],
+        is_feast=True,
+    )
+    assert 'Spouse of the Blessed Virgin Mary' not in formatted
+    assert 'Époux' in formatted or 'époux' in formatted
+    assert 'confesseur' in formatted.lower()

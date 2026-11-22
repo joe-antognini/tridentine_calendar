@@ -89,6 +89,9 @@ class FrenchStrategy(BaseLanguageStrategy):
 
     def _contract(self, text: str) -> str:
         """Apply French contractions and elisions."""
+        # This prevents contractions from being applied to 'et'
+        text = text.replace(' et ', '__FR_ET__')
+
         # Clean up any double articles that might have been introduced
         text = text.replace('le le ', 'le ')
         text = text.replace('la la ', 'la ')
@@ -98,10 +101,22 @@ class FrenchStrategy(BaseLanguageStrategy):
         text = text.replace("le l'", "l'")
         text = text.replace("la l'", "l'")
 
-        # Contractions
+        # Contractions (handle 'Le' -> 'du' as well as 'le' -> 'du')
+        text = text.replace('de Le ', 'du ')
         text = text.replace('de le ', 'du ')
         text = text.replace('de les ', 'des ')
         text = text.replace('de la Dimanche', 'du Dimanche')
+
+        # Protect words that should not trigger elision
+        protected = {
+            'huitième': '__HUITIEME__',
+            'Huitième': '__HUITIEME_CAP__',
+            'onzième': '__ONZIEME__',
+            'Onzième': '__ONZIEME_CAP__',
+            'Hongrie': '__HONGRIE__',
+        }
+        for token, placeholder in protected.items():
+            text = text.replace(token, placeholder)
 
         # Elisions
         vowels = 'aeiouyàâéèêëîïôûùh'
@@ -116,12 +131,25 @@ class FrenchStrategy(BaseLanguageStrategy):
             text = text.replace(f'la {v}', f"l'{v}")
             text = text.replace(f'la {v.upper()}', f"l'{v.upper()}")
 
+        # Restore protected words
+        for token, placeholder in protected.items():
+            text = text.replace(placeholder, token)
+
+        # Repair any pre-existing bad elisions on protected words
+        text = text.replace("de l'Hongrie", 'de Hongrie')
+        text = text.replace("l'huitième", 'le huitième')
+        text = text.replace("L'huitième", 'Le huitième')
+        text = text.replace("l'onzième", 'le onzième')
+        text = text.replace("L'onzième", 'Le onzième')
+
         # Final cleanup
         text = text.replace('de du ', 'du ')
         text = text.replace('de des ', 'des ')
         text = text.replace("de l'l'", "de l'")
         text = text.replace('de le ', 'du ')
         text = text.replace('de les ', 'des ')
+
+        text = text.replace('__FR_ET__', ' et ')
 
         return text
 
@@ -211,7 +239,12 @@ class FrenchStrategy(BaseLanguageStrategy):
         is_already_feast = (name.startswith('Feast')
                             or 'fête' in translated_name.lower())
 
-        if is_already_feast or not is_feast:
+        if not is_feast:
+            return translated_name
+
+        if is_already_feast:
+            if translated_name.startswith('Fête '):
+                return self._contract('La ' + translated_name)
             return translated_name
 
         if is_generic_sunday:

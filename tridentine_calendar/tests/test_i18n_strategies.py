@@ -1,5 +1,11 @@
 """Tests for language strategies and strategy factory."""
 
+import csv
+from collections import Counter
+from pathlib import Path
+
+import pytest
+
 from tridentine_calendar.i18n import (
     BaseLanguageStrategy,
     Translator,
@@ -251,3 +257,56 @@ def test_outranking_capitalization():
     assert ja_trans.format_outranking(
         '聖プラクセデス', '聖ラウレンツィオ', False
     ) == '今年は聖プラクセデスは聖ラウレンツィオに優先されます。'
+
+
+def _find_i18n_csvs() -> list[Path]:
+    """Locate translation CSV files under tridentine_calendar/i18n if present."""
+    pkg_root = Path(__file__).resolve().parents[1]
+    i18n_dir = pkg_root / 'i18n'
+    if i18n_dir.exists():
+        return sorted(i18n_dir.rglob('*.csv'))
+    return []
+
+
+def _assert_unique_keys(csv_path: Path, key_col: str = 'en') -> None:
+    """Assert that every non-empty key in `key_col` appears at most once."""
+    with csv_path.open(mode='r', encoding='utf-8', newline='') as fp:
+        reader = csv.DictReader(fp)
+        assert reader.fieldnames and key_col in reader.fieldnames, (
+            f"Missing '{key_col}' column in {csv_path}"
+        )
+
+        keys: list[str] = []
+        for row_num, row in enumerate(reader, start=2):
+            # Guard against unquoted commas causing extra fields in `None`
+            assert None not in row, (
+                f"Malformed/extra columns in {csv_path} at line {row_num}: {row}"
+            )
+            raw_key = row.get(key_col)
+            if raw_key is not None and raw_key.strip() != '':
+                keys.append(raw_key)
+
+    counts = Counter(keys)
+    duplicates = {k: v for k, v in counts.items() if v > 1}
+    assert not duplicates, (
+        f"Duplicate '{key_col}' keys found in {csv_path}: {duplicates}"
+    )
+
+
+def test_french_feasts_seasons_csv_has_unique_en_keys():
+    """Ensure `feasts_seasons.csv` has no duplicate `en` keys."""
+    # Adjust path if your test file sits in a different directory relative to the CSV.
+    candidate_paths = [
+        Path(__file__).resolve().parents[1] / 'i18n' / 'fr' / 'feasts_seasons.csv',
+        Path(__file__).resolve().parent / 'feasts_seasons.csv',
+    ]
+    csv_path = next((p for p in candidate_paths if p.exists()), None)
+    assert csv_path is not None, 'Could not locate feasts_seasons.csv'
+
+    _assert_unique_keys(csv_path, key_col='en')
+
+
+@pytest.mark.parametrize('csv_path', _find_i18n_csvs(), ids=lambda p: str(p))
+def test_all_i18n_csvs_have_unique_en_keys(csv_path: Path):
+    """Ensure all translation CSVs under `i18n/` have unique `en` keys."""
+    _assert_unique_keys(csv_path, key_col='en')

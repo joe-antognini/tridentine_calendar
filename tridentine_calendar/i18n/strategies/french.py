@@ -3,6 +3,7 @@
 from typing import List, Optional
 
 from tridentine_calendar.i18n.base import BaseLanguageStrategy
+from tridentine_calendar.i18n.base import Gender
 from tridentine_calendar.utils import make_initial__the__lowercase
 
 
@@ -128,8 +129,20 @@ class FrenchStrategy(BaseLanguageStrategy):
         plural_prefixes = ('Les ', 'les ', 'Sts ', 'Stes ', 'sts ', 'stes ')
         return name.lstrip('» ').lstrip('› ').startswith(plural_prefixes)
 
+    def get_ordinal(self, n: int, gender: Optional[Gender] = None) -> str:
+        if n == 1 and gender == Gender.FEMININE:
+            return 'première'
+        return super().get_ordinal(n, gender=gender)
+
     def format_season_name(self, name: str) -> str:
         return self._contract(self.translate(name))
+
+    def format_feria_in_lent(self, lent_week: int, weekday: str) -> str:
+        """Format the name of a feria during Lent with feminine ordinal agreement."""
+        ordinal = 'première' if lent_week == 1 else self.get_ordinal(lent_week)
+        return self.templates['feria_in_lent'].format(
+            ordinal=ordinal, weekday=weekday
+        )
 
     def format_fifth_sunday_of_easter(self, ordinal: str, event_name: str) -> str:
         return self.templates['ordinal_sunday_full_name'].format(

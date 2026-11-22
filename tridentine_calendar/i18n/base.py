@@ -2,11 +2,18 @@
 
 from abc import ABC, abstractmethod
 import csv
+import enum
 import io
 from importlib import resources
 from typing import Any, Dict, List, Optional
 
 from tridentine_calendar.utils import make_initial__the__lowercase
+
+
+class Gender(enum.StrEnum):
+    MASCULINE = 'masculine'
+    FEMININE = 'feminine'
+    NEUTER = 'neuter'
 
 
 class BaseLanguageStrategy(ABC):
@@ -85,7 +92,7 @@ class BaseLanguageStrategy(ABC):
             'Liturgical calendar using the 1962 Roman Catholic rubrics.',
         )
 
-    def get_ordinal(self, n: int) -> str:
+    def get_ordinal(self, n: int, gender: Optional[Gender] = None) -> str:
         """Return the localized ordinal for an integer."""
         return self.ordinals.get(n, str(n))
 

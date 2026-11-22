@@ -159,7 +159,7 @@ def test_strategy_feria_formatting():
 
     assert (
         fr.format_feria_in_lent(1, 'Lundi')
-        == 'Lundi de la premier semaine de Carême'
+        == 'Lundi de la première semaine de Carême'
     )
     assert (
         fr.format_feria_after_ash_wednesday('Jeudi')

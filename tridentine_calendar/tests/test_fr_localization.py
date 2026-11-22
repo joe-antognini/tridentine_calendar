@@ -1,6 +1,7 @@
 import datetime as dt
 from tridentine_calendar.i18n import Translator
 from tridentine_calendar.tridentine_calendar import LiturgicalCalendar
+from tridentine_calendar.tridentine_calendar import LiturgicalYear
 
 
 def test_fr_translator_basic():
@@ -177,3 +178,34 @@ def test_fr_omitted_sunday_ics():
         if comp.name == 'VEVENT'
     ]
     assert any(d.startswith(expected_sunday_26) for d in desc20)
+
+
+def _lent_commemoration_descriptions_for_date(
+    year: int, target_date: dt.date
+) -> list[str]:
+    """Return event descriptions generated in French for a given Lenten date."""
+    cal_year = LiturgicalYear(year, lang='fr')
+    return [
+        event.generate_description(html_formatting=False, ranking_feast=(idx == 0))
+        for idx, event in enumerate(cal_year[target_date])
+    ]
+
+
+def test_french_lent_commemoration_female_saint_agreement():
+    """Check Lenten commemoration agreement for a female saint (e.g., Mar 9, 2026)."""
+    # In 2026, Ash Wednesday is Feb 18, so Mar 9 is in Lent (2nd week of Lent).
+    descriptions = _lent_commemoration_descriptions_for_date(2026, dt.date(2026, 3, 9))
+    joined = '\n'.join(descriptions)
+
+    assert 'il sera ordinairement célébré' not in joined
+    assert 'elle sera ordinairement célébrée' in joined
+
+
+def test_french_lent_commemoration_plural_saints_agreement():
+    """Check Lenten commemoration agreement for plural saints (e.g., Mar 7, 2026)."""
+    # Mar 7, 2026 falls during Lent after Ash Wednesday (Feb 18, 2026).
+    descriptions = _lent_commemoration_descriptions_for_date(2026, dt.date(2026, 3, 7))
+    joined = '\n'.join(descriptions)
+
+    assert 'il sera ordinairement célébré' not in joined
+    assert 'elle sera ordinairement célébrée' in joined

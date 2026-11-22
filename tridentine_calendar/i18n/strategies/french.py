@@ -34,8 +34,8 @@ class FrenchStrategy(BaseLanguageStrategy):
         'no_special_liturgy': '{name} n\'a pas de liturgie spéciale.',
         'today_is_commemoration': 'Aujourd\'hui, c\'est une commémoraison.',
         'lent_commemoration': (
-            'Puisque {feast} tombe pendant le Carême, il sera ordinairement '
-            'célébré seulement comme une commémoraison pendant la messe de '
+            'Puisque {feast} tombe pendant le Carême, elle sera ordinairement '
+            'célébrée seulement comme une commémoraison pendant la messe de '
             '{feria}.'),
         'more_info': 'Plus d\'informations sur {name} :',
         'types': {'feast': 'fête', 'feria': 'férie'},

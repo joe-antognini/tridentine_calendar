@@ -153,6 +153,10 @@ class FrenchStrategy(BaseLanguageStrategy):
 
         return text
 
+    def _is_feminine(self, name: str) -> bool:
+        cleaned = name.lstrip('» ').lstrip('› ').lstrip()
+        return cleaned.startswith(('Ste ', 'Stes ', 'ste ', 'stes '))
+
     def _is_plural(self, name: str) -> bool:
         plural_prefixes = ('Les ', 'les ', 'Sts ', 'Stes ', 'sts ', 'stes ')
         return name.lstrip('» ').lstrip('› ').startswith(plural_prefixes)
@@ -192,6 +196,10 @@ class FrenchStrategy(BaseLanguageStrategy):
         if not title:
             return title
 
+        # Already-feminine 'martyre' -> 'martyres'
+        if title == 'martyre':
+            return 'martyres'
+
         parts = title.split(' et ')
         plural_parts = []
         for part in parts:
@@ -204,15 +212,26 @@ class FrenchStrategy(BaseLanguageStrategy):
 
         return ' et '.join(plural_parts)
 
-    def format_titles(self, titles: List[str], plural: bool = False) -> str:
+    def format_titles(
+        self,
+        titles: List[str],
+        plural: bool = False,
+        feminine: bool = False,
+    ) -> str:
         if not titles:
-            return ""
-        translated_titles = [self.translate(t) for t in titles]
+            return ''
+        translated_titles = []
+        for t in titles:
+            translated = self.translate(t)
+            if t.lower() == 'martyr' and feminine:
+                translated = 'martyre'
+            translated_titles.append(translated)
+
         if plural:
             translated_titles = [
                 self._pluralize_fr_title(t) for t in translated_titles
             ]
-        return ", ".join(translated_titles)
+        return ', '.join(translated_titles)
 
     def format_feast_full_name(
         self,
@@ -225,7 +244,10 @@ class FrenchStrategy(BaseLanguageStrategy):
         is_plural = self._is_plural(translated_name)
 
         if titles:
-            titles_str = self.format_titles(titles, plural=is_plural)
+            is_feminine = self._is_feminine(translated_name)
+            titles_str = self.format_titles(
+                titles, plural=is_plural, feminine=is_feminine
+            )
             if titles_str:
                 titles_str_sing = self.format_titles(titles, plural=False)
                 if (translated_name.endswith(f", {titles_str}")

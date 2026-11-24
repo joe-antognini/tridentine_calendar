@@ -145,7 +145,7 @@ def test_strategy_ics_summary():
 
     # French contracts and capitalizes
     summary = fr.format_ics_summary('The Circumcision')
-    assert summary == 'La Circoncision'
+    assert summary == 'La Circoncision du Seigneur'
 
 
 def test_strategy_feria_formatting():

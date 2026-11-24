@@ -25,7 +25,7 @@ def test_fr_feast_full_name():
         'The Annunciation', 1) == "la fête de l'Annonciation"
     # Already has "La"
     assert translator.format_feast_full_name(
-        'The Circumcision', 1) == 'la fête de la Circoncision'
+        'The Circumcision', 1) == 'la fête de la Circoncision du Seigneur'
     # Commemoration
     assert translator.format_feast_full_name(
         'St. Hilary', 4) == 'la commémoraison de St Hilaire'
@@ -48,7 +48,7 @@ def test_fr_liturgical_calendar_output():
     assert len(events) > 0
     # The first event should be Circumcision
     assert events[0].name == 'The Circumcision'
-    assert events[0].full_name() == 'La fête de la Circoncision'
+    assert events[0].full_name() == 'La fête de la Circoncision du Seigneur'
 
     description = events[0].generate_description()
     assert 'La couleur liturgique est le blanc.' in description
@@ -224,3 +224,36 @@ def test_french_spouse_of_bvm_title():
     assert 'Spouse of the Blessed Virgin Mary' not in formatted
     assert 'Époux' in formatted or 'époux' in formatted
     assert 'confesseur' in formatted.lower()
+
+
+def test_french_halloween_uses_d_without_article():
+    """Halloween in French should use \"d'Halloween\", not \"de l'Halloween\"."""
+    strategy = FrenchStrategy()
+
+    full_name = strategy.format_feast_full_name(
+        'Halloween', rank=4, is_feast=True
+    )
+    assert "d'Halloween" in full_name
+    assert "l'Halloween" not in full_name
+
+    ics_summary = strategy.format_ics_summary('Halloween')
+    assert "l'Halloween" not in ics_summary
+
+
+def test_french_oct_31_halloween_no_l_article():
+    """End-to-end check on Oct 31 in French."""
+    cal_2026 = LiturgicalYear(2026, lang='fr')
+    target_date = dt.date(2026, 10, 31)
+
+    texts = []
+    for idx, event in enumerate(cal_2026[target_date]):
+        texts.append(event.name)
+        texts.append(event.full_name(capitalize=True))
+        texts.append(
+            event.generate_description(
+                html_formatting=False, ranking_feast=(idx == 0)
+            )
+        )
+    combined = '\n'.join(texts)
+    assert "l'Halloween" not in combined
+    assert "L'Halloween" not in combined

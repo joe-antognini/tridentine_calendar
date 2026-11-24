@@ -114,6 +114,7 @@ class FrenchStrategy(BaseLanguageStrategy):
             'onzième': '__ONZIEME__',
             'Onzième': '__ONZIEME_CAP__',
             'Hongrie': '__HONGRIE__',
+            'Halloween': '__HALLOWEEN__',
         }
         for token, placeholder in protected.items():
             text = text.replace(token, placeholder)
@@ -141,6 +142,10 @@ class FrenchStrategy(BaseLanguageStrategy):
         text = text.replace("L'huitième", 'Le huitième')
         text = text.replace("l'onzième", 'le onzième')
         text = text.replace("L'onzième", 'Le onzième')
+        text = text.replace('de Halloween', "d'Halloween")
+        text = text.replace('de halloween', "d'halloween")
+        text = text.replace("de l'Halloween", "d'Halloween")
+        text = text.replace("de l'halloween", "d'halloween")
 
         # Final cleanup
         text = text.replace('de du ', 'du ')
